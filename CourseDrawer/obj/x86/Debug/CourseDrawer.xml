@@ -564,7 +564,7 @@ CourseDrawer
  </summary>
  <remarks></remarks>
 </member>
-<member name="M:CourseDrawer.Form1.butLoad_Click(System.Object,System.EventArgs)">
+<member name="M:CourseDrawer.mainForm.butLoad_Click(System.Object,System.EventArgs)">
  <summary>
  Loads bitmap as background
  </summary>
@@ -572,7 +572,7 @@ CourseDrawer
  <param name="e"></param>
  <remarks></remarks>
 </member>
-<member name="M:CourseDrawer.Form1.PictureBox1_Click(System.Object,System.EventArgs)">
+<member name="M:CourseDrawer.mainForm.PictureBox1_Click(System.Object,System.EventArgs)">
  <summary>
  Do things                                                                             
  </summary>

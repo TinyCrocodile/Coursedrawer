@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="C:\Users\Hermann\Source\Repos\Coursedrawer\CourseDrawer\bin\Debug\CourseDrawer.exe">
+   <Modules>
+    <Module Name="coursedrawer.exe">
+     <Namespaces>
+      <Namespace Name="CourseDrawer">
+       <Types>
+        <Type Name="clsCourse" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#SelectionChanged" Kind="Event" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2016-12-19 20:12:46Z" FixCategory="Breaking">
+             <Issue Name="First" Certainty="95" Level="Error">Deklarieren Sie den ersten Parameter von "'clsCourse.SelectionChangedEventHandler'" als Objekt mit dem Namen "sender".</Issue>
+             <Issue Name="Second" Certainty="95" Level="Error">Deklarieren Sie den zweiten Parameter von "'clsCourse.SelectionChangedEventHandler'" als EventArgs oder als Instanz eines Typs, durch den EventArgs erweitert wird, mit dem Namen "e".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="clsWaypoint" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#SelectionChanged" Kind="Event" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Status="Active" Created="2016-12-19 20:12:46Z" FixCategory="Breaking">
+             <Issue Name="First" Certainty="95" Level="Error">Deklarieren Sie den ersten Parameter von "'clsWaypoint.SelectionChangedEventHandler'" als Objekt mit dem Namen "sender".</Issue>
+             <Issue Name="Second" Certainty="95" Level="Error">Deklarieren Sie den zweiten Parameter von "'clsWaypoint.SelectionChangedEventHandler'" als EventArgs oder als Instanz eines Typs, durch den EventArgs erweitert wird, mit dem Namen "e".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="mainForm" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="myZoomCursor" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-12-19 20:12:46Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\Hermann\Source\Repos\Coursedrawer\CourseDrawer\forms" File="mainForm.Designer.vb" Line="7">'mainForm' enthält das Feld "'mainForm.myZoomCursor'", das vom Typ IDisposable ist: 'Cursor'. Ändern Sie die Dispose-Methode für 'mainForm', sodass für dieses Feld Dispose oder Close aufgerufen wird.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009">
+   <Name>Ereignishandler korrekt deklarieren</Name>
+   <Description>Gemäß der Konvention weisen .NET-Ereignisse zwei Parameter auf, die den Absender des Ereignisses und die Ereignisdaten angeben. Ereignishandlersignaturen sollten folgendes Format aufweisen: void MyEventHandler(object sender, EventArgs e). Der sender-Parameter weist immer den Typ "System.Object" auf, selbst wenn ein spezifischerer Typ verwendet werden kann. Der e-Parameter weist immer den Typ "System.EventArgs" auf. Ereignisse, die keine Ereignisdaten bereitstellen, sollten den Delegattypen "System.EventHandler" verwenden. Ereignishandler geben "void" zurück, damit jedes Ereignis an mehrere Zielmethoden gesendet werden kann. Alle von einem Ziel zurückgegebenen Werte würden nach dem ersten Aufruf verloren gehen.</Description>
+   <Resolution Name="First">Deklarieren Sie den ersten Parameter von "{0}" als Objekt mit dem Namen "sender".</Resolution>
+   <Resolution Name="Second">Deklarieren Sie den zweiten Parameter von "{0}" als EventArgs oder als Instanz eines Typs, durch den EventArgs erweitert wird, mit dem Namen "e".</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182133.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213">
+   <Name>Verwerfbare Felder verwerfen</Name>
+   <Description>Wenn ein Typ, der IDisposable implementiert, über Felder verfügt, die ebenfalls IDisposable implementieren, sollte die Dispose()-Implementierung des kapselnden Typs auf jedem verwerfbaren Feld Dispose() aufrufen.</Description>
+   <Resolution Name="Default">{0} enthält das Feld "{1}", das vom Typ IDisposable ist: {2}. Ändern Sie die Dispose-Methode für {0}, sodass für dieses Feld Dispose oder Close aufgerufen wird.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182328.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Kategorie</String>
+  <String Key="Certainty">Sicherheit</String>
+  <String Key="CollapseAll">Alle reduzieren</String>
+  <String Key="CheckId">Prüf-ID</String>
+  <String Key="Error">Fehler</String>
+  <String Key="Errors">Fehler</String>
+  <String Key="ExpandAll">Alle erweitern</String>
+  <String Key="Help">Hilfe</String>
+  <String Key="Line">Zeile</String>
+  <String Key="Messages">Meldung(en)</String>
+  <String Key="LocationNotStoredInPdb">[Nicht in PDB gespeicherter Speicherort]</String>
+  <String Key="Project">Projekt</String>
+  <String Key="Resolution">Auflösung</String>
+  <String Key="Rule">Regel</String>
+  <String Key="RuleFile">Regeldatei</String>
+  <String Key="RuleDescription">Regelbeschreibung</String>
+  <String Key="Source">Quelle</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Ziel</String>
+  <String Key="Warning">Warnung</String>
+  <String Key="Warnings">Warnung(en)</String>
+  <String Key="ReportTitle">Codeanalysebericht</String>
+ </Localized>
+</FxCopReport>

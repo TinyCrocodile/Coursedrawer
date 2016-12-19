@@ -32,7 +32,7 @@
     <SuiteName>FS15 CourseDrawer 4.0</SuiteName>
     <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>4.1.000.%2a</ApplicationVersion>
+    <ApplicationVersion>5.0.000.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -143,19 +143,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="clsCourseManager.vb" />
-    <Compile Include="clsFolder.vb" />
-    <Compile Include="clsSettings.vb" />
-    <Compile Include="clsCourses.vb" />
-    <Compile Include="clsCourse.vb" />
-    <Compile Include="clsFolders.vb" />
-    <Compile Include="clsWaypoint.vb" />
+    <Compile Include="classes\clsCourseManager.vb" />
+    <Compile Include="classes\clsFolder.vb" />
+    <Compile Include="classes\clsSettings.vb" />
+    <Compile Include="classes\clsCourses.vb" />
+    <Compile Include="classes\clsCourse.vb" />
+    <Compile Include="classes\clsFolders.vb" />
+    <Compile Include="classes\clsWaypoint.vb" />
     <Compile Include="courseplayHud.vb" />
-    <Compile Include="Form1.vb">
+    <Compile Include="forms\mainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="forms\mainForm.Designer.vb">
+      <DependentUpon>mainForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="main.vb" />
@@ -176,8 +176,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="forms\mainForm.resx">
+      <DependentUpon>mainForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -188,7 +188,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="ClassDiagram3.cd" />
     <None Include="CourseDrawer_1_TemporaryKey.pfx" />
     <None Include="CourseDrawer_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
