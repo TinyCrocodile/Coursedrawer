@@ -7,15 +7,24 @@
     Private Shared _isAnySelected As Boolean
     Private _waypoints As List(Of clsWaypoint)
     Private _selectedWP As Integer
+    Public Property fileName As String
     Public Property Name As String
     Public Property id As Integer
     Public Property parent As Integer
+    Public Property isUsed As Boolean = False
+    Public Property listIndex As Integer
 
     Public ReadOnly Property WPCount As Integer
         Get
             Return _waypoints.Count
         End Get
     End Property
+    Public ReadOnly Property sFileName As String
+        Get
+            Return fileName
+        End Get
+    End Property
+
     Public Property isSelected As Boolean
     Public Property Hidden As Boolean
 
@@ -40,6 +49,104 @@
         Me.Name = Name
         Me.id = id
         Me.parent = parent
+    End Sub
+
+    ''' <summary>
+    ''' Read Single Course File
+    ''' </summary>
+    Public Sub ReadCourseXML()
+        Dim xmlDoc As New Xml.XmlDocument()
+        'Dim xmlNode As Xml.XmlNode
+        Dim xmlNodeReader As Xml.XmlNodeReader
+        Dim waypoint As New clsWaypoint
+        Dim stringA() As String
+        If Not Me.isUsed Then Exit Sub
+        xmlDoc.Load(Me.fileName)
+        If xmlDoc Is Nothing Then Exit Sub
+        'xmlNode = xmlDoc.DocumentElement.
+        'If xmlNode Is Nothing Then Exit Sub
+        xmlNodeReader = New Xml.XmlNodeReader(xmlDoc)
+        Do While (xmlNodeReader.Read())
+            Select Case xmlNodeReader.NodeType
+                Case Xml.XmlNodeType.Element
+                    If xmlNodeReader.LocalName = "course" Then
+                        While xmlNodeReader.MoveToNextAttribute
+                            Select Case xmlNodeReader.LocalName
+                                Case "name"
+                                    Me.Name = xmlNodeReader.Value
+                                Case "id"
+                                    Integer.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, Me.id)
+                                Case "parent"
+                                    Integer.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, Me.parent)
+                            End Select
+                        End While
+                    ElseIf xmlNodeReader.LocalName.StartsWith("waypoint") Then
+                        waypoint = New clsWaypoint
+                        If Not Me Is Nothing Then
+                            Me.addWaypoint(waypoint)
+                        End If
+                        While xmlNodeReader.MoveToNextAttribute
+                            Select Case xmlNodeReader.LocalName
+                                Case "angle"
+                                    Double.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.Angle)
+                                Case "speed"
+                                    Double.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.Speed)
+                                Case "turnend"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.TurnEnd = True
+                                    Else
+                                        waypoint.TurnEnd = False
+                                    End If
+                                Case "pos"
+                                    stringA = xmlNodeReader.Value.Split(" "c)
+                                    Double.TryParse(stringA(0), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.Pos_X)
+                                    Double.TryParse(stringA(1), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.Pos_Y)
+                                Case "crossing"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.Cross = True
+                                    Else
+                                        waypoint.Cross = False
+                                    End If
+                                Case "turnstart"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.TurnStart = True
+                                    Else
+                                        waypoint.TurnStart = False
+                                    End If
+                                Case "wait"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.Wait = True
+                                    Else
+                                        waypoint.Wait = False
+                                    End If
+                                Case "rev"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.Reverse = True
+                                    Else
+                                        waypoint.Reverse = False
+                                    End If
+                                Case "generated"
+                                    If xmlNodeReader.Value = "True" Then
+                                        waypoint.generated = True
+                                    Else
+                                        waypoint.generated = False
+                                    End If
+                                Case "ridgemarker"
+                                    Double.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.ridgemarker)
+                                Case "dir"
+                                    waypoint.dir = xmlNodeReader.Value
+                                Case "turn"
+                                    If xmlNodeReader.Value <> "false" Then
+                                        waypoint.turn = xmlNodeReader.Value
+                                    End If
+                            End Select
+                        End While
+                    End If
+            End Select
+        Loop
+
+
+
     End Sub
     ''' <summary>
     ''' Append waypoint to course
@@ -100,7 +207,7 @@
         Dim idx As Integer
         Dim pen As Pen
         Dim dr_point As PointF
-
+        If _waypoints.Count = 0 Then Exit Sub
         ReDim dr_points(_waypoints.Count - 1)
         idx = 1
         For Each waypoint In _waypoints
@@ -130,7 +237,7 @@
                 pen = New Pen(Brushes.Yellow, 2)
             ElseIf waypoint.Reverse = True Then
                 pen = New Pen(Brushes.Pink, 2)
-            ElseIf waypoint.turnStart = True Then
+            ElseIf waypoint.TurnStart = True Then
                 pen = New Pen(Brushes.Orange, 2)
             ElseIf waypoint.TurnEnd = True Then
                 pen = New Pen(Brushes.Salmon, 2)
@@ -286,12 +393,14 @@
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function getXML() As XElement
+    Public Function getXML(Optional noCourseDesc As Boolean = False) As XElement
         Dim el As New XElement("course")
         Dim idx As Integer = 1
-        el.Add(New XAttribute("name", Me.Name))
-        el.Add(New XAttribute("id", Me.id.ToString))
-        el.Add(New XAttribute("parent", Me.parent.ToString))
+        If noCourseDesc = False Then
+            el.Add(New XAttribute("name", Me.Name))
+            el.Add(New XAttribute("id", Me.id.ToString))
+            el.Add(New XAttribute("parent", Me.parent.ToString))
+        End If
         For Each wp As clsWaypoint In _waypoints
             el.Add(wp.getXML(idx))
             idx += 1

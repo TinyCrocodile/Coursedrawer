@@ -47,7 +47,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>CourseDrawer.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -86,7 +86,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
@@ -95,9 +95,10 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevIL.NET2, Version=1.1.2619.31671, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="DevIL.NET, Version=0.0.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\DevIL.NET2.dll</HintPath>
+      <HintPath>lib\DevIL.NET.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -142,6 +143,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="clsCourseManager.vb" />
+    <Compile Include="clsFolder.vb" />
     <Compile Include="clsSettings.vb" />
     <Compile Include="clsCourses.vb" />
     <Compile Include="clsCourse.vb" />
@@ -256,7 +259,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 und x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -275,12 +278,14 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="lib\backup\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="lib\DevIL.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="lib\DevIL.NET2.dll" />
+    <EmbeddedResource Include="lib\DevIL.NET.dll" />
     <Content Include="lib\ILU.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

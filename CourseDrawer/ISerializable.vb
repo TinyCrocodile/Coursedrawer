@@ -1,4 +1,0 @@
-﻿
-Interface ISerializable
-
-End Interface

@@ -3,17 +3,16 @@
 ''' </summary>
 ''' <remarks>Singleton class for wrapping folders</remarks>
 Public Class clsFolders
-    Private _folders As List(Of clsFolders)
+    Private Shared _folders As List(Of clsFolder)
     Private _seledtedFrs As Integer
     Dim Hidden As Boolean
-    Public Property Name As String
-    Public Property id As Object
-    Public Property parent As Object
+
     Public ReadOnly Property Count As Integer
         Get
             Return _folders.Count
         End Get
     End Property
+
     Private Shared _instance As clsFolders
     ''' <summary>
     ''' Constructor
@@ -23,7 +22,7 @@ Public Class clsFolders
         Dim xmlDoc As New Xml.XmlDocument()
         Dim xmlNode As Xml.XmlNode
         Dim xmlNodeReader As Xml.XmlNodeReader
-        Dim folder As New clsFolders
+        Dim folder As New clsFolder
         If file = String.Empty Then Exit Sub
         xmlDoc.Load(file)
         If xmlDoc Is Nothing Then Exit Sub
@@ -34,7 +33,7 @@ Public Class clsFolders
             Select Case xmlNodeReader.NodeType
                 Case Xml.XmlNodeType.Element
                     If xmlNodeReader.LocalName = "folder" Then
-                        folder = New clsFolders
+                        folder = New clsFolder
                         _folders.Add(folder)
                         While xmlNodeReader.MoveToNextAttribute
                             Select Case xmlNodeReader.LocalName
@@ -50,8 +49,8 @@ Public Class clsFolders
             End Select
         Loop
     End Sub
-    Private Sub New()
-        _folders = New List(Of clsFolders)
+    Public Sub New()
+        _folders = New List(Of clsFolder)
     End Sub
     ''' <summary>
     ''' Get instance of singleton class
@@ -74,8 +73,11 @@ Public Class clsFolders
     Public ReadOnly Property FolderList As Dictionary(Of String, Boolean)
         Get
             Dim dir As New Dictionary(Of String, Boolean)
-            For Each frs As clsFolders In _folders
+            Dim index As Integer = 1
+            For Each frs As clsFolder In _folders
                 dir.Add(frs.parent.ToString & " : " & frs.Name, Not Hidden)
+                frs.listIndex = index
+                index += 1
             Next
             Return dir
         End Get
@@ -84,12 +86,12 @@ Public Class clsFolders
     Public Function getXML() As XElement
         Dim e1 As New XElement("folder")
         Dim idx As Integer = 1
-        e1.Add(New XAttribute("name", Me.Name))
-        e1.Add(New XAttribute("id", Me.id.ToString))
-        e1.Add(New XAttribute("parent", Me.parent.ToString))
-        For Each folder As clsFolders In _folders
-            e1.Add(folder.getXML())
-        Next
+        'e1.Add(New XAttribute("name", Me.Name))
+        'e1.Add(New XAttribute("id", Me.id.ToString))
+        'e1.Add(New XAttribute("parent", Me.parent.ToString))
+        'For Each folder As clsFolder In _folders
+        ' e1.Add(folder.getXML())
+        ' Next
         Return e1
     End Function
 
@@ -105,11 +107,23 @@ Public Class clsFolders
 
         folders = New XElement("folders")
         For Each folder In _folders
-            folders.Add(folder.getXML)
+            'folders.Add(folder.getXML)
         Next
         If _folders.Count > 0 Then
             root.Add(folders)
         End If
 
     End Sub
+    Public Shared Function parentListIndex(Parent As Integer, Folders As List(Of clsFolder)) As Integer
+        For Each folder In Folders
+            If folder.id = Parent Then
+                Return folder.listIndex
+            End If
+        Next
+        Return 0
+    End Function
+
+    Public Shared Function getFolders() As List(Of clsFolder)
+        Return _folders
+    End Function
 End Class

@@ -43,36 +43,36 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CourseDrawer.exe" size="364968">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CourseDrawer.exe" size="405504">
       <assemblyIdentity name="CourseDrawer" version="4.0.6.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>w89TlwQipCqw+/7PP178IGqVX55sfho2i91dw7BUMWo=</dsig:DigestValue>
+        <dsig:DigestValue>EgWB/0/ipFwfKj38NBYIa+0egtHTsG8Lng03DLDeN4c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DevIL.NET2.dll" size="37888">
-      <assemblyIdentity name="DevIL.NET2" version="1.1.2619.31671" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DevIL.NET.dll" size="81920">
+      <assemblyIdentity name="DevIL.NET" version="0.0.0.0" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TY0RjGNtI8M4rEtVz7pMSnUELJd7YLCz/5AYTL6tz4w=</dsig:DigestValue>
+        <dsig:DigestValue>cQ8mMc1WDmJr83V8Q/HtBAGbgS8LEdv2RAUqAD/ndQM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="CourseDrawer.exe.config" size="2351">
+  <file name="CourseDrawer.exe.config" size="2415">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Wm8FGChPn0Q+WhorADR4S9fY0On7n9d+twwzihQYi7E=</dsig:DigestValue>
+      <dsig:DigestValue>q6TvrdKD3z4Sn7XPqOC9WW4TNXR/eCVdYSwtmU7oEI8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="lib\DevIL.dll" size="876032">

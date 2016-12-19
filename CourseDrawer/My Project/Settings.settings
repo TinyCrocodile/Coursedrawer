@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="SavePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\users\Alfredo\escritorio\Coursedrawer\courseplay.xml</Value>
+      <Value Profile="(Default)">D:\OwnCloud\Programming\Spiele\Coursedrawer-master\CourseDrawer\bin\Debug\CoursePlay_Courses\Map02</Value>
     </Setting>
     <Setting Name="MapPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\users\Alfredo\escritorio\Coursedrawer\PDA_Map_H.dds</Value>
+      <Value Profile="(Default)">D:\OwnCloud\Programming\Spiele\Coursedrawer-master\CourseDrawer\Map bitmaps</Value>
     </Setting>
   </Settings>
 </SettingsFile>

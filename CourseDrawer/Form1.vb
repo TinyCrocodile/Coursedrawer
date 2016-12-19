@@ -21,6 +21,7 @@
         OpenFileDialog1.FileName = IO.Path.GetFileName(My.Settings("MapPath").ToString)
         OpenFileDialog1.InitialDirectory = IO.Path.GetDirectoryName(My.Settings("MapPath").ToString)
         OpenFileDialog1.Filter = "DDS picture|*.dds"
+        OpenFileDialog1.Filter = "BMP picture|*.bmp"
         If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
             filename = OpenFileDialog1.FileName
             My.Settings("MapPath") = filename
@@ -49,7 +50,7 @@
         Dim locSize As Size
 
         ev = e
-        Dim origPoint As New PointF (ev.X * 100 / zoomLvl, ev.Y * 100 / zoomLvl)
+        Dim origPoint As New PointF(ev.X * 100 / zoomLvl, ev.Y * 100 / zoomLvl)
 
         If butNewCourse.Checked = True Then
             clsCourses.getInstance.addCourse(origPoint)
@@ -212,7 +213,8 @@
         End If
         Me.Cursor = Cursors.WaitCursor
         ToolStripStatusLabel1.Text = "Loading..."
-        clsCourses.getInstance(True).ReadXML(filename)
+        clsCourseManager.getInstance(xmlFile:=filename, forceNew:=True)
+        clsCourses.getInstance(Courses:=clsCourseManager.getCourses, forceNew:=True)
         Me.fillCourseList()
         clsFolders.getInstance(True).ReadXML(filename)
         Me.fillFolderList()
@@ -427,26 +429,28 @@
         Dim lSaveDialog As New Windows.Forms.SaveFileDialog
         Dim filename As String
         Dim doc As XDocument
-        Dim root As New XElement("XML")
 
-        lSaveDialog.FileName = IO.Path.GetFileName(My.Settings("SavePath").ToString)
-        lSaveDialog.InitialDirectory = IO.Path.GetDirectoryName(My.Settings("SavePath").ToString)
-        lSaveDialog.Filter = "XML files|*.xml"
-        If lSaveDialog.ShowDialog = Windows.Forms.DialogResult.OK Then
-            filename = lSaveDialog.FileName
-        Else
-            Exit Sub
-        End If
+
+        'lSaveDialog.FileName = IO.Path.GetFileName(My.Settings("SavePath").ToString)
+        'lSaveDialog.InitialDirectory = IO.Path.GetDirectoryName(My.Settings("SavePath").ToString)
+        'lSaveDialog.Filter = "XML files|*.xml"
+        'If lSaveDialog.ShowDialog = Windows.Forms.DialogResult.OK Then
+        ' filename = lSaveDialog.FileName
+        ' Else
+        ' Exit Sub
+        ' End If
 
 
 
 
         doc = New XDocument(New XDeclaration("1.0", "utf-8", "no"))
-        clsSettings.getInstance.SaveXML(root)
-        clsCourses.getInstance.SaveXML(root)
-        clsFolders.getInstance.SaveXML(root)
+        doc.Document.Add(selectedCrs.getXML(True))
+        filename = selectedCrs.fileName
+        'clsSettings.getInstance.SaveXML(root)
+        'clsCourses.getInstance.SaveXML(root)
+        'clsFolders.getInstance.SaveXML(root)
 
-        doc.Document.Add(root)
+
 
 
         If System.IO.File.Exists(filename) = True Then
@@ -458,7 +462,7 @@
 
 
 
-        lSaveDialog = Nothing
+        'lSaveDialog = Nothing
     End Sub
     Private Sub selectedCourseChanged(ByRef crs As clsCourse)
         If crs Is Nothing Then
@@ -472,12 +476,12 @@
             TBCrs_Name.Enabled = True
             TBCrs_ID.Text = crs.id.ToString
             TBCrs_Name.Text = crs.Name
-            If CheckedListBox1.Items.Count >= crs.id Then
-                If CheckedListBox1.SelectedIndex <> crs.id - 1 Then
-                    CheckedListBox1.SelectedIndex = crs.id - 1
+            If CheckedListBox1.Items.Count > crs.listIndex Then
+                If CheckedListBox1.SelectedIndex <> crs.listIndex Then
+                    CheckedListBox1.SelectedIndex = crs.listIndex
                 End If
             End If
-            ComboBox1.SelectedIndex = crs.parent
+            ComboBox1.SelectedIndex = clsFolders.parentListIndex(crs.parent, clsFolders.getFolders)
         End If
         selectedCrs = crs
 
@@ -608,6 +612,6 @@
     End Sub
 
     Private Sub butZoom_Click(sender As Object, e As EventArgs) Handles butZoom.Click
-
+        butZoom.Checked = Not butZoom.Checked
     End Sub
 End Class

@@ -20,6 +20,10 @@ Public Class clsCourses
         _courses = New List(Of clsCourse)
         AddHandler clsWaypoint.SelectionChanged, AddressOf Me.selectedChangeHandler
     End Sub
+    Private Sub New(Courses As List(Of clsCourse))
+        _courses = Courses
+        AddHandler clsWaypoint.SelectionChanged, AddressOf Me.selectedChangeHandler
+    End Sub
     ''' <summary>
     ''' Get instance of singleton class
     ''' </summary>
@@ -32,6 +36,19 @@ Public Class clsCourses
         End If
         Return _instance
     End Function
+
+    ''' <summary>
+    ''' Get instance of singleton class
+    ''' </summary>
+    ''' <param name="forceNew">force create new instance</param>
+    ''' <returns>Instance of courses collection</returns>
+    ''' <remarks></remarks>
+    Public Shared Function getInstance(Courses As List(Of clsCourse), Optional ByVal forceNew As Boolean = False) As clsCourses
+        If _instance Is Nothing Or forceNew = True Then
+            _instance = New clsCourses(Courses)
+        End If
+        Return _instance
+    End Function
     ''' <summary>
     ''' Get list of course name and hidden attribute
     ''' </summary>
@@ -41,8 +58,13 @@ Public Class clsCourses
     Public ReadOnly Property CourseList As Dictionary(Of String, Boolean)
         Get
             Dim dir As New Dictionary(Of String, Boolean)
+            Dim index As Integer = 0
             For Each crs As clsCourse In _courses
-                dir.Add(crs.id.ToString & " : " & crs.Name, Not crs.Hidden)
+                If crs.isUsed = True Then
+                    dir.Add(Right("000" & crs.id.ToString, 3) & " : " & crs.Name, Not crs.Hidden And crs.isUsed)
+                    crs.listIndex = index
+                    index += 1
+                End If
             Next
             Return dir
         End Get
@@ -59,6 +81,118 @@ Public Class clsCourses
         _courses(id).Hidden = hide
         Return True
     End Function
+
+
+    Public Sub ReadCourses()
+        Dim course As clsCourse
+        For Each course In _courses
+            ReadCourseXML(course)
+        Next
+        _courses.Sort(AddressOf SortCourses)
+        Me.RecalcCoursesID()
+    End Sub
+
+    ''' <summary>
+    ''' Read Single Course File
+    ''' </summary>
+    ''' <param name="Course"></param>
+    Private Sub ReadCourseXML(Course As clsCourse)
+        Dim xmlDoc As New Xml.XmlDocument()
+        Dim xmlNode As Xml.XmlNode
+        Dim xmlNodeReader As Xml.XmlNodeReader
+        Dim waypoint As New clsWaypoint
+        Dim stringA() As String
+
+
+
+        xmlDoc.Load(Course.fileName)
+        If xmlDoc Is Nothing Then Exit Sub
+        xmlNode = xmlDoc.DocumentElement.SelectSingleNode("course")
+        xmlNodeReader = New Xml.XmlNodeReader(xmlNode)
+        Do While (xmlNodeReader.Read())
+            Select Case xmlNodeReader.NodeType
+                Case Xml.XmlNodeType.Element
+                    If xmlNodeReader.LocalName = "course" Then
+                        Course = New clsCourse
+                        _courses.Add(Course)
+                        While xmlNodeReader.MoveToNextAttribute
+                            Select Case xmlNodeReader.LocalName
+                                Case "name"
+                                    Course.Name = xmlNodeReader.Value
+                                Case "id"
+                                    Integer.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, Course.id)
+                                Case "parent"
+                                    Integer.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, Course.parent)
+                            End Select
+                        End While
+                    ElseIf xmlNodeReader.LocalName.StartsWith("waypoint") Then
+                        waypoint = New clsWaypoint
+                        If Not Course Is Nothing Then
+                            Course.addWaypoint(waypoint)
+                        End If
+                        While xmlNodeReader.MoveToNextAttribute
+                            Select Case xmlNodeReader.LocalName
+                                Case "angle"
+                                    Double.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.Angle)
+                                Case "speed"
+                                    Double.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.Speed)
+                                Case "turnend"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.TurnEnd = True
+                                    Else
+                                        waypoint.TurnEnd = False
+                                    End If
+                                Case "pos"
+                                    stringA = xmlNodeReader.Value.Split(" "c)
+                                    Double.TryParse(stringA(0), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.Pos_X)
+                                    Double.TryParse(stringA(1), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.Pos_Y)
+                                Case "crossing"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.Cross = True
+                                    Else
+                                        waypoint.Cross = False
+                                    End If
+                                Case "turnstart"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.TurnStart = True
+                                    Else
+                                        waypoint.TurnStart = False
+                                    End If
+                                Case "wait"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.Wait = True
+                                    Else
+                                        waypoint.Wait = False
+                                    End If
+                                Case "rev"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.Reverse = True
+                                    Else
+                                        waypoint.Reverse = False
+                                    End If
+                                Case "generated"
+                                    If xmlNodeReader.Value = "True" Then
+                                        waypoint.generated = True
+                                    Else
+                                        waypoint.generated = False
+                                    End If
+                                Case "ridgemarker"
+                                    Double.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.ridgemarker)
+                                Case "dir"
+                                    waypoint.dir = xmlNodeReader.Value
+                                Case "turn"
+                                    If xmlNodeReader.Value <> "false" Then
+                                        waypoint.turn = xmlNodeReader.Value
+                                    End If
+                            End Select
+                        End While
+                    End If
+            End Select
+        Loop
+
+
+
+    End Sub
     ''' <summary>
     ''' Read courses from XML file
     ''' </summary>
@@ -173,7 +307,7 @@ Public Class clsCourses
     Public Sub draw(ByRef graphics As Graphics, ByVal zoomLvl As Integer)
         Dim course As clsCourse
         For Each course In _courses
-            If course.Hidden = False Then
+            If course.Hidden = False And course.isUsed = True Then
                 course.draw(graphics, zoomLvl)
             End If
         Next
@@ -187,7 +321,7 @@ Public Class clsCourses
         Dim selected As Boolean
         Me._seledtedCrs = -1
         For Each crs As clsCourse In _courses
-            If crs.Hidden = False Then
+            If crs.Hidden = False And crs.isUsed = True Then
                 selected = crs.selectWP(point)
                 If selected = True Then
                     Me._seledtedCrs = _courses.IndexOf(crs)
