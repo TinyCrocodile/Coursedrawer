@@ -81,12 +81,16 @@ Partial Class mainForm
         Me.Label5 = New System.Windows.Forms.Label()
         Me.butCrsUp = New System.Windows.Forms.Button()
         Me.butCrsDown = New System.Windows.Forms.Button()
+        Me.ClsCourseBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ClsCourseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ToolStrip1.SuspendLayout()
         Me.panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        CType(Me.ClsCourseBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ClsCourseBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -594,6 +598,7 @@ Partial Class mainForm
         'butCrsUp
         '
         Me.butCrsUp.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.butCrsUp.Enabled = False
         Me.butCrsUp.Location = New System.Drawing.Point(907, 203)
         Me.butCrsUp.Name = "butCrsUp"
         Me.butCrsUp.Size = New System.Drawing.Size(29, 23)
@@ -604,12 +609,21 @@ Partial Class mainForm
         'butCrsDown
         '
         Me.butCrsDown.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.butCrsDown.Enabled = False
         Me.butCrsDown.Location = New System.Drawing.Point(942, 203)
         Me.butCrsDown.Name = "butCrsDown"
         Me.butCrsDown.Size = New System.Drawing.Size(29, 23)
         Me.butCrsDown.TabIndex = 9
         Me.butCrsDown.Text = "Dn"
         Me.butCrsDown.UseVisualStyleBackColor = True
+        '
+        'ClsCourseBindingSource1
+        '
+        Me.ClsCourseBindingSource1.DataSource = GetType(CourseDrawer.clsCourse)
+        '
+        'ClsCourseBindingSource
+        '
+        Me.ClsCourseBindingSource.DataSource = GetType(CourseDrawer.clsCourse)
         '
         'mainForm
         '
@@ -638,6 +652,8 @@ Partial Class mainForm
         Me.StatusStrip1.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        CType(Me.ClsCourseBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ClsCourseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -708,4 +724,6 @@ Partial Class mainForm
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
 
     End Sub
+    Friend WithEvents ClsCourseBindingSource As BindingSource
+    Friend WithEvents ClsCourseBindingSource1 As BindingSource
 End Class

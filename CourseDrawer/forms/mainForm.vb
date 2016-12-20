@@ -232,10 +232,13 @@
         Me.Cursor = Cursors.WaitCursor
         ToolStripStatusLabel1.Text = "Loading..."
         clsCourseManager.getInstance(xmlFile:=filename, forceNew:=True)
+        ToolStripStatusLabel1.Text = "Loading...Courses"
         clsCourses.getInstance(Courses:=clsCourseManager.getCourses, forceNew:=True)
         Me.fillCourseList()
+        ToolStripStatusLabel1.Text = "Loading...Folders"
         clsFolders.getInstance(True).ReadXML(filename)
         Me.fillFolderList()
+        ToolStripStatusLabel1.Text = "Loading...Settings"
         clsSettings.getInstance(True).ReadXML(filename)
         Me.Cursor = Cursors.Default
         ToolStripStatusLabel1.Text = ""

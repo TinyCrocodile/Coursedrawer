@@ -70,6 +70,8 @@ Public Class clsCourses
         Get
             Dim dir As New Dictionary(Of String, Boolean)
             Dim index As Integer = 0
+            _courses.Sort(Function(a, b) a.Name.CompareTo(b.Name))
+
             For Each crs As clsCourse In _courses
                 If crs.isUsed = True Then
                     dir.Add(Right("000" & crs.id.ToString, 3) & " : " & crs.Name, Not crs.Hidden And crs.isUsed)
