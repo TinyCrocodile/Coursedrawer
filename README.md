@@ -6,9 +6,9 @@ External tool to draw and edit Courseplay courses directly to the XML File
 
 [CourseDrawer!](https://github.com/pseudex/Coursedrawer/blob/master/CourseDrawer_v5.zip) is an application that has been updated and prepared for working with the new version of CoursePlay 5.0 (FS2017, LS17)
 
-Courses are now saved by courseplay individual files. In order to load the courses you still need to load courseManager.xml which you can find here:
-Goldcrest Valley Map: %USERPROFILE%\Documents\my games\FarmingSimulator2017\CoursePlay_Courses\Map*01*\courseManager.xml
-Sosnovska Map: %USERPROFILE%\Documents\my games\FarmingSimulator2017\CoursePlay_Courses\Map*02*\courseManager.xml
+Courses are now saved by courseplay in individual files. In order to load the courses you still need to load courseManager.xml which you can find here:
++ Goldcrest Valley Map: %USERPROFILE%\Documents\my games\FarmingSimulator2017\CoursePlay_Courses\Map**01**\courseManager.xml
++ Sosnovska Map: %USERPROFILE%\Documents\my games\FarmingSimulator2017\CoursePlay_Courses\Map**02**\courseManager.xml
 
 In the Install Path of the game. For example D:\Spiele\Farming Simulator 2017\data\maps
 You can find the background images you can load in CourseDrawer for your map. You can load the bmp or the dds file.
