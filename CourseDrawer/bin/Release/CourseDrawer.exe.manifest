@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\04_maps.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="CourseDrawer" version="5.0.0.3" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="CourseDrawer" version="5.0.0.4" language="neutral" processorArchitecture="x86" />
     <commandLine file="CourseDrawer.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -44,13 +44,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CourseDrawer.exe" size="407960">
-      <assemblyIdentity name="CourseDrawer" version="5.0.0.3" language="neutral" processorArchitecture="x86" />
+      <assemblyIdentity name="CourseDrawer" version="5.0.0.4" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Hitv2g5BBTxeQRyFIIKpwuWCAu0DezDIuljjSwuyGug=</dsig:DigestValue>
+        <dsig:DigestValue>8zIZy1LMhNKojNaXDdyY8K1/byFTOKrx/f0sRpZ318k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
