@@ -17,6 +17,7 @@ Please be aware you're using a developer version, which may and will contain err
 
 If you're still ok with this, please remember to post possible issues that you find in the developer version. That's the only way we can find sources of error and fix them. Be as specific as possible.
 
+Download: [CourseDrawer](https://github.com/pseudex/Coursedrawer/blob/master/CourseDrawer_v5.zip)
 
 Credits
 
