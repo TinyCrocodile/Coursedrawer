@@ -10,8 +10,8 @@ Courses are now saved by courseplay in individual files. In order to load the co
 + Goldcrest Valley Map: %USERPROFILE%\Documents\my games\FarmingSimulator2017\CoursePlay_Courses\Map**01**\courseManager.xml
 + Sosnovska Map: %USERPROFILE%\Documents\my games\FarmingSimulator2017\CoursePlay_Courses\Map**02**\courseManager.xml
 
-In the Install Path of the game. For example D:\Spiele\Farming Simulator 2017\data\maps
-You can find the background images you can load in CourseDrawer for your map. You can load the bmp or the dds file.
+In the Install Path of the game, for example **D:\Spiele\Farming Simulator 2017\data\maps**, 
+you can find the background images you can load in CourseDrawer for your map. You can load the bmp or the dds file.
 
 Please be aware you're using a developer version, which may and will contain errors, bugs, mistakes and unfinished code. Chances are you computer will explode when using it. Twice. If you have no idea what "beta", "alpha", or "developer" means and entails, steer clear. The team will not take any responsibility for crop destroyed or savegames deleted. You have been warned.
 
@@ -31,4 +31,17 @@ Former Developers
     horoman
     Original by Pawpouk
 
-Last Beta Version Published: CourseDrawer 5.0.000_4
+Last Beta Version Published: CourseDrawer 5.1.000.rev
+
+Changelog:
+
+5.1.000
++ new listbox with better reference to course
++ Tooltip for every course with detailed information
++ change waypoint values with [ENTER]
++ colors waypoint input fields
++ radius anchor for selecting waypoints reduced
+
+5.0.000
++ compatibility for CoursePlay 5 files
+

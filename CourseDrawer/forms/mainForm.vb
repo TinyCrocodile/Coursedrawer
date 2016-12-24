@@ -1,13 +1,17 @@
-﻿Public Class mainForm
+﻿Imports CourseDrawer
+
+Public Class mainForm
     Const zoomStep As Integer = 50
     Dim zoomLvl As Integer = 50
     Dim myMousePos As Point
     Dim myLocation As PointF
     Dim selectedWP As clsWaypoint
     Dim selectedCrs As clsCourse
+    Dim selectedCrsItem As crsListItem
     Dim myZoomCursor As Cursor
     Dim doListChange As Boolean = False
     Dim firstDraw As Boolean = False
+    Dim debugRect As Rectangle
 
     ''' <summary>
     ''' Loads bitmap as background
@@ -74,14 +78,16 @@
 
             'clsCourses.getInstance.selectwp.lastwp
 
-            Dim crsList As Dictionary(Of String, Boolean)
-            crsList = clsCourses.getInstance.CourseList
-            Me.CheckedListBox1.Items.Clear()
-            For Each pair As KeyValuePair(Of String, Boolean) In crsList
-                Me.CheckedListBox1.Items.Add(pair.Key, pair.Value)
-            Next
-            Me.doListChange = True
-            Me.CheckedListBox1.SelectedIndex = Me.CheckedListBox1.Items.Count - 1
+            'todo: Neuen Kurs erstellen Fertig machen und dabei neue Checkboxlist nehmen
+
+            'Dim crsList As Dictionary(Of String, Boolean)
+            'crsList = clsCourses.getInstance.CourseList
+            'Me.CheckedListBox1.Items.Clear()
+            'For Each pair As KeyValuePair(Of String, Boolean) In crsList
+            '    Me.CheckedListBox1.Items.Add(pair.Key, pair.Value)
+            'Next
+            'Me.doListChange = True
+            'Me.CheckedListBox1.SelectedIndex = Me.CheckedListBox1.Items.Count - 1
 
             Me.butSave.Enabled = True
             Me.butAppendNode.Enabled = True
@@ -131,7 +137,7 @@
         ElseIf butSelect.Checked = True Then
             clsCourses.getInstance.selectWP(origPoint)
         End If
-        Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+        'Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
     End Sub
 
     Private Sub PictureBox1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseDown
@@ -142,7 +148,8 @@
         If butSelect.Checked = True Then
             Dim origPoint As New PointF(e.Location.X * 100 / zoomLvl, e.Location.Y * 100 / zoomLvl)
             myMousePos = Cursor.Position
-            clsCourses.getInstance.selectWP(origPoint)
+
+            clsCourses.getInstance.selectWP(origPoint, False)
             myLocation = e.Location
             TimerDragPicture.Enabled = True
         End If
@@ -160,11 +167,16 @@
             Dim invRange As Single
             Dim newOffset As New Point(myLocation.X + (newMousePos.X - myMousePos.X), myLocation.Y + (newMousePos.Y - myMousePos.Y))
             Dim origPoint As New PointF(newOffset.X * 100 / zoomLvl, newOffset.Y * 100 / zoomLvl)
-            Me.selectedWP.setNewPos(origPoint)
-            Me.selectedCrs.changed = True
+
+            Try
+                Me.selectedCrs.changed = True
+                Me.selectedWP.setNewPos(origPoint)
+            Catch ex As Exception
+            End Try
+
             myLocation = newOffset
             If clsCourse.CircleDiameter > 0 Then invRange = (clsCourse.CircleDiameter * 2 * zoomLvl / 100) + 20
-            If invRange < 100 Then invRange = 100
+            If invRange < 300 Then invRange = 300
             If Me.firstDraw = True Then
                 Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
                 Me.firstDraw = False
@@ -178,6 +190,13 @@
     Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseUp
         If TimerDragPicture.Enabled = True Then TimerDragPicture.Enabled = False
         Me.firstDraw = True
+        Try
+            'Me.PictureBox1.Invalidate(selectedCrs.DrawingArea)
+            Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
     Private Sub butMove_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butMove.CheckedChanged
@@ -214,15 +233,18 @@
 
         If clsCourses.getInstance.Count < 1 Then Exit Sub
         clsCourses.getInstance.draw(e.Graphics, zoomLvl)
+        'e.Graphics.DrawRectangle(New Pen(Color.Red, 3), debugRect)
 
     End Sub
 
     Private Sub butSaveGame_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butSaveGame.Click
         Dim filename As String
-
+        ToolStripStatusLabel1.Text = "Open File"
         OpenFileDialog1.FileName = IO.Path.GetFileName(My.Settings("SavePath").ToString)
+
+        OpenFileDialog1.AutoUpgradeEnabled = False
         OpenFileDialog1.InitialDirectory = IO.Path.GetDirectoryName(My.Settings("SavePath").ToString)
-        OpenFileDialog1.Filter = "XML files|*.xml"
+        OpenFileDialog1.Filter = "XML files|courseManager.xml"
         If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
             filename = OpenFileDialog1.FileName
             My.Settings("SavePath") = filename
@@ -230,28 +252,96 @@
             Exit Sub
         End If
         Me.Cursor = Cursors.WaitCursor
+        Me.ToolStripProgressBar1.Value = 10
         ToolStripStatusLabel1.Text = "Loading..."
         clsCourseManager.getInstance(xmlFile:=filename, forceNew:=True)
-        ToolStripStatusLabel1.Text = "Loading...Courses"
-        clsCourses.getInstance(Courses:=clsCourseManager.getCourses, forceNew:=True)
-        Me.fillCourseList()
+        Me.ToolStripProgressBar1.Value = 20
         ToolStripStatusLabel1.Text = "Loading...Folders"
         clsFolders.getInstance(True).ReadXML(filename)
         Me.fillFolderList()
+        Me.ToolStripProgressBar1.Value = 30
+        ToolStripStatusLabel1.Text = "Loading...Courses"
+        clsCourses.getInstance(Courses:=clsCourseManager.getCourses, forceNew:=True)
+        Me.fillCourseList()
+        Me.ToolStripProgressBar1.Value = 40
         ToolStripStatusLabel1.Text = "Loading...Settings"
         clsSettings.getInstance(True).ReadXML(filename)
         Me.Cursor = Cursors.Default
+        Me.ToolStripProgressBar1.Value = 100
         ToolStripStatusLabel1.Text = ""
     End Sub
 
     Private Sub fillCourseList()
-        Dim crsList As Dictionary(Of String, Boolean)
-        crsList = clsCourses.getInstance.CourseList
-        Me.CheckedListBox1.Items.Clear()
-        For Each pair As KeyValuePair(Of String, Boolean) In crsList
-            Me.CheckedListBox1.Items.Add(pair.Key, pair.Value)
+
+
+        'Dim crsList As Dictionary(Of String, Boolean)
+        'crsList = clsCourses.getInstance.CourseList
+        'Me.CheckedListBox1.Items.Clear()
+        'For Each pair As KeyValuePair(Of String, Boolean) In crsList
+        '    Me.CheckedListBox1.Items.Add(pair.Key, pair.Value)
+        'Next
+        Dim crs As clsCourse
+        Me.CrsList.clear()
+        For Each crs In clsCourses.getInstance().CourseListItems
+            Me.CrsList.createCourse(crs.Name, crs, False)
         Next
+
+        Dim strInfo As String
+
+        For Each crsListItem In CrsList.crsListItems
+            crs = crsListItem.AttachedObject
+            strInfo = "Id: " & crs.id
+            strInfo &= Environment.NewLine & "Name: " & crs.Name
+            Try
+                strInfo &= Environment.NewLine & "Folder: " & clsFolders.getInstance().getFolder(crs.parent).Name
+            Catch ex As Exception
+            End Try
+            strInfo &= Environment.NewLine & "Filename: " & Path.GetFileName(crs.sFileName)
+            ToolTip1.SetToolTip(crsListItem.Label_Checkbox, strInfo)
+        Next
+
+        'eventhandler registrieren
+        AddHandler Me.CrsList.CourseVisibilityChanged, AddressOf CourseVisibilityChanged
+        AddHandler Me.CrsList.SelectionChanged, AddressOf CourseSelectionChanged
+
+        Me.CrsList.SortList(crsListItems.SortOrder.Name)
+
     End Sub
+
+    Private Sub CourseSelectionChanged(ByRef crsItem As crsListItem, byClick As Boolean)
+        Dim crs As clsCourse
+        Try
+            crs = crsItem.AttachedObject
+            If byClick Then crs.selectWP(1, False)
+            selectedCrs = crs
+            'Me.selectedWP = Nothing
+            Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+
+        Catch ex As Exception
+
+        End Try
+
+        'clsCourses.getInstance.selectWP(Me.CheckedListBox1.SelectedIndex + 1)
+
+
+    End Sub
+
+    Private Sub CourseVisibilityChanged(Course As crsListItem, Visible As Boolean)
+        Dim crsObject As clsCourse
+        If TypeOf (Course.AttachedObject) Is clsCourse Then
+            crsObject = Course.AttachedObject
+            Course.AttachedObject.Hidden = Not Visible
+
+            'Grafik neu zeichnen
+            If Visible Then 'wenn sichtbar, nur den Bereich für den neuen Kurs zeichnen, sonst komplett
+                Me.PictureBox1.Invalidate(crsObject.DrawingArea(zoomLvl))
+                debugRect = crsObject.DrawingArea(zoomLvl)
+            Else
+                Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+            End If
+        End If
+    End Sub
+
     Private Sub fillFolderList()
         Dim crsList As Dictionary(Of String, Boolean)
         crsList = clsFolders.getInstance.FolderList
@@ -270,7 +360,14 @@
 
         Dim ms As New System.IO.MemoryStream(My.Resources.magnify)
         myZoomCursor = New Cursor(ms)
-        Me.Text = "CourseDrawer " & Me.ProductVersion
+
+        Dim Version As system.version
+        Dim strVersion As String
+        Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
+        strVersion = Version.Major & "." & Version.Minor & "." & Version.Revision
+        Me.Text = "CourseDrawer " & Version.ToString()
+
+
         ms.Dispose()
 
     End Sub
@@ -285,16 +382,17 @@
     End Sub
 
 
-    Private Sub CheckedListBox1_ItemCheck(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ItemCheckEventArgs) Handles CheckedListBox1.ItemCheck
-        Dim hide As Boolean
-        If e.NewValue = CheckState.Checked Then
-            hide = False
-        Else
-            hide = True
-        End If
-        If clsCourses.getInstance.ItemHide(e.Index, hide) = False Then e.NewValue = e.CurrentValue
-        Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
-    End Sub
+
+    'Private Sub CheckedListBox1_ItemCheck(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ItemCheckEventArgs) Handles CheckedListBox1.ItemCheck
+    '    Dim hide As Boolean
+    '    If e.NewValue = CheckState.Checked Then
+    '        hide = False
+    '    Else
+    '        hide = True
+    '    End If
+    '    If clsCourses.getInstance.ItemHide(e.Index, hide) = False Then e.NewValue = e.CurrentValue
+    '    Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+    'End Sub
 
     Private Sub PictureBox1_MouseEnter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.MouseEnter
         If Me.butNewCourse.Checked = True Then
@@ -373,6 +471,11 @@
             Me.butAppendNode.Enabled = True
             Me.butDelCourse.Enabled = True
         End If
+        'alway reset color for input boxes
+        Me.TBWP_X.BackColor = Color.White
+        Me.TBWP_Y.BackColor = Color.White
+        Me.TBWP_Angle.BackColor = Color.White
+        Me.TBWP_Speed.BackColor = Color.White
     End Sub
 
     Private Sub TBWP_X_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_X.Leave
@@ -380,20 +483,115 @@
         Double.TryParse(TBWP_X.Text, System.Globalization.NumberStyles.Any, TBWP_X.FormatProvider, Me.selectedWP.Pos_X)
     End Sub
 
+    Private Sub TBWP_X_KeyDown(sender As Object, e As KeyEventArgs) Handles TBWP_X.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If (setX(TBWP_X.Text, Me.selectedWP)) Then
+                TBWP_X.BackColor = Color.LightGreen
+            End If
+        Else
+            TBWP_X.BackColor = Color.Orange
+        End If
+    End Sub
+
     Private Sub TBWP_Y_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_Y.Leave
         If Me.selectedWP Is Nothing Then Exit Sub
         Double.TryParse(TBWP_Y.Text, System.Globalization.NumberStyles.Any, TBWP_Y.FormatProvider, Me.selectedWP.Pos_Y)
     End Sub
 
+    Private Sub TBWP_Y_KeyDown(sender As Object, e As KeyEventArgs) Handles TBWP_Y.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If (setY(TBWP_Y.Text, Me.selectedWP)) Then
+                TBWP_Y.BackColor = Color.LightGreen
+            End If
+        Else
+            TBWP_Y.BackColor = Color.Orange
+        End If
+    End Sub
+
     Private Sub TBWP_Angle_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_Angle.Leave
         If Me.selectedWP Is Nothing Then Exit Sub
-        Double.TryParse(TBWP_Angle.Text, System.Globalization.NumberStyles.Any, TBWP_Angle.FormatProvider, Me.selectedWP.Angle)
+        'Double.TryParse(TBWP_Angle.Text, System.Globalization.NumberStyles.Any, TBWP_Angle.FormatProvider, Me.selectedWP.Angle)
+        If (setAngle(TBWP_Angle.Text, Me.selectedWP)) Then
+            TBWP_Angle.BackColor = Color.LightGreen
+        End If
+    End Sub
+
+    Private Sub TBWP_Angle_KeyDown(sender As Object, e As KeyEventArgs) Handles TBWP_Angle.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If (setSpeed(TBWP_Angle.Text, Me.selectedWP)) Then
+                TBWP_Angle.BackColor = Color.LightGreen
+            End If
+        Else
+            TBWP_Angle.BackColor = Color.Orange
+        End If
     End Sub
 
     Private Sub TBWP_Speed_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_Speed.Leave
         If Me.selectedWP Is Nothing Then Exit Sub
-        Double.TryParse(TBWP_Speed.Text, System.Globalization.NumberStyles.Any, TBWP_Speed.FormatProvider, Me.selectedWP.Speed)
+        'Double.TryParse(TBWP_Speed.Text, System.Globalization.NumberStyles.Any, TBWP_Speed.FormatProvider, Me.selectedWP.Speed)
+        If (setSpeed(TBWP_Speed.Text, Me.selectedWP)) Then
+            TBWP_Speed.BackColor = Color.LightGreen
+        End If
     End Sub
+
+    Private Sub TBWP_Speed_KeyDown(sender As Object, e As KeyEventArgs) Handles TBWP_Speed.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If (setSpeed(TBWP_Speed.Text, Me.selectedWP)) Then
+                TBWP_Speed.BackColor = Color.LightGreen
+            End If
+        Else
+            TBWP_Speed.BackColor = Color.Orange
+        End If
+    End Sub
+
+    Private Function setSpeed(ByRef Speed As String, ByRef WP As clsWaypoint) As Boolean
+        If WP Is Nothing Then Return 0
+        Dim nSpeed As Double
+        If (Double.TryParse(Speed, nSpeed)) Then
+            WP.Speed = nSpeed
+            Return 1
+        Else
+            Speed = WP.Speed
+            Return 0
+        End If
+    End Function
+
+    Private Function setAngle(ByRef Angle As String, ByRef WP As clsWaypoint) As Boolean
+        If WP Is Nothing Then Return 0
+        Dim nAngle As Double
+        If (Double.TryParse(Angle, nAngle)) Then
+            WP.Angle = nAngle
+            Return 1
+        Else
+            nAngle = WP.Angle
+            Return 0
+        End If
+    End Function
+
+
+    Private Function setX(ByRef X As String, ByRef WP As clsWaypoint) As Boolean
+        If WP Is Nothing Then Return 0
+        Dim nX As Double
+        If (Double.TryParse(X, nX)) Then
+            WP.Pos_X = nX
+            Return 1
+        Else
+            X = WP.Pos_X
+            Return 0
+        End If
+    End Function
+
+    Private Function setY(ByRef Y As String, ByRef WP As clsWaypoint) As Boolean
+        If WP Is Nothing Then Return 0
+        Dim nY As Double
+        If (Double.TryParse(Y, nY)) Then
+            WP.Pos_Y = nY
+            Return 1
+        Else
+            Y = WP.Pos_Y
+            Return 0
+        End If
+    End Function
 
     Private Sub ChWP_Rev_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_Rev.CheckStateChanged
         If Me.selectedWP Is Nothing Then Exit Sub
@@ -435,31 +633,37 @@
 
     Private Sub butSelectAll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butSelectAll.Click
         Dim CheckIt As Boolean
-        If Me.CheckedListBox1.CheckedItems.Count = Me.CheckedListBox1.Items.Count Then
-            CheckIt = False
-        Else
+        If butSelectAll.Tag = 1 Then
             CheckIt = True
+            butSelectAll.Text = "Unselect all"
+            butSelectAll.Tag = 0
+        Else
+            CheckIt = False
+            butSelectAll.Text = "Select all"
+            butSelectAll.Tag = 1
         End If
 
-        For i As Integer = 0 To Me.CheckedListBox1.Items.Count - 1
-            Me.CheckedListBox1.SetItemChecked(i, CheckIt)
-        Next
+        Me.CrsList.SelectionAll(CheckIt)
+
+        'For i As Integer = 0 To Me.CheckedListBox1.Items.Count - 1
+        'Me.CheckedListBox1.SetItemChecked(i, CheckIt)
+        'Next
     End Sub
 
     Private Sub butSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butSave.Click
 
 
         Dim changedCourses As New List(Of clsCourse)
-        Dim checkbox As Object
+        'Dim checkbox As Object
         For Each course As clsCourse In clsCourses.getChangedCourses
             If course.Equals(selectedCrs) Then Continue For
             saveCourse(course)
-
-
+            Me.ToolStripStatusLabel1.Text = course.Name & " saved to " & course.fileName
         Next
 
         If Not selectedCrs Is Nothing Then
             saveCourse(selectedCrs)
+            Me.ToolStripStatusLabel1.Text = selectedCrs.Name & " saved to " & selectedCrs.fileName
         End If
 
         'clsSettings.getInstance.SaveXML(root)
@@ -489,20 +693,24 @@
             TBCrs_Name.Enabled = False
             TBCrs_ID.Text = "0"
             TBCrs_Name.Text = ""
-            CheckedListBox1.SelectedItems.Clear()
+            'CrsList.SelectedCrsListItem = Nothing
+            'CheckedListBox1.SelectedItems.Clear()
         Else
             butDelCourse.Enabled = True
             TBCrs_Name.Enabled = True
             TBCrs_ID.Text = crs.id.ToString
             TBCrs_Name.Text = crs.Name
-            If CheckedListBox1.Items.Count > crs.listIndex Then
-                If CheckedListBox1.SelectedIndex <> crs.listIndex Then
-                    CheckedListBox1.SelectedIndex = crs.listIndex
-                End If
-            End If
+
+            CrsList.SelectItem(crs.listIndex)
+            selectedCrs = crs
+            'If CheckedListBox1.Items.Count > crs.listIndex Then
+            '    If CheckedListBox1.SelectedIndex <> crs.listIndex Then
+            '        CheckedListBox1.SelectedIndex = crs.listIndex
+            '    End If
+            'End If
             ComboBox1.SelectedIndex = clsFolders.parentListIndex(crs.parent, clsFolders.getFolders)
         End If
-        selectedCrs = crs
+
 
         'selectedCrs.selectWP(selectedCrs.WPCount)
         'selsectedwp = 
@@ -511,7 +719,8 @@
     Private Sub TBCrs_Name_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBCrs_Name.Leave
         If selectedCrs Is Nothing Then Exit Sub
         selectedCrs.Name = TBCrs_Name.Text
-        Me.CheckedListBox1.Items(selectedCrs.id - 1) = selectedCrs.id & " : " & selectedCrs.Name
+        CrsList.SelectedCrsListItem.CourseName = selectedCrs.Name
+        'Me.CheckedListBox1.Items(selectedCrs.listIndex) = Strings.Right("000" & selectedCrs.id.ToString, 3) & " : " & selectedCrs.Name
     End Sub
 
     Private Sub butNewCourse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butNewCourse.Click
@@ -542,7 +751,7 @@
     Private Sub butCalcAngleSel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butCalcAngleSel.Click
         Dim ang As Double
         ang = clsCourses.getInstance.calculateAngleSelWP()
-        Me.TBWP_Angle.Text = ang.ToString
+        Me.TBWP_Angle.Text = FormatNumber(ang.ToString, 2)
     End Sub
 
     Private Sub butRecalcAngleCrs_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butRecalcAngleCrs.Click
@@ -578,60 +787,42 @@
         clsCourse.CircleDiameter = i
     End Sub
 
-    Private Sub butCrsUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butCrsUp.Click
-        If Me.CheckedListBox1.SelectedIndex > 0 Then
-            Dim selID As Integer = Me.CheckedListBox1.SelectedIndex
-            clsCourses.getInstance.moveCourseUp(selID + 1)
-            Me.fillCourseList()
-            Me.CheckedListBox1.SelectedIndex = selID - 1
-        End If
-    End Sub
+    'Private Sub butCrsUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butCrsUp.Click
+    '    If Me.CheckedListBox1.SelectedIndex > 0 Then
+    '        Dim selID As Integer = Me.CheckedListBox1.SelectedIndex
+    '        clsCourses.getInstance.moveCourseUp(selID + 1)
+    '        Me.fillCourseList()
+    '        Me.CheckedListBox1.SelectedIndex = selID - 1
+    '    End If
+    'End Sub
 
-    Private Sub butCrsDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butCrsDown.Click
-        If Me.CheckedListBox1.SelectedIndex >= 0 And Me.CheckedListBox1.SelectedIndex < Me.CheckedListBox1.Items.Count - 1 Then
-            Dim selID As Integer = Me.CheckedListBox1.SelectedIndex
-            clsCourses.getInstance.moveCourseDown(selID + 1)
-            Me.fillCourseList()
-            Me.CheckedListBox1.SelectedIndex = selID + 1
-        End If
-    End Sub
+    'Private Sub butCrsDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butCrsDown.Click
+    '    If Me.CheckedListBox1.SelectedIndex >= 0 And Me.CheckedListBox1.SelectedIndex < Me.CheckedListBox1.Items.Count - 1 Then
+    '        Dim selID As Integer = Me.CheckedListBox1.SelectedIndex
+    '        clsCourses.getInstance.moveCourseDown(selID + 1)
+    '        Me.fillCourseList()
+    '        Me.CheckedListBox1.SelectedIndex = selID + 1
+    '    End If
+    'End Sub
 
-    Private Sub CheckedListBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckedListBox1.SelectedIndexChanged
-        If Me.doListChange = True Then
-            If Me.CheckedListBox1.SelectedItems.Count > 0 Then
-                clsCourses.getInstance.selectWP(Me.CheckedListBox1.SelectedIndex + 1)
-                Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
-            End If
-        End If
-        Me.doListChange = False
-    End Sub
+    'Private Sub CheckedListBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckedListBox1.SelectedIndexChanged
+    '    If Me.doListChange = True Then
+    '        If Me.CheckedListBox1.SelectedItems.Count > 0 Then
+    '            clsCourses.getInstance.selectWP(Me.CheckedListBox1.SelectedIndex + 1)
+    '            Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+    '        End If
+    '    End If
+    '    Me.doListChange = False
+    'End Sub
 
-    Private Sub CheckedListBox1_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles CheckedListBox1.MouseClick
-        Me.doListChange = True
-    End Sub
+    'Private Sub CheckedListBox1_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles CheckedListBox1.MouseClick
+    '    Me.doListChange = True
+    'End Sub
 
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-
-    End Sub
-
-    Private Sub ToolTip1_Popup(sender As Object, e As PopupEventArgs)
-
-    End Sub
-
-    Private Sub TBWP_Speed_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles TBWP_Speed.MaskInputRejected
-
-    End Sub
-
-    Private Sub TBCrs_Name_TextChanged(sender As Object, e As EventArgs) Handles TBCrs_Name.TextChanged
-
-    End Sub
-
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
-
-    End Sub
 
     Private Sub butZoom_Click(sender As Object, e As EventArgs) Handles butZoom.Click
         butZoom.Checked = Not butZoom.Checked
     End Sub
+
 
 End Class

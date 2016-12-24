@@ -127,4 +127,13 @@ Public Class clsFolders
     Public Shared Function getFolders() As List(Of clsFolder)
         Return _folders
     End Function
+
+    Public Shared Function getFolder(Id As Integer) As clsFolder
+        For Each folder In _folders
+            If folder.id = Id Then
+                Return folder
+            End If
+        Next
+        Return Nothing
+    End Function
 End Class

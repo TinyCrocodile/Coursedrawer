@@ -15,6 +15,13 @@
     Public Property listIndex As Integer
     Public Property changed As Boolean = False
 
+    Private Structure Rechteck
+        Dim left As Integer
+        Dim right As Integer
+        Dim top As Integer
+        Dim bottom As Integer
+    End Structure
+
     Public ReadOnly Property WPCount As Integer
         Get
             Return _waypoints.Count
@@ -36,6 +43,7 @@
     ''' <remarks></remarks>
     Public Sub New()
         _waypoints = New List(Of clsWaypoint)
+        Hidden = True
         AddHandler clsWaypoint.SelectionChanged, AddressOf Me.selectionChangedHandler
         AddHandler clsCourse.SelectionChanged, AddressOf Me.selectedCourseChanged
     End Sub
@@ -50,6 +58,7 @@
         Me.Name = Name
         Me.id = id
         Me.parent = parent
+        Hidden = True
     End Sub
 
     ''' <summary>
@@ -268,15 +277,15 @@
     ''' <param name="point"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function selectWP(ByVal point As PointF) As Boolean
+    Public Function selectWP(ByVal point As PointF, Optional NoEvent As Boolean = False) As Boolean
         Dim selected As Boolean
         If _isAnySelected = True Then
             RaiseEvent SelectionChanged(Nothing)
         End If
         For Each wp As clsWaypoint In _waypoints
-            selected = wp.selectWP(point, 3)
+            selected = wp.selectWP(point, 1)
             If selected = True Then
-                If Me._isSelected = False Then
+                If Me._isSelected = False And Not NoEvent Then
                     RaiseEvent SelectionChanged(Me)
                 End If
                 Exit For
@@ -290,13 +299,13 @@
     ''' <param name="id"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function selectWP(ByVal id As Integer) As Boolean
+    Public Function selectWP(ByVal id As Integer, Optional NoEvent As Boolean = False) As Boolean
         If _isAnySelected = True Then
             RaiseEvent SelectionChanged(Nothing)
         End If
         If id > 0 And id <= _waypoints.Count Then
             _waypoints(id - 1).forceSelect()
-            If Me._isSelected = False Then
+            If Me._isSelected = False And Not NoEvent Then
                 RaiseEvent SelectionChanged(Me)
             End If
         End If
@@ -557,5 +566,49 @@
                 Return 90 + v1
             End If
         End If
+    End Function
+
+
+    ''' <summary>
+    ''' Rechteck für den Kurs berechnen
+    ''' Dieses kann zum bestimmen des Bereiches genutzt werden, der neu gezeichnet werden muss
+    ''' </summary>
+    ''' <returns>Rechteck als Rectangle</returns>
+    Public Function DrawingArea(Zoom As Integer) As Rectangle
+
+        Dim oRechteck As Rechteck
+        oRechteck.left = 0
+        oRechteck.right = 0
+        oRechteck.top = 0
+        oRechteck.bottom = 0
+
+        Dim ScreenPoint As New PointF
+        For Each wp In _waypoints
+            ScreenPoint = wp.PositionScreenDraw(Zoom)
+            oRechteck.left = CInt(ScreenPoint.X)
+            oRechteck.right = oRechteck.left
+            oRechteck.top = CInt(ScreenPoint.Y)
+            oRechteck.bottom = oRechteck.top
+            Exit For
+        Next
+
+        For Each wp In _waypoints
+            ScreenPoint = wp.PositionScreenDraw(Zoom)
+            If CInt(ScreenPoint.X) < CInt(oRechteck.left) Then
+                oRechteck.left = ScreenPoint.X
+            End If
+            If CInt(ScreenPoint.X) > CInt(oRechteck.right) Then
+                oRechteck.right = ScreenPoint.X
+            End If
+            If CInt(ScreenPoint.Y) < CInt(oRechteck.top) Then
+                oRechteck.top = ScreenPoint.Y
+            End If
+            If CInt(ScreenPoint.Y) > CInt(oRechteck.bottom) Then
+                oRechteck.bottom = ScreenPoint.Y
+            End If
+        Next
+        Dim margin As Integer = 10
+        Return New Rectangle(oRechteck.left - margin, oRechteck.top - margin, oRechteck.right - oRechteck.left + margin * 2, oRechteck.bottom - oRechteck.top + margin * 2)
+
     End Function
 End Class

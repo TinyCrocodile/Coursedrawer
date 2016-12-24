@@ -12,6 +12,12 @@ Public Class clsCourses
         End Get
     End Property
 
+    Public ReadOnly Property CourseListItems As List(Of clsCourse)
+        Get
+            Return _courses
+        End Get
+    End Property
+
     Private Shared _instance As clsCourses
     ''' <summary>
     ''' Constructor
@@ -330,12 +336,12 @@ Public Class clsCourses
     ''' </summary>
     ''' <param name="point"></param>
     ''' <remarks></remarks>
-    Public Sub selectWP(ByVal point As PointF)
+    Public Sub selectWP(ByVal point As PointF, Optional noEvent As Boolean = False)
         Dim selected As Boolean
         Me._seledtedCrs = -1
         For Each crs As clsCourse In _courses
             If crs.Hidden = False And crs.isUsed = True Then
-                selected = crs.selectWP(point)
+                selected = crs.selectWP(point, noEvent)
                 If selected = True Then
                     Me._seledtedCrs = _courses.IndexOf(crs)
                     Exit For
@@ -354,6 +360,7 @@ Public Class clsCourses
             Me._seledtedCrs = _courses.IndexOf(_courses(id - 1))
         End If
     End Sub
+
     ''' <summary>
     ''' Sort courses by ID
     ''' </summary>
@@ -378,7 +385,7 @@ Public Class clsCourses
     ''' <remarks></remarks>
     Public Sub deleteSelectedWP()
         If Me._seledtedCrs >= 0 Then
-            Me._courses(Me._seledtedCrs).deleteSelectedWP()
+            _courses(Me._seledtedCrs).deleteSelectedWP()
         End If
     End Sub
     ''' <summary>
@@ -437,7 +444,7 @@ Public Class clsCourses
     ''' <remarks></remarks>
     Public Sub insertBeforeWP()
         If Me._seledtedCrs >= 0 Then
-            Me._courses(Me._seledtedCrs).insertBeforeWP()
+            _courses(Me._seledtedCrs).insertBeforeWP()
         End If
     End Sub
     ''' <summary>
@@ -446,7 +453,7 @@ Public Class clsCourses
     ''' <remarks></remarks>
     Public Sub appendWP()
         If Me._seledtedCrs >= 0 Then
-            Me._courses(Me._seledtedCrs).appendWP()
+            _courses(Me._seledtedCrs).appendWP()
         End If
     End Sub
     ''' <summary>

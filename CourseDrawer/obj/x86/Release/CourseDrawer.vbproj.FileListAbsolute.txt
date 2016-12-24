@@ -15,4 +15,7 @@ C:\Users\Hermann\Source\Repos\Coursedrawer\CourseDrawer\obj\x86\Release\CourseDr
 C:\Users\Hermann\Source\Repos\Coursedrawer\CourseDrawer\obj\x86\Release\CourseDrawer.exe
 C:\Users\Hermann\Source\Repos\Coursedrawer\CourseDrawer\obj\x86\Release\CourseDrawer.xml
 C:\Users\Hermann\Source\Repos\Coursedrawer\CourseDrawer\obj\x86\Release\CourseDrawer.pdb
+C:\Users\Hermann\Source\Repos\Coursedrawer\CourseDrawer\obj\x86\Release\CourseDrawer.crsListItem.resources
+C:\Users\Hermann\Source\Repos\Coursedrawer\CourseDrawer\obj\x86\Release\CourseDrawer.crsListItems.resources
+C:\Users\Hermann\Source\Repos\Coursedrawer\CourseDrawer\obj\x86\Release\CourseDrawer.TrustInfo.xml
 C:\Users\Hermann\Source\Repos\Coursedrawer\CourseDrawer\obj\x86\Release\CourseDrawer.vbprojResolveAssemblyReference.cache

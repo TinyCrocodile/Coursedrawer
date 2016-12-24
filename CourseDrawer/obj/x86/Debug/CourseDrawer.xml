@@ -198,7 +198,7 @@ CourseDrawer
  <param name="zoomLvl"></param>
  <remarks></remarks>
 </member>
-<member name="M:CourseDrawer.clsCourses.selectWP(System.Drawing.PointF)">
+<member name="M:CourseDrawer.clsCourses.selectWP(System.Drawing.PointF,System.Boolean)">
  <summary>
  Select course at point
  </summary>
@@ -361,7 +361,7 @@ CourseDrawer
  <param name="zoomLvl"></param>
  <remarks></remarks>
 </member>
-<member name="M:CourseDrawer.clsCourse.selectWP(System.Drawing.PointF)">
+<member name="M:CourseDrawer.clsCourse.selectWP(System.Drawing.PointF,System.Boolean)">
  <summary>
  Select waypoint at point
  </summary>
@@ -369,7 +369,7 @@ CourseDrawer
  <returns></returns>
  <remarks></remarks>
 </member>
-<member name="M:CourseDrawer.clsCourse.selectWP(System.Int32)">
+<member name="M:CourseDrawer.clsCourse.selectWP(System.Int32,System.Boolean)">
  <summary>
  Select waypoint by ID
  </summary>
@@ -464,6 +464,13 @@ CourseDrawer
  <param name="pt2"></param>
  <returns></returns>
  <remarks></remarks>
+</member>
+<member name="M:CourseDrawer.clsCourse.DrawingArea(System.Int32)">
+ <summary>
+ Rechteck für den Kurs berechnen
+ Dieses kann zum bestimmen des Bereiches genutzt werden, der neu gezeichnet werden muss
+ </summary>
+ <returns>Rechteck als Rectangle</returns>
 </member>
 <member name="T:CourseDrawer.clsFolders">
  <summary>
@@ -563,6 +570,44 @@ CourseDrawer
  Force unselect
  </summary>
  <remarks></remarks>
+</member>
+<member name="M:CourseDrawer.crsListItem.selectItem(System.Boolean)">
+ <summary>
+ Eintrag selektieren
+ </summary>
+ <param name="Selection">True: Auswählen, False: Abwählen</param>
+</member>
+<member name="P:CourseDrawer.crsListItems.SelectedCrsListItem">
+ <summary>
+ Ausgewähltes Element zurück geben
+ </summary>
+ <returns>Auswahl als crsListItem</returns>
+</member>
+<member name="P:CourseDrawer.crsListItems.crsCount">
+ <summary>
+ Anzahl der Elemente von Coursen in der Liste
+ </summary>
+ <returns>Anzahl als Integer</returns>
+</member>
+<member name="M:CourseDrawer.crsListItems.createCourse(System.String,System.Object,System.Boolean)">
+ <summary>
+ Neuen Kurs in die Liste aufnehmen und anzeigen
+ </summary>
+ <param name="CourseName"></param>
+ <param name="CourseVisible"></param>
+</member>
+<member name="M:CourseDrawer.crsListItems.SelectCourseListItem(CourseDrawer.crsListItem,System.EventArgs)">
+ <summary>
+ Eine Kurs auswählen
+ </summary>
+ <param name="Course"></param>
+ <param name="e"></param>
+</member>
+<member name="M:CourseDrawer.crsListItems.SelectionAll(System.Boolean)">
+ <summary>
+ Alle Einträge den Haken (zurück)setzen
+ </summary>
+ <param name="Visible"></param>
 </member>
 <member name="M:CourseDrawer.mainForm.butLoad_Click(System.Object,System.EventArgs)">
  <summary>

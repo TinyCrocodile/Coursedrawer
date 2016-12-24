@@ -48,10 +48,11 @@ Partial Class mainForm
         Me.butDelCourse = New System.Windows.Forms.ToolStripButton()
         Me.butRecalcAngleCrs = New System.Windows.Forms.ToolStripButton()
         Me.panel1 = New System.Windows.Forms.Panel()
+        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TimerDragPicture = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
+        Me.butSelectAll = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.butCalcAngleSel = New System.Windows.Forms.Button()
@@ -70,7 +71,6 @@ Partial Class mainForm
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
-        Me.butSelectAll = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -81,6 +81,7 @@ Partial Class mainForm
         Me.Label5 = New System.Windows.Forms.Label()
         Me.butCrsUp = New System.Windows.Forms.Button()
         Me.butCrsDown = New System.Windows.Forms.Button()
+        Me.CrsList = New CourseDrawer.crsListItems()
         Me.ClsCourseBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClsCourseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ToolStrip1.SuspendLayout()
@@ -99,7 +100,7 @@ Partial Class mainForm
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butSaveGame, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(981, 39)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1132, 39)
         Me.ToolStrip1.TabIndex = 1
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -301,11 +302,22 @@ Partial Class mainForm
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panel1.AutoScroll = True
+        Me.panel1.Controls.Add(Me.CheckedListBox1)
         Me.panel1.Controls.Add(Me.PictureBox1)
         Me.panel1.Location = New System.Drawing.Point(0, 42)
         Me.panel1.Name = "panel1"
-        Me.panel1.Size = New System.Drawing.Size(808, 475)
+        Me.panel1.Size = New System.Drawing.Size(959, 475)
         Me.panel1.TabIndex = 2
+        '
+        'CheckedListBox1
+        '
+        Me.CheckedListBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckedListBox1.FormattingEnabled = True
+        Me.CheckedListBox1.Location = New System.Drawing.Point(2930, 29)
+        Me.CheckedListBox1.Name = "CheckedListBox1"
+        Me.CheckedListBox1.Size = New System.Drawing.Size(157, 3274)
+        Me.CheckedListBox1.TabIndex = 3
         '
         'PictureBox1
         '
@@ -323,15 +335,17 @@ Partial Class mainForm
         '
         Me.ToolTip1.IsBalloon = True
         '
-        'CheckedListBox1
+        'butSelectAll
         '
-        Me.CheckedListBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Location = New System.Drawing.Point(814, 43)
-        Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(157, 154)
-        Me.CheckedListBox1.TabIndex = 3
+        Me.butSelectAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.butSelectAll.Location = New System.Drawing.Point(965, 202)
+        Me.butSelectAll.Name = "butSelectAll"
+        Me.butSelectAll.Size = New System.Drawing.Size(72, 23)
+        Me.butSelectAll.TabIndex = 6
+        Me.butSelectAll.Tag = "1"
+        Me.butSelectAll.Text = "Select All"
+        Me.ToolTip1.SetToolTip(Me.butSelectAll, "Select or unselect all Objects")
+        Me.butSelectAll.UseVisualStyleBackColor = True
         '
         'Panel2
         '
@@ -350,7 +364,7 @@ Partial Class mainForm
         Me.Panel2.Controls.Add(Me.TBWP_Y)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.TBWP_X)
-        Me.Panel2.Location = New System.Drawing.Point(814, 336)
+        Me.Panel2.Location = New System.Drawing.Point(965, 336)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(157, 177)
         Me.Panel2.TabIndex = 4
@@ -495,10 +509,10 @@ Partial Class mainForm
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripProgressBar1})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripProgressBar1, Me.ToolStripStatusLabel1})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 516)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(981, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1132, 22)
         Me.StatusStrip1.TabIndex = 5
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -513,16 +527,6 @@ Partial Class mainForm
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
         Me.ToolStripProgressBar1.Size = New System.Drawing.Size(75, 16)
         '
-        'butSelectAll
-        '
-        Me.butSelectAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.butSelectAll.Location = New System.Drawing.Point(814, 202)
-        Me.butSelectAll.Name = "butSelectAll"
-        Me.butSelectAll.Size = New System.Drawing.Size(72, 23)
-        Me.butSelectAll.TabIndex = 6
-        Me.butSelectAll.Text = "(Un)Select"
-        Me.butSelectAll.UseVisualStyleBackColor = True
-        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
@@ -536,7 +540,7 @@ Partial Class mainForm
         Me.Panel3.Controls.Add(Me.Label6)
         Me.Panel3.Controls.Add(Me.TBCrs_ID)
         Me.Panel3.Controls.Add(Me.Label5)
-        Me.Panel3.Location = New System.Drawing.Point(814, 232)
+        Me.Panel3.Location = New System.Drawing.Point(965, 232)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(157, 98)
         Me.Panel3.TabIndex = 7
@@ -599,7 +603,7 @@ Partial Class mainForm
         '
         Me.butCrsUp.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butCrsUp.Enabled = False
-        Me.butCrsUp.Location = New System.Drawing.Point(907, 203)
+        Me.butCrsUp.Location = New System.Drawing.Point(1058, 203)
         Me.butCrsUp.Name = "butCrsUp"
         Me.butCrsUp.Size = New System.Drawing.Size(29, 23)
         Me.butCrsUp.TabIndex = 8
@@ -610,12 +614,23 @@ Partial Class mainForm
         '
         Me.butCrsDown.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butCrsDown.Enabled = False
-        Me.butCrsDown.Location = New System.Drawing.Point(942, 203)
+        Me.butCrsDown.Location = New System.Drawing.Point(1093, 203)
         Me.butCrsDown.Name = "butCrsDown"
         Me.butCrsDown.Size = New System.Drawing.Size(29, 23)
         Me.butCrsDown.TabIndex = 9
         Me.butCrsDown.Text = "Dn"
         Me.butCrsDown.UseVisualStyleBackColor = True
+        '
+        'CrsList
+        '
+        Me.CrsList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CrsList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.CrsList.Location = New System.Drawing.Point(966, 44)
+        Me.CrsList.Name = "CrsList"
+        Me.CrsList.SelectedCrsListItem = Nothing
+        Me.CrsList.Size = New System.Drawing.Size(156, 153)
+        Me.CrsList.TabIndex = 10
         '
         'ClsCourseBindingSource1
         '
@@ -629,14 +644,14 @@ Partial Class mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(981, 538)
+        Me.ClientSize = New System.Drawing.Size(1132, 538)
+        Me.Controls.Add(Me.CrsList)
         Me.Controls.Add(Me.butCrsDown)
         Me.Controls.Add(Me.butCrsUp)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.butSelectAll)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.CheckedListBox1)
         Me.Controls.Add(Me.panel1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -726,4 +741,5 @@ Partial Class mainForm
     End Sub
     Friend WithEvents ClsCourseBindingSource As BindingSource
     Friend WithEvents ClsCourseBindingSource1 As BindingSource
+    Friend WithEvents CrsList As crsListItems
 End Class

@@ -17,7 +17,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Hermann\Desktop\CourseDrawer\</PublishUrl>
+    <PublishUrl>C:\Users\Hermann\Desktop\CourseDrawerInstall\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -27,15 +27,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ProductName>Course Drawer fro CoursePlay</ProductName>
+    <ProductName>Course Drawer for CoursePlay</ProductName>
     <PublisherName>PromGames</PublisherName>
-    <SuiteName>FS15 CourseDrawer 4.0</SuiteName>
-    <ApplicationRevision>5</ApplicationRevision>
-    <ApplicationVersion>5.0.000.%2a</ApplicationVersion>
+    <SuiteName>FS17 CourseDrawer 5.0</SuiteName>
+    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationVersion>5.1.000.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -93,6 +92,15 @@
   <PropertyGroup>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CourseDrawer_2_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevIL.NET, Version=0.0.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
@@ -149,7 +157,18 @@
     <Compile Include="classes\clsCourse.vb" />
     <Compile Include="classes\clsFolders.vb" />
     <Compile Include="classes\clsWaypoint.vb" />
-    <Compile Include="courseplayHud.vb" />
+    <Compile Include="controls\crsListItem.designer.vb">
+      <DependentUpon>crsListItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="controls\crsListItem.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\crsListItems.designer.vb">
+      <DependentUpon>crsListItems.vb</DependentUpon>
+    </Compile>
+    <Compile Include="controls\crsListItems.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="forms\mainForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +177,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="main.vb" />
+    <Compile Include="modules\crsCheckedListBox.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -175,6 +195,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="controls\crsListItem.resx">
+      <DependentUpon>crsListItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\crsListItems.resx">
+      <DependentUpon>crsListItems.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\mainForm.resx">
       <DependentUpon>mainForm.vb</DependentUpon>
     </EmbeddedResource>
