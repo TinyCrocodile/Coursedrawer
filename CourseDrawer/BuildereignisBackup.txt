@@ -1,0 +1,3 @@
+﻿echo Copy DevIL libs
+xcopy /Y $(TargetDir)lib\*.dll $(TargetDir)
+rmdir /S /Q "lib"
