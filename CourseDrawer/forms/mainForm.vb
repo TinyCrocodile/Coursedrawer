@@ -151,6 +151,7 @@ Public Class mainForm
 
             clsCourses.getInstance.selectWP(origPoint, False)
             myLocation = e.Location
+            TimerDragPicture.Interval = SystemInformation.DoubleClickTime
             TimerDragPicture.Enabled = True
         End If
     End Sub
@@ -168,6 +169,7 @@ Public Class mainForm
             Dim newOffset As New Point(myLocation.X + (newMousePos.X - myMousePos.X), myLocation.Y + (newMousePos.Y - myMousePos.Y))
             Dim origPoint As New PointF(newOffset.X * 100 / zoomLvl, newOffset.Y * 100 / zoomLvl)
 
+            TimerDragPicture.Interval = 100
             Try
                 Me.selectedCrs.changed = True
                 Me.selectedWP.setNewPos(origPoint)
