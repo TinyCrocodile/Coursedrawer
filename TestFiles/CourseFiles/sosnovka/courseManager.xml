@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<CourseList>
+	<saveSlot>
+		<slot fileName="Course01.xml" name="Testkurs" id="01" parent="00" isUsed="True"></slot>
+	</saveSlot> 
+</CourseList>

@@ -209,7 +209,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -297,9 +299,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="lib\DevIL.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -56,8 +56,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("D:\OwnCloud\Programming\Spiele\Coursedrawer-master\CourseDrawer\bin\Debug\CourseP"& _ 
-            "lay_Courses\Map02")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("..\..\..\TestFiles\CourseFiles")>  _
         Public Property SavePath() As String
             Get
                 Return CType(Me("SavePath"),String)
@@ -69,7 +68,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("D:\OwnCloud\Programming\Spiele\Coursedrawer-master\CourseDrawer\Map bitmaps")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("..\..\..\TestFiles\Map bitmaps")>  _
         Public Property MapPath() As String
             Get
                 Return CType(Me("MapPath"),String)
