@@ -1,0 +1,52 @@
+﻿<course>
+    <waypoint1 angle="-178.44" speed="0" pos="-54.73 -499.05" crossing="1"/>
+    <waypoint2 angle="-179.68" speed="0" pos="-54.95 -507.09" wait="1"/>
+    <waypoint3 angle="-179.74" speed="22" pos="-55.06 -527.18"/>
+    <waypoint4 angle="177.87" speed="22" pos="-55.08 -532.25"/>
+    <waypoint5 angle="176.93" speed="22" pos="-54.71 -542.25"/>
+    <waypoint6 angle="179.06" speed="22" pos="-54.18 -552.24"/>
+    <waypoint7 angle="-176.09" speed="20" pos="-54.09 -557.30"/>
+    <waypoint8 angle="-176.09" speed="0" pos="-54.57 -564.34" wait="1"/>
+    <waypoint9 angle="3.05" speed="0" pos="-54.57 -564.34"/>
+    <waypoint10 angle="-0.14" speed="15" rev="1" pos="-54.36 -560.22"/>
+    <waypoint11 angle="-0.68" speed="14" rev="1" pos="-54.36 -558.16"/>
+    <waypoint12 angle="-1.07" speed="15" rev="1" pos="-54.48 -548.13"/>
+    <waypoint13 angle="-1.12" speed="16" rev="1" pos="-54.67 -538.10"/>
+    <waypoint14 angle="-1.27" speed="16" rev="1" pos="-54.86 -528.08"/>
+    <waypoint15 angle="2.36" speed="16" rev="1" pos="-55.09 -518.05"/>
+    <waypoint16 angle="6.17" speed="16" rev="1" pos="-55.00 -516.01"/>
+    <waypoint17 angle="6.50" speed="14" rev="1" pos="-54.79 -514.02"/>
+    <waypoint18 angle="-6.20" speed="14" rev="1" pos="-54.56 -511.99"/>
+    <waypoint19 angle="-6.96" speed="11" rev="1" pos="-54.78 -509.97"/>
+    <waypoint20 angle="-2.41" speed="12" rev="1" pos="-55.02 -507.97"/>
+    <waypoint21 angle="4.65" speed="12" rev="1" pos="-55.10 -505.96"/>
+    <waypoint22 angle="12.20" speed="12" rev="1" pos="-54.94 -503.94"/>
+    <waypoint23 angle="20.92" speed="12" rev="1" pos="-54.51 -501.97"/>
+    <waypoint24 angle="34.54" speed="11" rev="1" pos="-53.80 -500.10"/>
+    <waypoint25 angle="47.32" speed="11" rev="1" pos="-52.65 -498.43"/>
+    <waypoint26 angle="60.05" speed="11" rev="1" pos="-51.18 -497.08"/>
+    <waypoint27 angle="70.86" speed="11" rev="1" pos="-49.43 -496.07"/>
+    <waypoint28 angle="79.84" speed="11" rev="1" pos="-47.54 -495.41"/>
+    <waypoint29 angle="83.10" speed="11" rev="1" pos="-45.56 -495.06"/>
+    <waypoint30 angle="-90.62" speed="0" rev="1" pos="-41.93 -494.62"/>
+    <waypoint31 angle="-91.05" speed="21" pos="-47.01 -494.67"/>
+    <waypoint32 angle="-93.80" speed="24" pos="-57.01 -494.86"/>
+    <waypoint33 angle="-94.45" speed="23" pos="-67.03 -495.52"/>
+    <waypoint34 angle="-94.55" speed="7" pos="-77.01 -496.30"/>
+    <waypoint35 angle="-94.55" speed="0" pos="-78.57 -496.42" wait="1"/>
+    <waypoint36 angle="86.45" speed="0" pos="-78.57 -496.42"/>
+    <waypoint37 angle="88.59" speed="5" rev="1" pos="-76.56 -496.30"/>
+    <waypoint38 angle="90.25" speed="6" rev="1" pos="-74.54 -496.25"/>
+    <waypoint39 angle="89.74" speed="9" rev="1" pos="-64.52 -496.29"/>
+    <waypoint40 angle="79.93" speed="8" rev="1" pos="-62.50 -496.29"/>
+    <waypoint41 angle="67.36" speed="8" rev="1" pos="-60.51 -495.93"/>
+    <waypoint42 angle="51.81" speed="8" rev="1" pos="-58.65 -495.16"/>
+    <waypoint43 angle="34.82" speed="8" rev="1" pos="-57.06 -493.90"/>
+    <waypoint44 angle="20.18" speed="8" rev="1" pos="-55.91 -492.24"/>
+    <waypoint45 angle="7.73" speed="9" rev="1" pos="-55.21 -490.35"/>
+    <waypoint46 angle="4.55" speed="9" rev="1" pos="-54.94 -488.35"/>
+    <waypoint47 angle="-1.95" speed="9" rev="1" pos="-54.78 -486.35"/>
+    <waypoint48 angle="-3.40" speed="9" rev="1" pos="-54.85 -484.35"/>
+    <waypoint49 angle="178.17" speed="0" rev="1" pos="-54.96 -482.49"/>
+    <waypoint50 angle="179.27" speed="0" pos="-54.64 -492.45" crossing="1"/>
+</course>

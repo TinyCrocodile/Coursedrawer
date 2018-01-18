@@ -1,0 +1,1042 @@
+﻿<course workWidth="3.000000" numHeadlandLanes="4" headlandDirectionCW="false">
+    <waypoint1 angle="89.52" generated="true" ridgemarker="1" speed="0" pos="135.68 -536.69" crossing="1" lane="-1" wait="1"/>
+    <waypoint2 angle="90.14" generated="true" ridgemarker="1" speed="0" pos="140.69 -536.65" lane="-1"/>
+    <waypoint3 angle="90.19" generated="true" ridgemarker="1" speed="0" pos="145.67 -536.66" lane="-1"/>
+    <waypoint4 angle="89.66" generated="true" ridgemarker="1" speed="0" pos="150.67 -536.68" lane="-1"/>
+    <waypoint5 angle="90.28" generated="true" ridgemarker="1" speed="0" pos="155.69 -536.65" lane="-1"/>
+    <waypoint6 angle="89.76" generated="true" ridgemarker="1" speed="0" pos="160.67 -536.67" lane="-1"/>
+    <waypoint7 angle="90.38" generated="true" ridgemarker="1" speed="0" pos="165.68 -536.65" lane="-1"/>
+    <waypoint8 angle="89.85" generated="true" ridgemarker="1" speed="0" pos="170.67 -536.69" lane="-1"/>
+    <waypoint9 angle="89.90" generated="true" ridgemarker="1" speed="0" pos="175.68 -536.67" lane="-1"/>
+    <waypoint10 angle="89.95" generated="true" ridgemarker="1" speed="0" pos="180.68 -536.66" lane="-1"/>
+    <waypoint11 angle="89.99" generated="true" ridgemarker="1" speed="0" pos="185.68 -536.66" lane="-1"/>
+    <waypoint12 angle="90.04" generated="true" ridgemarker="1" speed="0" pos="190.68 -536.66" lane="-1"/>
+    <waypoint13 angle="90.09" generated="true" ridgemarker="1" speed="0" pos="195.68 -536.66" lane="-1"/>
+    <waypoint14 angle="90.13" generated="true" ridgemarker="1" speed="0" pos="200.67 -536.67" lane="-1"/>
+    <waypoint15 angle="90.18" generated="true" ridgemarker="1" speed="0" pos="205.67 -536.68" lane="-1"/>
+    <waypoint16 angle="89.48" generated="true" ridgemarker="1" speed="0" pos="210.67 -536.70" lane="-1"/>
+    <waypoint17 angle="90.16" generated="true" ridgemarker="1" speed="0" pos="212.50 -536.68" lane="-1"/>
+    <waypoint18 angle="89.63" generated="true" ridgemarker="1" speed="0" pos="217.48 -536.70" lane="-1"/>
+    <waypoint19 angle="90.25" generated="true" ridgemarker="1" speed="0" pos="222.50 -536.66" lane="-1"/>
+    <waypoint20 angle="89.73" generated="true" ridgemarker="1" speed="0" pos="227.48 -536.69" lane="-1"/>
+    <waypoint21 angle="90.34" generated="true" ridgemarker="1" speed="0" pos="232.49 -536.66" lane="-1"/>
+    <waypoint22 angle="89.82" generated="true" ridgemarker="1" speed="0" pos="237.48 -536.69" lane="-1"/>
+    <waypoint23 angle="89.86" generated="true" ridgemarker="1" speed="0" pos="242.49 -536.68" lane="-1"/>
+    <waypoint24 angle="89.91" generated="true" ridgemarker="1" speed="0" pos="247.49 -536.66" lane="-1"/>
+    <waypoint25 angle="89.95" generated="true" ridgemarker="1" speed="0" pos="252.49 -536.66" lane="-1"/>
+    <waypoint26 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="257.49 -536.65" lane="-1"/>
+    <waypoint27 angle="90.04" generated="true" ridgemarker="1" speed="0" pos="262.49 -536.65" lane="-1"/>
+    <waypoint28 angle="90.09" generated="true" ridgemarker="1" speed="0" pos="267.49 -536.66" lane="-1"/>
+    <waypoint29 angle="90.14" generated="true" ridgemarker="1" speed="0" pos="272.49 -536.66" lane="-1"/>
+    <waypoint30 angle="90.18" generated="true" ridgemarker="1" speed="0" pos="277.48 -536.68" lane="-1"/>
+    <waypoint31 angle="89.66" generated="true" ridgemarker="1" speed="0" pos="282.48 -536.69" lane="-1"/>
+    <waypoint32 angle="90.27" generated="true" ridgemarker="1" speed="0" pos="287.50 -536.66" lane="-1"/>
+    <waypoint33 angle="89.75" generated="true" ridgemarker="1" speed="0" pos="292.48 -536.69" lane="-1"/>
+    <waypoint34 angle="178.16" generated="true" ridgemarker="1" speed="0" pos="297.49 -536.66" lane="-1"/>
+    <waypoint35 angle="179.88" generated="true" ridgemarker="1" speed="0" pos="297.61 -540.34" lane="-1"/>
+    <waypoint36 angle="179.93" generated="true" ridgemarker="1" speed="0" pos="297.62 -545.36" lane="-1"/>
+    <waypoint37 angle="179.97" generated="true" ridgemarker="1" speed="0" pos="297.63 -550.35" lane="-1"/>
+    <waypoint38 angle="-179.98" generated="true" ridgemarker="1" speed="0" pos="297.63 -555.35" lane="-1"/>
+    <waypoint39 angle="-179.93" generated="true" ridgemarker="1" speed="0" pos="297.63 -560.35" lane="-1"/>
+    <waypoint40 angle="-179.89" generated="true" ridgemarker="1" speed="0" pos="297.62 -565.35" lane="-1"/>
+    <waypoint41 angle="179.59" generated="true" ridgemarker="1" speed="0" pos="297.61 -570.35" lane="-1"/>
+    <waypoint42 angle="-179.80" generated="true" ridgemarker="1" speed="0" pos="297.65 -575.36" lane="-1"/>
+    <waypoint43 angle="-179.75" generated="true" ridgemarker="1" speed="0" pos="297.63 -580.35" lane="-1"/>
+    <waypoint44 angle="179.72" generated="true" ridgemarker="1" speed="0" pos="297.61 -585.35" lane="-1"/>
+    <waypoint45 angle="-179.66" generated="true" ridgemarker="1" speed="0" pos="297.63 -590.36" lane="-1"/>
+    <waypoint46 angle="179.81" generated="true" ridgemarker="1" speed="0" pos="297.61 -595.34" lane="-1"/>
+    <waypoint47 angle="179.86" generated="true" ridgemarker="1" speed="0" pos="297.62 -600.36" lane="-1"/>
+    <waypoint48 angle="179.90" generated="true" ridgemarker="1" speed="0" pos="297.63 -605.36" lane="-1"/>
+    <waypoint49 angle="-125.21" generated="true" ridgemarker="1" speed="0" pos="297.64 -610.35" lane="-1"/>
+    <waypoint50 angle="-89.83" generated="true" ridgemarker="1" speed="0" pos="294.15 -612.82" lane="-1"/>
+    <waypoint51 angle="-90.36" generated="true" ridgemarker="1" speed="0" pos="289.15 -612.81" lane="-1"/>
+    <waypoint52 angle="-89.74" generated="true" ridgemarker="1" speed="0" pos="284.14 -612.84" lane="-1"/>
+    <waypoint53 angle="-90.26" generated="true" ridgemarker="1" speed="0" pos="279.15 -612.81" lane="-1"/>
+    <waypoint54 angle="-89.65" generated="true" ridgemarker="1" speed="0" pos="274.14 -612.84" lane="-1"/>
+    <waypoint55 angle="-90.17" generated="true" ridgemarker="1" speed="0" pos="269.16 -612.81" lane="-1"/>
+    <waypoint56 angle="-90.13" generated="true" ridgemarker="1" speed="0" pos="264.14 -612.82" lane="-1"/>
+    <waypoint57 angle="-90.08" generated="true" ridgemarker="1" speed="0" pos="259.14 -612.83" lane="-1"/>
+    <waypoint58 angle="-90.03" generated="true" ridgemarker="1" speed="0" pos="254.14 -612.84" lane="-1"/>
+    <waypoint59 angle="-89.98" generated="true" ridgemarker="1" speed="0" pos="249.14 -612.84" lane="-1"/>
+    <waypoint60 angle="-89.94" generated="true" ridgemarker="1" speed="0" pos="244.15 -612.84" lane="-1"/>
+    <waypoint61 angle="-89.89" generated="true" ridgemarker="1" speed="0" pos="239.15 -612.83" lane="-1"/>
+    <waypoint62 angle="-89.84" generated="true" ridgemarker="1" speed="0" pos="234.15 -612.83" lane="-1"/>
+    <waypoint63 angle="-90.37" generated="true" ridgemarker="1" speed="0" pos="229.15 -612.81" lane="-1"/>
+    <waypoint64 angle="-89.75" generated="true" ridgemarker="1" speed="0" pos="224.14 -612.84" lane="-1"/>
+    <waypoint65 angle="-90.28" generated="true" ridgemarker="1" speed="0" pos="219.15 -612.82" lane="-1"/>
+    <waypoint66 angle="-89.66" generated="true" ridgemarker="1" speed="0" pos="214.14 -612.85" lane="-1"/>
+    <waypoint67 angle="-90.18" generated="true" ridgemarker="1" speed="0" pos="209.16 -612.82" lane="-1"/>
+    <waypoint68 angle="-90.14" generated="true" ridgemarker="1" speed="0" pos="204.14 -612.83" lane="-1"/>
+    <waypoint69 angle="-89.52" generated="true" ridgemarker="1" speed="0" pos="199.14 -612.84" lane="-1"/>
+    <waypoint70 angle="-90.04" generated="true" ridgemarker="1" speed="0" pos="194.16 -612.80" lane="-1"/>
+    <waypoint71 angle="-90.00" generated="true" ridgemarker="1" speed="0" pos="189.15 -612.81" lane="-1"/>
+    <waypoint72 angle="-89.95" generated="true" ridgemarker="1" speed="0" pos="184.15 -612.81" lane="-1"/>
+    <waypoint73 angle="-90.47" generated="true" ridgemarker="1" speed="0" pos="179.15 -612.80" lane="-1"/>
+    <waypoint74 angle="-89.85" generated="true" ridgemarker="1" speed="0" pos="174.13 -612.84" lane="-1"/>
+    <waypoint75 angle="-89.81" generated="true" ridgemarker="1" speed="0" pos="169.15 -612.83" lane="-1"/>
+    <waypoint76 angle="-90.33" generated="true" ridgemarker="1" speed="0" pos="164.15 -612.81" lane="-1"/>
+    <waypoint77 angle="-89.72" generated="true" ridgemarker="1" speed="0" pos="159.14 -612.84" lane="-1"/>
+    <waypoint78 angle="-90.24" generated="true" ridgemarker="1" speed="0" pos="154.15 -612.82" lane="-1"/>
+    <waypoint79 angle="-89.62" generated="true" ridgemarker="1" speed="0" pos="149.14 -612.84" lane="-1"/>
+    <waypoint80 angle="-90.15" generated="true" ridgemarker="1" speed="0" pos="144.16 -612.81" lane="-1"/>
+    <waypoint81 angle="-90.10" generated="true" ridgemarker="1" speed="0" pos="139.14 -612.82" lane="-1"/>
+    <waypoint82 angle="-90.05" generated="true" ridgemarker="1" speed="0" pos="134.14 -612.83" lane="-1"/>
+    <waypoint83 angle="-90.01" generated="true" ridgemarker="1" speed="0" pos="129.15 -612.83" lane="-1"/>
+    <waypoint84 angle="-89.96" generated="true" ridgemarker="1" speed="0" pos="124.15 -612.83" lane="-1"/>
+    <waypoint85 angle="-35.04" generated="true" ridgemarker="1" speed="0" pos="119.15 -612.83" lane="-1"/>
+    <waypoint86 angle="-0.23" generated="true" ridgemarker="1" speed="0" pos="116.69 -609.33" lane="-1"/>
+    <waypoint87 angle="-0.18" generated="true" ridgemarker="1" speed="0" pos="116.67 -604.32" lane="-1"/>
+    <waypoint88 angle="0.44" generated="true" ridgemarker="1" speed="0" pos="116.66 -599.32" lane="-1"/>
+    <waypoint89 angle="-0.09" generated="true" ridgemarker="1" speed="0" pos="116.70 -594.34" lane="-1"/>
+    <waypoint90 angle="-0.04" generated="true" ridgemarker="1" speed="0" pos="116.69 -589.32" lane="-1"/>
+    <waypoint91 angle="0.01" generated="true" ridgemarker="1" speed="0" pos="116.69 -584.32" lane="-1"/>
+    <waypoint92 angle="0.05" generated="true" ridgemarker="1" speed="0" pos="116.69 -579.32" lane="-1"/>
+    <waypoint93 angle="0.10" generated="true" ridgemarker="1" speed="0" pos="116.69 -574.33" lane="-1"/>
+    <waypoint94 angle="-0.43" generated="true" ridgemarker="1" speed="0" pos="116.70 -569.33" lane="-1"/>
+    <waypoint95 angle="0.19" generated="true" ridgemarker="1" speed="0" pos="116.66 -564.31" lane="-1"/>
+    <waypoint96 angle="0.24" generated="true" ridgemarker="1" speed="0" pos="116.68 -559.33" lane="-1"/>
+    <waypoint97 angle="-0.28" generated="true" ridgemarker="1" speed="0" pos="116.70 -554.33" lane="-1"/>
+    <waypoint98 angle="-0.24" generated="true" ridgemarker="1" speed="0" pos="116.67 -549.32" lane="-1"/>
+    <waypoint99 angle="0.38" generated="true" ridgemarker="1" speed="0" pos="116.65 -544.32" lane="-1"/>
+    <waypoint100 angle="56.41" generated="true" ridgemarker="1" speed="0" pos="116.69 -539.33" lane="-1"/>
+    <waypoint101 angle="89.95" generated="true" ridgemarker="1" speed="0" pos="120.66 -536.69" lane="-1"/>
+    <waypoint102 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="125.68 -536.69" lane="-1"/>
+    <waypoint103 angle="121.02" generated="true" ridgemarker="1" speed="0" pos="130.68 -536.69" lane="-1"/>
+    <waypoint104 angle="89.52" generated="true" ridgemarker="1" speed="0" pos="135.67 -539.69" lane="-2"/>
+    <waypoint105 angle="90.14" generated="true" ridgemarker="1" speed="0" pos="140.71 -539.65" lane="-2"/>
+    <waypoint106 angle="90.19" generated="true" ridgemarker="1" speed="0" pos="145.67 -539.66" lane="-2"/>
+    <waypoint107 angle="89.67" generated="true" ridgemarker="1" speed="0" pos="150.66 -539.68" lane="-2"/>
+    <waypoint108 angle="90.29" generated="true" ridgemarker="1" speed="0" pos="155.70 -539.65" lane="-2"/>
+    <waypoint109 angle="89.76" generated="true" ridgemarker="1" speed="0" pos="160.65 -539.67" lane="-2"/>
+    <waypoint110 angle="90.38" generated="true" ridgemarker="1" speed="0" pos="165.70 -539.65" lane="-2"/>
+    <waypoint111 angle="89.85" generated="true" ridgemarker="1" speed="0" pos="170.65 -539.69" lane="-2"/>
+    <waypoint112 angle="89.90" generated="true" ridgemarker="1" speed="0" pos="175.69 -539.67" lane="-2"/>
+    <waypoint113 angle="89.95" generated="true" ridgemarker="1" speed="0" pos="180.68 -539.66" lane="-2"/>
+    <waypoint114 angle="89.99" generated="true" ridgemarker="1" speed="0" pos="185.68 -539.66" lane="-2"/>
+    <waypoint115 angle="90.04" generated="true" ridgemarker="1" speed="0" pos="190.68 -539.66" lane="-2"/>
+    <waypoint116 angle="90.09" generated="true" ridgemarker="1" speed="0" pos="195.67 -539.66" lane="-2"/>
+    <waypoint117 angle="90.14" generated="true" ridgemarker="1" speed="0" pos="200.67 -539.67" lane="-2"/>
+    <waypoint118 angle="89.99" generated="true" ridgemarker="1" speed="0" pos="205.67 -539.68" lane="-2"/>
+    <waypoint119 angle="90.16" generated="true" ridgemarker="1" speed="0" pos="212.53 -539.68" lane="-2"/>
+    <waypoint120 angle="89.64" generated="true" ridgemarker="1" speed="0" pos="217.48 -539.70" lane="-2"/>
+    <waypoint121 angle="90.26" generated="true" ridgemarker="1" speed="0" pos="222.52 -539.66" lane="-2"/>
+    <waypoint122 angle="89.73" generated="true" ridgemarker="1" speed="0" pos="227.47 -539.69" lane="-2"/>
+    <waypoint123 angle="90.35" generated="true" ridgemarker="1" speed="0" pos="232.51 -539.66" lane="-2"/>
+    <waypoint124 angle="89.82" generated="true" ridgemarker="1" speed="0" pos="237.46 -539.69" lane="-2"/>
+    <waypoint125 angle="89.86" generated="true" ridgemarker="1" speed="0" pos="242.50 -539.68" lane="-2"/>
+    <waypoint126 angle="89.91" generated="true" ridgemarker="1" speed="0" pos="247.50 -539.66" lane="-2"/>
+    <waypoint127 angle="89.95" generated="true" ridgemarker="1" speed="0" pos="252.49 -539.66" lane="-2"/>
+    <waypoint128 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="257.49 -539.65" lane="-2"/>
+    <waypoint129 angle="90.04" generated="true" ridgemarker="1" speed="0" pos="262.49 -539.65" lane="-2"/>
+    <waypoint130 angle="90.09" generated="true" ridgemarker="1" speed="0" pos="267.48 -539.66" lane="-2"/>
+    <waypoint131 angle="90.14" generated="true" ridgemarker="1" speed="0" pos="272.48 -539.66" lane="-2"/>
+    <waypoint132 angle="90.18" generated="true" ridgemarker="1" speed="0" pos="277.48 -539.68" lane="-2"/>
+    <waypoint133 angle="89.66" generated="true" ridgemarker="1" speed="0" pos="282.47 -539.69" lane="-2"/>
+    <waypoint134 angle="90.28" generated="true" ridgemarker="1" speed="0" pos="287.51 -539.66" lane="-2"/>
+    <waypoint135 angle="109.33" generated="true" ridgemarker="1" speed="0" pos="292.47 -539.69" lane="-2"/>
+    <waypoint136 angle="179.90" generated="true" ridgemarker="1" speed="0" pos="294.61 -540.44" lane="-2"/>
+    <waypoint137 angle="179.93" generated="true" ridgemarker="1" speed="0" pos="294.62 -545.36" lane="-2"/>
+    <waypoint138 angle="179.97" generated="true" ridgemarker="1" speed="0" pos="294.63 -550.36" lane="-2"/>
+    <waypoint139 angle="-179.98" generated="true" ridgemarker="1" speed="0" pos="294.63 -555.35" lane="-2"/>
+    <waypoint140 angle="-179.93" generated="true" ridgemarker="1" speed="0" pos="294.63 -560.35" lane="-2"/>
+    <waypoint141 angle="-179.89" generated="true" ridgemarker="1" speed="0" pos="294.62 -565.35" lane="-2"/>
+    <waypoint142 angle="179.59" generated="true" ridgemarker="1" speed="0" pos="294.61 -570.34" lane="-2"/>
+    <waypoint143 angle="-179.79" generated="true" ridgemarker="1" speed="0" pos="294.65 -575.39" lane="-2"/>
+    <waypoint144 angle="-179.75" generated="true" ridgemarker="1" speed="0" pos="294.63 -580.34" lane="-2"/>
+    <waypoint145 angle="179.72" generated="true" ridgemarker="1" speed="0" pos="294.61 -585.33" lane="-2"/>
+    <waypoint146 angle="-179.66" generated="true" ridgemarker="1" speed="0" pos="294.63 -590.37" lane="-2"/>
+    <waypoint147 angle="179.82" generated="true" ridgemarker="1" speed="0" pos="294.61 -595.33" lane="-2"/>
+    <waypoint148 angle="179.86" generated="true" ridgemarker="1" speed="0" pos="294.62 -600.37" lane="-2"/>
+    <waypoint149 angle="-129.05" generated="true" ridgemarker="1" speed="0" pos="294.63 -605.36" lane="-2"/>
+    <waypoint150 angle="-90.36" generated="true" ridgemarker="1" speed="0" pos="289.16 -609.81" lane="-2"/>
+    <waypoint151 angle="-89.74" generated="true" ridgemarker="1" speed="0" pos="284.12 -609.84" lane="-2"/>
+    <waypoint152 angle="-90.26" generated="true" ridgemarker="1" speed="0" pos="279.17 -609.81" lane="-2"/>
+    <waypoint153 angle="-89.64" generated="true" ridgemarker="1" speed="0" pos="274.12 -609.84" lane="-2"/>
+    <waypoint154 angle="-90.17" generated="true" ridgemarker="1" speed="0" pos="269.17 -609.81" lane="-2"/>
+    <waypoint155 angle="-90.13" generated="true" ridgemarker="1" speed="0" pos="264.13 -609.82" lane="-2"/>
+    <waypoint156 angle="-90.08" generated="true" ridgemarker="1" speed="0" pos="259.14 -609.83" lane="-2"/>
+    <waypoint157 angle="-90.03" generated="true" ridgemarker="1" speed="0" pos="254.14 -609.84" lane="-2"/>
+    <waypoint158 angle="-89.98" generated="true" ridgemarker="1" speed="0" pos="249.14 -609.84" lane="-2"/>
+    <waypoint159 angle="-89.94" generated="true" ridgemarker="1" speed="0" pos="244.15 -609.84" lane="-2"/>
+    <waypoint160 angle="-89.89" generated="true" ridgemarker="1" speed="0" pos="239.15 -609.83" lane="-2"/>
+    <waypoint161 angle="-89.84" generated="true" ridgemarker="1" speed="0" pos="234.15 -609.83" lane="-2"/>
+    <waypoint162 angle="-90.37" generated="true" ridgemarker="1" speed="0" pos="229.16 -609.81" lane="-2"/>
+    <waypoint163 angle="-89.75" generated="true" ridgemarker="1" speed="0" pos="224.12 -609.84" lane="-2"/>
+    <waypoint164 angle="-90.27" generated="true" ridgemarker="1" speed="0" pos="219.17 -609.82" lane="-2"/>
+    <waypoint165 angle="-89.65" generated="true" ridgemarker="1" speed="0" pos="214.12 -609.85" lane="-2"/>
+    <waypoint166 angle="-90.18" generated="true" ridgemarker="1" speed="0" pos="209.17 -609.82" lane="-2"/>
+    <waypoint167 angle="-90.14" generated="true" ridgemarker="1" speed="0" pos="204.13 -609.83" lane="-2"/>
+    <waypoint168 angle="-89.51" generated="true" ridgemarker="1" speed="0" pos="199.14 -609.84" lane="-2"/>
+    <waypoint169 angle="-90.04" generated="true" ridgemarker="1" speed="0" pos="194.18 -609.80" lane="-2"/>
+    <waypoint170 angle="-90.00" generated="true" ridgemarker="1" speed="0" pos="189.14 -609.81" lane="-2"/>
+    <waypoint171 angle="-89.95" generated="true" ridgemarker="1" speed="0" pos="184.15 -609.81" lane="-2"/>
+    <waypoint172 angle="-90.47" generated="true" ridgemarker="1" speed="0" pos="179.15 -609.80" lane="-2"/>
+    <waypoint173 angle="-89.85" generated="true" ridgemarker="1" speed="0" pos="174.11 -609.84" lane="-2"/>
+    <waypoint174 angle="-89.81" generated="true" ridgemarker="1" speed="0" pos="169.16 -609.83" lane="-2"/>
+    <waypoint175 angle="-90.33" generated="true" ridgemarker="1" speed="0" pos="164.16 -609.81" lane="-2"/>
+    <waypoint176 angle="-89.71" generated="true" ridgemarker="1" speed="0" pos="159.12 -609.84" lane="-2"/>
+    <waypoint177 angle="-90.24" generated="true" ridgemarker="1" speed="0" pos="154.17 -609.82" lane="-2"/>
+    <waypoint178 angle="-89.62" generated="true" ridgemarker="1" speed="0" pos="149.13 -609.84" lane="-2"/>
+    <waypoint179 angle="-90.15" generated="true" ridgemarker="1" speed="0" pos="144.18 -609.81" lane="-2"/>
+    <waypoint180 angle="-90.10" generated="true" ridgemarker="1" speed="0" pos="139.14 -609.82" lane="-2"/>
+    <waypoint181 angle="-90.05" generated="true" ridgemarker="1" speed="0" pos="134.14 -609.83" lane="-2"/>
+    <waypoint182 angle="-90.01" generated="true" ridgemarker="1" speed="0" pos="129.14 -609.83" lane="-2"/>
+    <waypoint183 angle="-38.97" generated="true" ridgemarker="1" speed="0" pos="124.15 -609.83" lane="-2"/>
+    <waypoint184 angle="-0.18" generated="true" ridgemarker="1" speed="0" pos="119.67 -604.31" lane="-2"/>
+    <waypoint185 angle="0.44" generated="true" ridgemarker="1" speed="0" pos="119.66 -599.31" lane="-2"/>
+    <waypoint186 angle="-0.09" generated="true" ridgemarker="1" speed="0" pos="119.70 -594.36" lane="-2"/>
+    <waypoint187 angle="-0.04" generated="true" ridgemarker="1" speed="0" pos="119.69 -589.32" lane="-2"/>
+    <waypoint188 angle="0.01" generated="true" ridgemarker="1" speed="0" pos="119.69 -584.32" lane="-2"/>
+    <waypoint189 angle="0.05" generated="true" ridgemarker="1" speed="0" pos="119.69 -579.32" lane="-2"/>
+    <waypoint190 angle="0.10" generated="true" ridgemarker="1" speed="0" pos="119.69 -574.33" lane="-2"/>
+    <waypoint191 angle="-0.42" generated="true" ridgemarker="1" speed="0" pos="119.70 -569.33" lane="-2"/>
+    <waypoint192 angle="0.20" generated="true" ridgemarker="1" speed="0" pos="119.66 -564.29" lane="-2"/>
+    <waypoint193 angle="0.24" generated="true" ridgemarker="1" speed="0" pos="119.68 -559.34" lane="-2"/>
+    <waypoint194 angle="-0.28" generated="true" ridgemarker="1" speed="0" pos="119.70 -554.34" lane="-2"/>
+    <waypoint195 angle="-0.24" generated="true" ridgemarker="1" speed="0" pos="119.67 -549.30" lane="-2"/>
+    <waypoint196 angle="52.54" generated="true" ridgemarker="1" speed="0" pos="119.65 -544.31" lane="-2"/>
+    <waypoint197 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="125.68 -539.69" lane="-2"/>
+    <waypoint198 angle="121.03" generated="true" ridgemarker="1" speed="0" pos="130.68 -539.69" lane="-2"/>
+    <waypoint199 angle="89.52" generated="true" ridgemarker="1" speed="0" pos="135.67 -542.69" lane="-3"/>
+    <waypoint200 angle="90.15" generated="true" ridgemarker="1" speed="0" pos="140.74 -542.65" lane="-3"/>
+    <waypoint201 angle="90.19" generated="true" ridgemarker="1" speed="0" pos="145.66 -542.66" lane="-3"/>
+    <waypoint202 angle="89.67" generated="true" ridgemarker="1" speed="0" pos="150.65 -542.68" lane="-3"/>
+    <waypoint203 angle="90.29" generated="true" ridgemarker="1" speed="0" pos="155.72 -542.65" lane="-3"/>
+    <waypoint204 angle="89.76" generated="true" ridgemarker="1" speed="0" pos="160.64 -542.67" lane="-3"/>
+    <waypoint205 angle="90.38" generated="true" ridgemarker="1" speed="0" pos="165.71 -542.65" lane="-3"/>
+    <waypoint206 angle="89.86" generated="true" ridgemarker="1" speed="0" pos="170.63 -542.69" lane="-3"/>
+    <waypoint207 angle="89.90" generated="true" ridgemarker="1" speed="0" pos="175.70 -542.67" lane="-3"/>
+    <waypoint208 angle="89.95" generated="true" ridgemarker="1" speed="0" pos="180.69 -542.66" lane="-3"/>
+    <waypoint209 angle="89.99" generated="true" ridgemarker="1" speed="0" pos="185.68 -542.66" lane="-3"/>
+    <waypoint210 angle="90.04" generated="true" ridgemarker="1" speed="0" pos="190.68 -542.66" lane="-3"/>
+    <waypoint211 angle="90.09" generated="true" ridgemarker="1" speed="0" pos="195.67 -542.66" lane="-3"/>
+    <waypoint212 angle="90.14" generated="true" ridgemarker="1" speed="0" pos="200.67 -542.67" lane="-3"/>
+    <waypoint213 angle="89.99" generated="true" ridgemarker="1" speed="0" pos="205.66 -542.68" lane="-3"/>
+    <waypoint214 angle="90.16" generated="true" ridgemarker="1" speed="0" pos="212.53 -542.68" lane="-3"/>
+    <waypoint215 angle="89.64" generated="true" ridgemarker="1" speed="0" pos="217.47 -542.70" lane="-3"/>
+    <waypoint216 angle="90.26" generated="true" ridgemarker="1" speed="0" pos="222.54 -542.66" lane="-3"/>
+    <waypoint217 angle="89.73" generated="true" ridgemarker="1" speed="0" pos="227.45 -542.69" lane="-3"/>
+    <waypoint218 angle="90.35" generated="true" ridgemarker="1" speed="0" pos="232.52 -542.66" lane="-3"/>
+    <waypoint219 angle="89.82" generated="true" ridgemarker="1" speed="0" pos="237.44 -542.69" lane="-3"/>
+    <waypoint220 angle="89.86" generated="true" ridgemarker="1" speed="0" pos="242.51 -542.68" lane="-3"/>
+    <waypoint221 angle="89.91" generated="true" ridgemarker="1" speed="0" pos="247.51 -542.66" lane="-3"/>
+    <waypoint222 angle="89.95" generated="true" ridgemarker="1" speed="0" pos="252.50 -542.66" lane="-3"/>
+    <waypoint223 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="257.49 -542.65" lane="-3"/>
+    <waypoint224 angle="90.04" generated="true" ridgemarker="1" speed="0" pos="262.49 -542.65" lane="-3"/>
+    <waypoint225 angle="90.09" generated="true" ridgemarker="1" speed="0" pos="267.48 -542.66" lane="-3"/>
+    <waypoint226 angle="90.14" generated="true" ridgemarker="1" speed="0" pos="272.48 -542.66" lane="-3"/>
+    <waypoint227 angle="90.18" generated="true" ridgemarker="1" speed="0" pos="277.47 -542.68" lane="-3"/>
+    <waypoint228 angle="89.66" generated="true" ridgemarker="1" speed="0" pos="282.46 -542.69" lane="-3"/>
+    <waypoint229 angle="123.49" generated="true" ridgemarker="1" speed="0" pos="287.53 -542.66" lane="-3"/>
+    <waypoint230 angle="179.93" generated="true" ridgemarker="1" speed="0" pos="291.62 -545.37" lane="-3"/>
+    <waypoint231 angle="179.97" generated="true" ridgemarker="1" speed="0" pos="291.63 -550.36" lane="-3"/>
+    <waypoint232 angle="-179.98" generated="true" ridgemarker="1" speed="0" pos="291.63 -555.36" lane="-3"/>
+    <waypoint233 angle="-179.93" generated="true" ridgemarker="1" speed="0" pos="291.63 -560.35" lane="-3"/>
+    <waypoint234 angle="-179.89" generated="true" ridgemarker="1" speed="0" pos="291.62 -565.34" lane="-3"/>
+    <waypoint235 angle="179.59" generated="true" ridgemarker="1" speed="0" pos="291.61 -570.34" lane="-3"/>
+    <waypoint236 angle="-179.79" generated="true" ridgemarker="1" speed="0" pos="291.65 -575.41" lane="-3"/>
+    <waypoint237 angle="-179.75" generated="true" ridgemarker="1" speed="0" pos="291.63 -580.33" lane="-3"/>
+    <waypoint238 angle="179.73" generated="true" ridgemarker="1" speed="0" pos="291.61 -585.32" lane="-3"/>
+    <waypoint239 angle="-179.65" generated="true" ridgemarker="1" speed="0" pos="291.63 -590.39" lane="-3"/>
+    <waypoint240 angle="179.82" generated="true" ridgemarker="1" speed="0" pos="291.61 -595.31" lane="-3"/>
+    <waypoint241 angle="-130.65" generated="true" ridgemarker="1" speed="0" pos="291.62 -600.38" lane="-3"/>
+    <waypoint242 angle="-89.73" generated="true" ridgemarker="1" speed="0" pos="284.10 -606.84" lane="-3"/>
+    <waypoint243 angle="-90.26" generated="true" ridgemarker="1" speed="0" pos="279.18 -606.81" lane="-3"/>
+    <waypoint244 angle="-89.64" generated="true" ridgemarker="1" speed="0" pos="274.11 -606.84" lane="-3"/>
+    <waypoint245 angle="-90.17" generated="true" ridgemarker="1" speed="0" pos="269.19 -606.81" lane="-3"/>
+    <waypoint246 angle="-90.13" generated="true" ridgemarker="1" speed="0" pos="264.12 -606.82" lane="-3"/>
+    <waypoint247 angle="-90.08" generated="true" ridgemarker="1" speed="0" pos="259.13 -606.83" lane="-3"/>
+    <waypoint248 angle="-90.03" generated="true" ridgemarker="1" speed="0" pos="254.14 -606.84" lane="-3"/>
+    <waypoint249 angle="-89.98" generated="true" ridgemarker="1" speed="0" pos="249.14 -606.84" lane="-3"/>
+    <waypoint250 angle="-89.94" generated="true" ridgemarker="1" speed="0" pos="244.15 -606.84" lane="-3"/>
+    <waypoint251 angle="-89.89" generated="true" ridgemarker="1" speed="0" pos="239.15 -606.83" lane="-3"/>
+    <waypoint252 angle="-89.84" generated="true" ridgemarker="1" speed="0" pos="234.16 -606.83" lane="-3"/>
+    <waypoint253 angle="-90.37" generated="true" ridgemarker="1" speed="0" pos="229.17 -606.81" lane="-3"/>
+    <waypoint254 angle="-89.75" generated="true" ridgemarker="1" speed="0" pos="224.10 -606.84" lane="-3"/>
+    <waypoint255 angle="-90.27" generated="true" ridgemarker="1" speed="0" pos="219.18 -606.82" lane="-3"/>
+    <waypoint256 angle="-89.65" generated="true" ridgemarker="1" speed="0" pos="214.11 -606.85" lane="-3"/>
+    <waypoint257 angle="-90.18" generated="true" ridgemarker="1" speed="0" pos="209.19 -606.82" lane="-3"/>
+    <waypoint258 angle="-90.14" generated="true" ridgemarker="1" speed="0" pos="204.12 -606.83" lane="-3"/>
+    <waypoint259 angle="-89.51" generated="true" ridgemarker="1" speed="0" pos="199.13 -606.84" lane="-3"/>
+    <waypoint260 angle="-90.04" generated="true" ridgemarker="1" speed="0" pos="194.21 -606.80" lane="-3"/>
+    <waypoint261 angle="-90.00" generated="true" ridgemarker="1" speed="0" pos="189.14 -606.81" lane="-3"/>
+    <waypoint262 angle="-89.95" generated="true" ridgemarker="1" speed="0" pos="184.15 -606.81" lane="-3"/>
+    <waypoint263 angle="-90.47" generated="true" ridgemarker="1" speed="0" pos="179.15 -606.80" lane="-3"/>
+    <waypoint264 angle="-89.85" generated="true" ridgemarker="1" speed="0" pos="174.08 -606.84" lane="-3"/>
+    <waypoint265 angle="-89.81" generated="true" ridgemarker="1" speed="0" pos="169.17 -606.83" lane="-3"/>
+    <waypoint266 angle="-90.33" generated="true" ridgemarker="1" speed="0" pos="164.17 -606.81" lane="-3"/>
+    <waypoint267 angle="-89.71" generated="true" ridgemarker="1" speed="0" pos="159.10 -606.84" lane="-3"/>
+    <waypoint268 angle="-90.24" generated="true" ridgemarker="1" speed="0" pos="154.18 -606.82" lane="-3"/>
+    <waypoint269 angle="-89.62" generated="true" ridgemarker="1" speed="0" pos="149.12 -606.84" lane="-3"/>
+    <waypoint270 angle="-90.14" generated="true" ridgemarker="1" speed="0" pos="144.20 -606.81" lane="-3"/>
+    <waypoint271 angle="-90.10" generated="true" ridgemarker="1" speed="0" pos="139.13 -606.82" lane="-3"/>
+    <waypoint272 angle="-90.05" generated="true" ridgemarker="1" speed="0" pos="134.13 -606.83" lane="-3"/>
+    <waypoint273 angle="-40.71" generated="true" ridgemarker="1" speed="0" pos="129.14 -606.83" lane="-3"/>
+    <waypoint274 angle="0.44" generated="true" ridgemarker="1" speed="0" pos="122.66 -599.30" lane="-3"/>
+    <waypoint275 angle="-0.09" generated="true" ridgemarker="1" speed="0" pos="122.70 -594.38" lane="-3"/>
+    <waypoint276 angle="-0.04" generated="true" ridgemarker="1" speed="0" pos="122.69 -589.31" lane="-3"/>
+    <waypoint277 angle="0.01" generated="true" ridgemarker="1" speed="0" pos="122.69 -584.32" lane="-3"/>
+    <waypoint278 angle="0.05" generated="true" ridgemarker="1" speed="0" pos="122.69 -579.33" lane="-3"/>
+    <waypoint279 angle="0.10" generated="true" ridgemarker="1" speed="0" pos="122.69 -574.33" lane="-3"/>
+    <waypoint280 angle="-0.42" generated="true" ridgemarker="1" speed="0" pos="122.70 -569.34" lane="-3"/>
+    <waypoint281 angle="0.20" generated="true" ridgemarker="1" speed="0" pos="122.66 -564.27" lane="-3"/>
+    <waypoint282 angle="0.24" generated="true" ridgemarker="1" speed="0" pos="122.68 -559.35" lane="-3"/>
+    <waypoint283 angle="-0.28" generated="true" ridgemarker="1" speed="0" pos="122.70 -554.36" lane="-3"/>
+    <waypoint284 angle="38.99" generated="true" ridgemarker="1" speed="0" pos="122.67 -549.29" lane="-3"/>
+    <waypoint285 angle="56.17" generated="true" ridgemarker="1" speed="0" pos="124.86 -546.59" lane="-3"/>
+    <waypoint286 angle="121.04" generated="true" ridgemarker="1" speed="0" pos="130.68 -542.69" lane="-3"/>
+    <waypoint287 angle="89.53" generated="true" speed="0" pos="135.67 -545.69" lane="-4"/>
+    <waypoint288 angle="90.15" generated="true" speed="0" pos="140.76 -545.65" lane="-4"/>
+    <waypoint289 angle="90.19" generated="true" speed="0" pos="145.65 -545.66" lane="-4"/>
+    <waypoint290 angle="89.67" generated="true" speed="0" pos="150.64 -545.68" lane="-4"/>
+    <waypoint291 angle="90.29" generated="true" speed="0" pos="155.74 -545.65" lane="-4"/>
+    <waypoint292 angle="89.76" generated="true" speed="0" pos="160.62 -545.67" lane="-4"/>
+    <waypoint293 angle="90.38" generated="true" speed="0" pos="165.72 -545.65" lane="-4"/>
+    <waypoint294 angle="89.86" generated="true" speed="0" pos="170.61 -545.69" lane="-4"/>
+    <waypoint295 angle="89.90" generated="true" speed="0" pos="175.70 -545.67" lane="-4"/>
+    <waypoint296 angle="89.95" generated="true" speed="0" pos="180.70 -545.66" lane="-4"/>
+    <waypoint297 angle="89.99" generated="true" speed="0" pos="185.69 -545.66" lane="-4"/>
+    <waypoint298 angle="90.04" generated="true" speed="0" pos="190.68 -545.66" lane="-4"/>
+    <waypoint299 angle="90.09" generated="true" speed="0" pos="195.67 -545.66" lane="-4"/>
+    <waypoint300 angle="90.14" generated="true" speed="0" pos="200.66 -545.67" lane="-4"/>
+    <waypoint301 angle="89.99" generated="true" speed="0" pos="205.65 -545.68" lane="-4"/>
+    <waypoint302 angle="90.16" generated="true" speed="0" pos="212.53 -545.68" lane="-4"/>
+    <waypoint303 angle="89.64" generated="true" speed="0" pos="217.46 -545.70" lane="-4"/>
+    <waypoint304 angle="90.26" generated="true" speed="0" pos="222.55 -545.66" lane="-4"/>
+    <waypoint305 angle="89.73" generated="true" speed="0" pos="227.44 -545.69" lane="-4"/>
+    <waypoint306 angle="90.35" generated="true" speed="0" pos="232.54 -545.66" lane="-4"/>
+    <waypoint307 angle="89.82" generated="true" speed="0" pos="237.42 -545.69" lane="-4"/>
+    <waypoint308 angle="89.86" generated="true" speed="0" pos="242.52 -545.68" lane="-4"/>
+    <waypoint309 angle="89.91" generated="true" speed="0" pos="247.51 -545.66" lane="-4"/>
+    <waypoint310 angle="89.95" generated="true" speed="0" pos="252.50 -545.66" lane="-4"/>
+    <waypoint311 angle="90.00" generated="true" speed="0" pos="257.50 -545.65" lane="-4"/>
+    <waypoint312 angle="90.04" generated="true" speed="0" pos="262.49 -545.65" lane="-4"/>
+    <waypoint313 angle="90.09" generated="true" speed="0" pos="267.48 -545.66" lane="-4"/>
+    <waypoint314 angle="90.14" generated="true" speed="0" pos="272.47 -545.66" lane="-4"/>
+    <waypoint315 angle="90.18" generated="true" speed="0" pos="277.46 -545.68" lane="-4"/>
+    <waypoint316 angle="127.13" generated="true" speed="0" pos="282.45 -545.69" lane="-4"/>
+    <waypoint317 angle="179.97" generated="true" speed="0" pos="288.63 -550.37" lane="-4"/>
+    <waypoint318 angle="-179.98" generated="true" speed="0" pos="288.63 -555.36" lane="-4"/>
+    <waypoint319 angle="-179.93" generated="true" speed="0" pos="288.63 -560.35" lane="-4"/>
+    <waypoint320 angle="-179.89" generated="true" speed="0" pos="288.62 -565.34" lane="-4"/>
+    <waypoint321 angle="179.59" generated="true" speed="0" pos="288.61 -570.33" lane="-4"/>
+    <waypoint322 angle="-179.79" generated="true" speed="0" pos="288.65 -575.43" lane="-4"/>
+    <waypoint323 angle="-179.75" generated="true" speed="0" pos="288.63 -580.31" lane="-4"/>
+    <waypoint324 angle="179.73" generated="true" speed="0" pos="288.61 -585.31" lane="-4"/>
+    <waypoint325 angle="-179.65" generated="true" speed="0" pos="288.63 -590.40" lane="-4"/>
+    <waypoint326 angle="-141.46" generated="true" speed="0" pos="288.61 -595.29" lane="-4"/>
+    <waypoint327 angle="-127.68" generated="true" speed="0" pos="286.01 -598.55" lane="-4"/>
+    <waypoint328 angle="-90.26" generated="true" speed="0" pos="279.19 -603.81" lane="-4"/>
+    <waypoint329 angle="-89.64" generated="true" speed="0" pos="274.10 -603.84" lane="-4"/>
+    <waypoint330 angle="-90.17" generated="true" speed="0" pos="269.21 -603.81" lane="-4"/>
+    <waypoint331 angle="-90.13" generated="true" speed="0" pos="264.11 -603.82" lane="-4"/>
+    <waypoint332 angle="-90.08" generated="true" speed="0" pos="259.12 -603.83" lane="-4"/>
+    <waypoint333 angle="-90.03" generated="true" speed="0" pos="254.13 -603.84" lane="-4"/>
+    <waypoint334 angle="-89.98" generated="true" speed="0" pos="249.14 -603.84" lane="-4"/>
+    <waypoint335 angle="-89.94" generated="true" speed="0" pos="244.15 -603.84" lane="-4"/>
+    <waypoint336 angle="-89.89" generated="true" speed="0" pos="239.16 -603.83" lane="-4"/>
+    <waypoint337 angle="-89.84" generated="true" speed="0" pos="234.17 -603.83" lane="-4"/>
+    <waypoint338 angle="-90.37" generated="true" speed="0" pos="229.17 -603.81" lane="-4"/>
+    <waypoint339 angle="-89.74" generated="true" speed="0" pos="224.08 -603.84" lane="-4"/>
+    <waypoint340 angle="-90.27" generated="true" speed="0" pos="219.19 -603.82" lane="-4"/>
+    <waypoint341 angle="-89.65" generated="true" speed="0" pos="214.10 -603.85" lane="-4"/>
+    <waypoint342 angle="-90.18" generated="true" speed="0" pos="209.21 -603.82" lane="-4"/>
+    <waypoint343 angle="-90.14" generated="true" speed="0" pos="204.11 -603.83" lane="-4"/>
+    <waypoint344 angle="-89.51" generated="true" speed="0" pos="199.12 -603.84" lane="-4"/>
+    <waypoint345 angle="-90.04" generated="true" speed="0" pos="194.24 -603.80" lane="-4"/>
+    <waypoint346 angle="-90.00" generated="true" speed="0" pos="189.14 -603.81" lane="-4"/>
+    <waypoint347 angle="-89.95" generated="true" speed="0" pos="184.15 -603.81" lane="-4"/>
+    <waypoint348 angle="-90.47" generated="true" speed="0" pos="179.16 -603.80" lane="-4"/>
+    <waypoint349 angle="-89.85" generated="true" speed="0" pos="174.06 -603.84" lane="-4"/>
+    <waypoint350 angle="-89.81" generated="true" speed="0" pos="169.17 -603.83" lane="-4"/>
+    <waypoint351 angle="-90.33" generated="true" speed="0" pos="164.18 -603.81" lane="-4"/>
+    <waypoint352 angle="-89.71" generated="true" speed="0" pos="159.09 -603.84" lane="-4"/>
+    <waypoint353 angle="-90.24" generated="true" speed="0" pos="154.20 -603.82" lane="-4"/>
+    <waypoint354 angle="-89.62" generated="true" speed="0" pos="149.10 -603.84" lane="-4"/>
+    <waypoint355 angle="-90.14" generated="true" speed="0" pos="144.22 -603.81" lane="-4"/>
+    <waypoint356 angle="-90.10" generated="true" speed="0" pos="139.12 -603.82" lane="-4"/>
+    <waypoint357 angle="-51.28" generated="true" speed="0" pos="134.13 -603.83" lane="-4"/>
+    <waypoint358 angle="-37.25" generated="true" speed="0" pos="130.88 -601.23" lane="-4"/>
+    <waypoint359 angle="-0.08" generated="true" speed="0" pos="125.70 -594.40" lane="-4"/>
+    <waypoint360 angle="-0.04" generated="true" speed="0" pos="125.69 -589.31" lane="-4"/>
+    <waypoint361 angle="0.01" generated="true" speed="0" pos="125.69 -584.32" lane="-4"/>
+    <waypoint362 angle="0.05" generated="true" speed="0" pos="125.69 -579.33" lane="-4"/>
+    <waypoint363 angle="0.10" generated="true" speed="0" pos="125.69 -574.33" lane="-4"/>
+    <waypoint364 angle="-0.42" generated="true" speed="0" pos="125.70 -569.34" lane="-4"/>
+    <waypoint365 angle="0.20" generated="true" speed="0" pos="125.66 -564.25" lane="-4"/>
+    <waypoint366 angle="0.24" generated="true" speed="0" pos="125.68 -559.36" lane="-4"/>
+    <waypoint367 angle="39.98" generated="true" speed="0" pos="125.70 -554.37" lane="-4"/>
+    <waypoint368 angle="53.26" generated="true" speed="0" pos="128.47 -551.07" lane="-4"/>
+    <waypoint369 angle="90.00" generated="true" speed="0" pos="133.72 -547.15"/>
+    <waypoint370 angle="90.00" generated="true" speed="0" pos="135.66 -547.15"/>
+    <waypoint371 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="140.66 -547.15"/>
+    <waypoint372 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="145.66 -547.15"/>
+    <waypoint373 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="150.66 -547.15"/>
+    <waypoint374 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="155.66 -547.15"/>
+    <waypoint375 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="160.66 -547.15"/>
+    <waypoint376 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="165.66 -547.15"/>
+    <waypoint377 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="170.66 -547.15"/>
+    <waypoint378 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="175.66 -547.15"/>
+    <waypoint379 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="180.66 -547.15"/>
+    <waypoint380 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="185.66 -547.15"/>
+    <waypoint381 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="190.66 -547.15"/>
+    <waypoint382 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="195.66 -547.15"/>
+    <waypoint383 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="200.66 -547.15"/>
+    <waypoint384 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="205.66 -547.15"/>
+    <waypoint385 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="210.66 -547.15"/>
+    <waypoint386 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="215.66 -547.15"/>
+    <waypoint387 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="220.66 -547.15"/>
+    <waypoint388 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="225.66 -547.15"/>
+    <waypoint389 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="230.66 -547.15"/>
+    <waypoint390 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="235.66 -547.15"/>
+    <waypoint391 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="240.66 -547.15"/>
+    <waypoint392 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="245.66 -547.15"/>
+    <waypoint393 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="250.66 -547.15"/>
+    <waypoint394 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="255.66 -547.15"/>
+    <waypoint395 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="260.66 -547.15"/>
+    <waypoint396 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="265.66 -547.15"/>
+    <waypoint397 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="270.66 -547.15"/>
+    <waypoint398 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="275.66 -547.15"/>
+    <waypoint399 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="280.66 -547.15"/>
+    <waypoint400 angle="127.13" generated="true" speed="0" pos="284.38 -547.15" turnstart="1"/>
+    <waypoint401 angle="-90.00" generated="true" speed="0" pos="288.34 -550.15" turnend="1"/>
+    <waypoint402 angle="-90.00" generated="true" speed="0" pos="283.65 -550.15"/>
+    <waypoint403 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="278.65 -550.15"/>
+    <waypoint404 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="273.65 -550.15"/>
+    <waypoint405 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="268.65 -550.15"/>
+    <waypoint406 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="263.65 -550.15"/>
+    <waypoint407 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="258.65 -550.15"/>
+    <waypoint408 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="253.65 -550.15"/>
+    <waypoint409 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="248.65 -550.15"/>
+    <waypoint410 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="243.65 -550.15"/>
+    <waypoint411 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="238.65 -550.15"/>
+    <waypoint412 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="233.65 -550.15"/>
+    <waypoint413 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="228.65 -550.15"/>
+    <waypoint414 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="223.65 -550.15"/>
+    <waypoint415 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="218.65 -550.15"/>
+    <waypoint416 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="213.65 -550.15"/>
+    <waypoint417 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="208.65 -550.15"/>
+    <waypoint418 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="203.65 -550.15"/>
+    <waypoint419 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="198.65 -550.15"/>
+    <waypoint420 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="193.65 -550.15"/>
+    <waypoint421 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="188.65 -550.15"/>
+    <waypoint422 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="183.65 -550.15"/>
+    <waypoint423 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="178.65 -550.15"/>
+    <waypoint424 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="173.65 -550.15"/>
+    <waypoint425 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="168.65 -550.15"/>
+    <waypoint426 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="163.65 -550.15"/>
+    <waypoint427 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="158.65 -550.15"/>
+    <waypoint428 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="153.65 -550.15"/>
+    <waypoint429 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="148.65 -550.15"/>
+    <waypoint430 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="143.65 -550.15"/>
+    <waypoint431 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="138.65 -550.15"/>
+    <waypoint432 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="133.65 -550.15"/>
+    <waypoint433 angle="-135.23" generated="true" speed="0" pos="129.70 -550.15" turnstart="1"/>
+    <waypoint434 angle="90.00" generated="true" speed="0" pos="126.72 -553.15" turnend="1"/>
+    <waypoint435 angle="90.00" generated="true" speed="0" pos="130.66 -553.15"/>
+    <waypoint436 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="135.66 -553.15"/>
+    <waypoint437 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="140.66 -553.15"/>
+    <waypoint438 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="145.66 -553.15"/>
+    <waypoint439 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="150.66 -553.15"/>
+    <waypoint440 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="155.66 -553.15"/>
+    <waypoint441 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="160.66 -553.15"/>
+    <waypoint442 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="165.66 -553.15"/>
+    <waypoint443 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="170.66 -553.15"/>
+    <waypoint444 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="175.66 -553.15"/>
+    <waypoint445 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="180.66 -553.15"/>
+    <waypoint446 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="185.66 -553.15"/>
+    <waypoint447 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="190.66 -553.15"/>
+    <waypoint448 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="195.66 -553.15"/>
+    <waypoint449 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="200.66 -553.15"/>
+    <waypoint450 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="205.66 -553.15"/>
+    <waypoint451 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="210.66 -553.15"/>
+    <waypoint452 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="215.66 -553.15"/>
+    <waypoint453 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="220.66 -553.15"/>
+    <waypoint454 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="225.66 -553.15"/>
+    <waypoint455 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="230.66 -553.15"/>
+    <waypoint456 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="235.66 -553.15"/>
+    <waypoint457 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="240.66 -553.15"/>
+    <waypoint458 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="245.66 -553.15"/>
+    <waypoint459 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="250.66 -553.15"/>
+    <waypoint460 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="255.66 -553.15"/>
+    <waypoint461 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="260.66 -553.15"/>
+    <waypoint462 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="265.66 -553.15"/>
+    <waypoint463 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="270.66 -553.15"/>
+    <waypoint464 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="275.66 -553.15"/>
+    <waypoint465 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="280.66 -553.15"/>
+    <waypoint466 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="285.66 -553.15"/>
+    <waypoint467 angle="179.99" generated="true" speed="0" pos="288.63 -553.15" turnstart="1"/>
+    <waypoint468 angle="-90.00" generated="true" speed="0" pos="288.63 -556.15" turnend="1"/>
+    <waypoint469 angle="-90.00" generated="true" speed="0" pos="283.65 -556.15"/>
+    <waypoint470 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="278.65 -556.15"/>
+    <waypoint471 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="273.65 -556.15"/>
+    <waypoint472 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="268.65 -556.15"/>
+    <waypoint473 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="263.65 -556.15"/>
+    <waypoint474 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="258.65 -556.15"/>
+    <waypoint475 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="253.65 -556.15"/>
+    <waypoint476 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="248.65 -556.15"/>
+    <waypoint477 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="243.65 -556.15"/>
+    <waypoint478 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="238.65 -556.15"/>
+    <waypoint479 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="233.65 -556.15"/>
+    <waypoint480 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="228.65 -556.15"/>
+    <waypoint481 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="223.65 -556.15"/>
+    <waypoint482 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="218.65 -556.15"/>
+    <waypoint483 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="213.65 -556.15"/>
+    <waypoint484 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="208.65 -556.15"/>
+    <waypoint485 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="203.65 -556.15"/>
+    <waypoint486 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="198.65 -556.15"/>
+    <waypoint487 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="193.65 -556.15"/>
+    <waypoint488 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="188.65 -556.15"/>
+    <waypoint489 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="183.65 -556.15"/>
+    <waypoint490 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="178.65 -556.15"/>
+    <waypoint491 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="173.65 -556.15"/>
+    <waypoint492 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="168.65 -556.15"/>
+    <waypoint493 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="163.65 -556.15"/>
+    <waypoint494 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="158.65 -556.15"/>
+    <waypoint495 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="153.65 -556.15"/>
+    <waypoint496 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="148.65 -556.15"/>
+    <waypoint497 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="143.65 -556.15"/>
+    <waypoint498 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="138.65 -556.15"/>
+    <waypoint499 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="133.65 -556.15"/>
+    <waypoint500 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="128.65 -556.15"/>
+    <waypoint501 angle="-179.76" generated="true" speed="0" pos="125.69 -556.15" turnstart="1"/>
+    <waypoint502 angle="90.00" generated="true" speed="0" pos="125.68 -559.15" turnend="1"/>
+    <waypoint503 angle="90.00" generated="true" speed="0" pos="130.66 -559.15"/>
+    <waypoint504 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="135.66 -559.15"/>
+    <waypoint505 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="140.66 -559.15"/>
+    <waypoint506 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="145.66 -559.15"/>
+    <waypoint507 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="150.66 -559.15"/>
+    <waypoint508 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="155.66 -559.15"/>
+    <waypoint509 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="160.66 -559.15"/>
+    <waypoint510 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="165.66 -559.15"/>
+    <waypoint511 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="170.66 -559.15"/>
+    <waypoint512 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="175.66 -559.15"/>
+    <waypoint513 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="180.66 -559.15"/>
+    <waypoint514 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="185.66 -559.15"/>
+    <waypoint515 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="190.66 -559.15"/>
+    <waypoint516 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="195.66 -559.15"/>
+    <waypoint517 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="200.66 -559.15"/>
+    <waypoint518 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="205.66 -559.15"/>
+    <waypoint519 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="210.66 -559.15"/>
+    <waypoint520 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="215.66 -559.15"/>
+    <waypoint521 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="220.66 -559.15"/>
+    <waypoint522 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="225.66 -559.15"/>
+    <waypoint523 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="230.66 -559.15"/>
+    <waypoint524 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="235.66 -559.15"/>
+    <waypoint525 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="240.66 -559.15"/>
+    <waypoint526 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="245.66 -559.15"/>
+    <waypoint527 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="250.66 -559.15"/>
+    <waypoint528 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="255.66 -559.15"/>
+    <waypoint529 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="260.66 -559.15"/>
+    <waypoint530 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="265.66 -559.15"/>
+    <waypoint531 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="270.66 -559.15"/>
+    <waypoint532 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="275.66 -559.15"/>
+    <waypoint533 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="280.66 -559.15"/>
+    <waypoint534 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="285.66 -559.15"/>
+    <waypoint535 angle="-179.95" generated="true" speed="0" pos="288.63 -559.15" turnstart="1"/>
+    <waypoint536 angle="-90.00" generated="true" speed="0" pos="288.63 -562.15" turnend="1"/>
+    <waypoint537 angle="-90.00" generated="true" speed="0" pos="283.65 -562.15"/>
+    <waypoint538 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="278.65 -562.15"/>
+    <waypoint539 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="273.65 -562.15"/>
+    <waypoint540 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="268.65 -562.15"/>
+    <waypoint541 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="263.65 -562.15"/>
+    <waypoint542 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="258.65 -562.15"/>
+    <waypoint543 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="253.65 -562.15"/>
+    <waypoint544 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="248.65 -562.15"/>
+    <waypoint545 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="243.65 -562.15"/>
+    <waypoint546 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="238.65 -562.15"/>
+    <waypoint547 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="233.65 -562.15"/>
+    <waypoint548 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="228.65 -562.15"/>
+    <waypoint549 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="223.65 -562.15"/>
+    <waypoint550 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="218.65 -562.15"/>
+    <waypoint551 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="213.65 -562.15"/>
+    <waypoint552 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="208.65 -562.15"/>
+    <waypoint553 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="203.65 -562.15"/>
+    <waypoint554 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="198.65 -562.15"/>
+    <waypoint555 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="193.65 -562.15"/>
+    <waypoint556 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="188.65 -562.15"/>
+    <waypoint557 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="183.65 -562.15"/>
+    <waypoint558 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="178.65 -562.15"/>
+    <waypoint559 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="173.65 -562.15"/>
+    <waypoint560 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="168.65 -562.15"/>
+    <waypoint561 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="163.65 -562.15"/>
+    <waypoint562 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="158.65 -562.15"/>
+    <waypoint563 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="153.65 -562.15"/>
+    <waypoint564 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="148.65 -562.15"/>
+    <waypoint565 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="143.65 -562.15"/>
+    <waypoint566 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="138.65 -562.15"/>
+    <waypoint567 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="133.65 -562.15"/>
+    <waypoint568 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="128.65 -562.15"/>
+    <waypoint569 angle="-179.99" generated="true" speed="0" pos="125.67 -562.15" turnstart="1"/>
+    <waypoint570 angle="90.00" generated="true" speed="0" pos="125.67 -565.15" turnend="1"/>
+    <waypoint571 angle="90.00" generated="true" speed="0" pos="130.66 -565.15"/>
+    <waypoint572 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="135.66 -565.15"/>
+    <waypoint573 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="140.66 -565.15"/>
+    <waypoint574 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="145.66 -565.15"/>
+    <waypoint575 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="150.66 -565.15"/>
+    <waypoint576 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="155.66 -565.15"/>
+    <waypoint577 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="160.66 -565.15"/>
+    <waypoint578 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="165.66 -565.15"/>
+    <waypoint579 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="170.66 -565.15"/>
+    <waypoint580 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="175.66 -565.15"/>
+    <waypoint581 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="180.66 -565.15"/>
+    <waypoint582 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="185.66 -565.15"/>
+    <waypoint583 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="190.66 -565.15"/>
+    <waypoint584 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="195.66 -565.15"/>
+    <waypoint585 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="200.66 -565.15"/>
+    <waypoint586 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="205.66 -565.15"/>
+    <waypoint587 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="210.66 -565.15"/>
+    <waypoint588 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="215.66 -565.15"/>
+    <waypoint589 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="220.66 -565.15"/>
+    <waypoint590 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="225.66 -565.15"/>
+    <waypoint591 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="230.66 -565.15"/>
+    <waypoint592 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="235.66 -565.15"/>
+    <waypoint593 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="240.66 -565.15"/>
+    <waypoint594 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="245.66 -565.15"/>
+    <waypoint595 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="250.66 -565.15"/>
+    <waypoint596 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="255.66 -565.15"/>
+    <waypoint597 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="260.66 -565.15"/>
+    <waypoint598 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="265.66 -565.15"/>
+    <waypoint599 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="270.66 -565.15"/>
+    <waypoint600 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="275.66 -565.15"/>
+    <waypoint601 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="280.66 -565.15"/>
+    <waypoint602 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="285.66 -565.15"/>
+    <waypoint603 angle="-179.89" generated="true" speed="0" pos="288.62 -565.15" turnstart="1"/>
+    <waypoint604 angle="-90.00" generated="true" speed="0" pos="288.62 -568.15" turnend="1"/>
+    <waypoint605 angle="-90.00" generated="true" speed="0" pos="283.65 -568.15"/>
+    <waypoint606 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="278.65 -568.15"/>
+    <waypoint607 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="273.65 -568.15"/>
+    <waypoint608 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="268.65 -568.15"/>
+    <waypoint609 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="263.65 -568.15"/>
+    <waypoint610 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="258.65 -568.15"/>
+    <waypoint611 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="253.65 -568.15"/>
+    <waypoint612 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="248.65 -568.15"/>
+    <waypoint613 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="243.65 -568.15"/>
+    <waypoint614 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="238.65 -568.15"/>
+    <waypoint615 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="233.65 -568.15"/>
+    <waypoint616 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="228.65 -568.15"/>
+    <waypoint617 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="223.65 -568.15"/>
+    <waypoint618 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="218.65 -568.15"/>
+    <waypoint619 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="213.65 -568.15"/>
+    <waypoint620 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="208.65 -568.15"/>
+    <waypoint621 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="203.65 -568.15"/>
+    <waypoint622 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="198.65 -568.15"/>
+    <waypoint623 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="193.65 -568.15"/>
+    <waypoint624 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="188.65 -568.15"/>
+    <waypoint625 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="183.65 -568.15"/>
+    <waypoint626 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="178.65 -568.15"/>
+    <waypoint627 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="173.65 -568.15"/>
+    <waypoint628 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="168.65 -568.15"/>
+    <waypoint629 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="163.65 -568.15"/>
+    <waypoint630 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="158.65 -568.15"/>
+    <waypoint631 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="153.65 -568.15"/>
+    <waypoint632 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="148.65 -568.15"/>
+    <waypoint633 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="143.65 -568.15"/>
+    <waypoint634 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="138.65 -568.15"/>
+    <waypoint635 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="133.65 -568.15"/>
+    <waypoint636 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="128.65 -568.15"/>
+    <waypoint637 angle="179.89" generated="true" speed="0" pos="125.69 -568.15" turnstart="1"/>
+    <waypoint638 angle="90.00" generated="true" speed="0" pos="125.70 -571.15" turnend="1"/>
+    <waypoint639 angle="90.00" generated="true" speed="0" pos="130.66 -571.15"/>
+    <waypoint640 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="135.66 -571.15"/>
+    <waypoint641 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="140.66 -571.15"/>
+    <waypoint642 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="145.66 -571.15"/>
+    <waypoint643 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="150.66 -571.15"/>
+    <waypoint644 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="155.66 -571.15"/>
+    <waypoint645 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="160.66 -571.15"/>
+    <waypoint646 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="165.66 -571.15"/>
+    <waypoint647 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="170.66 -571.15"/>
+    <waypoint648 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="175.66 -571.15"/>
+    <waypoint649 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="180.66 -571.15"/>
+    <waypoint650 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="185.66 -571.15"/>
+    <waypoint651 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="190.66 -571.15"/>
+    <waypoint652 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="195.66 -571.15"/>
+    <waypoint653 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="200.66 -571.15"/>
+    <waypoint654 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="205.66 -571.15"/>
+    <waypoint655 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="210.66 -571.15"/>
+    <waypoint656 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="215.66 -571.15"/>
+    <waypoint657 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="220.66 -571.15"/>
+    <waypoint658 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="225.66 -571.15"/>
+    <waypoint659 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="230.66 -571.15"/>
+    <waypoint660 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="235.66 -571.15"/>
+    <waypoint661 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="240.66 -571.15"/>
+    <waypoint662 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="245.66 -571.15"/>
+    <waypoint663 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="250.66 -571.15"/>
+    <waypoint664 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="255.66 -571.15"/>
+    <waypoint665 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="260.66 -571.15"/>
+    <waypoint666 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="265.66 -571.15"/>
+    <waypoint667 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="270.66 -571.15"/>
+    <waypoint668 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="275.66 -571.15"/>
+    <waypoint669 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="280.66 -571.15"/>
+    <waypoint670 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="285.66 -571.15"/>
+    <waypoint671 angle="179.59" generated="true" speed="0" pos="288.62 -571.15" turnstart="1"/>
+    <waypoint672 angle="-90.00" generated="true" speed="0" pos="288.64 -574.15" turnend="1"/>
+    <waypoint673 angle="-90.00" generated="true" speed="0" pos="283.65 -574.15"/>
+    <waypoint674 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="278.65 -574.15"/>
+    <waypoint675 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="273.65 -574.15"/>
+    <waypoint676 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="268.65 -574.15"/>
+    <waypoint677 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="263.65 -574.15"/>
+    <waypoint678 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="258.65 -574.15"/>
+    <waypoint679 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="253.65 -574.15"/>
+    <waypoint680 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="248.65 -574.15"/>
+    <waypoint681 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="243.65 -574.15"/>
+    <waypoint682 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="238.65 -574.15"/>
+    <waypoint683 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="233.65 -574.15"/>
+    <waypoint684 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="228.65 -574.15"/>
+    <waypoint685 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="223.65 -574.15"/>
+    <waypoint686 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="218.65 -574.15"/>
+    <waypoint687 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="213.65 -574.15"/>
+    <waypoint688 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="208.65 -574.15"/>
+    <waypoint689 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="203.65 -574.15"/>
+    <waypoint690 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="198.65 -574.15"/>
+    <waypoint691 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="193.65 -574.15"/>
+    <waypoint692 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="188.65 -574.15"/>
+    <waypoint693 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="183.65 -574.15"/>
+    <waypoint694 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="178.65 -574.15"/>
+    <waypoint695 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="173.65 -574.15"/>
+    <waypoint696 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="168.65 -574.15"/>
+    <waypoint697 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="163.65 -574.15"/>
+    <waypoint698 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="158.65 -574.15"/>
+    <waypoint699 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="153.65 -574.15"/>
+    <waypoint700 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="148.65 -574.15"/>
+    <waypoint701 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="143.65 -574.15"/>
+    <waypoint702 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="138.65 -574.15"/>
+    <waypoint703 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="133.65 -574.15"/>
+    <waypoint704 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="128.65 -574.15"/>
+    <waypoint705 angle="-179.94" generated="true" speed="0" pos="125.69 -574.15" turnstart="1"/>
+    <waypoint706 angle="90.00" generated="true" speed="0" pos="125.69 -577.15" turnend="1"/>
+    <waypoint707 angle="90.00" generated="true" speed="0" pos="130.66 -577.15"/>
+    <waypoint708 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="135.66 -577.15"/>
+    <waypoint709 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="140.66 -577.15"/>
+    <waypoint710 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="145.66 -577.15"/>
+    <waypoint711 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="150.66 -577.15"/>
+    <waypoint712 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="155.66 -577.15"/>
+    <waypoint713 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="160.66 -577.15"/>
+    <waypoint714 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="165.66 -577.15"/>
+    <waypoint715 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="170.66 -577.15"/>
+    <waypoint716 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="175.66 -577.15"/>
+    <waypoint717 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="180.66 -577.15"/>
+    <waypoint718 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="185.66 -577.15"/>
+    <waypoint719 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="190.66 -577.15"/>
+    <waypoint720 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="195.66 -577.15"/>
+    <waypoint721 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="200.66 -577.15"/>
+    <waypoint722 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="205.66 -577.15"/>
+    <waypoint723 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="210.66 -577.15"/>
+    <waypoint724 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="215.66 -577.15"/>
+    <waypoint725 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="220.66 -577.15"/>
+    <waypoint726 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="225.66 -577.15"/>
+    <waypoint727 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="230.66 -577.15"/>
+    <waypoint728 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="235.66 -577.15"/>
+    <waypoint729 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="240.66 -577.15"/>
+    <waypoint730 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="245.66 -577.15"/>
+    <waypoint731 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="250.66 -577.15"/>
+    <waypoint732 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="255.66 -577.15"/>
+    <waypoint733 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="260.66 -577.15"/>
+    <waypoint734 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="265.66 -577.15"/>
+    <waypoint735 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="270.66 -577.15"/>
+    <waypoint736 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="275.66 -577.15"/>
+    <waypoint737 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="280.66 -577.15"/>
+    <waypoint738 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="285.66 -577.15"/>
+    <waypoint739 angle="-179.79" generated="true" speed="0" pos="288.64 -577.15" turnstart="1"/>
+    <waypoint740 angle="-90.00" generated="true" speed="0" pos="288.63 -580.15" turnend="1"/>
+    <waypoint741 angle="-90.00" generated="true" speed="0" pos="283.65 -580.15"/>
+    <waypoint742 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="278.65 -580.15"/>
+    <waypoint743 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="273.65 -580.15"/>
+    <waypoint744 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="268.65 -580.15"/>
+    <waypoint745 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="263.65 -580.15"/>
+    <waypoint746 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="258.65 -580.15"/>
+    <waypoint747 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="253.65 -580.15"/>
+    <waypoint748 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="248.65 -580.15"/>
+    <waypoint749 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="243.65 -580.15"/>
+    <waypoint750 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="238.65 -580.15"/>
+    <waypoint751 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="233.65 -580.15"/>
+    <waypoint752 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="228.65 -580.15"/>
+    <waypoint753 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="223.65 -580.15"/>
+    <waypoint754 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="218.65 -580.15"/>
+    <waypoint755 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="213.65 -580.15"/>
+    <waypoint756 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="208.65 -580.15"/>
+    <waypoint757 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="203.65 -580.15"/>
+    <waypoint758 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="198.65 -580.15"/>
+    <waypoint759 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="193.65 -580.15"/>
+    <waypoint760 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="188.65 -580.15"/>
+    <waypoint761 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="183.65 -580.15"/>
+    <waypoint762 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="178.65 -580.15"/>
+    <waypoint763 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="173.65 -580.15"/>
+    <waypoint764 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="168.65 -580.15"/>
+    <waypoint765 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="163.65 -580.15"/>
+    <waypoint766 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="158.65 -580.15"/>
+    <waypoint767 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="153.65 -580.15"/>
+    <waypoint768 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="148.65 -580.15"/>
+    <waypoint769 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="143.65 -580.15"/>
+    <waypoint770 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="138.65 -580.15"/>
+    <waypoint771 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="133.65 -580.15"/>
+    <waypoint772 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="128.65 -580.15"/>
+    <waypoint773 angle="-179.99" generated="true" speed="0" pos="125.69 -580.15" turnstart="1"/>
+    <waypoint774 angle="90.00" generated="true" speed="0" pos="125.69 -583.15" turnend="1"/>
+    <waypoint775 angle="90.00" generated="true" speed="0" pos="130.66 -583.15"/>
+    <waypoint776 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="135.66 -583.15"/>
+    <waypoint777 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="140.66 -583.15"/>
+    <waypoint778 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="145.66 -583.15"/>
+    <waypoint779 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="150.66 -583.15"/>
+    <waypoint780 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="155.66 -583.15"/>
+    <waypoint781 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="160.66 -583.15"/>
+    <waypoint782 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="165.66 -583.15"/>
+    <waypoint783 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="170.66 -583.15"/>
+    <waypoint784 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="175.66 -583.15"/>
+    <waypoint785 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="180.66 -583.15"/>
+    <waypoint786 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="185.66 -583.15"/>
+    <waypoint787 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="190.66 -583.15"/>
+    <waypoint788 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="195.66 -583.15"/>
+    <waypoint789 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="200.66 -583.15"/>
+    <waypoint790 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="205.66 -583.15"/>
+    <waypoint791 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="210.66 -583.15"/>
+    <waypoint792 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="215.66 -583.15"/>
+    <waypoint793 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="220.66 -583.15"/>
+    <waypoint794 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="225.66 -583.15"/>
+    <waypoint795 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="230.66 -583.15"/>
+    <waypoint796 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="235.66 -583.15"/>
+    <waypoint797 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="240.66 -583.15"/>
+    <waypoint798 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="245.66 -583.15"/>
+    <waypoint799 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="250.66 -583.15"/>
+    <waypoint800 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="255.66 -583.15"/>
+    <waypoint801 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="260.66 -583.15"/>
+    <waypoint802 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="265.66 -583.15"/>
+    <waypoint803 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="270.66 -583.15"/>
+    <waypoint804 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="275.66 -583.15"/>
+    <waypoint805 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="280.66 -583.15"/>
+    <waypoint806 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="285.66 -583.15"/>
+    <waypoint807 angle="-179.90" generated="true" speed="0" pos="288.62 -583.15" turnstart="1"/>
+    <waypoint808 angle="-90.00" generated="true" speed="0" pos="288.61 -586.15" turnend="1"/>
+    <waypoint809 angle="-90.00" generated="true" speed="0" pos="283.65 -586.15"/>
+    <waypoint810 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="278.65 -586.15"/>
+    <waypoint811 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="273.65 -586.15"/>
+    <waypoint812 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="268.65 -586.15"/>
+    <waypoint813 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="263.65 -586.15"/>
+    <waypoint814 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="258.65 -586.15"/>
+    <waypoint815 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="253.65 -586.15"/>
+    <waypoint816 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="248.65 -586.15"/>
+    <waypoint817 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="243.65 -586.15"/>
+    <waypoint818 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="238.65 -586.15"/>
+    <waypoint819 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="233.65 -586.15"/>
+    <waypoint820 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="228.65 -586.15"/>
+    <waypoint821 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="223.65 -586.15"/>
+    <waypoint822 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="218.65 -586.15"/>
+    <waypoint823 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="213.65 -586.15"/>
+    <waypoint824 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="208.65 -586.15"/>
+    <waypoint825 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="203.65 -586.15"/>
+    <waypoint826 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="198.65 -586.15"/>
+    <waypoint827 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="193.65 -586.15"/>
+    <waypoint828 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="188.65 -586.15"/>
+    <waypoint829 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="183.65 -586.15"/>
+    <waypoint830 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="178.65 -586.15"/>
+    <waypoint831 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="173.65 -586.15"/>
+    <waypoint832 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="168.65 -586.15"/>
+    <waypoint833 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="163.65 -586.15"/>
+    <waypoint834 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="158.65 -586.15"/>
+    <waypoint835 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="153.65 -586.15"/>
+    <waypoint836 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="148.65 -586.15"/>
+    <waypoint837 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="143.65 -586.15"/>
+    <waypoint838 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="138.65 -586.15"/>
+    <waypoint839 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="133.65 -586.15"/>
+    <waypoint840 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="128.65 -586.15"/>
+    <waypoint841 angle="179.96" generated="true" speed="0" pos="125.69 -586.15" turnstart="1"/>
+    <waypoint842 angle="90.00" generated="true" speed="0" pos="125.69 -589.15" turnend="1"/>
+    <waypoint843 angle="90.00" generated="true" speed="0" pos="130.66 -589.15"/>
+    <waypoint844 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="135.66 -589.15"/>
+    <waypoint845 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="140.66 -589.15"/>
+    <waypoint846 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="145.66 -589.15"/>
+    <waypoint847 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="150.66 -589.15"/>
+    <waypoint848 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="155.66 -589.15"/>
+    <waypoint849 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="160.66 -589.15"/>
+    <waypoint850 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="165.66 -589.15"/>
+    <waypoint851 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="170.66 -589.15"/>
+    <waypoint852 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="175.66 -589.15"/>
+    <waypoint853 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="180.66 -589.15"/>
+    <waypoint854 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="185.66 -589.15"/>
+    <waypoint855 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="190.66 -589.15"/>
+    <waypoint856 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="195.66 -589.15"/>
+    <waypoint857 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="200.66 -589.15"/>
+    <waypoint858 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="205.66 -589.15"/>
+    <waypoint859 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="210.66 -589.15"/>
+    <waypoint860 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="215.66 -589.15"/>
+    <waypoint861 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="220.66 -589.15"/>
+    <waypoint862 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="225.66 -589.15"/>
+    <waypoint863 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="230.66 -589.15"/>
+    <waypoint864 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="235.66 -589.15"/>
+    <waypoint865 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="240.66 -589.15"/>
+    <waypoint866 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="245.66 -589.15"/>
+    <waypoint867 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="250.66 -589.15"/>
+    <waypoint868 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="255.66 -589.15"/>
+    <waypoint869 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="260.66 -589.15"/>
+    <waypoint870 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="265.66 -589.15"/>
+    <waypoint871 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="270.66 -589.15"/>
+    <waypoint872 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="275.66 -589.15"/>
+    <waypoint873 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="280.66 -589.15"/>
+    <waypoint874 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="285.66 -589.15"/>
+    <waypoint875 angle="-179.91" generated="true" speed="0" pos="288.63 -589.15" turnstart="1"/>
+    <waypoint876 angle="-90.00" generated="true" speed="0" pos="288.62 -592.15" turnend="1"/>
+    <waypoint877 angle="-90.00" generated="true" speed="0" pos="283.65 -592.15"/>
+    <waypoint878 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="278.65 -592.15"/>
+    <waypoint879 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="273.65 -592.15"/>
+    <waypoint880 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="268.65 -592.15"/>
+    <waypoint881 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="263.65 -592.15"/>
+    <waypoint882 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="258.65 -592.15"/>
+    <waypoint883 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="253.65 -592.15"/>
+    <waypoint884 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="248.65 -592.15"/>
+    <waypoint885 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="243.65 -592.15"/>
+    <waypoint886 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="238.65 -592.15"/>
+    <waypoint887 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="233.65 -592.15"/>
+    <waypoint888 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="228.65 -592.15"/>
+    <waypoint889 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="223.65 -592.15"/>
+    <waypoint890 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="218.65 -592.15"/>
+    <waypoint891 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="213.65 -592.15"/>
+    <waypoint892 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="208.65 -592.15"/>
+    <waypoint893 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="203.65 -592.15"/>
+    <waypoint894 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="198.65 -592.15"/>
+    <waypoint895 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="193.65 -592.15"/>
+    <waypoint896 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="188.65 -592.15"/>
+    <waypoint897 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="183.65 -592.15"/>
+    <waypoint898 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="178.65 -592.15"/>
+    <waypoint899 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="173.65 -592.15"/>
+    <waypoint900 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="168.65 -592.15"/>
+    <waypoint901 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="163.65 -592.15"/>
+    <waypoint902 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="158.65 -592.15"/>
+    <waypoint903 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="153.65 -592.15"/>
+    <waypoint904 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="148.65 -592.15"/>
+    <waypoint905 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="143.65 -592.15"/>
+    <waypoint906 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="138.65 -592.15"/>
+    <waypoint907 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="133.65 -592.15"/>
+    <waypoint908 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="128.65 -592.15"/>
+    <waypoint909 angle="169.24" generated="true" speed="0" pos="125.69 -592.15" turnstart="1"/>
+    <waypoint910 angle="90.00" generated="true" speed="0" pos="126.26 -595.15" turnend="1"/>
+    <waypoint911 angle="90.00" generated="true" speed="0" pos="130.66 -595.15"/>
+    <waypoint912 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="135.66 -595.15"/>
+    <waypoint913 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="140.66 -595.15"/>
+    <waypoint914 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="145.66 -595.15"/>
+    <waypoint915 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="150.66 -595.15"/>
+    <waypoint916 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="155.66 -595.15"/>
+    <waypoint917 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="160.66 -595.15"/>
+    <waypoint918 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="165.66 -595.15"/>
+    <waypoint919 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="170.66 -595.15"/>
+    <waypoint920 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="175.66 -595.15"/>
+    <waypoint921 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="180.66 -595.15"/>
+    <waypoint922 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="185.66 -595.15"/>
+    <waypoint923 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="190.66 -595.15"/>
+    <waypoint924 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="195.66 -595.15"/>
+    <waypoint925 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="200.66 -595.15"/>
+    <waypoint926 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="205.66 -595.15"/>
+    <waypoint927 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="210.66 -595.15"/>
+    <waypoint928 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="215.66 -595.15"/>
+    <waypoint929 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="220.66 -595.15"/>
+    <waypoint930 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="225.66 -595.15"/>
+    <waypoint931 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="230.66 -595.15"/>
+    <waypoint932 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="235.66 -595.15"/>
+    <waypoint933 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="240.66 -595.15"/>
+    <waypoint934 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="245.66 -595.15"/>
+    <waypoint935 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="250.66 -595.15"/>
+    <waypoint936 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="255.66 -595.15"/>
+    <waypoint937 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="260.66 -595.15"/>
+    <waypoint938 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="265.66 -595.15"/>
+    <waypoint939 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="270.66 -595.15"/>
+    <waypoint940 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="275.66 -595.15"/>
+    <waypoint941 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="280.66 -595.15"/>
+    <waypoint942 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="285.66 -595.15"/>
+    <waypoint943 angle="-142.77" generated="true" speed="0" pos="288.61 -595.15" turnstart="1"/>
+    <waypoint944 angle="-90.00" generated="true" speed="0" pos="286.33 -598.15" turnend="1"/>
+    <waypoint945 angle="-90.00" generated="true" speed="0" pos="283.65 -598.15"/>
+    <waypoint946 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="278.65 -598.15"/>
+    <waypoint947 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="273.65 -598.15"/>
+    <waypoint948 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="268.65 -598.15"/>
+    <waypoint949 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="263.65 -598.15"/>
+    <waypoint950 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="258.65 -598.15"/>
+    <waypoint951 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="253.65 -598.15"/>
+    <waypoint952 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="248.65 -598.15"/>
+    <waypoint953 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="243.65 -598.15"/>
+    <waypoint954 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="238.65 -598.15"/>
+    <waypoint955 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="233.65 -598.15"/>
+    <waypoint956 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="228.65 -598.15"/>
+    <waypoint957 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="223.65 -598.15"/>
+    <waypoint958 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="218.65 -598.15"/>
+    <waypoint959 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="213.65 -598.15"/>
+    <waypoint960 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="208.65 -598.15"/>
+    <waypoint961 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="203.65 -598.15"/>
+    <waypoint962 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="198.65 -598.15"/>
+    <waypoint963 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="193.65 -598.15"/>
+    <waypoint964 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="188.65 -598.15"/>
+    <waypoint965 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="183.65 -598.15"/>
+    <waypoint966 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="178.65 -598.15"/>
+    <waypoint967 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="173.65 -598.15"/>
+    <waypoint968 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="168.65 -598.15"/>
+    <waypoint969 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="163.65 -598.15"/>
+    <waypoint970 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="158.65 -598.15"/>
+    <waypoint971 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="153.65 -598.15"/>
+    <waypoint972 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="148.65 -598.15"/>
+    <waypoint973 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="143.65 -598.15"/>
+    <waypoint974 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="138.65 -598.15"/>
+    <waypoint975 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="133.65 -598.15"/>
+    <waypoint976 angle="-90.00" generated="true" ridgemarker="2" speed="0" pos="128.65 -598.15"/>
+    <waypoint977 angle="142.75" generated="true" speed="0" pos="128.54 -598.15" turnstart="1"/>
+    <waypoint978 angle="90.00" generated="true" speed="0" pos="130.82 -601.15" turnend="1"/>
+    <waypoint979 angle="90.00" generated="true" speed="0" pos="135.66 -601.15"/>
+    <waypoint980 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="140.66 -601.15"/>
+    <waypoint981 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="145.66 -601.15"/>
+    <waypoint982 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="150.66 -601.15"/>
+    <waypoint983 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="155.66 -601.15"/>
+    <waypoint984 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="160.66 -601.15"/>
+    <waypoint985 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="165.66 -601.15"/>
+    <waypoint986 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="170.66 -601.15"/>
+    <waypoint987 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="175.66 -601.15"/>
+    <waypoint988 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="180.66 -601.15"/>
+    <waypoint989 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="185.66 -601.15"/>
+    <waypoint990 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="190.66 -601.15"/>
+    <waypoint991 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="195.66 -601.15"/>
+    <waypoint992 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="200.66 -601.15"/>
+    <waypoint993 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="205.66 -601.15"/>
+    <waypoint994 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="210.66 -601.15"/>
+    <waypoint995 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="215.66 -601.15"/>
+    <waypoint996 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="220.66 -601.15"/>
+    <waypoint997 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="225.66 -601.15"/>
+    <waypoint998 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="230.66 -601.15"/>
+    <waypoint999 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="235.66 -601.15"/>
+    <waypoint1000 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="240.66 -601.15"/>
+    <waypoint1001 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="245.66 -601.15"/>
+    <waypoint1002 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="250.66 -601.15"/>
+    <waypoint1003 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="255.66 -601.15"/>
+    <waypoint1004 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="260.66 -601.15"/>
+    <waypoint1005 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="265.66 -601.15"/>
+    <waypoint1006 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="270.66 -601.15"/>
+    <waypoint1007 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="275.66 -601.15"/>
+    <waypoint1008 angle="90.00" generated="true" ridgemarker="1" speed="0" pos="280.66 -601.15"/>
+    <waypoint1009 angle="-127.68" generated="true" speed="0" pos="282.64 -601.15" turnstart="1"/>
+    <waypoint1010 angle="-90.00" generated="true" speed="0" pos="281.09 -602.35" turnend="1"/>
+    <waypoint1011 angle="-90.00" generated="true" speed="0" pos="278.65 -602.35"/>
+    <waypoint1012 angle="-90.00" generated="true" speed="0" pos="273.65 -602.35"/>
+    <waypoint1013 angle="-90.00" generated="true" speed="0" pos="268.65 -602.35"/>
+    <waypoint1014 angle="-90.00" generated="true" speed="0" pos="263.65 -602.35"/>
+    <waypoint1015 angle="-90.00" generated="true" speed="0" pos="258.65 -602.35"/>
+    <waypoint1016 angle="-90.00" generated="true" speed="0" pos="253.65 -602.35"/>
+    <waypoint1017 angle="-90.00" generated="true" speed="0" pos="248.65 -602.35"/>
+    <waypoint1018 angle="-90.00" generated="true" speed="0" pos="243.65 -602.35"/>
+    <waypoint1019 angle="-90.00" generated="true" speed="0" pos="238.65 -602.35"/>
+    <waypoint1020 angle="-90.00" generated="true" speed="0" pos="233.65 -602.35"/>
+    <waypoint1021 angle="-90.00" generated="true" speed="0" pos="228.65 -602.35"/>
+    <waypoint1022 angle="-90.00" generated="true" speed="0" pos="223.65 -602.35"/>
+    <waypoint1023 angle="-90.00" generated="true" speed="0" pos="218.65 -602.35"/>
+    <waypoint1024 angle="-90.00" generated="true" speed="0" pos="213.65 -602.35"/>
+    <waypoint1025 angle="-90.00" generated="true" speed="0" pos="208.65 -602.35"/>
+    <waypoint1026 angle="-90.00" generated="true" speed="0" pos="203.65 -602.35"/>
+    <waypoint1027 angle="-90.00" generated="true" speed="0" pos="198.65 -602.35"/>
+    <waypoint1028 angle="-90.00" generated="true" speed="0" pos="193.65 -602.35"/>
+    <waypoint1029 angle="-90.00" generated="true" speed="0" pos="188.65 -602.35"/>
+    <waypoint1030 angle="-90.00" generated="true" speed="0" pos="183.65 -602.35"/>
+    <waypoint1031 angle="-90.00" generated="true" speed="0" pos="178.65 -602.35"/>
+    <waypoint1032 angle="-90.00" generated="true" speed="0" pos="173.65 -602.35"/>
+    <waypoint1033 angle="-90.00" generated="true" speed="0" pos="168.65 -602.35"/>
+    <waypoint1034 angle="-90.00" generated="true" speed="0" pos="163.65 -602.35"/>
+    <waypoint1035 angle="-90.00" generated="true" speed="0" pos="158.65 -602.35"/>
+    <waypoint1036 angle="-90.00" generated="true" speed="0" pos="153.65 -602.35"/>
+    <waypoint1037 angle="-90.00" generated="true" speed="0" pos="148.65 -602.35"/>
+    <waypoint1038 angle="-90.00" generated="true" speed="0" pos="143.65 -602.35"/>
+    <waypoint1039 angle="-90.00" generated="true" speed="0" pos="138.65 -602.35"/>
+    <waypoint1040 angle="-90.00" generated="true" speed="0" pos="133.65 -602.35" crossing="1" wait="1"/>
+</course>

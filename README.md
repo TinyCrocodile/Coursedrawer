@@ -19,9 +19,14 @@ If you're still ok with this, please remember to post possible issues that you f
 
 Download: [CourseDrawer] (https://github.com/pseudex/Coursedrawer/raw/master/CourseDrawer_v5.zip)
 
-Credits
+If you are a Developer and want to use the Testfiles in the Repo, please run the command 
+" git update-index --skip-worktree TestFiles/ "
+after you cloned the repo. You have then your own copy of  the files withot the changes beeing tracked.
 
-    Pseudex  
+Credits
+    
+    Pseudex
+    TinyCrocodile
 
 Former Developers
 
