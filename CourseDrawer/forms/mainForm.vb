@@ -79,6 +79,14 @@ Public Class mainForm
             'clsCourses.getInstance.selectwp.lastwp
 
             'todo: Neuen Kurs erstellen Fertig machen und dabei neue Checkboxlist nehmen
+            'ToDo: New Feature to make course line
+            'ToDo: new Feature to reduce Waypoint-Count on long lines
+            'ToDo: Enable zooming and paning on mousewheel / middle mouse
+            'ToDo: Paint in MouseMove-Event not in Timer Tick (combined with backbufferd drawing)
+            'ToDo: When creating new Courses make Turn Radius between lines
+            'ToDo: Calculate Correct(Minimal) Region for invalidate
+            'ToDo: Change Cursor on Course hover
+            'ToDo: Make Enum of Drawing operations see 
 
             'Dim crsList As Dictionary(Of String, Boolean)
             'crsList = clsCourses.getInstance.CourseList
@@ -350,6 +358,8 @@ Public Class mainForm
         For Each pair As KeyValuePair(Of String, Boolean) In crsList
             ComboBox1.Items.Add(pair.Key)
         Next
+
+        'ToDo Ordnerauswahl programmieren
     End Sub
 
     Private Sub mainForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -357,6 +367,7 @@ Public Class mainForm
         TBWP_Y.ValidatingType = GetType(Double)
         TBWP_Angle.ValidatingType = GetType(Double)
         TBWP_Speed.ValidatingType = GetType(Double)
+        'ToDo Auf eine anzahl an Stellen runden? 2 zum Beispiel? Wie viele Stellen schreibt CP?
         AddHandler clsWaypoint.SelectionChanged, AddressOf Me.selectionChangedHandler
         AddHandler clsCourse.SelectionChanged, AddressOf Me.selectedCourseChanged
 
@@ -741,6 +752,7 @@ Public Class mainForm
 
         ToolTip1.ToolTipTitle = "Click in area"
         ToolTip1.Show("Click on place you want create new course...", PictureBox1, 5000)
+        'ToDo Neuen Kurs erstellen 
 
     End Sub
 
@@ -748,6 +760,7 @@ Public Class mainForm
         clsCourses.getInstance.deleteSelectedCrs()
         Me.fillCourseList()
         Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+        'ToDo Multiselect programmieren
     End Sub
 
     Private Sub butCalcAngleSel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butCalcAngleSel.Click
@@ -821,10 +834,10 @@ Public Class mainForm
     '    Me.doListChange = True
     'End Sub
 
+    'ToDo Ordner-Strukur aktivieren
 
     Private Sub butZoom_Click(sender As Object, e As EventArgs) Handles butZoom.Click
         butZoom.Checked = Not butZoom.Checked
     End Sub
-
 
 End Class

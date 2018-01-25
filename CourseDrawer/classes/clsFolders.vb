@@ -2,6 +2,7 @@
 ''' Class for collection of folders
 ''' </summary>
 ''' <remarks>Singleton class for wrapping folders</remarks>
+'ToDo Ordner-System umsetzen
 Public Class clsFolders
     Private Shared _folders As List(Of clsFolder)
     Private _seledtedFrs As Integer

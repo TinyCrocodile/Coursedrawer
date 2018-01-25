@@ -12,6 +12,7 @@
         End Get
     End Property
     Public ReadOnly Property PositionScreen As PointF
+        'Test if posible to handle position on screen with graphics.Transform so only real coordinates are used
         Get
             Dim point As New PointF
             Single.TryParse(_Pos_X, point.X)
@@ -106,6 +107,7 @@
     ''' <remarks></remarks>
     Sub New()
         If mapSize.IsEmpty = True Then
+            'ToDo Is this the problem of 4x maps see Coursedrawer original? 
             mapSize = New Size(2048, 2048)
         End If
         AddHandler clsWaypoint.SelectionChanged, AddressOf Me.SelectionChangedHandler

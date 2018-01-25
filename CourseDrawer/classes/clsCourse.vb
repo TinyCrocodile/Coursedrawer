@@ -1,5 +1,7 @@
 ﻿Public Class clsCourse
 
+    'ToDo Multiselect
+
     Friend folder As Object
 
     Public Shared Event SelectionChanged(ByRef course As clsCourse)
@@ -16,6 +18,7 @@
     Public Property changed As Boolean = False
 
     Private Structure Rechteck
+        'ToDo Warum nicht Rect verwenden?
         Dim left As Integer
         Dim right As Integer
         Dim top As Integer
@@ -214,6 +217,7 @@
     ''' <param name="zoomLvl"></param>
     ''' <remarks></remarks>
     Public Sub draw(ByRef graphic As Graphics, ByVal zoomLvl As Integer)
+        'ToDo Draw doublebuffered handle zooming and paning by grapics.transform matrix
         Dim waypoint As clsWaypoint
         Dim dr_points() As PointF
         Dim idx As Integer
@@ -228,6 +232,7 @@
         Next
         'path
         If Me.isSelected = True Then
+            'ToDo Keep pens global not create this pens at every usage
             pen = New Pen(Brushes.Blue, 2)
         Else
             pen = New Pen(Brushes.DarkBlue)
@@ -270,6 +275,7 @@
             pen = New Pen(Brushes.OrangeRed, 0.1)
             graphic.DrawEllipse(pen, dr_point.X - diameter, dr_point.Y - diameter, diameter * 2, diameter * 2)
         End If
+        'ToDo New guiding-circle with tangent to course
     End Sub
     ''' <summary>
     ''' Select waypoint at point
@@ -352,6 +358,7 @@
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub deleteSelectedWP()
+        'ToDo Multiselect fähig machen
         Dim idx As Integer = Me._selectedWP
         If Me._selectedWP >= 0 Then
             Me._waypoints.RemoveAt(Me._selectedWP)
@@ -385,6 +392,7 @@
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub appendWP()
+        'ToDo Make new Waypoint in direction of last course waypoint
         Me._waypoints.Add(Me._waypoints(Me._waypoints.Count - 1).Clone)
         clsWaypoint.forceUnselect()
         _waypoints(Me._waypoints.Count - 1).forceSelect()
@@ -574,6 +582,8 @@
     ''' Dieses kann zum bestimmen des Bereiches genutzt werden, der neu gezeichnet werden muss
     ''' </summary>
     ''' <returns>Rechteck als Rectangle</returns>
+    'ToDo DrawingArea verwenden
+    'ToDo Simplify if possible
     Public Function DrawingArea(Zoom As Integer) As Rectangle
 
         Dim oRechteck As Rechteck

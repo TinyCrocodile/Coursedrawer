@@ -2,6 +2,8 @@
 ''' Class for collection of folders
 ''' </summary>
 ''' <remarks>Singleton class for wrapping folders</remarks>
+''' 
+'ToDo this is a duplicate of clsFolders. Make it a settings class
 Public Class clsSettings
 
     Public Property CPHposX As Double = 0.472291
