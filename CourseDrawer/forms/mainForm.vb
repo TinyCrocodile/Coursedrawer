@@ -1,5 +1,12 @@
 ﻿Imports CourseDrawer
 
+Public Enum MapSize As Integer
+    'ad new sizes if needed the combobox should be filled by System.Enum.GetNames(GetType(MapSize)) in Form.Designer
+    Normal = 2048
+    Quadruple = 4096
+    Octuple = 8192
+End Enum
+
 Public Class mainForm
     Const zoomStep As Integer = 50
     Dim zoomLvl As Integer = 50
@@ -20,6 +27,7 @@ Public Class mainForm
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub butLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butLoadBGImage.Click
+
         Dim filename As String
         Dim mapdds As System.Drawing.Bitmap
         OpenFileDialog1.FileName = IO.Path.GetFileName(My.Settings("MapPath").ToString)
@@ -38,28 +46,32 @@ Public Class mainForm
         Me.PictureBox1.SizeMode = PictureBoxSizeMode.AutoSize
         Me.PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         Me.panel1.AutoScrollPosition = New Point(0, 0)
-        clsWaypoint.mapSize = Me.PictureBox1.Image.Size
         initBackgroundImage()
+
     End Sub
 
     Private Sub initBackgroundImage()
-        'ToDo Show MapSize Somewhere
+
         Dim locSize As Drawing.Size
-        If PictureBox1.Image Is Nothing Then
-            locSize = New Size(2048, 2048)
-        Else
-            locSize = PictureBox1.Image.Size
-        End If
-        zoomLvl = 100
 
-        locSize.Width = locSize.Width * zoomLvl / 100
-        locSize.Height = locSize.Height * zoomLvl / 100
-        PictureBox1.Size = locSize
-        Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+        Try
+            If PictureBox1.Image Is Nothing Then
+                MapSizeSelector.Enabled = True
+                locSize = New Size(System.Enum.Parse(GetType(MapSize), MapSizeSelector.Text), System.Enum.Parse(GetType(MapSize), MapSizeSelector.Text))
+            Else
+                locSize = PictureBox1.Image.Size
+                MapSizeSelector.Text = System.Enum.Parse(GetType(MapSize), locSize.Width.ToString).ToString
+                MapSizeSelector.Enabled = False
+            End If
+            zoomLvl = 100
+            PictureBox1.Size = locSize
+            clsWaypoint.mapSize = locSize
+            Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
 
+        Catch ex As Exception
+            Debug.Print(ex.Message & " " & ex.TargetSite.ToString)
+        End Try
     End Sub
-
-
 
     ''' <summary>
     ''' Do things                                                                             
@@ -121,14 +133,10 @@ Public Class mainForm
             ToolTip1.RemoveAll()
 
         ElseIf butZoom.Checked = True Then
-            If PictureBox1.Image Is Nothing Then
-                locSize = New Size(2048, 2048)
-            Else
-                locSize = PictureBox1.Image.Size
-            End If
+
+            locSize = clsWaypoint.mapSize
 
             'ToDo: Show ZoomFactor somewhere 
-            'ToDo: Show MapSize somewhere
 
             'Picture size (zoom)
             If ev.Button = Windows.Forms.MouseButtons.Left Then
@@ -393,7 +401,7 @@ Public Class mainForm
         Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
         strVersion = Version.Major & "." & Version.Minor & "." & Version.Revision
         Me.Text = "CourseDrawer " & Version.ToString()
-
+        initBackgroundImage()
 
         ms.Dispose()
 
@@ -854,4 +862,7 @@ Public Class mainForm
         butZoom.Checked = Not butZoom.Checked
     End Sub
 
+    Private Sub MapSizeSelector_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MapSizeSelector.SelectedIndexChanged
+        initBackgroundImage()
+    End Sub
 End Class

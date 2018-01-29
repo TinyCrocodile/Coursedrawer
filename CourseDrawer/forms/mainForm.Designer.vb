@@ -47,6 +47,9 @@ Partial Class mainForm
         Me.butNewCourse = New System.Windows.Forms.ToolStripButton()
         Me.butDelCourse = New System.Windows.Forms.ToolStripButton()
         Me.butRecalcAngleCrs = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabelMapSize = New System.Windows.Forms.ToolStripLabel()
+        Me.MapSizeSelector = New System.Windows.Forms.ToolStripComboBox()
         Me.panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TimerDragPicture = New System.Windows.Forms.Timer(Me.components)
@@ -96,7 +99,7 @@ Partial Class mainForm
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butSaveGame, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butSaveGame, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1132, 39)
@@ -227,19 +230,19 @@ Partial Class mainForm
         'Distance5ToolStripMenuItem
         '
         Me.Distance5ToolStripMenuItem.Name = "Distance5ToolStripMenuItem"
-        Me.Distance5ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.Distance5ToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
         Me.Distance5ToolStripMenuItem.Text = "Distance 5"
         '
         'Distance10ToolStripMenuItem
         '
         Me.Distance10ToolStripMenuItem.Name = "Distance10ToolStripMenuItem"
-        Me.Distance10ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.Distance10ToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
         Me.Distance10ToolStripMenuItem.Text = "Distance 10"
         '
         'Distance20ToolStripMenuItem
         '
         Me.Distance20ToolStripMenuItem.Name = "Distance20ToolStripMenuItem"
-        Me.Distance20ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.Distance20ToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
         Me.Distance20ToolStripMenuItem.Text = "Distance 20"
         '
         'ToolStripSeparator3
@@ -294,6 +297,25 @@ Partial Class mainForm
         Me.butRecalcAngleCrs.Size = New System.Drawing.Size(36, 36)
         Me.butRecalcAngleCrs.Text = "Recalc directions"
         Me.butRecalcAngleCrs.ToolTipText = "Recalc selected course directions"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 39)
+        '
+        'ToolStripLabelMapSize
+        '
+        Me.ToolStripLabelMapSize.Name = "ToolStripLabelMapSize"
+        Me.ToolStripLabelMapSize.Size = New System.Drawing.Size(53, 36)
+        Me.ToolStripLabelMapSize.Text = "Map size"
+        '
+        'MapSizeSelector
+        '
+        Me.MapSizeSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.MapSizeSelector.Name = "MapSizeSelector"
+        Me.MapSizeSelector.Size = New System.Drawing.Size(121, 39)
+        Me.MapSizeSelector.ComboBox.DataSource = System.Enum.GetNames(GetType(MapSize))
+        Me.MapSizeSelector.ToolTipText = "Select map size when no map image is loaded."
         '
         'panel1
         '
@@ -729,4 +751,7 @@ Partial Class mainForm
     Friend WithEvents ClsCourseBindingSource As BindingSource
     Friend WithEvents ClsCourseBindingSource1 As BindingSource
     Friend WithEvents CrsList As crsListItems
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
+    Friend WithEvents MapSizeSelector As ToolStripComboBox
+    Friend WithEvents ToolStripLabelMapSize As ToolStripLabel
 End Class

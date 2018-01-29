@@ -4,6 +4,8 @@
     Private Shared _isAnySelected As Boolean
     Public Shared Property mapSize As Size
 
+
+
     Public ReadOnly Property PositionWorld As PointF
         Get
             Dim point As New PointF
@@ -14,7 +16,7 @@
     End Property
 
     Public ReadOnly Property PositionScreen As PointF
-        'Test if posible to handle position on screen with graphics.Transform so only real coordinates are used
+        'Test if posible to handle position on screen with graphics.Transform so only realworld coordinates are used
         Get
             Dim point As New PointF
             Single.TryParse(_Pos_X, point.X)
@@ -26,6 +28,7 @@
     End Property
 
     Public ReadOnly Property PositionScreenDraw(ByVal zoomLvl As Integer) As PointF
+        'Test if posible to handle position on screen with graphics.Transform so only realworld coordinates are used
         Get
             Dim point As New PointF
             Single.TryParse(_Pos_X, point.X)
@@ -110,7 +113,6 @@
     ''' <remarks></remarks>
     Sub New()
         If mapSize.IsEmpty = True Then
-            'ToDo Is this the problem of 4x maps see Coursedrawer Pseudex master Issue #6? 
             mapSize = New Size(2048, 2048)
         End If
         AddHandler clsWaypoint.SelectionChanged, AddressOf Me.SelectionChangedHandler
