@@ -14,7 +14,7 @@ Public Class mainForm
     Dim debugRect As Rectangle
 
     ''' <summary>
-    ''' Loads bitmap as background
+    ''' Loads bitmap as map 
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
@@ -43,7 +43,7 @@ Public Class mainForm
     End Sub
 
     Private Sub initBackgroundImage()
-
+        'ToDo Show MapSize Somewhere
         Dim locSize As Drawing.Size
         If PictureBox1.Image Is Nothing Then
             locSize = New Size(2048, 2048)
@@ -56,6 +56,7 @@ Public Class mainForm
         locSize.Height = locSize.Height * zoomLvl / 100
         PictureBox1.Size = locSize
         Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+
     End Sub
 
 
@@ -86,7 +87,14 @@ Public Class mainForm
             'ToDo: When creating new Courses make Turn Radius between lines
             'ToDo: Calculate Correct(Minimal) Region for invalidate
             'ToDo: Change Cursor on Course hover
-            'ToDo: Make Enum of Drawing operations see 
+            'ToDo: Make Enum of Drawing operations see https://www.codeproject.com/Tips/1223125/Resize-and-rotate-shapes-in-GDIplus
+            'ToDo: Snap CourseSegments Horizontal and Vertical
+            'ToDo: Snap CourseSegment to Radius
+            'ToDo: Choose witch course to select, when multiple Waypoints overlap
+            'ToDo: Remove all leftovers of CheckedListBox1(assuming this is old Listbox) in code 
+            'ToDo: Implement Contextmenu for Courseactions
+            'ToDo: New feature for joining and splitting Courses
+
 
             'Dim crsList As Dictionary(Of String, Boolean)
             'crsList = clsCourses.getInstance.CourseList
@@ -119,6 +127,9 @@ Public Class mainForm
                 locSize = PictureBox1.Image.Size
             End If
 
+            'ToDo: Show ZoomFactor somewhere 
+            'ToDo: Show MapSize somewhere
+
             'Picture size (zoom)
             If ev.Button = Windows.Forms.MouseButtons.Left Then
                 If zoomLvl < 4000 Then
@@ -131,6 +142,7 @@ Public Class mainForm
                     zoomLvl -= zoomStep
                 Else
                     'MsgBox("min level reached")
+                    'Just show the actual zoomfactor permanent
                 End If
             ElseIf ev.Button = Windows.Forms.MouseButtons.Middle Then
                 zoomLvl = 50
@@ -140,6 +152,7 @@ Public Class mainForm
             PictureBox1.Size = locSize
 
             'Picture location (center on click spot)
+            'ToDo Picture location on mouse position not centering
             Dim posOffset As New Point((origPoint.X * zoomLvl / 100) - (panel1.Size.Width / 2), (origPoint.Y * zoomLvl / 100) - (panel1.Size.Height / 2))
             panel1.AutoScrollPosition = posOffset
         ElseIf butSelect.Checked = True Then
@@ -283,7 +296,6 @@ Public Class mainForm
 
     Private Sub fillCourseList()
 
-
         'Dim crsList As Dictionary(Of String, Boolean)
         'crsList = clsCourses.getInstance.CourseList
         'Me.CheckedListBox1.Items.Clear()
@@ -296,6 +308,7 @@ Public Class mainForm
             Me.CrsList.createCourse(crs.Name, crs, False)
         Next
 
+        'generate Tooltip
         Dim strInfo As String
 
         For Each crsListItem In CrsList.crsListItems
@@ -309,6 +322,7 @@ Public Class mainForm
             strInfo &= Environment.NewLine & "Filename: " & Path.GetFileName(crs.sFileName)
             ToolTip1.SetToolTip(crsListItem.Label_Checkbox, strInfo)
         Next
+
 
         'eventhandler registrieren
         AddHandler Me.CrsList.CourseVisibilityChanged, AddressOf CourseVisibilityChanged

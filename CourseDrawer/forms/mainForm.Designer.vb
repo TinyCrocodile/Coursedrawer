@@ -48,7 +48,6 @@ Partial Class mainForm
         Me.butDelCourse = New System.Windows.Forms.ToolStripButton()
         Me.butRecalcAngleCrs = New System.Windows.Forms.ToolStripButton()
         Me.panel1 = New System.Windows.Forms.Panel()
-        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TimerDragPicture = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
@@ -228,19 +227,19 @@ Partial Class mainForm
         'Distance5ToolStripMenuItem
         '
         Me.Distance5ToolStripMenuItem.Name = "Distance5ToolStripMenuItem"
-        Me.Distance5ToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.Distance5ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.Distance5ToolStripMenuItem.Text = "Distance 5"
         '
         'Distance10ToolStripMenuItem
         '
         Me.Distance10ToolStripMenuItem.Name = "Distance10ToolStripMenuItem"
-        Me.Distance10ToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.Distance10ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.Distance10ToolStripMenuItem.Text = "Distance 10"
         '
         'Distance20ToolStripMenuItem
         '
         Me.Distance20ToolStripMenuItem.Name = "Distance20ToolStripMenuItem"
-        Me.Distance20ToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.Distance20ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.Distance20ToolStripMenuItem.Text = "Distance 20"
         '
         'ToolStripSeparator3
@@ -302,22 +301,11 @@ Partial Class mainForm
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panel1.AutoScroll = True
-        Me.panel1.Controls.Add(Me.CheckedListBox1)
         Me.panel1.Controls.Add(Me.PictureBox1)
         Me.panel1.Location = New System.Drawing.Point(0, 42)
         Me.panel1.Name = "panel1"
         Me.panel1.Size = New System.Drawing.Size(959, 475)
         Me.panel1.TabIndex = 2
-        '
-        'CheckedListBox1
-        '
-        Me.CheckedListBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Location = New System.Drawing.Point(4019, 29)
-        Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(157, 4834)
-        Me.CheckedListBox1.TabIndex = 3
         '
         'PictureBox1
         '
@@ -558,9 +546,9 @@ Partial Class mainForm
         '
         'TBCrs_Name
         '
-        Me.TBCrs_Name.Location = New System.Drawing.Point(42, 29)
+        Me.TBCrs_Name.Location = New System.Drawing.Point(40, 29)
         Me.TBCrs_Name.Name = "TBCrs_Name"
-        Me.TBCrs_Name.Size = New System.Drawing.Size(112, 20)
+        Me.TBCrs_Name.Size = New System.Drawing.Size(114, 20)
         Me.TBCrs_Name.TabIndex = 3
         '
         'Label7
@@ -584,9 +572,9 @@ Partial Class mainForm
         'TBCrs_ID
         '
         Me.TBCrs_ID.Enabled = False
-        Me.TBCrs_ID.Location = New System.Drawing.Point(41, 5)
+        Me.TBCrs_ID.Location = New System.Drawing.Point(40, 5)
         Me.TBCrs_ID.Name = "TBCrs_ID"
-        Me.TBCrs_ID.Size = New System.Drawing.Size(112, 20)
+        Me.TBCrs_ID.Size = New System.Drawing.Size(114, 20)
         Me.TBCrs_ID.TabIndex = 1
         Me.TBCrs_ID.Text = "0"
         '
@@ -645,15 +633,15 @@ Partial Class mainForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1132, 538)
-        Me.Controls.Add(Me.CrsList)
         Me.Controls.Add(Me.butCrsDown)
         Me.Controls.Add(Me.butCrsUp)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.butSelectAll)
         Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.panel1)
         Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.CrsList)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "mainForm"
         Me.Text = "CourseDrawer"
@@ -689,7 +677,6 @@ Partial Class mainForm
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents butSelect As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
-    Friend WithEvents CheckedListBox1 As System.Windows.Forms.CheckedListBox
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents TBWP_X As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label

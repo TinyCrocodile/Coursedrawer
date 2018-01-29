@@ -3,6 +3,7 @@
     Public Shared Event SelectionChanged(ByRef wp As clsWaypoint)
     Private Shared _isAnySelected As Boolean
     Public Shared Property mapSize As Size
+
     Public ReadOnly Property PositionWorld As PointF
         Get
             Dim point As New PointF
@@ -11,6 +12,7 @@
             Return point
         End Get
     End Property
+
     Public ReadOnly Property PositionScreen As PointF
         'Test if posible to handle position on screen with graphics.Transform so only real coordinates are used
         Get
@@ -22,6 +24,7 @@
             Return point
         End Get
     End Property
+
     Public ReadOnly Property PositionScreenDraw(ByVal zoomLvl As Integer) As PointF
         Get
             Dim point As New PointF
@@ -107,7 +110,7 @@
     ''' <remarks></remarks>
     Sub New()
         If mapSize.IsEmpty = True Then
-            'ToDo Is this the problem of 4x maps see Coursedrawer original? 
+            'ToDo Is this the problem of 4x maps see Coursedrawer Pseudex master Issue #6? 
             mapSize = New Size(2048, 2048)
         End If
         AddHandler clsWaypoint.SelectionChanged, AddressOf Me.SelectionChangedHandler
