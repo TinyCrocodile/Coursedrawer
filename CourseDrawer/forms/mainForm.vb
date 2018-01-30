@@ -16,6 +16,7 @@ Public Class mainForm
     Dim selectedCrs As clsCourse
     Dim selectedCrsItem As crsListItem
     Dim myZoomCursor As Cursor
+    Dim myGrabbingCursor As Cursor
     Dim doListChange As Boolean = False
     Dim firstDraw As Boolean = False
     Dim debugRect As Rectangle
@@ -172,6 +173,7 @@ Public Class mainForm
     Private Sub PictureBox1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseDown
         If butMove.Checked = True Then
             myMousePos = Cursor.Position
+            Me.Cursor = myGrabbingCursor
             TimerDragPicture.Enabled = True
         End If
         If butSelect.Checked = True Then
@@ -192,6 +194,8 @@ Public Class mainForm
         If butMove.Checked = True Then
             Dim newOffset As New Point(-Me.panel1.AutoScrollPosition.X - (newMousePos.X - myMousePos.X), -Me.panel1.AutoScrollPosition.Y - (newMousePos.Y - myMousePos.Y))
             Me.panel1.AutoScrollPosition = newOffset
+            Me.Cursor = myZoomCursor
+
         End If
         If butSelect.Checked = True And Not Me.selectedWP Is Nothing Then
             Dim invRange As Single
@@ -220,6 +224,7 @@ Public Class mainForm
 
     Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseUp
         If TimerDragPicture.Enabled = True Then TimerDragPicture.Enabled = False
+        Me.Cursor = DefaultCursor
         Me.firstDraw = True
         Try
             'Me.PictureBox1.Invalidate(selectedCrs.DrawingArea)
@@ -395,7 +400,8 @@ Public Class mainForm
 
         Dim ms As New System.IO.MemoryStream(My.Resources.magnify)
         myZoomCursor = New Cursor(ms)
-
+        ms = New System.IO.MemoryStream(My.Resources.grabbing)
+        myGrabbingCursor = New Cursor(ms)
         Dim Version As system.version
         Dim strVersion As String
         Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
@@ -433,7 +439,7 @@ Public Class mainForm
         If Me.butNewCourse.Checked = True Then
             Me.Cursor = Cursors.Arrow
         ElseIf Me.butMove.Checked = True Then
-            Me.Cursor = Cursors.Hand
+            Me.Cursor = myGrabbingCursor
         ElseIf Me.butZoom.Checked = True Then
             'Cursor = Cursors.SizeAll
             Me.Cursor = myZoomCursor

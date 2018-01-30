@@ -299,7 +299,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="lib\DevIL.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -311,7 +310,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\grab.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grabbing.cur" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo Copy DevIL libs
