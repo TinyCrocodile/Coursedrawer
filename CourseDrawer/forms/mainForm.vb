@@ -93,21 +93,23 @@ Public Class mainForm
             'clsCourses.getInstance.selectwp.lastwp
 
             'todo: Neuen Kurs erstellen Fertig machen und dabei neue Checkboxlist nehmen
-            'ToDo: New Feature to make course line
-            'ToDo: new Feature to reduce Waypoint-Count on long lines
+            'ToDo: New Feature to alingn Waypoints.(Maybe a combo of deleting Waypoints and inserting new ones would do the job)
+            'ToDo: new Feature to reduce Waypoint-Count on long courses.(Maybe a combo of deleting Waypoints and inserting new ones would do the job) finde out if cp has a limit of max. waypoint distance.
             'ToDo: Enable zooming and paning on mousewheel / middle mouse
             'ToDo: Paint in MouseMove-Event not in Timer Tick (combined with backbufferd drawing)
+            'ToDo: Only use mouse difference to move the Waypoint. Do not move the Waypoint center to the Mouseposition
             'ToDo: When creating new Courses make Turn Radius between lines
             'ToDo: Calculate Correct(Minimal) Region for invalidate
             'ToDo: Change Cursor on Course hover
+            'ToDo: Handle Selection if multiple Waypoints are on the same point
             'ToDo: Make Enum of Drawing operations see https://www.codeproject.com/Tips/1223125/Resize-and-rotate-shapes-in-GDIplus
             'ToDo: Snap CourseSegments Horizontal and Vertical
-            'ToDo: Snap CourseSegment to Radius
+            'ToDo: Snap CourseSegment to Circle
             'ToDo: Choose witch course to select, when multiple Waypoints overlap
             'ToDo: Remove all leftovers of CheckedListBox1(assuming this is old Listbox) in code 
             'ToDo: Implement Contextmenu for Courseactions
             'ToDo: New feature for joining and splitting Courses
-
+            'ToDo: Use WinGup for providing Updates to the Application
 
             'Dim crsList As Dictionary(Of String, Boolean)
             'crsList = clsCourses.getInstance.CourseList
@@ -137,7 +139,7 @@ Public Class mainForm
 
             locSize = clsWaypoint.mapSize
 
-            'ToDo: Show ZoomFactor somewhere 
+            'ToDo: Show ZoomFactor somewhere (Maybe in the Toolstrip)
 
             'Picture size (zoom)
             If ev.Button = Windows.Forms.MouseButtons.Left Then
@@ -869,6 +871,8 @@ Public Class mainForm
     End Sub
 
     Private Sub MapSizeSelector_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MapSizeSelector.SelectedIndexChanged
+        'ToDo: Teste Map Size Selector
         initBackgroundImage()
     End Sub
+
 End Class

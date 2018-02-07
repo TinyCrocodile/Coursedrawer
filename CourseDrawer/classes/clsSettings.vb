@@ -1,9 +1,10 @@
 ﻿''' <summary>
-''' Class for collection of folders
+''' Class for CP-Settings
 ''' </summary>
-''' <remarks>Singleton class for wrapping folders</remarks>
+''' <remarks>Singleton class for Settings</remarks>
 ''' 
-'ToDo this is a duplicate of clsFolders. Make it a settings class
+
+'ToDo: Settings implementation
 Public Class clsSettings
 
     Public Property CPHposX As Double = 0.472291
