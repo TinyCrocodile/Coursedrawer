@@ -7,33 +7,18 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CourseDrawer", "CourseDrawe
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		CD_ROM|Any CPU = CD_ROM|Any CPU
-		CD_ROM|x86 = CD_ROM|x86
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
-		DVD-5|Any CPU = DVD-5|Any CPU
-		DVD-5|x86 = DVD-5|x86
 		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
-		SingleImage|Any CPU = SingleImage|Any CPU
-		SingleImage|x86 = SingleImage|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.CD_ROM|Any CPU.ActiveCfg = Release|x86
-		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.CD_ROM|x86.ActiveCfg = Release|x86
-		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.CD_ROM|x86.Build.0 = Release|x86
 		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.Debug|x86.ActiveCfg = Debug|x86
 		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.Debug|x86.Build.0 = Debug|x86
-		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.DVD-5|Any CPU.ActiveCfg = Debug|x86
-		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.DVD-5|x86.ActiveCfg = Debug|x86
-		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.DVD-5|x86.Build.0 = Debug|x86
 		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.Release|Any CPU.ActiveCfg = Release|x86
 		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.Release|x86.ActiveCfg = Release|x86
 		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.Release|x86.Build.0 = Release|x86
-		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.SingleImage|Any CPU.ActiveCfg = Release|x86
-		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.SingleImage|x86.ActiveCfg = Release|x86
-		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.SingleImage|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
