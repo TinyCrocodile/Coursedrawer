@@ -638,7 +638,6 @@ Partial Class mainForm
         Me.CrsList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.CrsList.Location = New System.Drawing.Point(966, 44)
         Me.CrsList.Name = "CrsList"
-        Me.CrsList.SelectedCrsListItem = Nothing
         Me.CrsList.Size = New System.Drawing.Size(156, 153)
         Me.CrsList.TabIndex = 10
         '
