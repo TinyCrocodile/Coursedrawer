@@ -16,6 +16,7 @@ Public Class mainForm
     Dim selectedCrs As clsCourse
     Dim selectedCrsItem As crsListItem
     Dim myZoomCursor As Cursor
+    Dim myGrabCursor As Cursor
     Dim myGrabbingCursor As Cursor
     Dim doListChange As Boolean = False
     Dim firstDraw As Boolean = False
@@ -31,13 +32,13 @@ Public Class mainForm
 
         Dim filename As String
         Dim mapdds As System.Drawing.Bitmap
-        OpenFileDialog1.FileName = IO.Path.GetFileName(My.Settings("MapPath").ToString)
-        OpenFileDialog1.InitialDirectory = IO.Path.GetDirectoryName(My.Settings("MapPath").ToString)
+        OpenFileDialog1.FileName = IO.Path.GetFileName(My.Settings.MapPath)
+        OpenFileDialog1.InitialDirectory = IO.Path.GetDirectoryName(My.Settings.MapPath)
         OpenFileDialog1.Filter = "DDS picture|*.dds"
         OpenFileDialog1.Filter += "|BMP picture|*.bmp"
         If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
             filename = OpenFileDialog1.FileName
-            My.Settings("MapPath") = filename
+            My.Settings.MapPath = filename
         Else
             Exit Sub
         End If
@@ -194,9 +195,9 @@ Public Class mainForm
         Dim newMousePos As Point = Cursor.Position
 
         If butMove.Checked = True Then
+
             Dim newOffset As New Point(-Me.panel1.AutoScrollPosition.X - (newMousePos.X - myMousePos.X), -Me.panel1.AutoScrollPosition.Y - (newMousePos.Y - myMousePos.Y))
             Me.panel1.AutoScrollPosition = newOffset
-            Me.Cursor = myZoomCursor
 
         End If
         If butSelect.Checked = True And Not Me.selectedWP Is Nothing Then
@@ -226,7 +227,7 @@ Public Class mainForm
 
     Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseUp
         If TimerDragPicture.Enabled = True Then TimerDragPicture.Enabled = False
-        Me.Cursor = DefaultCursor
+        If butMove.Checked Then Me.Cursor = myGrabCursor
         Me.firstDraw = True
         Try
             'Me.PictureBox1.Invalidate(selectedCrs.DrawingArea)
@@ -402,9 +403,12 @@ Public Class mainForm
 
         Dim ms As New System.IO.MemoryStream(My.Resources.magnify)
         myZoomCursor = New Cursor(ms)
+        ms = New System.IO.MemoryStream(My.Resources.grab)
+        myGrabCursor = New Cursor(ms)
         ms = New System.IO.MemoryStream(My.Resources.grabbing)
         myGrabbingCursor = New Cursor(ms)
-        Dim Version As system.version
+
+        Dim Version As System.Version
         Dim strVersion As String
         Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
         strVersion = Version.Major & "." & Version.Minor & "." & Version.Revision
@@ -441,9 +445,8 @@ Public Class mainForm
         If Me.butNewCourse.Checked = True Then
             Me.Cursor = Cursors.Arrow
         ElseIf Me.butMove.Checked = True Then
-            Me.Cursor = myGrabbingCursor
+            Me.Cursor = myGrabCursor
         ElseIf Me.butZoom.Checked = True Then
-            'Cursor = Cursors.SizeAll
             Me.Cursor = myZoomCursor
         Else
             Me.Cursor = Cursors.Arrow
