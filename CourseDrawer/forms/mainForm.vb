@@ -1,4 +1,5 @@
-﻿Imports CourseDrawer
+﻿Imports System.ComponentModel
+Imports CourseDrawer
 
 Public Enum MapSize As Integer
     'ad new sizes if needed the combobox should be filled by System.Enum.GetNames(GetType(MapSize)) in Form.Designer
@@ -129,7 +130,7 @@ Public Class mainForm
             Me.butLoadBGImage.Enabled = True
             Me.butNewCourse.Checked = False
             Me.butSave.Enabled = True
-            Me.butSaveGame.Enabled = True
+            Me.butLoadCourse.Enabled = True
             Me.butSelect.Enabled = True
             Me.butZoom.Enabled = True
             Me.butMove.Enabled = True
@@ -276,17 +277,18 @@ Public Class mainForm
 
     End Sub
 
-    Private Sub butSaveGame_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butSaveGame.Click
+    Private Sub butLoadCourse_Click(ByVal sender As Object, ByVal e As EventArgs) Handles butLoadCourse.Click
+        'ToDo: Rename butLoadCourse to butLoadCourse
         Dim filename As String
         ToolStripStatusLabel1.Text = "Open File"
-        OpenFileDialog1.FileName = IO.Path.GetFileName(My.Settings("SavePath").ToString)
+        OpenFileDialog1.FileName = IO.Path.GetFileName(My.Settings.SavePath)
 
         OpenFileDialog1.AutoUpgradeEnabled = False
-        OpenFileDialog1.InitialDirectory = IO.Path.GetDirectoryName(My.Settings("SavePath").ToString)
+        OpenFileDialog1.InitialDirectory = IO.Path.GetDirectoryName(My.Settings.SavePath)
         OpenFileDialog1.Filter = "XML files|courseManager.xml"
         If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
             filename = OpenFileDialog1.FileName
-            My.Settings("SavePath") = filename
+            My.Settings.SavePath = filename
         Else
             Exit Sub
         End If
@@ -294,18 +296,21 @@ Public Class mainForm
         Me.ToolStripProgressBar1.Value = 10
         ToolStripStatusLabel1.Text = "Loading..."
         clsCourseManager.getInstance(xmlFile:=filename, forceNew:=True)
-        Me.ToolStripProgressBar1.Value = 20
+        Me.ToolStripProgressBar1.Value = 33
         ToolStripStatusLabel1.Text = "Loading...Folders"
         clsFolders.getInstance(True).ReadXML(filename)
         Me.fillFolderList()
-        Me.ToolStripProgressBar1.Value = 30
+        Me.ToolStripProgressBar1.Value = 66
         ToolStripStatusLabel1.Text = "Loading...Courses"
         clsCourses.getInstance(Courses:=clsCourseManager.getCourses, forceNew:=True)
         Me.fillCourseList()
-        Me.ToolStripProgressBar1.Value = 40
-        ToolStripStatusLabel1.Text = "Loading...Settings"
-        clsSettings.getInstance(True).ReadXML(filename)
-        Me.Cursor = Cursors.Default
+
+        'ToDo: Implement Settings and load settings xml in its own button Proc 
+        '      Copy this code to the new Settings Open button
+        '      Finish clsSettings Class
+        'ToolStripStatusLabel1.Text = "Loading...Settings"
+        'clsSettings.getInstance(True).ReadXML(filename)
+        'Me.Cursor = Cursors.Default
         Me.ToolStripProgressBar1.Value = 100
         ToolStripStatusLabel1.Text = ""
     End Sub
@@ -326,15 +331,21 @@ Public Class mainForm
 
         'generate Tooltip
         Dim strInfo As String
+        Dim buffFolder As clsFolder
 
         For Each crsListItem In CrsList.crsListItems
             crs = crsListItem.AttachedObject
             strInfo = "Id: " & crs.id
             strInfo &= Environment.NewLine & "Name: " & crs.Name
-            Try
-                strInfo &= Environment.NewLine & "Folder: " & clsFolders.getInstance().getFolder(crs.parent).Name
-            Catch ex As Exception
-            End Try
+
+            buffFolder = clsFolders.getFolder(crs.parent)
+            If buffFolder Is Nothing Then
+                strInfo &= Environment.NewLine & "Folder: Root"
+            Else
+                strInfo &= Environment.NewLine & "Folder: " & buffFolder.Name
+                buffFolder = Nothing
+            End If
+
             strInfo &= Environment.NewLine & "Filename: " & Path.GetFileName(crs.sFileName)
             ToolTip1.SetToolTip(crsListItem.Label_Checkbox, strInfo)
         Next
@@ -766,7 +777,6 @@ Public Class mainForm
         If selectedCrs Is Nothing Then Exit Sub
         selectedCrs.Name = TBCrs_Name.Text
         CrsList.SelectedCrsListItem.CourseName = selectedCrs.Name
-        'Me.CheckedListBox1.Items(selectedCrs.listIndex) = Strings.Right("000" & selectedCrs.id.ToString, 3) & " : " & selectedCrs.Name
     End Sub
 
     Private Sub butNewCourse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butNewCourse.Click
@@ -779,7 +789,7 @@ Public Class mainForm
         Me.butLoadBGImage.Enabled = False
         Me.butMove.Enabled = False
         Me.butSave.Enabled = False
-        Me.butSaveGame.Enabled = False
+        Me.butLoadCourse.Enabled = False
         Me.butSelect.Enabled = False
         Me.butZoom.Enabled = False
 

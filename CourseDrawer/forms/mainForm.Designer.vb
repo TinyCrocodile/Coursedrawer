@@ -8,6 +8,9 @@ Partial Class mainForm
         Try
             If disposing AndAlso components IsNot Nothing Then
                 components.Dispose()
+                myZoomCursor.Dispose()
+                myGrabbingCursor.Dispose()
+                myGrabCursor.Dispose()
             End If
         Finally
             MyBase.Dispose(disposing)
@@ -25,7 +28,7 @@ Partial Class mainForm
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(mainForm))
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.butSaveGame = New System.Windows.Forms.ToolStripButton()
+        Me.butLoadCourse = New System.Windows.Forms.ToolStripButton()
         Me.butLoadBGImage = New System.Windows.Forms.ToolStripButton()
         Me.butSave = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -99,22 +102,22 @@ Partial Class mainForm
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butSaveGame, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butLoadCourse, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1132, 39)
         Me.ToolStrip1.TabIndex = 1
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'butSaveGame
+        'butLoadCourse
         '
-        Me.butSaveGame.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.butSaveGame.Image = Global.CourseDrawer.My.Resources.Resources.butOpen
-        Me.butSaveGame.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.butSaveGame.Name = "butSaveGame"
-        Me.butSaveGame.Size = New System.Drawing.Size(36, 36)
-        Me.butSaveGame.Text = "Savegame"
-        Me.butSaveGame.ToolTipText = "Load XML"
+        Me.butLoadCourse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.butLoadCourse.Image = Global.CourseDrawer.My.Resources.Resources.butOpen
+        Me.butLoadCourse.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.butLoadCourse.Name = "butLoadCourse"
+        Me.butLoadCourse.Size = New System.Drawing.Size(36, 36)
+        Me.butLoadCourse.Text = "Savegame"
+        Me.butLoadCourse.ToolTipText = "Load XML"
         '
         'butLoadBGImage
         '
@@ -683,7 +686,7 @@ Partial Class mainForm
 
     End Sub
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents butSaveGame As System.Windows.Forms.ToolStripButton
+    Friend WithEvents butLoadCourse As System.Windows.Forms.ToolStripButton
     Friend WithEvents butLoadBGImage As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents panel1 As System.Windows.Forms.Panel
