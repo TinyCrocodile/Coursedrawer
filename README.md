@@ -4,7 +4,7 @@
 
 External tool to draw and edit Courseplay courses directly to the XML File 
 
-[CourseDrawer!](https://github.com/pseudex/Coursedrawer/raw/master/CourseDrawer_v5.zip) is an application that has been updated and prepared for working with the new version of CoursePlay 5.0 (FS2017, LS17)
+CourseDrawer is an application that has been updated and prepared for working with the new version of CoursePlay 5.0 (FS2017, LS17)
 
 Courses are now saved by courseplay in individual files. In order to load the courses you still need to load courseManager.xml which you can find here:
 + Goldcrest Valley Map: %USERPROFILE%\Documents\my games\FarmingSimulator2017\CoursePlay_Courses\Map**01**\courseManager.xml
@@ -17,7 +17,7 @@ Please be aware you're using a developer version, which may and will contain err
 
 If you're still ok with this, please remember to post possible issues that you find in the developer version. That's the only way we can find sources of error and fix them. Be as specific as possible.
 
-Download: [CourseDrawer] (https://github.com/pseudex/Coursedrawer/raw/master/CourseDrawer_v5.zip)
+Download: See Releases
 
 If you are a Developer and want to use the Testfiles in the Repo, please run the command 
 " git update-index --skip-worktree TestFiles/ "
@@ -25,11 +25,11 @@ after you cloned the repo. You have then your own copy of  the files withot the 
 
 Credits
     
-    Pseudex
     TinyCrocodile
 
 Former Developers
 
+    Pseudex
     PromGames
     Madbros  
     Satis
@@ -39,6 +39,11 @@ Former Developers
 Last Beta Version Published: CourseDrawer 5.1.000.rev
 
 Changelog:
+5.2.000
++ New selecting of Mapsize
++ Course selection improved
++ Bug loading new Coursemanager fixed
++ Minor bug fixes
 
 5.1.000
 + new listbox with better reference to course
