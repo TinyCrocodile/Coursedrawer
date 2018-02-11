@@ -20,6 +20,7 @@ Public Class crsListItems
 
     Public Sub clear()
         m_crsListItems = New List(Of crsListItem)
+        FlowPanelCourses.Controls.Clear()
     End Sub
 
 
@@ -89,18 +90,16 @@ Public Class crsListItems
         RaiseEvent CourseVisibilityChanged(crsItem, Visible)
     End Sub
 
-
     Public Enum SortOrder
         Name = 0
         id = 1
         Filename = 2
     End Enum
+
     Public Sub SortList(SortOrder As SortOrder)
         Dim crsListSorted = m_crsListItems.OrderBy(Function(x) x.CourseName).ToList
-        'Me.FlowPanelCourses.Controls.Clear()
         Dim ListIndex As Integer = 0
         For Each crs In crsListSorted
-            'Me.FlowPanelCourses.Controls.Add(crs)
             Me.FlowPanelCourses.Controls.SetChildIndex(crs, ListIndex)
             crs.ListIndex = ListIndex
             ListIndex += 1

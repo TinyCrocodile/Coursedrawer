@@ -278,7 +278,6 @@ Public Class mainForm
     End Sub
 
     Private Sub butLoadCourse_Click(ByVal sender As Object, ByVal e As EventArgs) Handles butLoadCourse.Click
-        'ToDo: Rename butLoadCourse to butLoadCourse
         Dim filename As String
         ToolStripStatusLabel1.Text = "Open File"
         OpenFileDialog1.FileName = IO.Path.GetFileName(My.Settings.SavePath)
@@ -311,18 +310,13 @@ Public Class mainForm
         'ToolStripStatusLabel1.Text = "Loading...Settings"
         'clsSettings.getInstance(True).ReadXML(filename)
         'Me.Cursor = Cursors.Default
+        Me.PictureBox1.Invalidate()
         Me.ToolStripProgressBar1.Value = 100
         ToolStripStatusLabel1.Text = ""
     End Sub
 
     Private Sub fillCourseList()
 
-        'Dim crsList As Dictionary(Of String, Boolean)
-        'crsList = clsCourses.getInstance.CourseList
-        'Me.CheckedListBox1.Items.Clear()
-        'For Each pair As KeyValuePair(Of String, Boolean) In crsList
-        '    Me.CheckedListBox1.Items.Add(pair.Key, pair.Value)
-        'Next
         Dim crs As clsCourse
         Me.CrsList.clear()
         For Each crs In clsCourses.getInstance().CourseListItems
@@ -438,19 +432,6 @@ Public Class mainForm
             e.Cancel = True
         End If
     End Sub
-
-
-
-    'Private Sub CheckedListBox1_ItemCheck(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ItemCheckEventArgs) Handles CheckedListBox1.ItemCheck
-    '    Dim hide As Boolean
-    '    If e.NewValue = CheckState.Checked Then
-    '        hide = False
-    '    Else
-    '        hide = True
-    '    End If
-    '    If clsCourses.getInstance.ItemHide(e.Index, hide) = False Then e.NewValue = e.CurrentValue
-    '    Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
-    'End Sub
 
     Private Sub PictureBox1_MouseEnter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.MouseEnter
         If Me.butNewCourse.Checked = True Then

@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="SavePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\..\TestFiles\CourseFiles</Value>
+      <Value Profile="(Default)">..\..\..\TestFiles\CourseFiles\</Value>
     </Setting>
     <Setting Name="MapPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">..\..\..\TestFiles\Map bitmaps</Value>
+      <Value Profile="(Default)">..\..\..\TestFiles\Map bitmaps\</Value>
     </Setting>
   </Settings>
 </SettingsFile>

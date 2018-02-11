@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CourseDrawer", "CourseDrawer\CourseDrawer.vbproj", "{A7694D33-B568-4E0C-AE13-4066FDBDB949}"
 EndProject
@@ -14,6 +14,7 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.Debug|Any CPU.Build.0 = Debug|x86
 		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.Debug|x86.ActiveCfg = Debug|x86
 		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.Debug|x86.Build.0 = Debug|x86
 		{A7694D33-B568-4E0C-AE13-4066FDBDB949}.Release|Any CPU.ActiveCfg = Release|x86
@@ -22,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21944451-0CE5-4D8C-9DAD-7AE821336069}
 	EndGlobalSection
 EndGlobal
