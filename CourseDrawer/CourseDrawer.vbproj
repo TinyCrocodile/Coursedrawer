@@ -316,6 +316,12 @@
   <ItemGroup>
     <None Include="Resources\grabbing.cur" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\butPrevWaypoint.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\butNextWaypoint .ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo Copy DevIL libs

@@ -118,55 +118,61 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="butAddNode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\butAddNode.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="butDelCrs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\butDelCrs.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="butDeleteNode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\butDeleteNode.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="butFillNodes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\butFillNodes.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="butInsertNode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\butInsertNode.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="butMap" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\04_maps.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="butMove" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\butMove.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="grab" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\grab.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="butNewCrs" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\butNewCrs.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="butOpen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\butOpen.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="butRecalcDir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\butRecalcDir.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="butMap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\04_maps.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="butSave" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\butSave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="butSelect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\butSelect.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="butZoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\butZoom.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="magnify" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\magnify.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="grabbing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\grabbing.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="_04_maps" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\04_maps.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="grab" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\grab.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="butAddNode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butAddNode.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="grabbing" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\grabbing.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="butMove" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butMove.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="butDelCrs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butDelCrs.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="butInsertNode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butInsertNode.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="butSelect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butSelect.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="butPrevWaypoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butPrevWaypoint.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="butRecalcDir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butRecalcDir.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="butZoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butZoom.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="butOpen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butOpen.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="butDeleteNode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butDeleteNode.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="magnify" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\magnify.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="butFillNodes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butFillNodes.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="butNextWaypoint " type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\butNextWaypoint .ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
