@@ -359,7 +359,13 @@ Public Class mainForm
             crs = crsItem.AttachedObject
             If byClick Then crs.selectWP(1, False)
             selectedCrs = crs
-            'Me.selectedWP = Nothing
+            If crs IsNot Nothing Then
+                butNextWaypoint.Enabled = True
+                butPrevWaypoint.Enabled = True
+            Else
+                butNextWaypoint.Enabled = True
+                butPrevWaypoint.Enabled = True
+            End If
             Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
 
         Catch ex As Exception
@@ -867,6 +873,40 @@ Public Class mainForm
     Private Sub MapSizeSelector_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MapSizeSelector.SelectedIndexChanged
         'ToDo: Teste Map Size Selector
         initBackgroundImage()
+    End Sub
+
+    Private Sub butNextWaypoint_Click(sender As Object, e As EventArgs) Handles butNextWaypoint.Click
+        'OnClick select next Waypoint of the course
+        'Not working atm 
+        'ToDo: Select next Waypoint 
+        Dim wpindex As Integer
+        If selectedCrs IsNot Nothing Then
+            With selectedCrs
+                If .SelectedWpIndex = .WPCount Then
+                    wpindex = 0
+                Else
+                    wpindex = .SelectedWpIndex
+                End If
+                .selectWP(wpindex + 1)
+            End With
+        End If
+    End Sub
+
+    Private Sub butPrevWaypoint_Click(sender As Object, e As EventArgs) Handles butPrevWaypoint.Click
+        'OnClick select Previous Waypoint of the course
+        'Selecting but not painting
+        'ToDo: make selection paint
+        Dim wpindex As Integer
+        If selectedCrs IsNot Nothing Then
+            With selectedCrs
+                If .SelectedWpIndex = 1 Then
+                    wpindex = .WPCount + 1
+                Else
+                    wpindex = .SelectedWpIndex
+                End If
+                .selectWP(wpindex - 1)
+            End With
+        End If
     End Sub
 
 End Class

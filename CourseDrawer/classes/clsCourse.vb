@@ -30,6 +30,13 @@
             Return _waypoints.Count
         End Get
     End Property
+
+    Public ReadOnly Property SelectedWpIndex As Integer
+        Get
+            Return _selectedWP
+        End Get
+    End Property
+
     Public ReadOnly Property sFileName As String
         Get
             Return fileName
