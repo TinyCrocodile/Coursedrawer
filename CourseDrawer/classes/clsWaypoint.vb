@@ -38,6 +38,7 @@
             Return point
         End Get
     End Property
+
     Public Property Pos_X As Double
     Public Property Pos_Y As Double
     Public Property Angle As Double
@@ -52,6 +53,7 @@
     Public Property dir As String
     Public Property ridgemarker As Double
     Public Property isSelected As Boolean
+
     Public ReadOnly Property ReverseTxt As String
         Get
             If _Reverse = True Then

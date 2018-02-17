@@ -356,7 +356,7 @@ Public Class clsCourses
     ''' <remarks></remarks>
     Public Sub selectWP(ByVal id As Integer)
         If id > 0 And id <= _courses.Count Then
-            _courses(id - 1).selectWP(1)
+            _courses(id - 1).selectWP(0)
             Me._seledtedCrs = _courses.IndexOf(_courses(id - 1))
         End If
     End Sub

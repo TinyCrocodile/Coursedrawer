@@ -89,6 +89,7 @@ Partial Class mainForm
         Me.Label5 = New System.Windows.Forms.Label()
         Me.butCrsUp = New System.Windows.Forms.Button()
         Me.butCrsDown = New System.Windows.Forms.Button()
+        Me.butDebugInvalidating = New System.Windows.Forms.ToolStripButton()
         Me.CrsList = New CourseDrawer.crsListItems()
         Me.ClsCourseBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClsCourseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -105,7 +106,7 @@ Partial Class mainForm
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butLoadCourse, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butPrevWaypoint, Me.butNextWaypoint, Me.ToolStripSeparator6, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butLoadCourse, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butPrevWaypoint, Me.butNextWaypoint, Me.ToolStripSeparator6, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector, Me.butDebugInvalidating})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1132, 39)
@@ -662,6 +663,16 @@ Partial Class mainForm
         Me.butCrsDown.Text = "Dn"
         Me.butCrsDown.UseVisualStyleBackColor = True
         '
+        'butDebugInvalidating
+        '
+        Me.butDebugInvalidating.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.butDebugInvalidating.Image = CType(resources.GetObject("butDebugInvalidating.Image"), System.Drawing.Image)
+        Me.butDebugInvalidating.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.butDebugInvalidating.Name = "butDebugInvalidating"
+        Me.butDebugInvalidating.Size = New System.Drawing.Size(36, 36)
+        Me.butDebugInvalidating.Text = "butDebugInvalidating"
+        Me.butDebugInvalidating.ToolTipText = "Picturebox mit Farbe füllen um invalidate rect zu sehen"
+        '
         'CrsList
         '
         Me.CrsList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -787,4 +798,5 @@ Partial Class mainForm
     Friend WithEvents butPrevWaypoint As ToolStripButton
     Friend WithEvents butNextWaypoint As ToolStripButton
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
+    Friend WithEvents butDebugInvalidating As ToolStripButton
 End Class

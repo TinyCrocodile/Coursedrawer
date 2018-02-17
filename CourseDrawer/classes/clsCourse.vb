@@ -239,7 +239,7 @@
         Next
         'path
         If Me.isSelected = True Then
-            'ToDo Keep pens global not create this pens at every usage
+            'ToDo: Keep pens global not create this pens at every usage
             pen = New Pen(Brushes.Blue, 2)
         Else
             pen = New Pen(Brushes.DarkBlue)
@@ -316,8 +316,8 @@
         If _isAnySelected = True Then
             RaiseEvent SelectionChanged(Nothing)
         End If
-        If id > 0 And id <= _waypoints.Count Then
-            _waypoints(id - 1).forceSelect()
+        If id >= 0 And id <= _waypoints.Count - 1 Then
+            _waypoints(id).forceSelect()
             If Me._isSelected = False And Not NoEvent Then
                 RaiseEvent SelectionChanged(Me)
             End If

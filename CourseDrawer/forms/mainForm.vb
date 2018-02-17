@@ -2,7 +2,7 @@
 Imports CourseDrawer
 
 Public Enum MapSize As Integer
-    'ad new sizes if needed the combobox should be filled by System.Enum.GetNames(GetType(MapSize)) in Form.Designer
+    'ad new sizes if needed dont forget to update the Combobox
     Normal = 2048
     Quadruple = 4096
     Octuple = 8192
@@ -15,13 +15,14 @@ Public Class mainForm
     Dim myLocation As PointF
     Dim selectedWP As clsWaypoint
     Dim selectedCrs As clsCourse
-    Dim selectedCrsItem As crsListItem
+    Dim WithEvents selectedCrsItem As crsListItem
     Dim myZoomCursor As Cursor
     Dim myGrabCursor As Cursor
     Dim myGrabbingCursor As Cursor
     Dim doListChange As Boolean = False
     Dim firstDraw As Boolean = False
     Dim debugRect As Rectangle
+    Dim repaintRegion As Region
 
     ''' <summary>
     ''' Loads bitmap as map 
@@ -231,6 +232,7 @@ Public Class mainForm
         If butMove.Checked Then Me.Cursor = myGrabCursor
         Me.firstDraw = True
         Try
+            'ToDo: Use minimal invaldidate region
             'Me.PictureBox1.Invalidate(selectedCrs.DrawingArea)
             Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
         Catch ex As Exception
@@ -274,7 +276,7 @@ Public Class mainForm
         If clsCourses.getInstance.Count < 1 Then Exit Sub
         clsCourses.getInstance.draw(e.Graphics, zoomLvl)
         'e.Graphics.DrawRectangle(New Pen(Color.Red, 3), debugRect)
-
+        repaintRegion.MakeEmpty()
     End Sub
 
     Private Sub butLoadCourse_Click(ByVal sender As Object, ByVal e As EventArgs) Handles butLoadCourse.Click
@@ -357,15 +359,9 @@ Public Class mainForm
         Dim crs As clsCourse
         Try
             crs = crsItem.AttachedObject
-            If byClick Then crs.selectWP(1, False)
+            If byClick Then crs.selectWP(0, False)
             selectedCrs = crs
-            If crs IsNot Nothing Then
-                butNextWaypoint.Enabled = True
-                butPrevWaypoint.Enabled = True
-            Else
-                butNextWaypoint.Enabled = True
-                butPrevWaypoint.Enabled = True
-            End If
+
             Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
 
         Catch ex As Exception
@@ -383,8 +379,8 @@ Public Class mainForm
             crsObject = Course.AttachedObject
             Course.AttachedObject.Hidden = Not Visible
 
-            'Grafik neu zeichnen
-            If Visible Then 'wenn sichtbar, nur den Bereich für den neuen Kurs zeichnen, sonst komplett
+            'Grafik neu zeichnen (Repaint Graphics)
+            If Visible Then 'wenn sichtbar, nur den Bereich für den neuen Kurs zeichnen, sonst komplett (repaint region if visible and all if not visible)
                 Me.PictureBox1.Invalidate(crsObject.DrawingArea(zoomLvl))
                 debugRect = crsObject.DrawingArea(zoomLvl)
             Else
@@ -412,12 +408,16 @@ Public Class mainForm
         AddHandler clsWaypoint.SelectionChanged, AddressOf Me.selectionChangedHandler
         AddHandler clsCourse.SelectionChanged, AddressOf Me.selectedCourseChanged
 
+        repaintRegion = New Region
+        repaintRegion.MakeEmpty()
+
         Dim ms As New System.IO.MemoryStream(My.Resources.magnify)
         myZoomCursor = New Cursor(ms)
         ms = New System.IO.MemoryStream(My.Resources.grab)
         myGrabCursor = New Cursor(ms)
         ms = New System.IO.MemoryStream(My.Resources.grabbing)
         myGrabbingCursor = New Cursor(ms)
+        ms.Dispose()
 
         Dim Version As System.Version
         Dim strVersion As String
@@ -426,10 +426,7 @@ Public Class mainForm
         Me.Text = "CourseDrawer " & Version.ToString()
         initBackgroundImage()
 
-        ms.Dispose()
-
     End Sub
-
 
     Private Sub MTB_Double_TypeValidationCompleted(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TypeValidationEventArgs) Handles TBWP_X.TypeValidationCompleted, TBWP_Y.TypeValidationCompleted, TBWP_Speed.TypeValidationCompleted, TBWP_Angle.TypeValidationCompleted
         If Not e.IsValidInput Then
@@ -454,6 +451,7 @@ Public Class mainForm
     Private Sub PictureBox1_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.MouseLeave
         Me.Cursor = Cursors.Default
     End Sub
+
     Private Sub selectionChangedHandler(ByRef wp As clsWaypoint)
         If wp Is Nothing Then
             Me.selectedWP = Nothing
@@ -461,6 +459,8 @@ Public Class mainForm
             Me.butInsertNode.Enabled = False
             Me.butAppendNode.Enabled = False
             Me.butDelCourse.Enabled = False
+            Me.butNextWaypoint.Enabled = False
+            Me.butPrevWaypoint.Enabled = False
 
             Me.butCalcAngleSel.Enabled = False
             Me.butRecalcAngleCrs.Enabled = False
@@ -498,6 +498,8 @@ Public Class mainForm
             Me.butCalcAngleSel.Enabled = True
             Me.butRecalcAngleCrs.Enabled = True
             Me.sButFillNodes.Enabled = True
+            Me.butNextWaypoint.Enabled = True
+            Me.butPrevWaypoint.Enabled = True
 
             Me.selectedWP = wp
             Me.TBWP_X.Text = Me.selectedWP.Pos_X.ToString
@@ -663,6 +665,7 @@ Public Class mainForm
     Private Sub butDeleteNode_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butDeleteNode.Click
         clsCourses.getInstance.deleteSelectedWP()
         Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+        'ToDo Multiselect programmieren
     End Sub
 
     Private Sub butInsertNode_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butInsertNode.Click
@@ -695,7 +698,6 @@ Public Class mainForm
     End Sub
 
     Private Sub butSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butSave.Click
-
 
         Dim changedCourses As New List(Of clsCourse)
         'Dim checkbox As Object
@@ -738,7 +740,7 @@ Public Class mainForm
             TBCrs_ID.Text = "0"
             TBCrs_Name.Text = ""
             'CrsList.SelectedCrsListItem = Nothing
-            'CheckedListBox1.SelectedItems.Clear()
+
         Else
             butDelCourse.Enabled = True
             TBCrs_Name.Enabled = True
@@ -747,17 +749,10 @@ Public Class mainForm
 
             CrsList.SelectItem(crs.listIndex)
             selectedCrs = crs
-            'If CheckedListBox1.Items.Count > crs.listIndex Then
-            '    If CheckedListBox1.SelectedIndex <> crs.listIndex Then
-            '        CheckedListBox1.SelectedIndex = crs.listIndex
-            '    End If
-            'End If
+
             ComboBox1.SelectedIndex = clsFolders.parentListIndex(crs.parent, clsFolders.getFolders)
         End If
 
-
-        'selectedCrs.selectWP(selectedCrs.WPCount)
-        'selsectedwp = 
     End Sub
 
     Private Sub TBCrs_Name_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBCrs_Name.Leave
@@ -790,7 +785,6 @@ Public Class mainForm
         clsCourses.getInstance.deleteSelectedCrs()
         Me.fillCourseList()
         Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
-        'ToDo Multiselect programmieren
     End Sub
 
     Private Sub butCalcAngleSel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butCalcAngleSel.Click
@@ -850,20 +844,6 @@ Public Class mainForm
     '    End If
     'End Sub
 
-    'Private Sub CheckedListBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckedListBox1.SelectedIndexChanged
-    '    If Me.doListChange = True Then
-    '        If Me.CheckedListBox1.SelectedItems.Count > 0 Then
-    '            clsCourses.getInstance.selectWP(Me.CheckedListBox1.SelectedIndex + 1)
-    '            Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
-    '        End If
-    '    End If
-    '    Me.doListChange = False
-    'End Sub
-
-    'Private Sub CheckedListBox1_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles CheckedListBox1.MouseClick
-    '    Me.doListChange = True
-    'End Sub
-
     'ToDo Ordner-Strukur aktivieren
 
     Private Sub butZoom_Click(sender As Object, e As EventArgs) Handles butZoom.Click
@@ -871,42 +851,55 @@ Public Class mainForm
     End Sub
 
     Private Sub MapSizeSelector_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MapSizeSelector.SelectedIndexChanged
-        'ToDo: Teste Map Size Selector
         initBackgroundImage()
     End Sub
 
     Private Sub butNextWaypoint_Click(sender As Object, e As EventArgs) Handles butNextWaypoint.Click
         'OnClick select next Waypoint of the course
-        'Not working atm 
-        'ToDo: Select next Waypoint 
         Dim wpindex As Integer
+        If Me.selectedWP Is Nothing Then Exit Sub
+        repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
         If selectedCrs IsNot Nothing Then
             With selectedCrs
-                If .SelectedWpIndex = .WPCount Then
+                If .SelectedWpIndex >= .WPCount - 1 Then
                     wpindex = 0
                 Else
-                    wpindex = .SelectedWpIndex
+                    wpindex = .SelectedWpIndex + 1
                 End If
-                .selectWP(wpindex + 1)
+                .selectWP(wpindex)
+                repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+
+                PictureBox1.Invalidate(repaintRegion)
             End With
         End If
     End Sub
 
     Private Sub butPrevWaypoint_Click(sender As Object, e As EventArgs) Handles butPrevWaypoint.Click
         'OnClick select Previous Waypoint of the course
-        'Selecting but not painting
-        'ToDo: make selection paint
         Dim wpindex As Integer
+
+        If Me.selectedWP Is Nothing Then Exit Sub
+        repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
         If selectedCrs IsNot Nothing Then
             With selectedCrs
-                If .SelectedWpIndex = 1 Then
-                    wpindex = .WPCount + 1
+
+                If .SelectedWpIndex < 1 Then
+                    wpindex = .WPCount - 1
                 Else
-                    wpindex = .SelectedWpIndex
+                    wpindex = .SelectedWpIndex - 1
                 End If
-                .selectWP(wpindex - 1)
+                .selectWP(wpindex)
+                repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+                PictureBox1.Invalidate(repaintRegion)
+
             End With
         End If
     End Sub
 
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles butDebugInvalidating.Click
+        Dim gr As Graphics
+        gr = PictureBox1.CreateGraphics
+        gr.FillRectangle(Brushes.Aquamarine, New RectangleF(0, 0, PictureBox1.Width, PictureBox1.Height))
+        gr.Dispose()
+    End Sub
 End Class
