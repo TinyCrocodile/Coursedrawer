@@ -348,15 +348,19 @@ Public Class mainForm
 
     Private Sub CourseSelectionChanged(ByRef crsItem As crsListItem, byClick As Boolean)
         Dim crs As clsCourse
-        Dim IDText As String
+
         Try
             crs = crsItem.AttachedObject
             If byClick Then crs.selectWP(0, False)
             selectedCrs = crs
-            IDText = (selectedCrs.SelectedWpIndex + 1) & "/" & selectedCrs.WPCount
-            Me.WPIDInfoLbl.Text = IDText
+            If crs IsNot Nothing Then
+                Me.WPIDMcbx.Text = crs.SelectedWpIndex + 1
+                Me.WPNumInfoLbl.Text = crs.WPCount
+            Else
+                Me.WPIDMcbx.Text = 0
+                Me.WPNumInfoLbl.Text = 0
+            End If
             Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
-
         Catch ex As Exception
 
         End Try
@@ -394,6 +398,7 @@ Public Class mainForm
         TBWP_Y.ValidatingType = GetType(Double)
         TBWP_Angle.ValidatingType = GetType(Double)
         TBWP_Speed.ValidatingType = GetType(Double)
+        WPIDMcbx.ValidatingType = GetType(Integer)
         'ToDo Auf eine anzahl an Stellen runden? 2 zum Beispiel? Wie viele Stellen schreibt CP?
         AddHandler clsWaypoint.SelectionChanged, AddressOf Me.selectionChangedHandler
         AddHandler clsCourse.SelectionChanged, AddressOf Me.selectedCourseChanged
@@ -418,7 +423,7 @@ Public Class mainForm
 
     End Sub
 
-    Private Sub MTB_Double_TypeValidationCompleted(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TypeValidationEventArgs) Handles TBWP_X.TypeValidationCompleted, TBWP_Y.TypeValidationCompleted, TBWP_Speed.TypeValidationCompleted, TBWP_Angle.TypeValidationCompleted
+    Private Sub MTB_Double_TypeValidationCompleted(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TypeValidationEventArgs) Handles TBWP_X.TypeValidationCompleted, TBWP_Y.TypeValidationCompleted, TBWP_Speed.TypeValidationCompleted, TBWP_Angle.TypeValidationCompleted, WPIDMcbx.TypeValidationCompleted, WPIDMcbx.TypeValidationCompleted
         If Not e.IsValidInput Then
             ToolTip1.ToolTipTitle = "Invalid number"
             ToolTip1.Show("Data entered is not valid number...", sender, 5000)
@@ -451,8 +456,8 @@ Public Class mainForm
             Me.butInsertNode.Enabled = False
             Me.butAppendNode.Enabled = False
             Me.butDelCourse.Enabled = False
-            Me.butNextWaypoint.Enabled = False
-            Me.butPrevWaypoint.Enabled = False
+            Me.WPNextBtn.Enabled = False
+            Me.WPPrevBtn.Enabled = False
 
             Me.butCalcAngleSel.Enabled = False
             Me.butRecalcAngleCrs.Enabled = False
@@ -471,17 +476,22 @@ Public Class mainForm
             Me.TBWP_Y.Enabled = False
             Me.TBWP_Angle.Enabled = False
             Me.TBWP_Speed.Enabled = False
+            Me.WPIDMcbx.Enabled = False
             Me.ChWP_Rev.Enabled = False
             Me.ChWP_Cross.Enabled = False
             Me.ChWP_Wait.Enabled = False
             Me.ChWP_TurnStart.Enabled = False
             Me.ChWP_TurnEnd.Enabled = False
 
+            Me.WPIDMcbx.Text = 0
+            Me.WPNumInfoLbl.Text = 0
+
         Else
             Me.TBWP_X.Enabled = True
             Me.TBWP_Y.Enabled = True
             Me.TBWP_Angle.Enabled = True
             Me.TBWP_Speed.Enabled = True
+            Me.WPIDMcbx.Enabled = True
             Me.ChWP_Rev.Enabled = True
             Me.ChWP_Cross.Enabled = True
             Me.ChWP_Wait.Enabled = True
@@ -490,8 +500,8 @@ Public Class mainForm
             Me.butCalcAngleSel.Enabled = True
             Me.butRecalcAngleCrs.Enabled = True
             Me.sButFillNodes.Enabled = True
-            Me.butNextWaypoint.Enabled = True
-            Me.butPrevWaypoint.Enabled = True
+            Me.WPNextBtn.Enabled = True
+            Me.WPPrevBtn.Enabled = True
 
             Me.selectedWP = wp
             Me.TBWP_X.Text = Me.selectedWP.Pos_X.ToString
@@ -508,7 +518,13 @@ Public Class mainForm
             Me.butInsertNode.Enabled = True
             Me.butAppendNode.Enabled = True
             Me.butDelCourse.Enabled = True
-            If Not selectedCrs Is Nothing Then IDText = (selectedCrs.SelectedWpIndex + 1) & "/" & selectedCrs.WPCount
+            If Not selectedCrs Is Nothing Then
+                Me.WPIDMcbx.Text = (selectedCrs.SelectedWpIndex + 1)
+                Me.WPNumInfoLbl.Text = selectedCrs.WPCount
+            Else
+                Me.WPIDMcbx.Text = 0
+                Me.WPNumInfoLbl.Text = 0
+            End If
 
         End If
         'alway reset color for input boxes
@@ -516,7 +532,7 @@ Public Class mainForm
         Me.TBWP_Y.BackColor = Color.White
         Me.TBWP_Angle.BackColor = Color.White
         Me.TBWP_Speed.BackColor = Color.White
-        Me.WPIDInfoLbl.Text = IDText
+
     End Sub
 
     Private Sub TBWP_X_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_X.Leave
@@ -727,12 +743,14 @@ Public Class mainForm
     End Sub
 
     Private Sub selectedCourseChanged(ByRef crs As clsCourse)
-        Dim IDText As String = "0/0"
+
         If crs Is Nothing Then
             butDelCourse.Enabled = False
             TBCrs_Name.Enabled = False
             TBCrs_ID.Text = "0"
             TBCrs_Name.Text = ""
+            WPIDMcbx.Text = 0
+            WPNumInfoLbl.Text = 0
             'CrsList.SelectedCrsListItem = Nothing
 
         Else
@@ -743,12 +761,12 @@ Public Class mainForm
 
             CrsList.SelectItem(crs.listIndex)
             selectedCrs = crs
-
-            IDText = (crs.SelectedWpIndex + 1) & "/" & crs.WPCount
+            WPIDMcbx.Text = (crs.SelectedWpIndex + 1)
+            WPNumInfoLbl.Text = crs.WPCount
 
             ComboBox1.SelectedIndex = clsFolders.parentListIndex(crs.parent, clsFolders.getFolders)
         End If
-        Me.WPIDInfoLbl.Text = IDText
+
     End Sub
 
     Private Sub TBCrs_Name_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBCrs_Name.Leave
@@ -832,27 +850,19 @@ Public Class mainForm
         initBackgroundImage()
     End Sub
 
-    Private Sub butNextWaypoint_Click(sender As Object, e As EventArgs) Handles butNextWaypoint.Click
-        'OnClick select next Waypoint of the course
-        Dim wpindex As Integer
-        If Me.selectedWP Is Nothing Then Exit Sub
-        repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
-        If selectedCrs IsNot Nothing Then
-            With selectedCrs
-                If .SelectedWpIndex >= .WPCount - 1 Then
-                    wpindex = 0
-                Else
-                    wpindex = .SelectedWpIndex + 1
-                End If
-                .selectWP(wpindex)
-                repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
 
-                PictureBox1.Invalidate(repaintRegion)
-            End With
-        End If
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles butDebugInvalidating.Click
+        Dim gr As Graphics
+        gr = PictureBox1.CreateGraphics
+        gr.FillRectangle(Brushes.Aquamarine, New RectangleF(0, 0, PictureBox1.Width, PictureBox1.Height))
+        gr.Dispose()
     End Sub
 
-    Private Sub butPrevWaypoint_Click(sender As Object, e As EventArgs) Handles butPrevWaypoint.Click
+    Private Sub ChWP_Unload_CheckedChanged(sender As Object, e As EventArgs) Handles ChWP_Unload.CheckedChanged
+        'ToDo: Make unloadpoint work
+    End Sub
+
+    Private Sub WPPrevBtn_Click(sender As Object, e As EventArgs) Handles WPPrevBtn.Click
         'OnClick select Previous Waypoint of the course
         Dim wpindex As Integer
 
@@ -874,14 +884,43 @@ Public Class mainForm
         End If
     End Sub
 
-    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles butDebugInvalidating.Click
-        Dim gr As Graphics
-        gr = PictureBox1.CreateGraphics
-        gr.FillRectangle(Brushes.Aquamarine, New RectangleF(0, 0, PictureBox1.Width, PictureBox1.Height))
-        gr.Dispose()
+    Private Sub WPNextBtn_Click(sender As Object, e As EventArgs) Handles WPNextBtn.Click
+        'OnClick select next Waypoint of the course
+        Dim wpindex As Integer
+        If Me.selectedWP Is Nothing Then Exit Sub
+        repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+        If selectedCrs IsNot Nothing Then
+            With selectedCrs
+                If .SelectedWpIndex >= .WPCount - 1 Then
+                    wpindex = 0
+                Else
+                    wpindex = .SelectedWpIndex + 1
+                End If
+                .selectWP(wpindex)
+                repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+
+                PictureBox1.Invalidate(repaintRegion)
+            End With
+        End If
     End Sub
 
-    Private Sub ChWP_Unload_CheckedChanged(sender As Object, e As EventArgs) Handles ChWP_Unload.CheckedChanged
-        'ToDo: Make unloadpoint work
+    Private Sub WPIDMcbx_Leave(sender As Object, e As EventArgs) Handles WPIDMcbx.Leave
+        If Me.selectedWP Is Nothing Then Exit Sub
+        repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+        If Me.selectedCrs IsNot Nothing And Me.WPIDMcbx.Text > 0 Then
+            Me.selectedCrs.selectWP(Me.WPIDMcbx.Text - 1)
+        End If
+        repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+        PictureBox1.Invalidate(repaintRegion)
+    End Sub
+
+    Private Sub WPIDMcbx_KeyDown(sender As Object, e As KeyEventArgs) Handles WPIDMcbx.KeyDown
+        If Me.selectedWP Is Nothing Then Exit Sub
+        repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+        If e.KeyCode = Keys.Enter And Me.selectedCrs IsNot Nothing And Me.WPIDMcbx.Text > 0 Then
+            Me.selectedCrs.selectWP(Me.WPIDMcbx.Text - 1)
+        End If
+        repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+        PictureBox1.Invalidate(repaintRegion)
     End Sub
 End Class
