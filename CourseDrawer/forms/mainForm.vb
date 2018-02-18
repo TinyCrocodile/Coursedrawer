@@ -114,15 +114,6 @@ Public Class mainForm
             'ToDo: New feature for joining and splitting Courses
             'ToDo: Use WinGup for providing Updates to the Application
 
-            'Dim crsList As Dictionary(Of String, Boolean)
-            'crsList = clsCourses.getInstance.CourseList
-            'Me.CheckedListBox1.Items.Clear()
-            'For Each pair As KeyValuePair(Of String, Boolean) In crsList
-            '    Me.CheckedListBox1.Items.Add(pair.Key, pair.Value)
-            'Next
-            'Me.doListChange = True
-            'Me.CheckedListBox1.SelectedIndex = Me.CheckedListBox1.Items.Count - 1
-
             Me.butSave.Enabled = True
             Me.butAppendNode.Enabled = True
             Me.butDelCourse.Enabled = True
@@ -357,19 +348,18 @@ Public Class mainForm
 
     Private Sub CourseSelectionChanged(ByRef crsItem As crsListItem, byClick As Boolean)
         Dim crs As clsCourse
+        Dim IDText As String
         Try
             crs = crsItem.AttachedObject
             If byClick Then crs.selectWP(0, False)
             selectedCrs = crs
-
+            IDText = (selectedCrs.SelectedWpIndex + 1) & "/" & selectedCrs.WPCount
+            Me.WPIDInfoLbl.Text = IDText
             Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
 
         Catch ex As Exception
 
         End Try
-
-        'clsCourses.getInstance.selectWP(Me.CheckedListBox1.SelectedIndex + 1)
-
 
     End Sub
 
@@ -453,6 +443,8 @@ Public Class mainForm
     End Sub
 
     Private Sub selectionChangedHandler(ByRef wp As clsWaypoint)
+        Dim IDText As String = "0/0"
+
         If wp Is Nothing Then
             Me.selectedWP = Nothing
             Me.butDeleteNode.Enabled = False
@@ -516,12 +508,15 @@ Public Class mainForm
             Me.butInsertNode.Enabled = True
             Me.butAppendNode.Enabled = True
             Me.butDelCourse.Enabled = True
+            If Not selectedCrs Is Nothing Then IDText = (selectedCrs.SelectedWpIndex + 1) & "/" & selectedCrs.WPCount
+
         End If
         'alway reset color for input boxes
         Me.TBWP_X.BackColor = Color.White
         Me.TBWP_Y.BackColor = Color.White
         Me.TBWP_Angle.BackColor = Color.White
         Me.TBWP_Speed.BackColor = Color.White
+        Me.WPIDInfoLbl.Text = IDText
     End Sub
 
     Private Sub TBWP_X_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_X.Leave
@@ -647,7 +642,7 @@ Public Class mainForm
         If Me.selectedWP Is Nothing Then Exit Sub
         Me.selectedWP.TurnStart = ChWP_TurnStart.Checked
     End Sub
-    Private Sub ChWP_TurnEnd_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_TurnEnd.CheckStateChanged
+    Private Sub ChWP_TurnEnd_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_TurnEnd.CheckStateChanged, ChWP_Unload.CheckStateChanged
         If Me.selectedWP Is Nothing Then Exit Sub
         Me.selectedWP.TurnEnd = ChWP_TurnEnd.Checked
     End Sub
@@ -692,9 +687,6 @@ Public Class mainForm
 
         Me.CrsList.SelectionAll(CheckIt)
 
-        'For i As Integer = 0 To Me.CheckedListBox1.Items.Count - 1
-        'Me.CheckedListBox1.SetItemChecked(i, CheckIt)
-        'Next
     End Sub
 
     Private Sub butSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butSave.Click
@@ -716,6 +708,7 @@ Public Class mainForm
         'clsCourses.getInstance.SaveXML(root)
         'clsFolders.getInstance.SaveXML(root)
         'lSaveDialog = Nothing
+
     End Sub
 
     Private Sub saveCourse(course As clsCourse)
@@ -734,6 +727,7 @@ Public Class mainForm
     End Sub
 
     Private Sub selectedCourseChanged(ByRef crs As clsCourse)
+        Dim IDText As String = "0/0"
         If crs Is Nothing Then
             butDelCourse.Enabled = False
             TBCrs_Name.Enabled = False
@@ -750,9 +744,11 @@ Public Class mainForm
             CrsList.SelectItem(crs.listIndex)
             selectedCrs = crs
 
+            IDText = (crs.SelectedWpIndex + 1) & "/" & crs.WPCount
+
             ComboBox1.SelectedIndex = clsFolders.parentListIndex(crs.parent, clsFolders.getFolders)
         End If
-
+        Me.WPIDInfoLbl.Text = IDText
     End Sub
 
     Private Sub TBCrs_Name_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBCrs_Name.Leave
@@ -826,24 +822,6 @@ Public Class mainForm
         clsCourse.CircleDiameter = i
     End Sub
 
-    'Private Sub butCrsUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butCrsUp.Click
-    '    If Me.CheckedListBox1.SelectedIndex > 0 Then
-    '        Dim selID As Integer = Me.CheckedListBox1.SelectedIndex
-    '        clsCourses.getInstance.moveCourseUp(selID + 1)
-    '        Me.fillCourseList()
-    '        Me.CheckedListBox1.SelectedIndex = selID - 1
-    '    End If
-    'End Sub
-
-    'Private Sub butCrsDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butCrsDown.Click
-    '    If Me.CheckedListBox1.SelectedIndex >= 0 And Me.CheckedListBox1.SelectedIndex < Me.CheckedListBox1.Items.Count - 1 Then
-    '        Dim selID As Integer = Me.CheckedListBox1.SelectedIndex
-    '        clsCourses.getInstance.moveCourseDown(selID + 1)
-    '        Me.fillCourseList()
-    '        Me.CheckedListBox1.SelectedIndex = selID + 1
-    '    End If
-    'End Sub
-
     'ToDo Ordner-Strukur aktivieren
 
     Private Sub butZoom_Click(sender As Object, e As EventArgs) Handles butZoom.Click
@@ -901,5 +879,9 @@ Public Class mainForm
         gr = PictureBox1.CreateGraphics
         gr.FillRectangle(Brushes.Aquamarine, New RectangleF(0, 0, PictureBox1.Width, PictureBox1.Height))
         gr.Dispose()
+    End Sub
+
+    Private Sub ChWP_Unload_CheckedChanged(sender As Object, e As EventArgs) Handles ChWP_Unload.CheckedChanged
+        'ToDo: Make unloadpoint work
     End Sub
 End Class
