@@ -39,6 +39,10 @@ Former Developers
 Last Beta Version Published: CourseDrawer 5.2.000-beta
 
 Changelog:
+5.3.000
++ Selecting Waypoints with arrow buttons.
++ Bug selecting Waypoints by ID Fixed
+
 5.2.000
 + New selecting of Mapsize
 + Course selection improved
