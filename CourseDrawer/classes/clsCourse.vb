@@ -145,6 +145,12 @@
                                     Else
                                         waypoint.Reverse = False
                                     End If
+                                Case "unload"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.Unload = True
+                                    Else
+                                        waypoint.Unload = False
+                                    End If
                                 Case "generated"
                                     If xmlNodeReader.Value = "True" Then
                                         waypoint.generated = True
@@ -261,6 +267,8 @@
                 pen = New Pen(Brushes.Yellow, 2)
             ElseIf waypoint.Reverse = True Then
                 pen = New Pen(Brushes.Pink, 2)
+            ElseIf waypoint.Unload = True Then
+                pen = New Pen(Brushes.Purple, 2)
             ElseIf waypoint.TurnStart = True Then
                 pen = New Pen(Brushes.Orange, 2)
             ElseIf waypoint.TurnEnd = True Then

@@ -53,6 +53,7 @@
     Public Property dir As String
     Public Property ridgemarker As Double
     Public Property isSelected As Boolean
+    Public Property Unload As Boolean
 
     Public ReadOnly Property ReverseTxt As String
         Get
@@ -105,6 +106,15 @@
                 Return "true"
             Else
                 Return ""
+            End If
+        End Get
+    End Property
+    Public ReadOnly Property UnloadTXT As String
+        Get
+            If _Unload = True Then
+                Return "1"
+            Else
+                Return "0"
             End If
         End Get
     End Property
@@ -194,6 +204,9 @@
         If Me.Wait Then
             el.Add(New XAttribute("wait", Me.WaitTxt))
         End If
+        If Me.Unload Then
+            el.Add(New XAttribute("unload", Me.UnloadTXT))
+        End If
         If Me.TurnStartTxt Then
             el.Add(New XAttribute("turnstart", Me.TurnStartTxt))
         End If
@@ -235,6 +248,7 @@
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function Clone(Optional ByVal dX As Single = 10.0, Optional ByVal dY As Single = 10.0) As clsWaypoint
+        'ToDo: insert waypoint in angle direction of the cloned wp
         Dim wp As New clsWaypoint
         wp.Pos_X = Me.Pos_X + dX
         wp.Pos_Y = Me.Pos_Y + dY

@@ -470,6 +470,7 @@ Public Class mainForm
             Me.ChWP_Rev.Checked = False
             Me.ChWP_Cross.Checked = False
             Me.ChWP_Wait.Checked = False
+            Me.ChWP_Unload.Checked = False
             Me.ChWP_TurnStart.Checked = False
             Me.ChWP_TurnEnd.Checked = False
             Me.TBWP_X.Enabled = False
@@ -480,6 +481,7 @@ Public Class mainForm
             Me.ChWP_Rev.Enabled = False
             Me.ChWP_Cross.Enabled = False
             Me.ChWP_Wait.Enabled = False
+            Me.ChWP_Unload.Enabled = False
             Me.ChWP_TurnStart.Enabled = False
             Me.ChWP_TurnEnd.Enabled = False
 
@@ -493,6 +495,7 @@ Public Class mainForm
             Me.TBWP_Speed.Enabled = True
             Me.WPIDMcbx.Enabled = True
             Me.ChWP_Rev.Enabled = True
+            Me.ChWP_Unload.Enabled = True
             Me.ChWP_Cross.Enabled = True
             Me.ChWP_Wait.Enabled = True
             Me.ChWP_TurnStart.Enabled = True
@@ -509,8 +512,9 @@ Public Class mainForm
             Me.TBWP_Angle.Text = Me.selectedWP.Angle.ToString
             Me.TBWP_Speed.Text = Me.selectedWP.Speed.ToString
             Me.ChWP_Rev.Checked = Me.selectedWP.Reverse
-            Me.ChWP_Cross.Checked = Me.selectedWP.Cross
             Me.ChWP_Wait.Checked = Me.selectedWP.Wait
+            Me.ChWP_Unload.Checked = Me.selectedWP.Unload
+            Me.ChWP_Cross.Checked = Me.selectedWP.Cross
             Me.ChWP_TurnStart.Checked = Me.selectedWP.TurnStart
             Me.ChWP_TurnEnd.Checked = Me.selectedWP.TurnEnd
 
@@ -654,11 +658,15 @@ Public Class mainForm
         If Me.selectedWP Is Nothing Then Exit Sub
         Me.selectedWP.Reverse = ChWP_Rev.Checked
     End Sub
+    Private Sub ChWP_Unload_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_Unload.CheckStateChanged
+        If Me.selectedWP Is Nothing Then Exit Sub
+        Me.selectedWP.Unload = ChWP_Unload.Checked
+    End Sub
     Private Sub ChWP_TurnStart_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_TurnStart.CheckStateChanged
         If Me.selectedWP Is Nothing Then Exit Sub
         Me.selectedWP.TurnStart = ChWP_TurnStart.Checked
     End Sub
-    Private Sub ChWP_TurnEnd_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_TurnEnd.CheckStateChanged, ChWP_Unload.CheckStateChanged
+    Private Sub ChWP_TurnEnd_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_TurnEnd.CheckStateChanged
         If Me.selectedWP Is Nothing Then Exit Sub
         Me.selectedWP.TurnEnd = ChWP_TurnEnd.Checked
     End Sub
@@ -923,4 +931,5 @@ Public Class mainForm
         repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
         PictureBox1.Invalidate(repaintRegion)
     End Sub
+
 End Class

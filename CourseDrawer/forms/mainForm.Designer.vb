@@ -471,6 +471,7 @@ Partial Class mainForm
         '
         'ChWP_Cross
         '
+        Me.ChWP_Cross.Enabled = False
         Me.ChWP_Cross.Location = New System.Drawing.Point(76, 119)
         Me.ChWP_Cross.Name = "ChWP_Cross"
         Me.ChWP_Cross.Size = New System.Drawing.Size(70, 17)
@@ -480,6 +481,7 @@ Partial Class mainForm
         '
         'ChWP_Wait
         '
+        Me.ChWP_Wait.Enabled = False
         Me.ChWP_Wait.Location = New System.Drawing.Point(76, 96)
         Me.ChWP_Wait.Name = "ChWP_Wait"
         Me.ChWP_Wait.Size = New System.Drawing.Size(70, 17)
@@ -489,6 +491,7 @@ Partial Class mainForm
         '
         'ChWP_Rev
         '
+        Me.ChWP_Rev.Enabled = False
         Me.ChWP_Rev.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChWP_Rev.Location = New System.Drawing.Point(3, 96)
         Me.ChWP_Rev.Name = "ChWP_Rev"
@@ -517,6 +520,7 @@ Partial Class mainForm
         '
         'ChWP_TurnStart
         '
+        Me.ChWP_TurnStart.Enabled = False
         Me.ChWP_TurnStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChWP_TurnStart.Location = New System.Drawing.Point(148, 119)
         Me.ChWP_TurnStart.Name = "ChWP_TurnStart"
@@ -527,6 +531,7 @@ Partial Class mainForm
         '
         'ChWP_Unload
         '
+        Me.ChWP_Unload.Enabled = False
         Me.ChWP_Unload.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChWP_Unload.Location = New System.Drawing.Point(3, 119)
         Me.ChWP_Unload.Name = "ChWP_Unload"
@@ -537,6 +542,7 @@ Partial Class mainForm
         '
         'ChWP_TurnEnd
         '
+        Me.ChWP_TurnEnd.Enabled = False
         Me.ChWP_TurnEnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChWP_TurnEnd.Location = New System.Drawing.Point(148, 96)
         Me.ChWP_TurnEnd.Name = "ChWP_TurnEnd"
@@ -565,6 +571,7 @@ Partial Class mainForm
         '
         Me.TBWP_Speed.BeepOnError = True
         Me.TBWP_Speed.Culture = New System.Globalization.CultureInfo("")
+        Me.TBWP_Speed.Enabled = False
         Me.TBWP_Speed.Location = New System.Drawing.Point(150, 71)
         Me.TBWP_Speed.Name = "TBWP_Speed"
         Me.TBWP_Speed.Size = New System.Drawing.Size(68, 20)
@@ -575,6 +582,7 @@ Partial Class mainForm
         '
         Me.TBWP_Angle.BeepOnError = True
         Me.TBWP_Angle.Culture = New System.Globalization.CultureInfo("")
+        Me.TBWP_Angle.Enabled = False
         Me.TBWP_Angle.Location = New System.Drawing.Point(43, 69)
         Me.TBWP_Angle.Name = "TBWP_Angle"
         Me.TBWP_Angle.Size = New System.Drawing.Size(68, 20)
@@ -585,6 +593,7 @@ Partial Class mainForm
         '
         Me.TBWP_Y.BeepOnError = True
         Me.TBWP_Y.Culture = New System.Globalization.CultureInfo("")
+        Me.TBWP_Y.Enabled = False
         Me.TBWP_Y.Location = New System.Drawing.Point(150, 45)
         Me.TBWP_Y.Name = "TBWP_Y"
         Me.TBWP_Y.Size = New System.Drawing.Size(68, 20)
@@ -630,6 +639,7 @@ Partial Class mainForm
         '
         Me.TBWP_X.BeepOnError = True
         Me.TBWP_X.Culture = New System.Globalization.CultureInfo("")
+        Me.TBWP_X.Enabled = False
         Me.TBWP_X.Location = New System.Drawing.Point(43, 45)
         Me.TBWP_X.Name = "TBWP_X"
         Me.TBWP_X.Size = New System.Drawing.Size(68, 20)
