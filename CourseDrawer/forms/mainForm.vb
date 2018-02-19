@@ -575,7 +575,7 @@ Public Class mainForm
 
     Private Sub TBWP_Angle_KeyDown(sender As Object, e As KeyEventArgs) Handles TBWP_Angle.KeyDown
         If e.KeyCode = Keys.Enter Then
-            If (setSpeed(TBWP_Angle.Text, Me.selectedWP)) Then
+            If (setAngle(TBWP_Angle.Text, Me.selectedWP)) Then
                 TBWP_Angle.BackColor = Color.LightGreen
             End If
         Else
