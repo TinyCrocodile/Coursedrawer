@@ -636,4 +636,32 @@
         Return New Rectangle(oRechteck.left - margin, oRechteck.top - margin, oRechteck.right - oRechteck.left + margin * 2, oRechteck.bottom - oRechteck.top + margin * 2)
 
     End Function
+
+    ''' <summary>
+    ''' Calculates the area between the Previous the next and the Current Waypoint 
+    ''' </summary>
+    ''' <param name="RepaintRegion">The repaint Region where the new region is added to</param>
+    ''' <param name="ChangedWaypointIndex">The Index of the current waypoint</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Sub CreateRepaintArea(ByRef RepaintRegion As Region, ByVal ChangedWaypointIndex As Integer, ByVal ZoomLevel As Integer)
+        Dim MaxX As Single
+        Dim MaxY As Single
+        Dim MinX As Single
+        Dim MinY As Single
+
+        Dim PointPrev As PointF = _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel)
+        Dim PointWP As PointF = _waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel)
+        Dim PointNext As PointF = _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel)
+
+        If 0 < ChangedWaypointIndex < _waypoints.Count - 1 And Me.isSelected = True Then
+
+            MaxX = Math.Max(Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).X, _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel).X), Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).X, _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel).X))
+            MaxY = Math.Max(Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).Y, _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel).Y), Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).Y, _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel).Y))
+            MinX = Math.Min(Math.Min(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).X, _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel).X), Math.Min(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).X, _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel).X))
+            MinY = Math.Min(Math.Min(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).Y, _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel).Y), Math.Min(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).Y, _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel).Y))
+            RepaintRegion.Union(New RectangleF(MinX - 5, MinY - 5, (MaxX - MinX) + 10, (MaxY - MinY) + 10))
+
+        End If
+    End Sub
 End Class

@@ -540,14 +540,25 @@ Public Class mainForm
     End Sub
 
     Private Sub TBWP_X_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_X.Leave
-        If Me.selectedWP Is Nothing Then Exit Sub
-        Double.TryParse(TBWP_X.Text, System.Globalization.NumberStyles.Any, TBWP_X.FormatProvider, Me.selectedWP.Pos_X)
+        If selectedCrs IsNot Nothing Then
+            selectedCrs.CreateRepaintArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+            If Me.selectedWP Is Nothing Then Exit Sub
+            Double.TryParse(TBWP_X.Text, System.Globalization.NumberStyles.Any, TBWP_X.FormatProvider, Me.selectedWP.Pos_X)
+            selectedCrs.CreateRepaintArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+            PictureBox1.Invalidate(repaintRegion)
+        End If
     End Sub
 
     Private Sub TBWP_X_KeyDown(sender As Object, e As KeyEventArgs) Handles TBWP_X.KeyDown
+
         If e.KeyCode = Keys.Enter Then
-            If (setX(TBWP_X.Text, Me.selectedWP)) Then
-                TBWP_X.BackColor = Color.LightGreen
+            If selectedCrs IsNot Nothing Then
+                selectedCrs.CreateRepaintArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+                If (setX(TBWP_X.Text, Me.selectedWP)) Then
+                    TBWP_X.BackColor = Color.LightGreen
+                    selectedCrs.CreateRepaintArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+                    PictureBox1.Invalidate(repaintRegion)
+                End If
             End If
         Else
             TBWP_X.BackColor = Color.Orange
@@ -555,14 +566,24 @@ Public Class mainForm
     End Sub
 
     Private Sub TBWP_Y_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_Y.Leave
-        If Me.selectedWP Is Nothing Then Exit Sub
-        Double.TryParse(TBWP_Y.Text, System.Globalization.NumberStyles.Any, TBWP_Y.FormatProvider, Me.selectedWP.Pos_Y)
+        If selectedCrs IsNot Nothing Then
+            selectedCrs.CreateRepaintArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+            If Me.selectedWP Is Nothing Then Exit Sub
+            Double.TryParse(TBWP_Y.Text, System.Globalization.NumberStyles.Any, TBWP_Y.FormatProvider, Me.selectedWP.Pos_Y)
+            selectedCrs.CreateRepaintArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+            PictureBox1.Invalidate(repaintRegion)
+        End If
     End Sub
 
     Private Sub TBWP_Y_KeyDown(sender As Object, e As KeyEventArgs) Handles TBWP_Y.KeyDown
         If e.KeyCode = Keys.Enter Then
-            If (setY(TBWP_Y.Text, Me.selectedWP)) Then
-                TBWP_Y.BackColor = Color.LightGreen
+            If selectedCrs IsNot Nothing Then
+                selectedCrs.CreateRepaintArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+                If (setY(TBWP_Y.Text, Me.selectedWP)) Then
+                    TBWP_Y.BackColor = Color.LightGreen
+                    selectedCrs.CreateRepaintArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+                    PictureBox1.Invalidate(repaintRegion)
+                End If
             End If
         Else
             TBWP_Y.BackColor = Color.Orange
@@ -632,6 +653,7 @@ Public Class mainForm
 
     Private Function setX(ByRef X As String, ByRef WP As clsWaypoint) As Boolean
         If WP Is Nothing Then Return 0
+
         Dim nX As Double
         If (Double.TryParse(X, nX)) Then
             WP.Pos_X = nX
@@ -640,6 +662,7 @@ Public Class mainForm
             X = WP.Pos_X
             Return 0
         End If
+
     End Function
 
     Private Function setY(ByRef Y As String, ByRef WP As clsWaypoint) As Boolean
@@ -864,10 +887,6 @@ Public Class mainForm
         gr = PictureBox1.CreateGraphics
         gr.FillRectangle(Brushes.Aquamarine, New RectangleF(0, 0, PictureBox1.Width, PictureBox1.Height))
         gr.Dispose()
-    End Sub
-
-    Private Sub ChWP_Unload_CheckedChanged(sender As Object, e As EventArgs) Handles ChWP_Unload.CheckedChanged
-        'ToDo: Make unloadpoint work
     End Sub
 
     Private Sub WPPrevBtn_Click(sender As Object, e As EventArgs) Handles WPPrevBtn.Click
