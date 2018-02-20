@@ -41,7 +41,10 @@ Last Beta Version Published: CourseDrawer 5.2.000-beta
 Changelog:
 5.3.000
 + Selecting Waypoints with arrow buttons.
-+ Bug selecting Waypoints by ID Fixed
++ Set Waypoint as Unloadpoint
++ Fixed Bug selecting Waypoints by ID
++ Fixed Bug Speed saved as Angle
++ Fixed Bug Waypoint Position not Updeated when changed by Textboxes
 
 5.2.000
 + New selecting of Mapsize
