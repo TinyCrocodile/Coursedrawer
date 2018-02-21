@@ -201,6 +201,7 @@ Public Class mainForm
             TimerDragPicture.Interval = 100
             Try
                 Me.selectedCrs.changed = True
+                Me.selectedCrs.CreateRepaintArea(repaintRegion, Me.selectedCrs.SelectedWpIndex, zoomLvl)
                 Me.selectedWP.setNewPos(origPoint)
             Catch ex As Exception
             End Try
@@ -208,11 +209,13 @@ Public Class mainForm
             myLocation = newOffset
             If clsCourse.CircleDiameter > 0 Then invRange = (clsCourse.CircleDiameter * 2 * zoomLvl / 100) + 20
             If invRange < 300 Then invRange = 300
-            If Me.firstDraw = True Then
+            If Me.firstDraw = True And Me.selectedCrs Is Nothing Then
                 Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
                 Me.firstDraw = False
             Else
-                Me.PictureBox1.Invalidate(New System.Drawing.Rectangle(newOffset.X - invRange / 2, newOffset.Y - invRange / 2, invRange, invRange))
+                Me.selectedCrs.CreateRepaintArea(repaintRegion, Me.selectedCrs.SelectedWpIndex, zoomLvl)
+                Me.PictureBox1.Invalidate(repaintRegion)
+                'Me.PictureBox1.Invalidate(New System.Drawing.Rectangle(newOffset.X - invRange / 2, newOffset.Y - invRange / 2, invRange, invRange))
             End If
         End If
         myMousePos = newMousePos
@@ -944,11 +947,20 @@ Public Class mainForm
     Private Sub WPIDMcbx_KeyDown(sender As Object, e As KeyEventArgs) Handles WPIDMcbx.KeyDown
         If Me.selectedWP Is Nothing Then Exit Sub
         repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
-        If e.KeyCode = Keys.Enter And Me.selectedCrs IsNot Nothing And Me.WPIDMcbx.Text > 0 Then
+        Dim InputNumber As Integer
+        Integer.TryParse(Me.WPIDMcbx.Text, InputNumber)
+        If e.KeyCode = Keys.Enter And Me.selectedCrs IsNot Nothing And InputNumber > 0 Then
             Me.selectedCrs.selectWP(Me.WPIDMcbx.Text - 1)
         End If
         repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
         PictureBox1.Invalidate(repaintRegion)
     End Sub
 
+    Private Sub PictureBox1_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseMove
+        Me.DebugPos.Text = "x: " & e.X & " y: " & e.Y
+    End Sub
+
+    Private Sub mainForm_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles MyBase.PreviewKeyDown
+        Me.DebugPos.Text = "KeyDown " & e.KeyCode.ToString
+    End Sub
 End Class

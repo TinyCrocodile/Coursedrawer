@@ -98,6 +98,7 @@ Partial Class mainForm
         Me.CrsList = New CourseDrawer.crsListItems()
         Me.ClsCourseBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClsCourseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DebugPos = New System.Windows.Forms.Label()
         Me.ToolStrip1.SuspendLayout()
         Me.panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -756,11 +757,24 @@ Partial Class mainForm
         '
         Me.ClsCourseBindingSource.DataSource = GetType(CourseDrawer.clsCourse)
         '
+        'DebugPos
+        '
+        Me.DebugPos.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DebugPos.AutoSize = True
+        Me.DebugPos.BackColor = System.Drawing.Color.DimGray
+        Me.DebugPos.ForeColor = System.Drawing.Color.White
+        Me.DebugPos.Location = New System.Drawing.Point(950, 54)
+        Me.DebugPos.Name = "DebugPos"
+        Me.DebugPos.Size = New System.Drawing.Size(60, 13)
+        Me.DebugPos.TabIndex = 1
+        Me.DebugPos.Text = "Debug Pos"
+        '
         'mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1299, 605)
+        Me.Controls.Add(Me.DebugPos)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.butSelectAll)
         Me.Controls.Add(Me.StatusStrip1)
@@ -769,6 +783,7 @@ Partial Class mainForm
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.CrsList)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.Name = "mainForm"
         Me.Text = "CourseDrawer"
         Me.ToolStrip1.ResumeLayout(False)
@@ -866,4 +881,5 @@ Partial Class mainForm
     Friend WithEvents WPCbxSeparator As Label
     Friend WithEvents WPTextSeparator As Label
     Friend WithEvents WPIDMcbx As MaskedTextBox
+    Friend WithEvents DebugPos As Label
 End Class
