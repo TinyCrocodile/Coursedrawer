@@ -46,7 +46,7 @@ Partial Class mainForm
         Me.Distance20ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
+        Me.GuidingCircleTbx = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.butNewCourse = New System.Windows.Forms.ToolStripButton()
         Me.butDelCourse = New System.Windows.Forms.ToolStripButton()
@@ -95,10 +95,12 @@ Partial Class mainForm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TBCrs_ID = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.DebugPos = New System.Windows.Forms.Label()
         Me.CrsList = New CourseDrawer.crsListItems()
         Me.ClsCourseBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClsCourseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DebugPos = New System.Windows.Forms.Label()
+        Me.StatusZoomLevel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.SpringMiddle = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip1.SuspendLayout()
         Me.panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,7 +114,7 @@ Partial Class mainForm
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butLoadCourse, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector, Me.butDebugInvalidating})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butLoadCourse, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.GuidingCircleTbx, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector, Me.butDebugInvalidating})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1299, 39)
@@ -269,10 +271,10 @@ Partial Class mainForm
         Me.ToolStripLabel1.Size = New System.Drawing.Size(37, 36)
         Me.ToolStripLabel1.Text = "Circle"
         '
-        'ToolStripTextBox1
+        'GuidingCircleTbx
         '
-        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(50, 39)
+        Me.GuidingCircleTbx.Name = "GuidingCircleTbx"
+        Me.GuidingCircleTbx.Size = New System.Drawing.Size(50, 39)
         '
         'ToolStripSeparator4
         '
@@ -649,7 +651,7 @@ Partial Class mainForm
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripProgressBar1, Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripProgressBar1, Me.ToolStripStatusLabel1, Me.SpringMiddle, Me.StatusZoomLevel})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 583)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1299, 22)
@@ -739,6 +741,18 @@ Partial Class mainForm
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "ID:"
         '
+        'DebugPos
+        '
+        Me.DebugPos.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DebugPos.AutoSize = True
+        Me.DebugPos.BackColor = System.Drawing.Color.DimGray
+        Me.DebugPos.ForeColor = System.Drawing.Color.White
+        Me.DebugPos.Location = New System.Drawing.Point(950, 54)
+        Me.DebugPos.Name = "DebugPos"
+        Me.DebugPos.Size = New System.Drawing.Size(60, 13)
+        Me.DebugPos.TabIndex = 1
+        Me.DebugPos.Text = "Debug Pos"
+        '
         'CrsList
         '
         Me.CrsList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -757,17 +771,18 @@ Partial Class mainForm
         '
         Me.ClsCourseBindingSource.DataSource = GetType(CourseDrawer.clsCourse)
         '
-        'DebugPos
+        'StatusZoomLevel
         '
-        Me.DebugPos.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DebugPos.AutoSize = True
-        Me.DebugPos.BackColor = System.Drawing.Color.DimGray
-        Me.DebugPos.ForeColor = System.Drawing.Color.White
-        Me.DebugPos.Location = New System.Drawing.Point(950, 54)
-        Me.DebugPos.Name = "DebugPos"
-        Me.DebugPos.Size = New System.Drawing.Size(60, 13)
-        Me.DebugPos.TabIndex = 1
-        Me.DebugPos.Text = "Debug Pos"
+        Me.StatusZoomLevel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.StatusZoomLevel.Name = "StatusZoomLevel"
+        Me.StatusZoomLevel.Size = New System.Drawing.Size(98, 17)
+        Me.StatusZoomLevel.Text = "StatusZoomLevel"
+        '
+        'SpringMiddle
+        '
+        Me.SpringMiddle.Name = "SpringMiddle"
+        Me.SpringMiddle.Size = New System.Drawing.Size(957, 17)
+        Me.SpringMiddle.Spring = True
         '
         'mainForm
         '
@@ -850,7 +865,7 @@ Partial Class mainForm
     Friend WithEvents Distance20ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents ToolStripTextBox1 As System.Windows.Forms.ToolStripTextBox
+    Friend WithEvents GuidingCircleTbx As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents WPSpeedLbl As System.Windows.Forms.Label
@@ -882,4 +897,6 @@ Partial Class mainForm
     Friend WithEvents WPTextSeparator As Label
     Friend WithEvents WPIDMcbx As MaskedTextBox
     Friend WithEvents DebugPos As Label
+    Friend WithEvents SpringMiddle As ToolStripStatusLabel
+    Friend WithEvents StatusZoomLevel As ToolStripStatusLabel
 End Class

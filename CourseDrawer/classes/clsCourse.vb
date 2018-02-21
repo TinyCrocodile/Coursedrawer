@@ -654,7 +654,7 @@
         Dim PointWP As PointF = _waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel)
         Dim PointNext As PointF = _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel)
         If Me.isSelected = True And _CircleDiameter > 0 And _selectedWP >= 0 Then
-            RepaintRegion.Union(New RectangleF(_waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).X - (CircleDiameter / 2), _waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).Y - (CircleDiameter / 2), CircleDiameter, CircleDiameter))
+            RepaintRegion.Union(New RectangleF(_waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).X - 1 - (CircleDiameter * ZoomLevel / 100), _waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).Y - 1 - (CircleDiameter * ZoomLevel / 100), (CircleDiameter * 2 * ZoomLevel / 100) + 2, (CircleDiameter * 2 * ZoomLevel / 100) + 2))
         End If
         If 0 < ChangedWaypointIndex < _waypoints.Count - 1 And Me.isSelected = True Then
 
@@ -665,5 +665,15 @@
             RepaintRegion.Union(New RectangleF(MinX - 5, MinY - 5, (MaxX - MinX) + 10, (MaxY - MinY) + 10))
 
         End If
+    End Sub
+    Public Sub CreateRepaintWaypointArea(ByRef repaintRegion As Region, ByVal WaypointIndex As Integer, ByVal ZoomLevel As Integer)
+        If 0 < WaypointIndex < _waypoints.Count - 1 Then
+            Dim PointWp As PointF = _waypoints(WaypointIndex).PositionScreenDraw(ZoomLevel)
+            repaintRegion.Union(New RectangleF(PointWp.X - 5, PointWp.Y - 5, 10, 10))
+        End If
+        If Me.isSelected = True And _CircleDiameter > 0 And _selectedWP >= 0 Then
+            repaintRegion.Union(New RectangleF(_waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).X - 1 - (CircleDiameter * ZoomLevel / 100), _waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).Y - 1 - (CircleDiameter * ZoomLevel / 100), (CircleDiameter * 2 * ZoomLevel / 100) + 2, (CircleDiameter * 2 * ZoomLevel / 100) + 2S))
+        End If
+
     End Sub
 End Class

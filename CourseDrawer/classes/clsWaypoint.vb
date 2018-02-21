@@ -16,6 +16,7 @@
     End Property
 
     Public ReadOnly Property PositionScreen As PointF
+        'ToDo: Rename! This is the position on the map not on screen. For position on Screen use Position screen draw.
         'Test if posible to handle position on screen with graphics.Transform so only realworld coordinates are used
         Get
             Dim point As New PointF
@@ -143,6 +144,10 @@
         If clsWaypoint._isAnySelected = True Then
             RaiseEvent SelectionChanged(Nothing)
         End If
+
+        'The selection is executed in MapBitmap coordinates but if zoomed one Mappixel is 1x Zoomlevel/100 so the selecting range of one pixel will be zoomed
+        'while the painted circle on the pbx is always 6px in size. this leads to the circle is not matching the selecting area.
+        'ToDo: fix the selecting Area by using screen draw point and picturebox coordinates instead of Mapbitmap Coordinates
 
         xDist = point.X - Me.PositionScreen.X
         yDist = point.Y - Me.PositionScreen.Y

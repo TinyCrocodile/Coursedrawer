@@ -68,6 +68,7 @@ Public Class mainForm
                 MapSizeSelector.Enabled = False
             End If
             zoomLvl = 100
+            Me.StatusZoomLevel.Text = zoomLvl & "%"
             PictureBox1.Size = locSize
             clsWaypoint.mapSize = locSize
             Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
@@ -160,6 +161,8 @@ Public Class mainForm
             'ToDo Picture location on mouse position not centering
             Dim posOffset As New Point((origPoint.X * zoomLvl / 100) - (panel1.Size.Width / 2), (origPoint.Y * zoomLvl / 100) - (panel1.Size.Height / 2))
             panel1.AutoScrollPosition = posOffset
+
+            Me.StatusZoomLevel.Text = zoomLvl & "%"
         ElseIf butSelect.Checked = True Then
             clsCourses.getInstance.selectWP(origPoint)
         End If
@@ -174,6 +177,7 @@ Public Class mainForm
         End If
         If butSelect.Checked = True Then
             Dim origPoint As New PointF(e.Location.X * 100 / zoomLvl, e.Location.Y * 100 / zoomLvl)
+            Me.DebugPos.Text = "Select Mousepos " & origPoint.X & "," & origPoint.Y
             myMousePos = Cursor.Position
 
             clsCourses.getInstance.selectWP(origPoint, False)
@@ -226,7 +230,7 @@ Public Class mainForm
         If butMove.Checked Then Me.Cursor = myGrabCursor
         Me.firstDraw = True
         Try
-            'ToDo: Use minimal invaldidate region
+            'ToDo: Use minimal invaldidate region not shure wich repaintarea it would be
             'Me.PictureBox1.Invalidate(selectedCrs.DrawingArea)
             Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
         Catch ex As Exception
@@ -865,13 +869,19 @@ Public Class mainForm
         Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
     End Sub
 
-    Private Sub ToolStripTextBox1_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripTextBox1.Leave
+    Private Sub GuidingCircleTbx_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GuidingCircleTbx.Leave
         Dim i As Integer
         Dim res As Boolean
-        res = Integer.TryParse(ToolStripTextBox1.Text, i)
+        res = Integer.TryParse(GuidingCircleTbx.Text, i)
         If res = False Then i = 0
-        ToolStripTextBox1.Text = i.ToString
+        GuidingCircleTbx.Text = i.ToString
         clsCourse.CircleDiameter = i
+        If selectedCrs IsNot Nothing And selectedWP IsNot Nothing Then
+            If selectedCrs.SelectedWpIndex >= 0 Then
+                selectedCrs.CreateRepaintWaypointArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+                PictureBox1.Invalidate(repaintRegion)
+            End If
+        End If
     End Sub
 
     'ToDo Ordner-Strukur aktivieren
@@ -897,8 +907,9 @@ Public Class mainForm
         Dim wpindex As Integer
 
         If Me.selectedWP Is Nothing Then Exit Sub
-        repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+
         If selectedCrs IsNot Nothing Then
+            selectedCrs.CreateRepaintWaypointArea(repaintRegion, Me.selectedCrs.SelectedWpIndex, zoomLvl)
             With selectedCrs
 
                 If .SelectedWpIndex < 1 Then
@@ -907,7 +918,7 @@ Public Class mainForm
                     wpindex = .SelectedWpIndex - 1
                 End If
                 .selectWP(wpindex)
-                repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+                selectedCrs.CreateRepaintWaypointArea(repaintRegion, Me.selectedCrs.SelectedWpIndex, zoomLvl)
                 PictureBox1.Invalidate(repaintRegion)
 
             End With
@@ -918,8 +929,10 @@ Public Class mainForm
         'OnClick select next Waypoint of the course
         Dim wpindex As Integer
         If Me.selectedWP Is Nothing Then Exit Sub
-        repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+
         If selectedCrs IsNot Nothing Then
+            selectedCrs.CreateRepaintWaypointArea(repaintRegion, Me.selectedCrs.SelectedWpIndex, zoomLvl)
+
             With selectedCrs
                 If .SelectedWpIndex >= .WPCount - 1 Then
                     wpindex = 0
@@ -927,7 +940,7 @@ Public Class mainForm
                     wpindex = .SelectedWpIndex + 1
                 End If
                 .selectWP(wpindex)
-                repaintRegion.Union(New RectangleF(Me.selectedWP.PositionScreenDraw(Me.zoomLvl).X - 5, Me.selectedWP.PositionScreenDraw(Me.zoomLvl).Y - 5, 10, 10))
+                selectedCrs.CreateRepaintWaypointArea(repaintRegion, Me.selectedCrs.SelectedWpIndex, zoomLvl)
 
                 PictureBox1.Invalidate(repaintRegion)
             End With
@@ -963,4 +976,5 @@ Public Class mainForm
     Private Sub mainForm_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles MyBase.PreviewKeyDown
         Me.DebugPos.Text = "KeyDown " & e.KeyCode.ToString
     End Sub
+
 End Class
