@@ -3,9 +3,10 @@ Imports CourseDrawer
 
 Public Enum MapSize As Integer
     'ad new sizes if needed dont forget to update the Combobox
-    Normal = 2048
-    Quadruple = 4096
-    Octuple = 8192
+    X1 = 2048
+    X4 = 4096
+    X8 = 8192
+    X16 = 16384
 End Enum
 
 Public Class mainForm
@@ -134,21 +135,14 @@ Public Class mainForm
 
             locSize = clsWaypoint.mapSize
 
-            'ToDo: Show ZoomFactor somewhere (Maybe in the Toolstrip)
-
             'Picture size (zoom)
             If ev.Button = Windows.Forms.MouseButtons.Left Then
-                If zoomLvl < 4000 Then
+                If zoomLvl < 4000 Then 'The max zoomlevel
                     zoomLvl += zoomStep
-                Else
-                    'MsgBox("max level reached")
                 End If
             ElseIf ev.Button = Windows.Forms.MouseButtons.Right Then
                 If zoomLvl > zoomStep Then
                     zoomLvl -= zoomStep
-                Else
-                    'MsgBox("min level reached")
-                    'Just show the actual zoomfactor permanent
                 End If
             ElseIf ev.Button = Windows.Forms.MouseButtons.Middle Then
                 zoomLvl = 50

@@ -87,6 +87,8 @@ Partial Class mainForm
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.SpringMiddle = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.StatusZoomLevel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -99,8 +101,6 @@ Partial Class mainForm
         Me.CrsList = New CourseDrawer.crsListItems()
         Me.ClsCourseBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClsCourseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.StatusZoomLevel = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.SpringMiddle = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip1.SuspendLayout()
         Me.panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -326,10 +326,12 @@ Partial Class mainForm
         '
         'MapSizeSelector
         '
+        Me.MapSizeSelector.AutoSize = False
         Me.MapSizeSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.MapSizeSelector.Items.AddRange(New Object() {"Normal", "Quadruple", "Octuple"})
+        Me.MapSizeSelector.Items.AddRange(New Object() {"X1", "X4", "X8", "X16"})
         Me.MapSizeSelector.Name = "MapSizeSelector"
-        Me.MapSizeSelector.Size = New System.Drawing.Size(121, 39)
+        Me.MapSizeSelector.Size = New System.Drawing.Size(50, 23)
+        Me.MapSizeSelector.Text = "X1"
         Me.MapSizeSelector.ToolTipText = "Select map size when no map image is loaded."
         '
         'butDebugInvalidating
@@ -669,6 +671,19 @@ Partial Class mainForm
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(121, 17)
         Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
         '
+        'SpringMiddle
+        '
+        Me.SpringMiddle.Name = "SpringMiddle"
+        Me.SpringMiddle.Size = New System.Drawing.Size(988, 17)
+        Me.SpringMiddle.Spring = True
+        '
+        'StatusZoomLevel
+        '
+        Me.StatusZoomLevel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.StatusZoomLevel.Name = "StatusZoomLevel"
+        Me.StatusZoomLevel.Size = New System.Drawing.Size(98, 17)
+        Me.StatusZoomLevel.Text = "StatusZoomLevel"
+        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
@@ -770,19 +785,6 @@ Partial Class mainForm
         'ClsCourseBindingSource
         '
         Me.ClsCourseBindingSource.DataSource = GetType(CourseDrawer.clsCourse)
-        '
-        'StatusZoomLevel
-        '
-        Me.StatusZoomLevel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.StatusZoomLevel.Name = "StatusZoomLevel"
-        Me.StatusZoomLevel.Size = New System.Drawing.Size(98, 17)
-        Me.StatusZoomLevel.Text = "StatusZoomLevel"
-        '
-        'SpringMiddle
-        '
-        Me.SpringMiddle.Name = "SpringMiddle"
-        Me.SpringMiddle.Size = New System.Drawing.Size(957, 17)
-        Me.SpringMiddle.Spring = True
         '
         'mainForm
         '
