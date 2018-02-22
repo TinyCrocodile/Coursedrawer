@@ -235,12 +235,12 @@ Public Class clsCourses
     ''' </summary>
     ''' <param name="point"></param>
     ''' <remarks></remarks>
-    Public Sub selectWP(ByVal point As PointF, Optional noEvent As Boolean = False)
+    Public Sub selectWP(ByVal point As PointF, ByVal ZoomLevel As Integer, Optional noEvent As Boolean = False)
         Dim selected As Boolean
         Me._seledtedCrs = -1
         For Each crs As clsCourse In _courses
             If crs.Hidden = False And crs.isUsed = True Then
-                selected = crs.selectWP(point, noEvent)
+                selected = crs.selectWP(point, ZoomLevel, noEvent)
                 If selected = True Then
                     Me._seledtedCrs = _courses.IndexOf(crs)
                     Exit For

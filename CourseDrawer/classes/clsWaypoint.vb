@@ -137,7 +137,7 @@
     ''' <param name="range"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function selectWP(ByVal point As PointF, ByVal range As Double) As Boolean
+    Public Function selectWP(ByVal point As PointF, ByVal ZoomLevel As Integer, ByVal range As Double) As Boolean
         Dim xDist As Double
         Dim yDist As Double
         Dim dist As Double
@@ -149,8 +149,8 @@
         'while the painted circle on the pbx is always 6px in size. this leads to the circle is not matching the selecting area.
         'ToDo: fix the selecting Area by using screen draw point and picturebox coordinates instead of Mapbitmap Coordinates
 
-        xDist = point.X - Me.PositionScreen.X
-        yDist = point.Y - Me.PositionScreen.Y
+        xDist = point.X - Me.PositionScreenDraw(ZoomLevel).X
+        yDist = point.Y - Me.PositionScreenDraw(ZoomLevel).Y
         dist = Math.Sqrt(xDist * xDist + yDist * yDist)
 
         If dist <= range Then

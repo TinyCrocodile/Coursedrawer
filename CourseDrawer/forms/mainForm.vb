@@ -97,7 +97,7 @@ Public Class mainForm
 
             'clsCourses.getInstance.selectwp.lastwp
 
-            'todo: Neuen Kurs erstellen Fertig machen und dabei neue Checkboxlist nehmen
+            'ToDo: Neuen Kurs erstellen Fertig machen und dabei neue Checkboxlist nehmen
             'ToDo: New Feature to alingn Waypoints.(Maybe a combo of deleting Waypoints and inserting new ones would do the job)
             'ToDo: new Feature to reduce Waypoint-Count on long courses.(Maybe a combo of deleting Waypoints and inserting new ones would do the job) finde out if cp has a limit of max. waypoint distance.
             'ToDo: Enable zooming and paning on mousewheel / middle mouse
@@ -158,27 +158,39 @@ Public Class mainForm
 
             Me.StatusZoomLevel.Text = zoomLvl & "%"
         ElseIf butSelect.Checked = True Then
-            clsCourses.getInstance.selectWP(origPoint)
+            If selectedCrs IsNot Nothing And selectedWP IsNot Nothing Then
+                selectedCrs.CreateRepaintWaypointArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+                PictureBox1.Invalidate(repaintRegion)
+            End If
+            clsCourses.getInstance.selectWP(ev.Location, zoomLvl)
         End If
         'Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
     End Sub
 
     Private Sub PictureBox1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseDown
+
         If butMove.Checked = True Then
             myMousePos = Cursor.Position
             Me.Cursor = myGrabbingCursor
             TimerDragPicture.Enabled = True
         End If
         If butSelect.Checked = True Then
-            Dim origPoint As New PointF(e.Location.X * 100 / zoomLvl, e.Location.Y * 100 / zoomLvl)
-            Me.DebugPos.Text = "Select Mousepos " & origPoint.X & "," & origPoint.Y
-            myMousePos = Cursor.Position
 
-            clsCourses.getInstance.selectWP(origPoint, False)
+            myMousePos = (Cursor.Position)
+            If selectedCrs IsNot Nothing And selectedWP IsNot Nothing Then
+                selectedCrs.CreateRepaintWaypointArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+            End If
+            clsCourses.getInstance.selectWP(e.Location, zoomLvl, False)
             myLocation = e.Location
             TimerDragPicture.Interval = SystemInformation.DoubleClickTime
             TimerDragPicture.Enabled = True
+
+            If selectedCrs IsNot Nothing And selectedWP IsNot Nothing Then
+                selectedCrs.CreateRepaintWaypointArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
+            End If
+            PictureBox1.Invalidate(repaintRegion)
         End If
+
     End Sub
 
 
@@ -206,7 +218,7 @@ Public Class mainForm
 
             myLocation = newOffset
             If clsCourse.CircleDiameter > 0 Then invRange = (clsCourse.CircleDiameter * 2 * zoomLvl / 100) + 20
-            If invRange < 300 Then invRange = 300
+
             If Me.firstDraw = True And Me.selectedCrs Is Nothing Then
                 Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
                 Me.firstDraw = False
@@ -220,6 +232,7 @@ Public Class mainForm
     End Sub
 
     Private Sub PictureBox1_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseUp
+
         If TimerDragPicture.Enabled = True Then TimerDragPicture.Enabled = False
         If butMove.Checked Then Me.Cursor = myGrabCursor
         Me.firstDraw = True
