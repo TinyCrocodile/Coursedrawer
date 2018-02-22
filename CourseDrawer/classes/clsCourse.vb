@@ -298,13 +298,13 @@
     ''' <param name="point"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function selectWP(ByVal point As PointF, Optional NoEvent As Boolean = False) As Boolean
+    Public Function selectWP(ByVal point As PointF, ByVal ZoomLevel As Integer, Optional NoEvent As Boolean = False) As Boolean
         Dim selected As Boolean
         If _isAnySelected = True Then
             RaiseEvent SelectionChanged(Nothing)
         End If
         For Each wp As clsWaypoint In _waypoints
-            selected = wp.selectWP(point, 1)
+            selected = wp.selectWP(point, ZoomLevel, 3)
             If selected = True Then
                 If Me._isSelected = False And Not NoEvent Then
                     RaiseEvent SelectionChanged(Me)
