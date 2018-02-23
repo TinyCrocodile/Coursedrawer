@@ -138,7 +138,11 @@ Public Class crsListItems
 
     Public Sub SelectItem(ListIndex As Integer)
         Try
-            SelectCourseListItem(m_crsListItems(ListIndex), New EventArgs())
+            If 0 < ListIndex < m_crsListItems.Count Then
+                SelectCourseListItem(m_crsListItems(ListIndex), New EventArgs())
+            Else
+                SelectCourseListItem(Nothing, New EventArgs())
+            End If
         Catch ex As Exception
 
         End Try

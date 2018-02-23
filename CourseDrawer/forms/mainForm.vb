@@ -10,8 +10,8 @@ Public Enum MapSize As Integer
 End Enum
 
 Public Class mainForm
-    Const zoomStep As Integer = 50
-    Dim zoomLvl As Integer = 50
+    Dim ZoomStep As Integer = 50
+    Dim zoomLvl As Integer = 100
     Dim myMousePos As Point
     Dim myLocation As PointF
     Dim selectedWP As clsWaypoint
@@ -137,12 +137,22 @@ Public Class mainForm
 
             'Picture size (zoom)
             If ev.Button = Windows.Forms.MouseButtons.Left Then
+                If zoomLvl < 100 Then
+                    ZoomStep = 10
+                Else
+                    ZoomStep = 50
+                End If
                 If zoomLvl < 4000 Then 'The max zoomlevel
-                    zoomLvl += zoomStep
+                    zoomLvl += ZoomStep
                 End If
             ElseIf ev.Button = Windows.Forms.MouseButtons.Right Then
-                If zoomLvl > zoomStep Then
-                    zoomLvl -= zoomStep
+                If zoomLvl <= 100 Then
+                    ZoomStep = 10
+                Else
+                    ZoomStep = 50
+                End If
+                If zoomLvl > ZoomStep Then
+                    zoomLvl -= ZoomStep
                 End If
             ElseIf ev.Button = Windows.Forms.MouseButtons.Middle Then
                 zoomLvl = 50
@@ -169,6 +179,8 @@ Public Class mainForm
 
     Private Sub PictureBox1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseDown
 
+        Dim PrevSelectedCourse As clsCourse
+
         If butMove.Checked = True Then
             myMousePos = Cursor.Position
             Me.Cursor = myGrabbingCursor
@@ -176,16 +188,23 @@ Public Class mainForm
         End If
         If butSelect.Checked = True Then
 
+            PrevSelectedCourse = selectedCrs
             myMousePos = (Cursor.Position)
+
             If selectedCrs IsNot Nothing And selectedWP IsNot Nothing Then
                 selectedCrs.CreateRepaintWaypointArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
             End If
+
             clsCourses.getInstance.selectWP(e.Location, zoomLvl, False)
             myLocation = e.Location
             TimerDragPicture.Interval = SystemInformation.DoubleClickTime
             TimerDragPicture.Enabled = True
 
             If selectedCrs IsNot Nothing And selectedWP IsNot Nothing Then
+                If selectedCrs IsNot PrevSelectedCourse Then
+                    repaintRegion.Union(New Region(selectedCrs.DrawingArea(zoomLvl)))
+                    If PrevSelectedCourse IsNot Nothing Then repaintRegion.Union(New Region(PrevSelectedCourse.DrawingArea(zoomLvl)))
+                End If
                 selectedCrs.CreateRepaintWaypointArea(repaintRegion, selectedCrs.SelectedWpIndex, zoomLvl)
             End If
             PictureBox1.Invalidate(repaintRegion)
@@ -794,9 +813,8 @@ Public Class mainForm
             TBCrs_Name.Enabled = False
             TBCrs_ID.Text = "0"
             TBCrs_Name.Text = ""
-            WPIDMcbx.Text = 0
             WPNumInfoLbl.Text = 0
-            'CrsList.SelectedCrsListItem = Nothing
+            CrsList.SelectItem(-1)
 
         Else
             butDelCourse.Enabled = True
