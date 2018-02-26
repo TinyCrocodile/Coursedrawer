@@ -15,21 +15,21 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.5.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
         
         Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()),MySettings)
         
-#Region "Funktion zum automatischen Speichern von My.Settings"
+#Region "Automatische My.Settings-Speicherfunktion"
 #If _MyType = "WindowsForms" Then
     Private Shared addedHandler As Boolean
 
     Private Shared addedHandlerLockObject As New Object
 
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)> _
-    Private Shared Sub AutoSaveSettings(ByVal sender As Global.System.Object, ByVal e As Global.System.EventArgs)
+    Private Shared Sub AutoSaveSettings(sender As Global.System.Object, e As Global.System.EventArgs)
         If My.Application.SaveMySettingsOnExit Then
             My.Settings.Save()
         End If
@@ -56,8 +56,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("D:\OwnCloud\Programming\Spiele\Coursedrawer-master\CourseDrawer\bin\Debug\CourseP"& _ 
-            "lay_Courses\Map02")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("..\..\..\TestFiles\CourseFiles\")>  _
         Public Property SavePath() As String
             Get
                 Return CType(Me("SavePath"),String)
@@ -69,7 +68,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("D:\OwnCloud\Programming\Spiele\Coursedrawer-master\CourseDrawer\Map bitmaps")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("..\..\..\TestFiles\Map bitmaps\")>  _
         Public Property MapPath() As String
             Get
                 Return CType(Me("MapPath"),String)

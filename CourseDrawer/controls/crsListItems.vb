@@ -20,6 +20,7 @@ Public Class crsListItems
 
     Public Sub clear()
         m_crsListItems = New List(Of crsListItem)
+        FlowPanelCourses.Controls.Clear()
     End Sub
 
 
@@ -27,24 +28,10 @@ Public Class crsListItems
     ''' Ausgewähltes Element zurück geben
     ''' </summary>
     ''' <returns>Auswahl als crsListItem</returns>
-    Public Property SelectedCrsListItem As crsListItem
+    Public ReadOnly Property SelectedCrsListItem As crsListItem
         Get
             Return m_selectedCrsListItem
         End Get
-        Set(value As crsListItem)
-            If Not m_crsListItems Is Nothing Then
-                Try
-                    If (value.ListIndex <> m_selectedCrsListItem.ListIndex) Then
-                        m_selectedCrsListItem = value
-                        RaiseEvent SelectionChanged(m_selectedCrsListItem, False)
-                    End If
-                Catch ex As Exception
-                    m_selectedCrsListItem = Nothing
-                End Try
-
-
-            End If
-        End Set
     End Property
 
     ''' <summary>
@@ -62,7 +49,6 @@ Public Class crsListItems
     Public Sub New()
         ' Dieser Aufruf ist für den Designer erforderlich.
         InitializeComponent()
-        'Me.Controls.Remove(Me.CrsListItem1)
         ' Fügen Sie Initialisierungen nach dem InitializeComponent()-Aufruf hinzu.
 
         m_crsListItems = New List(Of crsListItem)
@@ -104,18 +90,16 @@ Public Class crsListItems
         RaiseEvent CourseVisibilityChanged(crsItem, Visible)
     End Sub
 
-
     Public Enum SortOrder
         Name = 0
         id = 1
         Filename = 2
     End Enum
+
     Public Sub SortList(SortOrder As SortOrder)
         Dim crsListSorted = m_crsListItems.OrderBy(Function(x) x.CourseName).ToList
-        'Me.FlowPanelCourses.Controls.Clear()
         Dim ListIndex As Integer = 0
         For Each crs In crsListSorted
-            'Me.FlowPanelCourses.Controls.Add(crs)
             Me.FlowPanelCourses.Controls.SetChildIndex(crs, ListIndex)
             crs.ListIndex = ListIndex
             ListIndex += 1
@@ -128,6 +112,7 @@ Public Class crsListItems
     ''' <param name="Course"></param>
     ''' <param name="e"></param>
     Private Sub SelectCourseListItem(Course As crsListItem, e As EventArgs)
+        'ToDo: Alten Kurse deselektieren, wenn Course nothing ist
         If TypeOf Course Is crsListItem Then
             Dim EventNeeded As Boolean = True
             'alten Kurs deseletieren
@@ -154,7 +139,11 @@ Public Class crsListItems
 
     Public Sub SelectItem(ListIndex As Integer)
         Try
-            SelectCourseListItem(m_crsListItems(ListIndex), New EventArgs())
+            If ListIndex > 0 And ListIndex < m_crsListItems.Count Then
+                SelectCourseListItem(m_crsListItems(ListIndex), New EventArgs())
+            Else
+                SelectCourseListItem(Nothing, New EventArgs())
+            End If
         Catch ex As Exception
 
         End Try

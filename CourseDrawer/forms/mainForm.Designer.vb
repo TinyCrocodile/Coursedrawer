@@ -8,6 +8,10 @@ Partial Class mainForm
         Try
             If disposing AndAlso components IsNot Nothing Then
                 components.Dispose()
+                myZoomCursor.Dispose()
+                myGrabbingCursor.Dispose()
+                myGrabCursor.Dispose()
+                repaintRegion.Dispose()
             End If
         Finally
             MyBase.Dispose(disposing)
@@ -25,7 +29,7 @@ Partial Class mainForm
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(mainForm))
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.butSaveGame = New System.Windows.Forms.ToolStripButton()
+        Me.butLoadCourse = New System.Windows.Forms.ToolStripButton()
         Me.butLoadBGImage = New System.Windows.Forms.ToolStripButton()
         Me.butSave = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -42,35 +46,49 @@ Partial Class mainForm
         Me.Distance20ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
+        Me.GuidingCircleTbx = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.butNewCourse = New System.Windows.Forms.ToolStripButton()
         Me.butDelCourse = New System.Windows.Forms.ToolStripButton()
         Me.butRecalcAngleCrs = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabelMapSize = New System.Windows.Forms.ToolStripLabel()
+        Me.MapSizeSelector = New System.Windows.Forms.ToolStripComboBox()
+        Me.butDebugInvalidating = New System.Windows.Forms.ToolStripButton()
         Me.panel1 = New System.Windows.Forms.Panel()
-        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TimerDragPicture = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.butSelectAll = New System.Windows.Forms.Button()
+        Me.WPNextBtn = New System.Windows.Forms.Button()
+        Me.WPPrevBtn = New System.Windows.Forms.Button()
+        Me.WPIDMcbx = New System.Windows.Forms.MaskedTextBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.WPSpeedLbl = New System.Windows.Forms.Label()
         Me.butCalcAngleSel = New System.Windows.Forms.Button()
         Me.ChWP_Cross = New System.Windows.Forms.CheckBox()
         Me.ChWP_Wait = New System.Windows.Forms.CheckBox()
         Me.ChWP_Rev = New System.Windows.Forms.CheckBox()
+        Me.WPCbxSeparator = New System.Windows.Forms.Label()
+        Me.WPTextSeparator = New System.Windows.Forms.Label()
         Me.ChWP_TurnStart = New System.Windows.Forms.CheckBox()
+        Me.ChWP_Unload = New System.Windows.Forms.CheckBox()
         Me.ChWP_TurnEnd = New System.Windows.Forms.CheckBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.WPAngleLbl = New System.Windows.Forms.Label()
+        Me.WPPosYLbl = New System.Windows.Forms.Label()
         Me.TBWP_Speed = New System.Windows.Forms.MaskedTextBox()
         Me.TBWP_Angle = New System.Windows.Forms.MaskedTextBox()
         Me.TBWP_Y = New System.Windows.Forms.MaskedTextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.WPNumInfoLbl = New System.Windows.Forms.Label()
+        Me.WPNumberTextLbl = New System.Windows.Forms.Label()
+        Me.WPIDTextLbl = New System.Windows.Forms.Label()
+        Me.WPPosXLbl = New System.Windows.Forms.Label()
         Me.TBWP_X = New System.Windows.Forms.MaskedTextBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.SpringMiddle = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.StatusZoomLevel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -79,8 +97,7 @@ Partial Class mainForm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TBCrs_ID = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.butCrsUp = New System.Windows.Forms.Button()
-        Me.butCrsDown = New System.Windows.Forms.Button()
+        Me.DebugPos = New System.Windows.Forms.Label()
         Me.CrsList = New CourseDrawer.crsListItems()
         Me.ClsCourseBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClsCourseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -97,22 +114,22 @@ Partial Class mainForm
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butSaveGame, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butLoadCourse, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.GuidingCircleTbx, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector, Me.butDebugInvalidating})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1132, 39)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1299, 39)
         Me.ToolStrip1.TabIndex = 1
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'butSaveGame
+        'butLoadCourse
         '
-        Me.butSaveGame.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.butSaveGame.Image = Global.CourseDrawer.My.Resources.Resources.butOpen
-        Me.butSaveGame.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.butSaveGame.Name = "butSaveGame"
-        Me.butSaveGame.Size = New System.Drawing.Size(36, 36)
-        Me.butSaveGame.Text = "Savegame"
-        Me.butSaveGame.ToolTipText = "Load XML"
+        Me.butLoadCourse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.butLoadCourse.Image = Global.CourseDrawer.My.Resources.Resources.butOpen
+        Me.butLoadCourse.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.butLoadCourse.Name = "butLoadCourse"
+        Me.butLoadCourse.Size = New System.Drawing.Size(36, 36)
+        Me.butLoadCourse.Text = "Savegame"
+        Me.butLoadCourse.ToolTipText = "Load XML"
         '
         'butLoadBGImage
         '
@@ -254,10 +271,10 @@ Partial Class mainForm
         Me.ToolStripLabel1.Size = New System.Drawing.Size(37, 36)
         Me.ToolStripLabel1.Text = "Circle"
         '
-        'ToolStripTextBox1
+        'GuidingCircleTbx
         '
-        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(50, 39)
+        Me.GuidingCircleTbx.Name = "GuidingCircleTbx"
+        Me.GuidingCircleTbx.Size = New System.Drawing.Size(50, 39)
         '
         'ToolStripSeparator4
         '
@@ -296,28 +313,48 @@ Partial Class mainForm
         Me.butRecalcAngleCrs.Text = "Recalc directions"
         Me.butRecalcAngleCrs.ToolTipText = "Recalc selected course directions"
         '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 39)
+        '
+        'ToolStripLabelMapSize
+        '
+        Me.ToolStripLabelMapSize.Name = "ToolStripLabelMapSize"
+        Me.ToolStripLabelMapSize.Size = New System.Drawing.Size(53, 36)
+        Me.ToolStripLabelMapSize.Text = "Map size"
+        '
+        'MapSizeSelector
+        '
+        Me.MapSizeSelector.AutoSize = False
+        Me.MapSizeSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.MapSizeSelector.Items.AddRange(New Object() {"X1", "X4", "X8", "X16"})
+        Me.MapSizeSelector.Name = "MapSizeSelector"
+        Me.MapSizeSelector.Size = New System.Drawing.Size(50, 23)
+        Me.MapSizeSelector.Text = "X1"
+        Me.MapSizeSelector.ToolTipText = "Select map size when no map image is loaded."
+        '
+        'butDebugInvalidating
+        '
+        Me.butDebugInvalidating.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.butDebugInvalidating.Image = CType(resources.GetObject("butDebugInvalidating.Image"), System.Drawing.Image)
+        Me.butDebugInvalidating.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.butDebugInvalidating.Name = "butDebugInvalidating"
+        Me.butDebugInvalidating.Size = New System.Drawing.Size(36, 36)
+        Me.butDebugInvalidating.Text = "butDebugInvalidating"
+        Me.butDebugInvalidating.ToolTipText = "Picturebox mit Farbe füllen um invalidate rect zu sehen"
+        '
         'panel1
         '
         Me.panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panel1.AutoScroll = True
-        Me.panel1.Controls.Add(Me.CheckedListBox1)
         Me.panel1.Controls.Add(Me.PictureBox1)
         Me.panel1.Location = New System.Drawing.Point(0, 42)
         Me.panel1.Name = "panel1"
-        Me.panel1.Size = New System.Drawing.Size(959, 475)
+        Me.panel1.Size = New System.Drawing.Size(1060, 542)
         Me.panel1.TabIndex = 2
-        '
-        'CheckedListBox1
-        '
-        Me.CheckedListBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Location = New System.Drawing.Point(2930, 29)
-        Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(157, 3274)
-        Me.CheckedListBox1.TabIndex = 3
         '
         'PictureBox1
         '
@@ -338,7 +375,7 @@ Partial Class mainForm
         'butSelectAll
         '
         Me.butSelectAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.butSelectAll.Location = New System.Drawing.Point(965, 202)
+        Me.butSelectAll.Location = New System.Drawing.Point(1140, 289)
         Me.butSelectAll.Name = "butSelectAll"
         Me.butSelectAll.Size = New System.Drawing.Size(72, 23)
         Me.butSelectAll.TabIndex = 6
@@ -347,185 +384,305 @@ Partial Class mainForm
         Me.ToolTip1.SetToolTip(Me.butSelectAll, "Select or unselect all Objects")
         Me.butSelectAll.UseVisualStyleBackColor = True
         '
+        'WPNextBtn
+        '
+        Me.WPNextBtn.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.WPNextBtn.Enabled = False
+        Me.WPNextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.WPNextBtn.Image = Global.CourseDrawer.My.Resources.Resources.butNextWaypoint_
+        Me.WPNextBtn.Location = New System.Drawing.Point(182, 3)
+        Me.WPNextBtn.Name = "WPNextBtn"
+        Me.WPNextBtn.Size = New System.Drawing.Size(36, 36)
+        Me.WPNextBtn.TabIndex = 6
+        Me.WPNextBtn.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.WPNextBtn, "Select next Waypoint")
+        Me.WPNextBtn.UseVisualStyleBackColor = False
+        '
+        'WPPrevBtn
+        '
+        Me.WPPrevBtn.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.WPPrevBtn.Enabled = False
+        Me.WPPrevBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.WPPrevBtn.Image = Global.CourseDrawer.My.Resources.Resources.butPrevWaypoint
+        Me.WPPrevBtn.Location = New System.Drawing.Point(3, 3)
+        Me.WPPrevBtn.Name = "WPPrevBtn"
+        Me.WPPrevBtn.Size = New System.Drawing.Size(36, 36)
+        Me.WPPrevBtn.TabIndex = 6
+        Me.WPPrevBtn.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.WPPrevBtn, "Select previous Waypoint")
+        Me.WPPrevBtn.UseVisualStyleBackColor = False
+        '
+        'WPIDMcbx
+        '
+        Me.WPIDMcbx.BeepOnError = True
+        Me.WPIDMcbx.Culture = New System.Globalization.CultureInfo("")
+        Me.WPIDMcbx.Enabled = False
+        Me.WPIDMcbx.Location = New System.Drawing.Point(45, 19)
+        Me.WPIDMcbx.Name = "WPIDMcbx"
+        Me.WPIDMcbx.Size = New System.Drawing.Size(57, 20)
+        Me.WPIDMcbx.TabIndex = 1
+        Me.WPIDMcbx.Text = "0"
+        Me.WPIDMcbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.WPIDMcbx.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals
+        Me.ToolTip1.SetToolTip(Me.WPIDMcbx, "Enter a Waypoint ID to Select")
+        '
         'Panel2
         '
         Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Controls.Add(Me.WPNextBtn)
+        Me.Panel2.Controls.Add(Me.WPPrevBtn)
+        Me.Panel2.Controls.Add(Me.WPSpeedLbl)
         Me.Panel2.Controls.Add(Me.butCalcAngleSel)
         Me.Panel2.Controls.Add(Me.ChWP_Cross)
         Me.Panel2.Controls.Add(Me.ChWP_Wait)
         Me.Panel2.Controls.Add(Me.ChWP_Rev)
+        Me.Panel2.Controls.Add(Me.WPCbxSeparator)
+        Me.Panel2.Controls.Add(Me.WPTextSeparator)
         Me.Panel2.Controls.Add(Me.ChWP_TurnStart)
+        Me.Panel2.Controls.Add(Me.ChWP_Unload)
         Me.Panel2.Controls.Add(Me.ChWP_TurnEnd)
-        Me.Panel2.Controls.Add(Me.Label3)
-        Me.Panel2.Controls.Add(Me.Label2)
+        Me.Panel2.Controls.Add(Me.WPAngleLbl)
+        Me.Panel2.Controls.Add(Me.WPPosYLbl)
         Me.Panel2.Controls.Add(Me.TBWP_Speed)
         Me.Panel2.Controls.Add(Me.TBWP_Angle)
         Me.Panel2.Controls.Add(Me.TBWP_Y)
-        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Controls.Add(Me.WPNumInfoLbl)
+        Me.Panel2.Controls.Add(Me.WPNumberTextLbl)
+        Me.Panel2.Controls.Add(Me.WPIDTextLbl)
+        Me.Panel2.Controls.Add(Me.WPPosXLbl)
+        Me.Panel2.Controls.Add(Me.WPIDMcbx)
         Me.Panel2.Controls.Add(Me.TBWP_X)
-        Me.Panel2.Location = New System.Drawing.Point(965, 336)
+        Me.Panel2.Location = New System.Drawing.Point(1066, 403)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(157, 177)
+        Me.Panel2.Size = New System.Drawing.Size(221, 177)
         Me.Panel2.TabIndex = 4
         '
-        'Label4
+        'WPSpeedLbl
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(3, 89)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(38, 13)
-        Me.Label4.TabIndex = 5
-        Me.Label4.Text = "Speed"
+        Me.WPSpeedLbl.Location = New System.Drawing.Point(111, 74)
+        Me.WPSpeedLbl.Name = "WPSpeedLbl"
+        Me.WPSpeedLbl.Size = New System.Drawing.Size(38, 13)
+        Me.WPSpeedLbl.TabIndex = 5
+        Me.WPSpeedLbl.Text = "Speed"
         '
         'butCalcAngleSel
         '
-        Me.butCalcAngleSel.Location = New System.Drawing.Point(6, 152)
+        Me.butCalcAngleSel.Location = New System.Drawing.Point(71, 142)
         Me.butCalcAngleSel.Name = "butCalcAngleSel"
         Me.butCalcAngleSel.Size = New System.Drawing.Size(75, 23)
-        Me.butCalcAngleSel.TabIndex = 4
+        Me.butCalcAngleSel.TabIndex = 12
         Me.butCalcAngleSel.Text = "Calc angle"
         Me.butCalcAngleSel.UseVisualStyleBackColor = True
         '
         'ChWP_Cross
         '
-        Me.ChWP_Cross.AutoSize = True
-        Me.ChWP_Cross.Location = New System.Drawing.Point(6, 135)
+        Me.ChWP_Cross.Enabled = False
+        Me.ChWP_Cross.Location = New System.Drawing.Point(76, 119)
         Me.ChWP_Cross.Name = "ChWP_Cross"
-        Me.ChWP_Cross.Size = New System.Drawing.Size(66, 17)
-        Me.ChWP_Cross.TabIndex = 3
+        Me.ChWP_Cross.Size = New System.Drawing.Size(70, 17)
+        Me.ChWP_Cross.TabIndex = 9
         Me.ChWP_Cross.Text = "Crossing"
         Me.ChWP_Cross.UseVisualStyleBackColor = True
         '
         'ChWP_Wait
         '
-        Me.ChWP_Wait.AutoSize = True
-        Me.ChWP_Wait.Location = New System.Drawing.Point(87, 112)
+        Me.ChWP_Wait.Enabled = False
+        Me.ChWP_Wait.Location = New System.Drawing.Point(76, 96)
         Me.ChWP_Wait.Name = "ChWP_Wait"
-        Me.ChWP_Wait.Size = New System.Drawing.Size(48, 17)
-        Me.ChWP_Wait.TabIndex = 3
+        Me.ChWP_Wait.Size = New System.Drawing.Size(70, 17)
+        Me.ChWP_Wait.TabIndex = 8
         Me.ChWP_Wait.Text = "Wait"
         Me.ChWP_Wait.UseVisualStyleBackColor = True
         '
         'ChWP_Rev
         '
-        Me.ChWP_Rev.AutoSize = True
+        Me.ChWP_Rev.Enabled = False
         Me.ChWP_Rev.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChWP_Rev.Location = New System.Drawing.Point(6, 112)
+        Me.ChWP_Rev.Location = New System.Drawing.Point(3, 96)
         Me.ChWP_Rev.Name = "ChWP_Rev"
-        Me.ChWP_Rev.Size = New System.Drawing.Size(66, 17)
-        Me.ChWP_Rev.TabIndex = 3
+        Me.ChWP_Rev.Size = New System.Drawing.Size(70, 17)
+        Me.ChWP_Rev.TabIndex = 6
         Me.ChWP_Rev.Text = "Reverse"
         Me.ChWP_Rev.UseVisualStyleBackColor = True
         '
+        'WPCbxSeparator
+        '
+        Me.WPCbxSeparator.Location = New System.Drawing.Point(106, 21)
+        Me.WPCbxSeparator.Name = "WPCbxSeparator"
+        Me.WPCbxSeparator.Size = New System.Drawing.Size(13, 16)
+        Me.WPCbxSeparator.TabIndex = 2
+        Me.WPCbxSeparator.Text = "/"
+        Me.WPCbxSeparator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'WPTextSeparator
+        '
+        Me.WPTextSeparator.Location = New System.Drawing.Point(106, 3)
+        Me.WPTextSeparator.Name = "WPTextSeparator"
+        Me.WPTextSeparator.Size = New System.Drawing.Size(13, 16)
+        Me.WPTextSeparator.TabIndex = 2
+        Me.WPTextSeparator.Text = "/"
+        Me.WPTextSeparator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'ChWP_TurnStart
         '
-        Me.ChWP_TurnStart.AutoSize = True
+        Me.ChWP_TurnStart.Enabled = False
         Me.ChWP_TurnStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChWP_TurnStart.Location = New System.Drawing.Point(87, 133)
+        Me.ChWP_TurnStart.Location = New System.Drawing.Point(148, 119)
         Me.ChWP_TurnStart.Name = "ChWP_TurnStart"
         Me.ChWP_TurnStart.Size = New System.Drawing.Size(70, 17)
-        Me.ChWP_TurnStart.TabIndex = 4
+        Me.ChWP_TurnStart.TabIndex = 11
         Me.ChWP_TurnStart.Text = "TurnStart"
         Me.ChWP_TurnStart.UseVisualStyleBackColor = True
         '
+        'ChWP_Unload
+        '
+        Me.ChWP_Unload.Enabled = False
+        Me.ChWP_Unload.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChWP_Unload.Location = New System.Drawing.Point(3, 119)
+        Me.ChWP_Unload.Name = "ChWP_Unload"
+        Me.ChWP_Unload.Size = New System.Drawing.Size(70, 17)
+        Me.ChWP_Unload.TabIndex = 7
+        Me.ChWP_Unload.Text = "Unload"
+        Me.ChWP_Unload.UseVisualStyleBackColor = True
+        '
         'ChWP_TurnEnd
         '
-        Me.ChWP_TurnEnd.AutoSize = True
+        Me.ChWP_TurnEnd.Enabled = False
         Me.ChWP_TurnEnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChWP_TurnEnd.Location = New System.Drawing.Point(86, 156)
+        Me.ChWP_TurnEnd.Location = New System.Drawing.Point(148, 96)
         Me.ChWP_TurnEnd.Name = "ChWP_TurnEnd"
-        Me.ChWP_TurnEnd.Size = New System.Drawing.Size(67, 17)
-        Me.ChWP_TurnEnd.TabIndex = 4
+        Me.ChWP_TurnEnd.Size = New System.Drawing.Size(70, 17)
+        Me.ChWP_TurnEnd.TabIndex = 10
         Me.ChWP_TurnEnd.Text = "TurnEnd"
         Me.ChWP_TurnEnd.UseVisualStyleBackColor = True
         '
-        'Label3
+        'WPAngleLbl
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 63)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(34, 13)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Angle"
+        Me.WPAngleLbl.Location = New System.Drawing.Point(3, 74)
+        Me.WPAngleLbl.Name = "WPAngleLbl"
+        Me.WPAngleLbl.Size = New System.Drawing.Size(38, 13)
+        Me.WPAngleLbl.TabIndex = 2
+        Me.WPAngleLbl.Text = "Angle"
         '
-        'Label2
+        'WPPosYLbl
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(3, 37)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(35, 13)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Pos Y"
+        Me.WPPosYLbl.Location = New System.Drawing.Point(111, 49)
+        Me.WPPosYLbl.Name = "WPPosYLbl"
+        Me.WPPosYLbl.Size = New System.Drawing.Size(38, 13)
+        Me.WPPosYLbl.TabIndex = 2
+        Me.WPPosYLbl.Text = "Pos Y"
         '
         'TBWP_Speed
         '
         Me.TBWP_Speed.BeepOnError = True
         Me.TBWP_Speed.Culture = New System.Globalization.CultureInfo("")
-        Me.TBWP_Speed.Location = New System.Drawing.Point(42, 86)
+        Me.TBWP_Speed.Enabled = False
+        Me.TBWP_Speed.Location = New System.Drawing.Point(150, 71)
         Me.TBWP_Speed.Name = "TBWP_Speed"
-        Me.TBWP_Speed.Size = New System.Drawing.Size(112, 20)
-        Me.TBWP_Speed.TabIndex = 1
+        Me.TBWP_Speed.Size = New System.Drawing.Size(68, 20)
+        Me.TBWP_Speed.TabIndex = 5
         Me.TBWP_Speed.Text = "0"
         '
         'TBWP_Angle
         '
         Me.TBWP_Angle.BeepOnError = True
         Me.TBWP_Angle.Culture = New System.Globalization.CultureInfo("")
-        Me.TBWP_Angle.Location = New System.Drawing.Point(42, 60)
+        Me.TBWP_Angle.Enabled = False
+        Me.TBWP_Angle.Location = New System.Drawing.Point(43, 69)
         Me.TBWP_Angle.Name = "TBWP_Angle"
-        Me.TBWP_Angle.Size = New System.Drawing.Size(112, 20)
-        Me.TBWP_Angle.TabIndex = 1
+        Me.TBWP_Angle.Size = New System.Drawing.Size(68, 20)
+        Me.TBWP_Angle.TabIndex = 4
         Me.TBWP_Angle.Text = "0"
         '
         'TBWP_Y
         '
         Me.TBWP_Y.BeepOnError = True
         Me.TBWP_Y.Culture = New System.Globalization.CultureInfo("")
-        Me.TBWP_Y.Location = New System.Drawing.Point(42, 34)
+        Me.TBWP_Y.Enabled = False
+        Me.TBWP_Y.Location = New System.Drawing.Point(150, 45)
         Me.TBWP_Y.Name = "TBWP_Y"
-        Me.TBWP_Y.Size = New System.Drawing.Size(112, 20)
-        Me.TBWP_Y.TabIndex = 1
+        Me.TBWP_Y.Size = New System.Drawing.Size(68, 20)
+        Me.TBWP_Y.TabIndex = 3
         Me.TBWP_Y.Text = "0"
         '
-        'Label1
+        'WPNumInfoLbl
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 11)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(35, 13)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Pos X"
+        Me.WPNumInfoLbl.Location = New System.Drawing.Point(119, 19)
+        Me.WPNumInfoLbl.Name = "WPNumInfoLbl"
+        Me.WPNumInfoLbl.Size = New System.Drawing.Size(57, 20)
+        Me.WPNumInfoLbl.TabIndex = 2
+        Me.WPNumInfoLbl.Text = "0"
+        Me.WPNumInfoLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'WPNumberTextLbl
+        '
+        Me.WPNumberTextLbl.Location = New System.Drawing.Point(119, 3)
+        Me.WPNumberTextLbl.Name = "WPNumberTextLbl"
+        Me.WPNumberTextLbl.Size = New System.Drawing.Size(57, 16)
+        Me.WPNumberTextLbl.TabIndex = 2
+        Me.WPNumberTextLbl.Text = "Waypoints"
+        Me.WPNumberTextLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'WPIDTextLbl
+        '
+        Me.WPIDTextLbl.Location = New System.Drawing.Point(45, 3)
+        Me.WPIDTextLbl.Name = "WPIDTextLbl"
+        Me.WPIDTextLbl.Size = New System.Drawing.Size(57, 16)
+        Me.WPIDTextLbl.TabIndex = 2
+        Me.WPIDTextLbl.Text = "ID"
+        Me.WPIDTextLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'WPPosXLbl
+        '
+        Me.WPPosXLbl.Location = New System.Drawing.Point(3, 49)
+        Me.WPPosXLbl.Name = "WPPosXLbl"
+        Me.WPPosXLbl.Size = New System.Drawing.Size(38, 13)
+        Me.WPPosXLbl.TabIndex = 2
+        Me.WPPosXLbl.Text = "Pos X"
         '
         'TBWP_X
         '
         Me.TBWP_X.BeepOnError = True
         Me.TBWP_X.Culture = New System.Globalization.CultureInfo("")
-        Me.TBWP_X.Location = New System.Drawing.Point(42, 8)
+        Me.TBWP_X.Enabled = False
+        Me.TBWP_X.Location = New System.Drawing.Point(43, 45)
         Me.TBWP_X.Name = "TBWP_X"
-        Me.TBWP_X.Size = New System.Drawing.Size(112, 20)
-        Me.TBWP_X.TabIndex = 1
+        Me.TBWP_X.Size = New System.Drawing.Size(68, 20)
+        Me.TBWP_X.TabIndex = 2
         Me.TBWP_X.Text = "0"
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripProgressBar1, Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 516)
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripProgressBar1, Me.ToolStripStatusLabel1, Me.SpringMiddle, Me.StatusZoomLevel})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 583)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1132, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1299, 22)
         Me.StatusStrip1.TabIndex = 5
         Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(120, 17)
-        Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
         '
         'ToolStripProgressBar1
         '
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
         Me.ToolStripProgressBar1.Size = New System.Drawing.Size(75, 16)
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(121, 17)
+        Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
+        '
+        'SpringMiddle
+        '
+        Me.SpringMiddle.Name = "SpringMiddle"
+        Me.SpringMiddle.Size = New System.Drawing.Size(988, 17)
+        Me.SpringMiddle.Spring = True
+        '
+        'StatusZoomLevel
+        '
+        Me.StatusZoomLevel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.StatusZoomLevel.Name = "StatusZoomLevel"
+        Me.StatusZoomLevel.Size = New System.Drawing.Size(98, 17)
+        Me.StatusZoomLevel.Text = "StatusZoomLevel"
         '
         'OpenFileDialog1
         '
@@ -540,9 +697,9 @@ Partial Class mainForm
         Me.Panel3.Controls.Add(Me.Label6)
         Me.Panel3.Controls.Add(Me.TBCrs_ID)
         Me.Panel3.Controls.Add(Me.Label5)
-        Me.Panel3.Location = New System.Drawing.Point(965, 232)
+        Me.Panel3.Location = New System.Drawing.Point(1067, 318)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(157, 98)
+        Me.Panel3.Size = New System.Drawing.Size(220, 79)
         Me.Panel3.TabIndex = 7
         '
         'ComboBox1
@@ -553,14 +710,14 @@ Partial Class mainForm
         Me.ComboBox1.Location = New System.Drawing.Point(40, 53)
         Me.ComboBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(114, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(173, 21)
         Me.ComboBox1.TabIndex = 6
         '
         'TBCrs_Name
         '
-        Me.TBCrs_Name.Location = New System.Drawing.Point(42, 29)
+        Me.TBCrs_Name.Location = New System.Drawing.Point(40, 29)
         Me.TBCrs_Name.Name = "TBCrs_Name"
-        Me.TBCrs_Name.Size = New System.Drawing.Size(112, 20)
+        Me.TBCrs_Name.Size = New System.Drawing.Size(173, 20)
         Me.TBCrs_Name.TabIndex = 3
         '
         'Label7
@@ -584,9 +741,9 @@ Partial Class mainForm
         'TBCrs_ID
         '
         Me.TBCrs_ID.Enabled = False
-        Me.TBCrs_ID.Location = New System.Drawing.Point(41, 5)
+        Me.TBCrs_ID.Location = New System.Drawing.Point(40, 5)
         Me.TBCrs_ID.Name = "TBCrs_ID"
-        Me.TBCrs_ID.Size = New System.Drawing.Size(112, 20)
+        Me.TBCrs_ID.Size = New System.Drawing.Size(173, 20)
         Me.TBCrs_ID.TabIndex = 1
         Me.TBCrs_ID.Text = "0"
         '
@@ -599,37 +756,26 @@ Partial Class mainForm
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "ID:"
         '
-        'butCrsUp
+        'DebugPos
         '
-        Me.butCrsUp.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.butCrsUp.Enabled = False
-        Me.butCrsUp.Location = New System.Drawing.Point(1058, 203)
-        Me.butCrsUp.Name = "butCrsUp"
-        Me.butCrsUp.Size = New System.Drawing.Size(29, 23)
-        Me.butCrsUp.TabIndex = 8
-        Me.butCrsUp.Text = "Up"
-        Me.butCrsUp.UseVisualStyleBackColor = True
-        '
-        'butCrsDown
-        '
-        Me.butCrsDown.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.butCrsDown.Enabled = False
-        Me.butCrsDown.Location = New System.Drawing.Point(1093, 203)
-        Me.butCrsDown.Name = "butCrsDown"
-        Me.butCrsDown.Size = New System.Drawing.Size(29, 23)
-        Me.butCrsDown.TabIndex = 9
-        Me.butCrsDown.Text = "Dn"
-        Me.butCrsDown.UseVisualStyleBackColor = True
+        Me.DebugPos.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DebugPos.AutoSize = True
+        Me.DebugPos.BackColor = System.Drawing.Color.DimGray
+        Me.DebugPos.ForeColor = System.Drawing.Color.White
+        Me.DebugPos.Location = New System.Drawing.Point(950, 54)
+        Me.DebugPos.Name = "DebugPos"
+        Me.DebugPos.Size = New System.Drawing.Size(60, 13)
+        Me.DebugPos.TabIndex = 1
+        Me.DebugPos.Text = "Debug Pos"
         '
         'CrsList
         '
         Me.CrsList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CrsList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrsList.Location = New System.Drawing.Point(966, 44)
+        Me.CrsList.Location = New System.Drawing.Point(1067, 44)
         Me.CrsList.Name = "CrsList"
-        Me.CrsList.SelectedCrsListItem = Nothing
-        Me.CrsList.Size = New System.Drawing.Size(156, 153)
+        Me.CrsList.Size = New System.Drawing.Size(220, 239)
         Me.CrsList.TabIndex = 10
         '
         'ClsCourseBindingSource1
@@ -644,17 +790,17 @@ Partial Class mainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1132, 538)
-        Me.Controls.Add(Me.CrsList)
-        Me.Controls.Add(Me.butCrsDown)
-        Me.Controls.Add(Me.butCrsUp)
+        Me.ClientSize = New System.Drawing.Size(1299, 605)
+        Me.Controls.Add(Me.DebugPos)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.butSelectAll)
         Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.panel1)
         Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.CrsList)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.Name = "mainForm"
         Me.Text = "CourseDrawer"
         Me.ToolStrip1.ResumeLayout(False)
@@ -674,7 +820,7 @@ Partial Class mainForm
 
     End Sub
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents butSaveGame As System.Windows.Forms.ToolStripButton
+    Friend WithEvents butLoadCourse As System.Windows.Forms.ToolStripButton
     Friend WithEvents butLoadBGImage As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents panel1 As System.Windows.Forms.Panel
@@ -689,18 +835,17 @@ Partial Class mainForm
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents butSelect As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
-    Friend WithEvents CheckedListBox1 As System.Windows.Forms.CheckedListBox
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents TBWP_X As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents WPPosYLbl As System.Windows.Forms.Label
     Friend WithEvents TBWP_Y As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents WPPosXLbl As System.Windows.Forms.Label
     Friend WithEvents ChWP_Cross As System.Windows.Forms.CheckBox
     Friend WithEvents ChWP_Wait As System.Windows.Forms.CheckBox
     Friend WithEvents ChWP_Rev As System.Windows.Forms.CheckBox
     Friend WithEvents ChWP_TurnStart As System.Windows.Forms.CheckBox
     Friend WithEvents ChWP_TurnEnd As System.Windows.Forms.CheckBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents WPAngleLbl As System.Windows.Forms.Label
     Friend WithEvents TBWP_Speed As System.Windows.Forms.MaskedTextBox
     Friend WithEvents TBWP_Angle As System.Windows.Forms.MaskedTextBox
     Friend WithEvents butSave As System.Windows.Forms.ToolStripButton
@@ -722,12 +867,10 @@ Partial Class mainForm
     Friend WithEvents Distance20ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents ToolStripTextBox1 As System.Windows.Forms.ToolStripTextBox
-    Friend WithEvents butCrsUp As System.Windows.Forms.Button
-    Friend WithEvents butCrsDown As System.Windows.Forms.Button
+    Friend WithEvents GuidingCircleTbx As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents WPSpeedLbl As System.Windows.Forms.Label
     Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
 
@@ -742,4 +885,20 @@ Partial Class mainForm
     Friend WithEvents ClsCourseBindingSource As BindingSource
     Friend WithEvents ClsCourseBindingSource1 As BindingSource
     Friend WithEvents CrsList As crsListItems
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
+    Friend WithEvents MapSizeSelector As ToolStripComboBox
+    Friend WithEvents ToolStripLabelMapSize As ToolStripLabel
+    Friend WithEvents butDebugInvalidating As ToolStripButton
+    Friend WithEvents ChWP_Unload As CheckBox
+    Friend WithEvents WPNumInfoLbl As Label
+    Friend WithEvents WPPrevBtn As Button
+    Friend WithEvents WPNextBtn As Button
+    Friend WithEvents WPNumberTextLbl As Label
+    Friend WithEvents WPIDTextLbl As Label
+    Friend WithEvents WPCbxSeparator As Label
+    Friend WithEvents WPTextSeparator As Label
+    Friend WithEvents WPIDMcbx As MaskedTextBox
+    Friend WithEvents DebugPos As Label
+    Friend WithEvents SpringMiddle As ToolStripStatusLabel
+    Friend WithEvents StatusZoomLevel As ToolStripStatusLabel
 End Class

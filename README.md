@@ -44,7 +44,7 @@ Former Developers
     horoman
     Original by Pawpouk
 
-Last Beta Version Published: CourseDrawer 5.2.000-beta
+Last Beta Version Published: CourseDrawer 5.3.000-beta
 
 Changelog:
 5.3.000

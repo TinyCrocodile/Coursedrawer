@@ -1,5 +1,7 @@
 ﻿Public Class clsCourse
 
+    'ToDo Multiselect
+
     Friend folder As Object
 
     Public Shared Event SelectionChanged(ByRef course As clsCourse)
@@ -16,6 +18,7 @@
     Public Property changed As Boolean = False
 
     Private Structure Rechteck
+        'ToDo Warum nicht Rect verwenden?
         Dim left As Integer
         Dim right As Integer
         Dim top As Integer
@@ -27,6 +30,13 @@
             Return _waypoints.Count
         End Get
     End Property
+
+    Public ReadOnly Property SelectedWpIndex As Integer
+        Get
+            Return _selectedWP
+        End Get
+    End Property
+
     Public ReadOnly Property sFileName As String
         Get
             Return fileName
@@ -135,6 +145,12 @@
                                     Else
                                         waypoint.Reverse = False
                                     End If
+                                Case "unload"
+                                    If xmlNodeReader.Value = "1" Then
+                                        waypoint.Unload = True
+                                    Else
+                                        waypoint.Unload = False
+                                    End If
                                 Case "generated"
                                     If xmlNodeReader.Value = "True" Then
                                         waypoint.generated = True
@@ -214,6 +230,7 @@
     ''' <param name="zoomLvl"></param>
     ''' <remarks></remarks>
     Public Sub draw(ByRef graphic As Graphics, ByVal zoomLvl As Integer)
+        'ToDo Draw doublebuffered handle zooming and paning by grapics.transform matrix
         Dim waypoint As clsWaypoint
         Dim dr_points() As PointF
         Dim idx As Integer
@@ -228,6 +245,7 @@
         Next
         'path
         If Me.isSelected = True Then
+            'ToDo: Keep pens global not create this pens at every usage
             pen = New Pen(Brushes.Blue, 2)
         Else
             pen = New Pen(Brushes.DarkBlue)
@@ -249,6 +267,8 @@
                 pen = New Pen(Brushes.Yellow, 2)
             ElseIf waypoint.Reverse = True Then
                 pen = New Pen(Brushes.Pink, 2)
+            ElseIf waypoint.Unload = True Then
+                pen = New Pen(Brushes.Purple, 2)
             ElseIf waypoint.TurnStart = True Then
                 pen = New Pen(Brushes.Orange, 2)
             ElseIf waypoint.TurnEnd = True Then
@@ -270,6 +290,7 @@
             pen = New Pen(Brushes.OrangeRed, 0.1)
             graphic.DrawEllipse(pen, dr_point.X - diameter, dr_point.Y - diameter, diameter * 2, diameter * 2)
         End If
+        'ToDo New guiding-circle with tangent to course
     End Sub
     ''' <summary>
     ''' Select waypoint at point
@@ -277,13 +298,13 @@
     ''' <param name="point"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function selectWP(ByVal point As PointF, Optional NoEvent As Boolean = False) As Boolean
+    Public Function selectWP(ByVal point As PointF, ByVal ZoomLevel As Integer, Optional NoEvent As Boolean = False) As Boolean
         Dim selected As Boolean
         If _isAnySelected = True Then
             RaiseEvent SelectionChanged(Nothing)
         End If
         For Each wp As clsWaypoint In _waypoints
-            selected = wp.selectWP(point, 1)
+            selected = wp.selectWP(point, ZoomLevel, 3)
             If selected = True Then
                 If Me._isSelected = False And Not NoEvent Then
                     RaiseEvent SelectionChanged(Me)
@@ -303,8 +324,8 @@
         If _isAnySelected = True Then
             RaiseEvent SelectionChanged(Nothing)
         End If
-        If id > 0 And id <= _waypoints.Count Then
-            _waypoints(id - 1).forceSelect()
+        If id >= 0 And id <= _waypoints.Count - 1 Then
+            _waypoints(id).forceSelect()
             If Me._isSelected = False And Not NoEvent Then
                 RaiseEvent SelectionChanged(Me)
             End If
@@ -352,6 +373,7 @@
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub deleteSelectedWP()
+        'ToDo Multiselect fähig machen
         Dim idx As Integer = Me._selectedWP
         If Me._selectedWP >= 0 Then
             Me._waypoints.RemoveAt(Me._selectedWP)
@@ -385,6 +407,7 @@
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub appendWP()
+        'ToDo Make new Waypoint in direction of last course waypoint
         Me._waypoints.Add(Me._waypoints(Me._waypoints.Count - 1).Clone)
         clsWaypoint.forceUnselect()
         _waypoints(Me._waypoints.Count - 1).forceSelect()
@@ -574,6 +597,8 @@
     ''' Dieses kann zum bestimmen des Bereiches genutzt werden, der neu gezeichnet werden muss
     ''' </summary>
     ''' <returns>Rechteck als Rectangle</returns>
+    'ToDo DrawingArea verwenden
+    'ToDo Simplify if possible
     Public Function DrawingArea(Zoom As Integer) As Rectangle
 
         Dim oRechteck As Rechteck
@@ -611,4 +636,44 @@
         Return New Rectangle(oRechteck.left - margin, oRechteck.top - margin, oRechteck.right - oRechteck.left + margin * 2, oRechteck.bottom - oRechteck.top + margin * 2)
 
     End Function
+
+    ''' <summary>
+    ''' Calculates the area between the Previous the next and the Current Waypoint 
+    ''' </summary>
+    ''' <param name="RepaintRegion">The repaint Region where the new region is added to</param>
+    ''' <param name="ChangedWaypointIndex">The Index of the current waypoint</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Sub CreateRepaintArea(ByRef RepaintRegion As Region, ByVal ChangedWaypointIndex As Integer, ByVal ZoomLevel As Integer)
+        Dim MaxX As Single
+        Dim MaxY As Single
+        Dim MinX As Single
+        Dim MinY As Single
+
+        Dim PointPrev As PointF = _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel)
+        Dim PointWP As PointF = _waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel)
+        Dim PointNext As PointF = _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel)
+        If Me.isSelected = True And _CircleDiameter > 0 And _selectedWP >= 0 Then
+            RepaintRegion.Union(New RectangleF(_waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).X - 1 - (CircleDiameter * ZoomLevel / 100), _waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).Y - 1 - (CircleDiameter * ZoomLevel / 100), (CircleDiameter * 2 * ZoomLevel / 100) + 2, (CircleDiameter * 2 * ZoomLevel / 100) + 2))
+        End If
+        If 0 < ChangedWaypointIndex < _waypoints.Count - 1 And Me.isSelected = True Then
+
+            MaxX = Math.Max(Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).X, _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel).X), Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).X, _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel).X))
+            MaxY = Math.Max(Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).Y, _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel).Y), Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).Y, _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel).Y))
+            MinX = Math.Min(Math.Min(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).X, _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel).X), Math.Min(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).X, _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel).X))
+            MinY = Math.Min(Math.Min(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).Y, _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel).Y), Math.Min(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).Y, _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel).Y))
+            RepaintRegion.Union(New RectangleF(MinX - 5, MinY - 5, (MaxX - MinX) + 10, (MaxY - MinY) + 10))
+
+        End If
+    End Sub
+    Public Sub CreateRepaintWaypointArea(ByRef repaintRegion As Region, ByVal WaypointIndex As Integer, ByVal ZoomLevel As Integer)
+        If 0 < WaypointIndex < _waypoints.Count - 1 Then
+            Dim PointWp As PointF = _waypoints(WaypointIndex).PositionScreenDraw(ZoomLevel)
+            repaintRegion.Union(New RectangleF(PointWp.X - 5, PointWp.Y - 5, 10, 10))
+        End If
+        If Me.isSelected = True And _CircleDiameter > 0 And _selectedWP >= 0 Then
+            repaintRegion.Union(New RectangleF(_waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).X - 1 - (CircleDiameter * ZoomLevel / 100), _waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).Y - 1 - (CircleDiameter * ZoomLevel / 100), (CircleDiameter * 2 * ZoomLevel / 100) + 2, (CircleDiameter * 2 * ZoomLevel / 100) + 2S))
+        End If
+
+    End Sub
 End Class

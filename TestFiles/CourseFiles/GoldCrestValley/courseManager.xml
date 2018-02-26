@@ -1,0 +1,107 @@
+﻿<courseManager>
+    <saveSlot>
+        <slot fileName="courseStorage0057.xml" isUsed="true" id="76" parent="0" name="biogas to f7"/>
+        <slot fileName="courseStorage0018.xml" isUsed="true" id="20" parent="0" name="biogas to farm"/>
+        <slot fileName="courseStorage0040.xml" isUsed="true" id="46" parent="0" name="biogas to log"/>
+        <slot fileName="courseStorage0092.xml" isUsed="true" id="122" parent="0" name="biogas to ne login"/>
+        <slot fileName="courseStorage0088.xml" isUsed="true" id="117" parent="0" name="biogas to sheep"/>
+        <slot fileName="courseStorage0094.xml" isUsed="true" id="124" parent="0" name="f11 3m"/>
+        <slot fileName="courseStorage0099.xml" isUsed="true" id="129" parent="0" name="f11 refill"/>
+        <slot fileName="courseStorage0096.xml" isUsed="true" id="126" parent="0" name="f11 to farm"/>
+        <slot fileName="courseStorage0095.xml" isUsed="true" id="125" parent="0" name="f11 unload "/>
+        <slot fileName="courseStorage0022.xml" isUsed="true" id="24" parent="0" name="f12 12m fert"/>
+        <slot fileName="courseStorage0004.xml" isUsed="true" id="4" parent="0" name="f12 3m"/>
+        <slot fileName="courseStorage0045.xml" isUsed="true" id="52" parent="0" name="f12 3m beet"/>
+        <slot fileName="courseStorage0013.xml" isUsed="true" id="14" parent="0" name="f12 4.4m h"/>
+        <slot fileName="courseStorage0036.xml" isUsed="true" id="42" parent="0" name="f12 9m"/>
+        <slot fileName="courseStorage0032.xml" isUsed="true" id="38" parent="0" name="f12 refill"/>
+        <slot fileName="courseStorage0037.xml" isUsed="true" id="43" parent="0" name="f12 slurry"/>
+        <slot fileName="courseStorage0014.xml" isUsed="true" id="15" parent="0" name="f12 unload"/>
+        <slot fileName="courseStorage0046.xml" isUsed="true" id="53" parent="0" name="f12 unload beet"/>
+        <slot fileName="courseStorage0011.xml" isUsed="true" id="11" parent="0" name="f14 12m fert"/>
+        <slot fileName="courseStorage0003.xml" isUsed="true" id="3" parent="0" name="f14 3m"/>
+        <slot fileName="courseStorage0009.xml" isUsed="true" id="12" parent="0" name="f14 4.4m h"/>
+        <slot fileName="courseStorage0042.xml" isUsed="true" id="48" parent="0" name="f14 9m"/>
+        <slot fileName="courseStorage0033.xml" isUsed="true" id="39" parent="0" name="f14 refill"/>
+        <slot fileName="courseStorage0028.xml" isUsed="true" id="59" parent="0" name="f14 slurry"/>
+        <slot fileName="courseStorage0085.xml" isUsed="true" id="113" parent="0" name="f14 straw"/>
+        <slot fileName="courseStorage0012.xml" isUsed="true" id="13" parent="0" name="f14 unload"/>
+        <slot fileName="courseStorage0010.xml" isUsed="true" id="10" parent="0" name="f15 12m fert"/>
+        <slot fileName="courseStorage0006.xml" isUsed="true" id="6" parent="0" name="f15 3m"/>
+        <slot fileName="courseStorage0015.xml" isUsed="true" id="16" parent="0" name="f15 4.4m h"/>
+        <slot fileName="courseStorage0043.xml" isUsed="true" id="50" parent="0" name="f15 9m"/>
+        <slot fileName="courseStorage0034.xml" isUsed="true" id="40" parent="0" name="f15 refill"/>
+        <slot fileName="courseStorage0044.xml" isUsed="true" id="51" parent="0" name="f15 slurry"/>
+        <slot fileName="courseStorage0083.xml" isUsed="true" id="114" parent="0" name="f15 straw"/>
+        <slot fileName="courseStorage0002.xml" isUsed="true" id="2" parent="0" name="f15 unload"/>
+        <slot fileName="courseStorage0077.xml" isUsed="true" id="104" parent="0" name="f23 12m fert"/>
+        <slot fileName="courseStorage0072.xml" isUsed="true" id="93" parent="0" name="f23 3m"/>
+        <slot fileName="courseStorage0070.xml" isUsed="true" id="95" parent="0" name="f23 3m beet"/>
+        <slot fileName="courseStorage0089.xml" isUsed="true" id="118" parent="0" name="f23 4.4m"/>
+        <slot fileName="courseStorage0078.xml" isUsed="true" id="103" parent="0" name="f23 refill"/>
+        <slot fileName="courseStorage0071.xml" isUsed="true" id="94" parent="0" name="f23 to farm"/>
+        <slot fileName="courseStorage0076.xml" isUsed="true" id="109" parent="0" name="f23 unload"/>
+        <slot fileName="courseStorage0075.xml" isUsed="true" id="97" parent="0" name="f23 unload beet 1"/>
+        <slot fileName="courseStorage0091.xml" isUsed="true" id="121" parent="0" name="f23 unload beet 2"/>
+        <slot fileName="courseStorage0063.xml" isUsed="true" id="78" parent="0" name="f7 12m"/>
+        <slot fileName="courseStorage0087.xml" isUsed="true" id="116" parent="0" name="f7 12m fert man"/>
+        <slot fileName="courseStorage0080.xml" isUsed="true" id="106" parent="0" name="f7 12m h"/>
+        <slot fileName="courseStorage0052.xml" isUsed="true" id="64" parent="0" name="f7 3m"/>
+        <slot fileName="courseStorage0049.xml" isUsed="true" id="72" parent="0" name="f7 3m mow"/>
+        <slot fileName="courseStorage0059.xml" isUsed="true" id="73" parent="0" name="f7 forage"/>
+        <slot fileName="courseStorage0079.xml" isUsed="true" id="102" parent="0" name="f7 forage silo 2 rev"/>
+        <slot fileName="courseStorage0060.xml" isUsed="true" id="74" parent="0" name="f7 forage to silo 2"/>
+        <slot fileName="courseStorage0067.xml" isUsed="true" id="82" parent="0" name="f7 mow from biogass"/>
+        <slot fileName="courseStorage0064.xml" isUsed="true" id="79" parent="0" name="f7 refill"/>
+        <slot fileName="courseStorage0081.xml" isUsed="true" id="107" parent="0" name="f7 slurry"/>
+        <slot fileName="courseStorage0062.xml" isUsed="true" id="77" parent="0" name="f7 to biogas"/>
+        <slot fileName="courseStorage0056.xml" isUsed="true" id="68" parent="0" name="f7 to farm"/>
+        <slot fileName="courseStorage0055.xml" isUsed="true" id="67" parent="0" name="f7 unload"/>
+        <slot fileName="courseStorage0019.xml" isUsed="true" id="21" parent="0" name="farm to biogas"/>
+        <slot fileName="courseStorage0093.xml" isUsed="true" id="123" parent="0" name="farm to f11"/>
+        <slot fileName="courseStorage0048.xml" isUsed="true" id="92" parent="0" name="farm to f23"/>
+        <slot fileName="courseStorage0050.xml" isUsed="true" id="62" parent="0" name="farm to f7"/>
+        <slot fileName="courseStorage0029.xml" isUsed="true" id="36" parent="0" name="farm to logs"/>
+        <slot fileName="courseStorage0066.xml" isUsed="true" id="84" parent="0" name="farm to ne loggin"/>
+        <slot fileName="courseStorage0082.xml" isUsed="true" id="110" parent="0" name="farm to sheep"/>
+        <slot fileName="courseStorage0008.xml" isUsed="true" id="8" parent="0" name="farm to shop"/>
+        <slot fileName="courseStorage0017.xml" isUsed="true" id="19" parent="0" name="forage 01"/>
+        <slot fileName="courseStorage0020.xml" isUsed="true" id="22" parent="0" name="forage 02"/>
+        <slot fileName="courseStorage0021.xml" isUsed="true" id="23" parent="0" name="forage 03"/>
+        <slot fileName="courseStorage0023.xml" isUsed="true" id="25" parent="0" name="forage 04"/>
+        <slot fileName="courseStorage0024.xml" isUsed="true" id="26" parent="0" name="forage 05"/>
+        <slot fileName="courseStorage0031.xml" isUsed="true" id="34" parent="0" name="forage mow 1-5"/>
+        <slot fileName="courseStorage0041.xml" isUsed="true" id="47" parent="0" name="log to biogas"/>
+        <slot fileName="courseStorage0053.xml" isUsed="true" id="69" parent="0" name="log to work ne"/>
+        <slot fileName="courseStorage0030.xml" isUsed="true" id="35" parent="0" name="logs to farm"/>
+        <slot fileName="courseStorage0068.xml" isUsed="true" id="85" parent="0" name="ne login to farm"/>
+        <slot fileName="courseStorage0086.xml" isUsed="true" id="115" parent="0" name="ne login to logs"/>
+        <slot fileName="courseStorage0038.xml" isUsed="true" id="44" parent="0" name="refuel"/>
+        <slot fileName="courseStorage0027.xml" isUsed="true" id="29" parent="0" name="sell by central depo"/>
+        <slot fileName="courseStorage0098.xml" isUsed="true" id="128" parent="0" name="sell central depo to denton"/>
+        <slot fileName="courseStorage0047.xml" isUsed="true" id="58" parent="0" name="sell denton"/>
+        <slot fileName="courseStorage0005.xml" isUsed="true" id="5" parent="0" name="sell gold"/>
+        <slot fileName="courseStorage0061.xml" isUsed="true" id="108" parent="0" name="sell gold depo to gold"/>
+        <slot fileName="courseStorage0001.xml" isUsed="true" id="17" parent="0" name="sell gomez"/>
+        <slot fileName="courseStorage0073.xml" isUsed="true" id="91" parent="0" name="sell marys"/>
+        <slot fileName="courseStorage0069.xml" isUsed="true" id="86" parent="0" name="sell marys belt"/>
+        <slot fileName="courseStorage0026.xml" isUsed="true" id="28" parent="0" name="sell wright"/>
+        <slot fileName="courseStorage0090.xml" isUsed="true" id="119" parent="0" name="sheep to biogas"/>
+        <slot fileName="courseStorage0084.xml" isUsed="true" id="112" parent="0" name="sheep to farm"/>
+        <slot fileName="courseStorage0016.xml" isUsed="true" id="18" parent="0" name="shop to farm"/>
+        <slot fileName="courseStorage0025.xml" isUsed="true" id="27" parent="0" name="silo 1 compact"/>
+        <slot fileName="courseStorage0054.xml" isUsed="true" id="120" parent="0" name="silo 1 level"/>
+        <slot fileName="courseStorage0058.xml" isUsed="true" id="71" parent="0" name="silo 1 level end"/>
+        <slot fileName="courseStorage0007.xml" isUsed="true" id="30" parent="0" name="silo 1 sell"/>
+        <slot fileName="courseStorage0035.xml" isUsed="true" id="41" parent="0" name="silo 2 compact"/>
+        <slot fileName="courseStorage0065.xml" isUsed="true" id="80" parent="0" name="silo 2 level"/>
+        <slot fileName="courseStorage0097.xml" isUsed="true" id="127" parent="0" name="silo 2 level end"/>
+        <slot fileName="courseStorage0074.xml" isUsed="true" id="98" parent="0" name="silo 2 rev"/>
+        <slot fileName="courseStorage0039.xml" isUsed="true" id="45" parent="0" name="silo 2 sell"/>
+        <slot fileName="courseStorage0051.xml" isUsed="true" id="63" parent="0" name="silo 3 sell"/>
+        <slot fileName="courseStorage0100.xml" id="130" parent="0" isUsed="true" name="f11 inside"/>
+        <slot fileName="courseStorage0101.xml" isUsed="true" id="131" parent="0" name="f11 12m inside"/>
+        <slot fileName="courseStorage0102.xml" id="132" parent="0" isUsed="true" name="f11 slurry"/>
+        <slot fileName="courseStorage0103.xml" id="133" parent="0" isUsed="true" name="atemp"/>
+    </saveSlot>
+</courseManager>

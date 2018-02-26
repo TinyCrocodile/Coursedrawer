@@ -3,6 +3,9 @@
     Public Shared Event SelectionChanged(ByRef wp As clsWaypoint)
     Private Shared _isAnySelected As Boolean
     Public Shared Property mapSize As Size
+
+
+
     Public ReadOnly Property PositionWorld As PointF
         Get
             Dim point As New PointF
@@ -11,7 +14,10 @@
             Return point
         End Get
     End Property
+
     Public ReadOnly Property PositionScreen As PointF
+        'ToDo: Rename! This is the position on the map not on screen. For position on Screen use Position screen draw.
+        'Test if posible to handle position on screen with graphics.Transform so only realworld coordinates are used
         Get
             Dim point As New PointF
             Single.TryParse(_Pos_X, point.X)
@@ -21,7 +27,9 @@
             Return point
         End Get
     End Property
+
     Public ReadOnly Property PositionScreenDraw(ByVal zoomLvl As Integer) As PointF
+        'Test if posible to handle position on screen with graphics.Transform so only realworld coordinates are used
         Get
             Dim point As New PointF
             Single.TryParse(_Pos_X, point.X)
@@ -31,6 +39,7 @@
             Return point
         End Get
     End Property
+
     Public Property Pos_X As Double
     Public Property Pos_Y As Double
     Public Property Angle As Double
@@ -45,6 +54,8 @@
     Public Property dir As String
     Public Property ridgemarker As Double
     Public Property isSelected As Boolean
+    Public Property Unload As Boolean
+
     Public ReadOnly Property ReverseTxt As String
         Get
             If _Reverse = True Then
@@ -99,6 +110,15 @@
             End If
         End Get
     End Property
+    Public ReadOnly Property UnloadTXT As String
+        Get
+            If _Unload = True Then
+                Return "1"
+            Else
+                Return "0"
+            End If
+        End Get
+    End Property
 
     ''' <summary>
     ''' Constructor
@@ -117,7 +137,7 @@
     ''' <param name="range"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function selectWP(ByVal point As PointF, ByVal range As Double) As Boolean
+    Public Function selectWP(ByVal point As PointF, ByVal ZoomLevel As Integer, ByVal range As Double) As Boolean
         Dim xDist As Double
         Dim yDist As Double
         Dim dist As Double
@@ -125,8 +145,12 @@
             RaiseEvent SelectionChanged(Nothing)
         End If
 
-        xDist = point.X - Me.PositionScreen.X
-        yDist = point.Y - Me.PositionScreen.Y
+        'The selection is executed in MapBitmap coordinates but if zoomed one Mappixel is 1x Zoomlevel/100 so the selecting range of one pixel will be zoomed
+        'while the painted circle on the pbx is always 6px in size. this leads to the circle is not matching the selecting area.
+        'ToDo: fix the selecting Area by using screen draw point and picturebox coordinates instead of Mapbitmap Coordinates
+
+        xDist = point.X - Me.PositionScreenDraw(ZoomLevel).X
+        yDist = point.Y - Me.PositionScreenDraw(ZoomLevel).Y
         dist = Math.Sqrt(xDist * xDist + yDist * yDist)
 
         If dist <= range Then
@@ -185,6 +209,9 @@
         If Me.Wait Then
             el.Add(New XAttribute("wait", Me.WaitTxt))
         End If
+        If Me.Unload Then
+            el.Add(New XAttribute("unload", Me.UnloadTXT))
+        End If
         If Me.TurnStartTxt Then
             el.Add(New XAttribute("turnstart", Me.TurnStartTxt))
         End If
@@ -226,6 +253,7 @@
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function Clone(Optional ByVal dX As Single = 10.0, Optional ByVal dY As Single = 10.0) As clsWaypoint
+        'ToDo: insert waypoint in angle direction of the cloned wp
         Dim wp As New clsWaypoint
         wp.Pos_X = Me.Pos_X + dX
         wp.Pos_Y = Me.Pos_Y + dY

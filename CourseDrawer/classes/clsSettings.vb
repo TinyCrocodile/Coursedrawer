@@ -1,7 +1,11 @@
 ﻿''' <summary>
-''' Class for collection of folders
+''' Class for CP-Settings
 ''' </summary>
-''' <remarks>Singleton class for wrapping folders</remarks>
+''' <remarks>Singleton class for Settings</remarks>
+''' 
+
+'ToDo: Settings implementation
+'      This Class is a copy of the folders class and not everything has been transormed to the new class (espacially comments)
 Public Class clsSettings
 
     Public Property CPHposX As Double = 0.472291
@@ -27,7 +31,7 @@ Public Class clsSettings
     ''' Get instance of singleton class
     ''' </summary>
     ''' <param name="forceNew">force create new instance</param>
-    ''' <returns>Instance of courses collection</returns>
+    ''' <returns>Instance of SettingsClass</returns>
     ''' <remarks></remarks>
     Public Shared Function getInstance(Optional ByVal forceNew As Boolean = False) As clsSettings
         If _instance Is Nothing Or forceNew = True Then
@@ -149,11 +153,11 @@ Public Class clsSettings
     End Sub
 
 
- 
+
 
 
     ''' <summary>
-    ''' Save folders to XML file
+    ''' Save Settings to XML file
     ''' </summary>
     ''' <param name="root">byref xelement node</param>
     ''' <remarks></remarks>
@@ -189,8 +193,6 @@ Public Class clsSettings
         e1 = New XElement("courseManagement")
         e1.Add(New XAttribute("batchWriteSize", CPMbatchWriteSize))
         root.Add(e1)
-
-
 
     End Sub
 End Class

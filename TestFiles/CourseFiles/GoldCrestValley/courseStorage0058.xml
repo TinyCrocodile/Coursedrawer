@@ -1,0 +1,8 @@
+﻿<course>
+    <waypoint1 angle="178.59" speed="0" pos="-64.41 -562.52" crossing="1"/>
+    <waypoint2 angle="178.54" speed="26" pos="-64.16 -572.59"/>
+    <waypoint3 angle="178.54" speed="0" pos="-63.83 -585.93" wait="1"/>
+    <waypoint4 angle="-1.64" speed="0" pos="-63.83 -585.93"/>
+    <waypoint5 angle="-2.28" speed="5" rev="1" pos="-64.11 -575.94"/>
+    <waypoint6 angle="177.73" speed="0" rev="1" pos="-64.13 -575.35" crossing="1"/>
+</course>
