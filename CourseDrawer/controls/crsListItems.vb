@@ -112,6 +112,7 @@ Public Class crsListItems
     ''' <param name="Course"></param>
     ''' <param name="e"></param>
     Private Sub SelectCourseListItem(Course As crsListItem, e As EventArgs)
+        'ToDo: Alten Kurse deselektieren, wenn Course nothing ist
         If TypeOf Course Is crsListItem Then
             Dim EventNeeded As Boolean = True
             'alten Kurs deseletieren
@@ -138,7 +139,7 @@ Public Class crsListItems
 
     Public Sub SelectItem(ListIndex As Integer)
         Try
-            If 0 < ListIndex < m_crsListItems.Count Then
+            If ListIndex > 0 And ListIndex < m_crsListItems.Count Then
                 SelectCourseListItem(m_crsListItems(ListIndex), New EventArgs())
             Else
                 SelectCourseListItem(Nothing, New EventArgs())

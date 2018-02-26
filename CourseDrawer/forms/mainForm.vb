@@ -807,7 +807,7 @@ Public Class mainForm
     End Sub
 
     Private Sub selectedCourseChanged(ByRef crs As clsCourse)
-
+        selectedCrs = crs
         If crs Is Nothing Then
             butDelCourse.Enabled = False
             TBCrs_Name.Enabled = False
@@ -823,7 +823,6 @@ Public Class mainForm
             TBCrs_Name.Text = crs.Name
 
             CrsList.SelectItem(crs.listIndex)
-            selectedCrs = crs
             WPIDMcbx.Text = (crs.SelectedWpIndex + 1)
             WPNumInfoLbl.Text = crs.WPCount
 
