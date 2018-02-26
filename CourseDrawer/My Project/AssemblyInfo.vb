@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("CourseDrawer")>
 <Assembly: AssemblyDescription("FS 2017 courseplay v5 path editor")>
-<Assembly: AssemblyCompany("Pseudex")>
+<Assembly: AssemblyCompany("TinyCrocodile Pseudex")>
 <Assembly: AssemblyProduct("CourseDrawer")>
 <Assembly: AssemblyCopyright("Copyright ©  2017")>
 <Assembly: AssemblyTrademark("")>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("5.1.000.*")>
-<Assembly: AssemblyFileVersion("5.1.000.0")>
+<Assembly: AssemblyVersion("5.3.000.*")>
+<Assembly: AssemblyFileVersion("5.3.000.0")>
