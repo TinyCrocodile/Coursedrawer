@@ -649,14 +649,25 @@
         Dim MaxY As Single
         Dim MinX As Single
         Dim MinY As Single
-
-        Dim PointPrev As PointF = _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel)
-        Dim PointWP As PointF = _waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel)
-        Dim PointNext As PointF = _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel)
+        Dim PointWP As PointF                            
+        Dim PointPrev As PointF
+        Dim PointNext As PointF
+                                                                        
+        PointWP = _waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel)
+        if ChangedWaypointIndex <=0 then 
+            PointPrev=PointWp
+        else                                                             
+            PointPrev  = _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel)
+        end if
+        if ChangedWaypointIndex <=_waypoints.Count - 1 then 
+           PointNext=PointWp
+        else                     
+           PointNext = _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel)
+        end if
         If Me.isSelected = True And _CircleDiameter > 0 And _selectedWP >= 0 Then
             RepaintRegion.Union(New RectangleF(_waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).X - 1 - (CircleDiameter * ZoomLevel / 100), _waypoints(_selectedWP).PositionScreenDraw(ZoomLevel).Y - 1 - (CircleDiameter * ZoomLevel / 100), (CircleDiameter * 2 * ZoomLevel / 100) + 2, (CircleDiameter * 2 * ZoomLevel / 100) + 2))
         End If
-        If 0 < ChangedWaypointIndex < _waypoints.Count - 1 And Me.isSelected = True Then
+        If  ChangedWaypointIndex>=0 and  ChangedWaypointIndex<= _waypoints.Count - 1 And Me.isSelected = True Then
 
             MaxX = Math.Max(Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).X, _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel).X), Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).X, _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel).X))
             MaxY = Math.Max(Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).Y, _waypoints(ChangedWaypointIndex - 1).PositionScreenDraw(ZoomLevel).Y), Math.Max(_waypoints(ChangedWaypointIndex).PositionScreenDraw(ZoomLevel).Y, _waypoints(ChangedWaypointIndex + 1).PositionScreenDraw(ZoomLevel).Y))
@@ -667,7 +678,7 @@
         End If
     End Sub
     Public Sub CreateRepaintWaypointArea(ByRef repaintRegion As Region, ByVal WaypointIndex As Integer, ByVal ZoomLevel As Integer)
-        If 0 < WaypointIndex < _waypoints.Count - 1 Then
+        If WaypointIndex>=0  and WaypointIndex <= _waypoints.Count - 1 Then
             Dim PointWp As PointF = _waypoints(WaypointIndex).PositionScreenDraw(ZoomLevel)
             repaintRegion.Union(New RectangleF(PointWp.X - 5, PointWp.Y - 5, 10, 10))
         End If
