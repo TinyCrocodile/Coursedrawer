@@ -788,7 +788,7 @@ Public Class mainForm
         'clsCourses.getInstance.SaveXML(root)
         'clsFolders.getInstance.SaveXML(root)
         'lSaveDialog = Nothing
-
+        'Test
     End Sub
 
     Private Sub saveCourse(course As clsCourse)
