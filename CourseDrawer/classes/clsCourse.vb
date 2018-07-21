@@ -567,9 +567,9 @@
         'dY = 0 => -90 / 90
         If dY = 0 Then
             If pt1.X < pt2.X Then
-                Return -90
-            Else
                 Return 90
+            Else
+                Return -90
             End If
         End If
         'dX <>0 and dY <> 0 ...

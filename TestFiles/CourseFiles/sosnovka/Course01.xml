@@ -1,14 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <course>
-  <waypoint1 pos="434.00 -208.00" angle="0.00" wait="1" dir="00" speed="0" />
-  <waypoint2 pos="434.00 -196.29" angle="0.70" dir="00" speed="0" />
-  <waypoint3 pos="434.29 -184.57" angle="0.70" dir="00" speed="0" />
-  <waypoint4 pos="434.29 -172.86" angle="0.65" speed="0" />
-  <waypoint5 pos="434.57 -160.29" angle="8.85" speed="0" />
-  <waypoint6 pos="436.00 -155.43" angle="30.70" speed="0" />
-  <waypoint7 pos="438.29 -153.14" angle="52.34" speed="0" />
-  <waypoint8 pos="441.71 -151.14" angle="66.89" speed="0" />
-  <waypoint9 pos="445.71 -150.00" angle="81.47" speed="0" />
-  <waypoint10 pos="460.00 -149.71" angle="89.90" speed="0" />
-  <waypoint11 pos="477.14 -150.00" angle="90.95" crossing="1" speed="0" />
+  <waypoint1 pos="408.29 -145.00" angle="-90.00" crossing="1" speed="0" />
+  <waypoint2 pos="380.00 -145.00" angle="-90.00" speed="0" />
+  <waypoint3 pos="360.00 -145.00" angle="-135.00" speed="0" />
+  <waypoint4 pos="360.00 -174.86" angle="180.00" dir="00" speed="0" />
+  <waypoint5 pos="360.00 -213.00" angle="135.00" dir="00" speed="0" />
+  <waypoint6 pos="390.29 -213.00" angle="90.00" speed="0" />
+  <waypoint7 pos="426.29 -213.00" angle="90.00" speed="0" />
+  <waypoint8 pos="450.00 -213.00" angle="45.00" speed="0" />
+  <waypoint9 pos="450.00 -182.57" angle="0.00" speed="0" />
+  <waypoint10 pos="450.00 -152.57" angle="0.00" speed="0" />
+  <waypoint11 pos="450.00 -133.00" angle="-45.00" speed="0" />
+  <waypoint12 pos="400.00 -133.00" angle="-90.00" speed="0" />
+  <waypoint13 pos="364.29 -133.00" angle="-90.00" crossing="1" speed="0" />
 </course>
