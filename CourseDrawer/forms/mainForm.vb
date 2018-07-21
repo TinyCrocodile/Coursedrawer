@@ -328,6 +328,7 @@ Public Class mainForm
         Me.ToolStripProgressBar1.Value = 66
         ToolStripStatusLabel1.Text = "Loading...Courses"
         clsCourses.getInstance(Courses:=clsCourseManager.getCourses, forceNew:=True)
+        clsCourses.getInstance.WaypointDistanceSetting = CDbl(Me.ToolStripComboBoxWPDistance.Text)
         Me.fillCourseList()
 
         'ToDo: Implement Settings and load settings xml in its own button Proc 
@@ -874,7 +875,7 @@ Public Class mainForm
     End Sub
 
     Private Sub sButFillNodes_ButtonClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles sButFillNodes.ButtonClick
-        clsCourses.getInstance.fillBeforeSelected(10)
+        clsCourses.getInstance.fillBeforeSelected(CInt(ToolStripComboBoxWPDistance.Text))
         Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
     End Sub
 
@@ -1001,4 +1002,20 @@ Public Class mainForm
         Me.DebugPos.Text = "KeyDown " & e.KeyCode.ToString
     End Sub
 
+    Private Sub ToolStripComboBoxWPDistance_TextChanged(sender As Object, e As EventArgs) Handles ToolStripComboBoxWPDistance.TextChanged
+
+        Dim DistanceValue As Single
+        Dim ParsingResult As Boolean
+        ParsingResult = Single.TryParse(ToolStripComboBoxWPDistance.Text, DistanceValue)
+        If ParsingResult = False Then
+            DistanceValue = 10
+            ToolStripComboBoxWPDistance.Text = DistanceValue.ToString
+        End If
+        clsCourses.getInstance.WaypointDistanceSetting = DistanceValue
+
+    End Sub
+
+    Private Sub ToolStripComboBoxWPDistance_Click(sender As Object, e As EventArgs) Handles ToolStripComboBoxWPDistance.Click
+
+    End Sub
 End Class

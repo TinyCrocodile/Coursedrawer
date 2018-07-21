@@ -216,7 +216,7 @@
         lenTotal = Math.Sqrt((dXtotal * dXtotal) + (dYtotal * dYtotal))
         steps = lenTotal \ range
 
-        For i As Integer = 1 To steps
+        For i As Integer = 1 To steps - 1
             wp = _waypoints(_selectedWP - 1).Clone(dXtotal / steps * i, dYtotal / steps * i)
             _waypoints.Insert(_selectedWP - 1 + i, wp)
             wp = Nothing
@@ -392,8 +392,41 @@
     ''' <remarks></remarks>
     Public Sub insertBeforeWP()
         Dim idx As Integer = Me._selectedWP
+        Dim WaypointDistance = clsCourses.getInstance.WaypointDistanceSetting
+
+        Dim dXtotal As Double
+        Dim dYtotal As Double
+        Dim lenTotal As Double
+        Dim dXNew As Double
+        Dim dYNew As Double
+        Dim angleNew As Double
+
+        If _selectedWP = 0 Then
+            dXtotal = _waypoints(_selectedWP + 1).Pos_X - _waypoints(_selectedWP).Pos_X
+            dYtotal = _waypoints(_selectedWP + 1).Pos_Y - _waypoints(_selectedWP).Pos_Y
+            lenTotal = Math.Sqrt((dXtotal * dXtotal) + (dYtotal * dYtotal))
+            angleNew = getDirection(_waypoints(_selectedWP).PositionScreen, _waypoints(_selectedWP + 1).PositionScreen)
+        Else
+            dXtotal = _waypoints(_selectedWP).Pos_X - _waypoints(_selectedWP - 1).Pos_X
+            dYtotal = _waypoints(_selectedWP).Pos_Y - _waypoints(_selectedWP - 1).Pos_Y
+            lenTotal = Math.Sqrt((dXtotal * dXtotal) + (dYtotal * dYtotal))
+            angleNew = getDirection(_waypoints(_selectedWP - 1).PositionScreen, _waypoints(_selectedWP).PositionScreen)
+        End If
+
+
+        If lenTotal > WaypointDistance Or _selectedWP = 0 Then
+            dXNew = dXtotal * WaypointDistance / lenTotal
+            dYNew = dYtotal * WaypointDistance / lenTotal
+        Else
+            dXNew = dXtotal / 2
+            dYNew = dYtotal / 2
+        End If
+
+
+
         If Me._selectedWP >= 0 Then
-            Me._waypoints.Insert(_selectedWP, Me._waypoints(Me._selectedWP).Clone)
+
+            Me._waypoints.Insert(_selectedWP, Me._waypoints(Me._selectedWP).Clone(-dXNew, -dYNew, angleNew))
             clsWaypoint.forceUnselect()
             _waypoints(idx).forceSelect()
             If idx = 0 Then

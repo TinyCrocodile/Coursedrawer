@@ -250,16 +250,16 @@
     ''' </summary>
     ''' <param name="dX">offset X</param>
     ''' <param name="dY">offset Y</param>
+    ''' <param name="angle">angle of new WP</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function Clone(Optional ByVal dX As Single = 10.0, Optional ByVal dY As Single = 10.0) As clsWaypoint
+    Public Function Clone(Optional ByVal dX As Single = 10.0, Optional ByVal dY As Single = 10.0, Optional angle As Single = 0) As clsWaypoint
         'ToDo: insert waypoint in angle direction of the cloned wp
         Dim wp As New clsWaypoint
         wp.Pos_X = Me.Pos_X + dX
         wp.Pos_Y = Me.Pos_Y + dY
-        'wp.Angle = Me.Angle
+        wp.Angle = angle
         wp.Speed = Me.Speed
-        'wp.Wait = Me.Wait
         wp.Reverse = Me.Reverse
         Me.isSelected = False
         wp.isSelected = True

@@ -44,6 +44,8 @@ Partial Class mainForm
         Me.Distance5ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Distance10ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Distance20ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripLabelWPDistance = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripComboBoxWPDistance = New System.Windows.Forms.ToolStripComboBox()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.GuidingCircleTbx = New System.Windows.Forms.ToolStripTextBox()
@@ -114,7 +116,7 @@ Partial Class mainForm
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butLoadCourse, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.GuidingCircleTbx, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector, Me.butDebugInvalidating})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butLoadCourse, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripLabelWPDistance, Me.ToolStripComboBoxWPDistance, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.GuidingCircleTbx, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector, Me.butDebugInvalidating})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1299, 39)
@@ -260,6 +262,23 @@ Partial Class mainForm
         Me.Distance20ToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
         Me.Distance20ToolStripMenuItem.Text = "Distance 20"
         '
+        'ToolStripLabelWPDistance
+        '
+        Me.ToolStripLabelWPDistance.Name = "ToolStripLabelWPDistance"
+        Me.ToolStripLabelWPDistance.Size = New System.Drawing.Size(106, 36)
+        Me.ToolStripLabelWPDistance.Text = "Waypoint Distance"
+        '
+        'ToolStripComboBoxWPDistance
+        '
+        Me.ToolStripComboBoxWPDistance.AutoCompleteCustomSource.AddRange(New String() {"5", "10", "15", "20", "25", "30"})
+        Me.ToolStripComboBoxWPDistance.AutoSize = False
+        Me.ToolStripComboBoxWPDistance.AutoToolTip = True
+        Me.ToolStripComboBoxWPDistance.Name = "ToolStripComboBoxWPDistance"
+        Me.ToolStripComboBoxWPDistance.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never
+        Me.ToolStripComboBoxWPDistance.Size = New System.Drawing.Size(50, 23)
+        Me.ToolStripComboBoxWPDistance.Text = "10"
+        Me.ToolStripComboBoxWPDistance.ToolTipText = "Distance between waypoints for new waypoints"
+        '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
@@ -331,7 +350,6 @@ Partial Class mainForm
         Me.MapSizeSelector.Items.AddRange(New Object() {"X1", "X4", "X8", "X16"})
         Me.MapSizeSelector.Name = "MapSizeSelector"
         Me.MapSizeSelector.Size = New System.Drawing.Size(50, 23)
-        Me.MapSizeSelector.Text = "X1"
         Me.MapSizeSelector.ToolTipText = "Select map size when no map image is loaded."
         '
         'butDebugInvalidating
@@ -901,4 +919,6 @@ Partial Class mainForm
     Friend WithEvents DebugPos As Label
     Friend WithEvents SpringMiddle As ToolStripStatusLabel
     Friend WithEvents StatusZoomLevel As ToolStripStatusLabel
+    Friend WithEvents ToolStripLabelWPDistance As ToolStripLabel
+    Friend WithEvents ToolStripComboBoxWPDistance As ToolStripComboBox
 End Class

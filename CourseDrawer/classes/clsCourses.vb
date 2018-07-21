@@ -5,7 +5,9 @@
 Public Class clsCourses
     Private Shared _courses As List(Of clsCourse)
     Private _selectedWP As clsWaypoint
-    Private _seledtedCrs As Integer
+    Private _selectedCrs As Integer
+    Private _WaypointDistanceSetting As Single
+
     Public ReadOnly Property Count As Integer
         Get
             Return _courses.Count
@@ -16,6 +18,15 @@ Public Class clsCourses
         Get
             Return _courses
         End Get
+    End Property
+
+    Public Property WaypointDistanceSetting As Single
+        Get
+            Return _WaypointDistanceSetting
+        End Get
+        Set(value As Single)
+            _WaypointDistanceSetting = value
+        End Set
     End Property
 
     Private Shared _instance As clsCourses
@@ -237,12 +248,12 @@ Public Class clsCourses
     ''' <remarks></remarks>
     Public Sub selectWP(ByVal point As PointF, ByVal ZoomLevel As Integer, Optional noEvent As Boolean = False)
         Dim selected As Boolean
-        Me._seledtedCrs = -1
+        Me._selectedCrs = -1
         For Each crs As clsCourse In _courses
             If crs.Hidden = False And crs.isUsed = True Then
                 selected = crs.selectWP(point, ZoomLevel, noEvent)
                 If selected = True Then
-                    Me._seledtedCrs = _courses.IndexOf(crs)
+                    Me._selectedCrs = _courses.IndexOf(crs)
                     Exit For
                 End If
             End If
@@ -256,7 +267,7 @@ Public Class clsCourses
     Public Sub selectWP(ByVal id As Integer)
         If id > 0 And id <= _courses.Count Then
             _courses(id - 1).selectWP(0)
-            Me._seledtedCrs = _courses.IndexOf(_courses(id - 1))
+            Me._selectedCrs = _courses.IndexOf(_courses(id - 1))
         End If
     End Sub
 
@@ -283,8 +294,8 @@ Public Class clsCourses
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub deleteSelectedWP()
-        If Me._seledtedCrs >= 0 Then
-            _courses(Me._seledtedCrs).deleteSelectedWP()
+        If Me._selectedCrs >= 0 Then
+            _courses(Me._selectedCrs).deleteSelectedWP()
         End If
     End Sub
     ''' <summary>
@@ -292,8 +303,8 @@ Public Class clsCourses
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub deleteSelectedCrs()
-        If Me._seledtedCrs >= 0 Then
-            _courses.RemoveAt(_seledtedCrs)
+        If Me._selectedCrs >= 0 Then
+            _courses.RemoveAt(_selectedCrs)
             Me.RecalcCoursesID()
             clsWaypoint.forceUnselect()
             clsCourse.forceUnselect()
@@ -342,8 +353,8 @@ Public Class clsCourses
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub insertBeforeWP()
-        If Me._seledtedCrs >= 0 Then
-            _courses(Me._seledtedCrs).insertBeforeWP()
+        If Me._selectedCrs >= 0 Then
+            _courses(Me._selectedCrs).insertBeforeWP()
         End If
     End Sub
     ''' <summary>
@@ -351,8 +362,8 @@ Public Class clsCourses
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub appendWP()
-        If Me._seledtedCrs >= 0 Then
-            _courses(Me._seledtedCrs).appendWP()
+        If Me._selectedCrs >= 0 Then
+            _courses(Me._selectedCrs).appendWP()
         End If
     End Sub
     ''' <summary>
@@ -394,7 +405,7 @@ Public Class clsCourses
         crs.isUsed = 1
         crs.initWPforNewCourse(point)
         _courses.Add(crs)
-        Me._seledtedCrs = _courses.Count - 1
+        Me._selectedCrs = _courses.Count - 1
     End Sub
 
     ''' <summary>
@@ -403,16 +414,16 @@ Public Class clsCourses
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function calculateAngleSelWP() As Double
-        If Me._seledtedCrs < 0 Then Return 0
-        Return _courses(_seledtedCrs).calculateAngleSelWP
+        If Me._selectedCrs < 0 Then Return 0
+        Return _courses(_selectedCrs).calculateAngleSelWP
     End Function
     ''' <summary>
     ''' Calculate angles(directions) for all waypoints in selected course
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub calculateAngleAllWP()
-        If Me._seledtedCrs < 0 Then Exit Sub
-        _courses(_seledtedCrs).calculateAngleAllWP()
+        If Me._selectedCrs < 0 Then Exit Sub
+        _courses(_selectedCrs).calculateAngleAllWP()
     End Sub
     ''' <summary>
     ''' Fill waypoints between selected and previous WP in course
@@ -420,7 +431,7 @@ Public Class clsCourses
     ''' <param name="range"></param>
     ''' <remarks></remarks>
     Public Sub fillBeforeSelected(ByVal range As Integer)
-        If Me._seledtedCrs < 0 Then Exit Sub
-        _courses(_seledtedCrs).fillBeforeSelected(range)
+        If Me._selectedCrs < 0 Then Exit Sub
+        _courses(_selectedCrs).fillBeforeSelected(range)
     End Sub
 End Class
