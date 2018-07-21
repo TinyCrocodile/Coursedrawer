@@ -391,7 +391,7 @@
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub insertBeforeWP()
-        Dim idx As Integer = Me._selectedWP
+        Dim idx As Integer = _selectedWP
         Dim WaypointDistance = clsCourses.getInstance.WaypointDistanceSetting
 
         Dim dXtotal As Double
@@ -422,9 +422,7 @@
             dYNew = dYtotal / 2
         End If
 
-
-
-        If Me._selectedWP >= 0 Then
+        If _selectedWP >= 0 Then
 
             Me._waypoints.Insert(_selectedWP, Me._waypoints(Me._selectedWP).Clone(-dXNew, -dYNew, angleNew))
             clsWaypoint.forceUnselect()
@@ -436,16 +434,51 @@
         End If
     End Sub
     ''' <summary>
-    ''' Append waypoint
+    ''' Insert New Waypoint after Current 
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub appendWP()
-        'ToDo Make new Waypoint in direction of last course waypoint
-        Me._waypoints.Add(Me._waypoints(Me._waypoints.Count - 1).Clone)
-        clsWaypoint.forceUnselect()
-        _waypoints(Me._waypoints.Count - 1).forceSelect()
-        _waypoints(_selectedWP - 1).Cross = False
-        _waypoints(_selectedWP).Cross = True
+    Public Sub insertAfterWP()
+        Dim idx As Integer = _selectedWP
+        Dim WaypointDistance = clsCourses.getInstance.WaypointDistanceSetting
+
+        Dim dXtotal As Double
+        Dim dYtotal As Double
+        Dim lenTotal As Double
+        Dim dXNew As Double
+        Dim dYNew As Double
+        Dim angleNew As Double
+
+        If _selectedWP = _waypoints.Count - 1 Then
+            dXtotal = _waypoints(_selectedWP - 1).Pos_X - _waypoints(_selectedWP).Pos_X
+            dYtotal = _waypoints(_selectedWP - 1).Pos_Y - _waypoints(_selectedWP).Pos_Y
+            lenTotal = Math.Sqrt((dXtotal * dXtotal) + (dYtotal * dYtotal))
+            angleNew = getDirection(_waypoints(_selectedWP - 1).PositionScreen, _waypoints(_selectedWP).PositionScreen)
+        Else
+            dXtotal = _waypoints(_selectedWP).Pos_X - _waypoints(_selectedWP + 1).Pos_X
+            dYtotal = _waypoints(_selectedWP).Pos_Y - _waypoints(_selectedWP + 1).Pos_Y
+            lenTotal = Math.Sqrt((dXtotal * dXtotal) + (dYtotal * dYtotal))
+            angleNew = getDirection(_waypoints(_selectedWP).PositionScreen, _waypoints(_selectedWP + 1).PositionScreen)
+        End If
+
+        If lenTotal > WaypointDistance Or _selectedWP = _waypoints.Count - 1 Then
+            dXNew = dXtotal * WaypointDistance / lenTotal
+            dYNew = dYtotal * WaypointDistance / lenTotal
+        Else
+            dXNew = dXtotal / 2
+            dYNew = dYtotal / 2
+        End If
+
+        If _selectedWP < _waypoints.Count Then
+
+            Me._waypoints.Insert(_selectedWP + 1, Me._waypoints(Me._selectedWP).Clone(-dXNew, -dYNew, angleNew))
+            clsWaypoint.forceUnselect()
+            _waypoints(idx + 1).forceSelect()
+            If _selectedWP = _waypoints.Count - 1 Then
+                _waypoints(idx).Cross = False
+                _waypoints(_selectedWP).Cross = True
+            End If
+        End If
+
     End Sub
     ''' <summary>
     ''' Destructor

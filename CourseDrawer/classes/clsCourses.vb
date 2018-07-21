@@ -363,7 +363,7 @@ Public Class clsCourses
     ''' <remarks></remarks>
     Public Sub appendWP()
         If Me._selectedCrs >= 0 Then
-            _courses(Me._selectedCrs).appendWP()
+            _courses(Me._selectedCrs).insertAfterWP()
         End If
     End Sub
     ''' <summary>
