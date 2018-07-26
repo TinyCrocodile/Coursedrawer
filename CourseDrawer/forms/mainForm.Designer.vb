@@ -56,6 +56,16 @@ Partial Class mainForm
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabelMapSize = New System.Windows.Forms.ToolStripLabel()
         Me.MapSizeSelector = New System.Windows.Forms.ToolStripComboBox()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.TSWPCountText = New System.Windows.Forms.ToolStripLabel()
+        Me.TSWPCount = New System.Windows.Forms.ToolStripTextBox()
+        Me.TSAlignfunction = New System.Windows.Forms.ToolStripSplitButton()
+        Me.AlignHorizontalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AlignVerticalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AlignToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SnapLeftTurnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SnapRightTurnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.butDebugInvalidating = New System.Windows.Forms.ToolStripButton()
         Me.panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -116,7 +126,7 @@ Partial Class mainForm
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butLoadCourse, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripLabelWPDistance, Me.ToolStripComboBoxWPDistance, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.GuidingCircleTbx, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector, Me.butDebugInvalidating})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.butLoadCourse, Me.butLoadBGImage, Me.butSave, Me.ToolStripSeparator1, Me.butMove, Me.butZoom, Me.butSelect, Me.ToolStripSeparator2, Me.butAppendNode, Me.butInsertNode, Me.butDeleteNode, Me.sButFillNodes, Me.ToolStripLabelWPDistance, Me.ToolStripComboBoxWPDistance, Me.ToolStripSeparator3, Me.ToolStripLabel1, Me.GuidingCircleTbx, Me.ToolStripSeparator4, Me.butNewCourse, Me.butDelCourse, Me.butRecalcAngleCrs, Me.ToolStripSeparator5, Me.ToolStripLabelMapSize, Me.MapSizeSelector, Me.ToolStripSeparator6, Me.TSWPCountText, Me.TSWPCount, Me.TSAlignfunction, Me.ToolStripSeparator7, Me.butDebugInvalidating})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1299, 39)
@@ -351,6 +361,71 @@ Partial Class mainForm
         Me.MapSizeSelector.Name = "MapSizeSelector"
         Me.MapSizeSelector.Size = New System.Drawing.Size(50, 23)
         Me.MapSizeSelector.ToolTipText = "Select map size when no map image is loaded."
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 39)
+        '
+        'TSWPCountText
+        '
+        Me.TSWPCountText.Name = "TSWPCountText"
+        Me.TSWPCountText.Size = New System.Drawing.Size(109, 36)
+        Me.TSWPCountText.Text = "Affected WP Count"
+        '
+        'TSWPCount
+        '
+        Me.TSWPCount.Name = "TSWPCount"
+        Me.TSWPCount.Size = New System.Drawing.Size(50, 39)
+        Me.TSWPCount.Text = "2"
+        '
+        'TSAlignfunction
+        '
+        Me.TSAlignfunction.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.TSAlignfunction.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AlignHorizontalToolStripMenuItem, Me.AlignVerticalToolStripMenuItem, Me.AlignToolStripMenuItem, Me.SnapLeftTurnToolStripMenuItem, Me.SnapRightTurnToolStripMenuItem})
+        Me.TSAlignfunction.Image = CType(resources.GetObject("TSAlignfunction.Image"), System.Drawing.Image)
+        Me.TSAlignfunction.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.TSAlignfunction.Name = "TSAlignfunction"
+        Me.TSAlignfunction.Size = New System.Drawing.Size(48, 36)
+        Me.TSAlignfunction.Text = "ToolStripSplitButton1"
+        '
+        'AlignHorizontalToolStripMenuItem
+        '
+        Me.AlignHorizontalToolStripMenuItem.Name = "AlignHorizontalToolStripMenuItem"
+        Me.AlignHorizontalToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.AlignHorizontalToolStripMenuItem.Text = "Align Horizontal"
+        '
+        'AlignVerticalToolStripMenuItem
+        '
+        Me.AlignVerticalToolStripMenuItem.Name = "AlignVerticalToolStripMenuItem"
+        Me.AlignVerticalToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.AlignVerticalToolStripMenuItem.Text = "Align Vertical"
+        '
+        'AlignToolStripMenuItem
+        '
+        Me.AlignToolStripMenuItem.Enabled = False
+        Me.AlignToolStripMenuItem.Name = "AlignToolStripMenuItem"
+        Me.AlignToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.AlignToolStripMenuItem.Text = "Align Direct"
+        '
+        'SnapLeftTurnToolStripMenuItem
+        '
+        Me.SnapLeftTurnToolStripMenuItem.Enabled = False
+        Me.SnapLeftTurnToolStripMenuItem.Name = "SnapLeftTurnToolStripMenuItem"
+        Me.SnapLeftTurnToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.SnapLeftTurnToolStripMenuItem.Text = "Snap Left Turn"
+        '
+        'SnapRightTurnToolStripMenuItem
+        '
+        Me.SnapRightTurnToolStripMenuItem.Enabled = False
+        Me.SnapRightTurnToolStripMenuItem.Name = "SnapRightTurnToolStripMenuItem"
+        Me.SnapRightTurnToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.SnapRightTurnToolStripMenuItem.Text = "Snap Right Turn"
+        '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 39)
         '
         'butDebugInvalidating
         '
@@ -921,4 +996,14 @@ Partial Class mainForm
     Friend WithEvents StatusZoomLevel As ToolStripStatusLabel
     Friend WithEvents ToolStripLabelWPDistance As ToolStripLabel
     Friend WithEvents ToolStripComboBoxWPDistance As ToolStripComboBox
+    Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
+    Friend WithEvents TSWPCountText As ToolStripLabel
+    Friend WithEvents TSWPCount As ToolStripTextBox
+    Friend WithEvents TSAlignfunction As ToolStripSplitButton
+    Friend WithEvents AlignHorizontalToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AlignVerticalToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AlignToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SnapLeftTurnToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SnapRightTurnToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
 End Class

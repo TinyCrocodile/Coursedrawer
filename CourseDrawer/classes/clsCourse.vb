@@ -657,6 +657,18 @@
         End If
     End Function
 
+    Public Sub AlignWpSegmentHorizontal(ByVal NumberOfWaypointsUsed)
+        Dim YPos As Double
+        If _selectedWP > 0 Then
+            YPos = _waypoints(_selectedWP).Pos_Y
+            For i As Integer = _selectedWP + 1 To _selectedWP + NumberOfWaypointsUsed
+                _waypoints(i).Pos_Y = YPos
+            Next
+        End If
+        For i As Integer = _selectedWP To _selectedWP + NumberOfWaypointsUsed + 1
+            calculateAngle(i)
+        Next
+    End Sub
 
     ''' <summary>
     ''' Rechteck für den Kurs berechnen
