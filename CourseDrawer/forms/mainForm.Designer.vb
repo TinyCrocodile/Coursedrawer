@@ -381,13 +381,13 @@ Partial Class mainForm
         '
         'TSAlignfunction
         '
-        Me.TSAlignfunction.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.TSAlignfunction.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.TSAlignfunction.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AlignHorizontalToolStripMenuItem, Me.AlignVerticalToolStripMenuItem, Me.AlignToolStripMenuItem, Me.SnapLeftTurnToolStripMenuItem, Me.SnapRightTurnToolStripMenuItem})
         Me.TSAlignfunction.Image = CType(resources.GetObject("TSAlignfunction.Image"), System.Drawing.Image)
         Me.TSAlignfunction.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.TSAlignfunction.Name = "TSAlignfunction"
-        Me.TSAlignfunction.Size = New System.Drawing.Size(48, 36)
-        Me.TSAlignfunction.Text = "ToolStripSplitButton1"
+        Me.TSAlignfunction.Size = New System.Drawing.Size(110, 36)
+        Me.TSAlignfunction.Text = "Align Waypoints"
         '
         'AlignHorizontalToolStripMenuItem
         '

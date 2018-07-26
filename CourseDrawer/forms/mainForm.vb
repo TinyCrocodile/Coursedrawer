@@ -1029,5 +1029,8 @@ Public Class mainForm
         Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
     End Sub
 
-
+    Private Sub AlignVerticalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AlignVerticalToolStripMenuItem.Click
+        clsCourses.getInstance.AlignWpSegmentVertical()
+        Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+    End Sub
 End Class

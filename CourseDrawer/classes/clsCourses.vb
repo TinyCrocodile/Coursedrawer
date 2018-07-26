@@ -450,4 +450,9 @@ Public Class clsCourses
         _courses(_selectedCrs).AlignWpSegmentHorizontal(_AlignmentWPCount)
     End Sub
 
+    Public Sub AlignWpSegmentVertical()
+        If Me._selectedCrs < 0 Then Exit Sub
+        _courses(_selectedCrs).AlignWpSegmentVertical(_AlignmentWPCount)
+    End Sub
+
 End Class
