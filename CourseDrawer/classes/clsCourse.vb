@@ -661,11 +661,11 @@
         Dim YPos As Double
         If _selectedWP >= 0 Then
             YPos = _waypoints(_selectedWP).Pos_Y
-            For i As Integer = _selectedWP + 1 To _selectedWP + NumberOfWaypointsUsed
+            For i As Integer = _selectedWP + 1 To Math.Min(_selectedWP + NumberOfWaypointsUsed, _waypoints.Count - 1)
                 _waypoints(i).Pos_Y = YPos
             Next
         End If
-        For i As Integer = _selectedWP To _selectedWP + NumberOfWaypointsUsed + 1
+        For i As Integer = _selectedWP To Math.Min(_selectedWP + NumberOfWaypointsUsed + 1, _waypoints.Count - 1)
             calculateAngle(i)
         Next
     End Sub
@@ -674,11 +674,11 @@
         Dim XPos As Double
         If _selectedWP >= 0 Then
             XPos = _waypoints(_selectedWP).Pos_X
-            For i As Integer = _selectedWP + 1 To _selectedWP + NumberOfWaypointsUsed
+            For i As Integer = _selectedWP + 1 To Math.Min(_selectedWP + NumberOfWaypointsUsed, _waypoints.Count - 1)
                 _waypoints(i).Pos_X = XPos
             Next
         End If
-        For i As Integer = _selectedWP To _selectedWP + NumberOfWaypointsUsed + 1
+        For i As Integer = _selectedWP To Math.Min(_selectedWP + NumberOfWaypointsUsed + 1, _waypoints.Count - 1)
             calculateAngle(i)
         Next
     End Sub
