@@ -7,6 +7,7 @@ Public Class clsCourses
     Private _selectedWP As clsWaypoint
     Private _selectedCrs As Integer
     Private _WaypointDistanceSetting As Single
+    Private _AlignmentWPCount As Integer
 
     Public ReadOnly Property Count As Integer
         Get
@@ -26,6 +27,15 @@ Public Class clsCourses
         End Get
         Set(value As Single)
             _WaypointDistanceSetting = value
+        End Set
+    End Property
+
+    Public Property AlignmentWPCount As Integer
+        Get
+            Return _AlignmentWPCount
+        End Get
+        Set(value As Integer)
+            _AlignmentWPCount = value
         End Set
     End Property
 
@@ -434,4 +444,15 @@ Public Class clsCourses
         If Me._selectedCrs < 0 Then Exit Sub
         _courses(_selectedCrs).fillBeforeSelected(range)
     End Sub
+
+    Public Sub AlignWpSegmentHorizontal()
+        If Me._selectedCrs < 0 Then Exit Sub
+        _courses(_selectedCrs).AlignWpSegmentHorizontal(_AlignmentWPCount)
+    End Sub
+
+    Public Sub AlignWpSegmentVertical()
+        If Me._selectedCrs < 0 Then Exit Sub
+        _courses(_selectedCrs).AlignWpSegmentVertical(_AlignmentWPCount)
+    End Sub
+
 End Class

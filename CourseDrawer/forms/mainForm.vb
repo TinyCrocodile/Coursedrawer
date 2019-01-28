@@ -104,7 +104,6 @@ Public Class mainForm
             'ToDo: Paint in MouseMove-Event not in Timer Tick (combined with backbufferd drawing)
             'ToDo: Only use mouse difference to move the Waypoint. Do not move the Waypoint center to the Mouseposition
             'ToDo: When creating new Courses make Turn Radius between lines
-            'ToDo: Calculate Correct(Minimal) Region for invalidate
             'ToDo: Change Cursor on Course hover
             'ToDo: Handle Selection if multiple Waypoints are on the same point
             'ToDo: Make Enum of Drawing operations see https://www.codeproject.com/Tips/1223125/Resize-and-rotate-shapes-in-GDIplus
@@ -329,6 +328,7 @@ Public Class mainForm
         ToolStripStatusLabel1.Text = "Loading...Courses"
         clsCourses.getInstance(Courses:=clsCourseManager.getCourses, forceNew:=True)
         clsCourses.getInstance.WaypointDistanceSetting = CDbl(Me.ToolStripComboBoxWPDistance.Text)
+        clsCourses.getInstance.AlignmentWPCount = CInt(Me.TSWPCount.Text)
         Me.fillCourseList()
 
         'ToDo: Implement Settings and load settings xml in its own button Proc 
@@ -998,10 +998,6 @@ Public Class mainForm
         Me.DebugPos.Text = "x: " & e.X & " y: " & e.Y
     End Sub
 
-    Private Sub mainForm_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles MyBase.PreviewKeyDown
-        Me.DebugPos.Text = "KeyDown " & e.KeyCode.ToString
-    End Sub
-
     Private Sub ToolStripComboBoxWPDistance_TextChanged(sender As Object, e As EventArgs) Handles ToolStripComboBoxWPDistance.TextChanged
 
         Dim DistanceValue As Single
@@ -1015,7 +1011,26 @@ Public Class mainForm
 
     End Sub
 
-    Private Sub ToolStripComboBoxWPDistance_Click(sender As Object, e As EventArgs) Handles ToolStripComboBoxWPDistance.Click
+    Private Sub TSWPCount_TextChanged(sender As Object, e As EventArgs) Handles TSWPCount.TextChanged
 
+        Dim WpCountValue As Integer
+        Dim ParsingResult As Boolean
+        ParsingResult = Integer.TryParse(TSWPCount.Text, WpCountValue)
+        If ParsingResult = False Then
+            WpCountValue = 2
+            ToolStripComboBoxWPDistance.Text = WpCountValue.ToString
+        End If
+        clsCourses.getInstance.AlignmentWPCount = WpCountValue
+
+    End Sub
+
+    Private Sub AlignHorizontalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AlignHorizontalToolStripMenuItem.Click
+        clsCourses.getInstance.AlignWpSegmentHorizontal()
+        Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
+    End Sub
+
+    Private Sub AlignVerticalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AlignVerticalToolStripMenuItem.Click
+        clsCourses.getInstance.AlignWpSegmentVertical()
+        Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
     End Sub
 End Class
