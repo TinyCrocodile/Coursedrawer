@@ -50,11 +50,13 @@
     Public Property TurnEnd As Boolean
     Public Property Speed As Double
     Public Property generated As String
+    Public Property lane As Integer
     Public Property turn As String
     Public Property dir As String
     Public Property ridgemarker As Double
     Public Property isSelected As Boolean
     Public Property Unload As Boolean
+    Public Property ConnectingTrack As Boolean
 
     Public ReadOnly Property ReverseTxt As String
         Get
@@ -110,12 +112,23 @@
             End If
         End Get
     End Property
+
     Public ReadOnly Property UnloadTXT As String
         Get
             If _Unload = True Then
                 Return "1"
             Else
                 Return "0"
+            End If
+        End Get
+    End Property
+
+    Public ReadOnly Property ConnectingTrackTXT As String
+        Get
+            If _ConnectingTrack = True Then
+                Return "true"
+            Else
+                Return ""
             End If
         End Get
     End Property
@@ -212,6 +225,11 @@
         If Me.Unload Then
             el.Add(New XAttribute("unload", Me.UnloadTXT))
         End If
+
+        If Me.ConnectingTrack Then
+            el.Add(New XAttribute("isconnectingtrack", Me.ConnectingTrackTXT))
+        End If
+
         If Me.TurnStartTxt Then
             el.Add(New XAttribute("turnstart", Me.TurnStartTxt))
         End If
@@ -226,6 +244,9 @@
         End If
         If Me.ridgemarker > 0 Then
             el.Add(New XAttribute("ridgemarker", ridgemarker.ToString("0", System.Globalization.CultureInfo.InvariantCulture)))
+        End If
+        If Me.lane <> 0 Then
+            el.Add(New XAttribute("lane", lane.ToString("0", System.Globalization.CultureInfo.InvariantCulture)))
         End If
         If Me.turn <> "" Then
             el.Add(New XAttribute("turn", Me.turn))

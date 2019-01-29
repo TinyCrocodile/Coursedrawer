@@ -427,7 +427,7 @@ Public Class mainForm
         'ToDo Ordnerauswahl programmieren
     End Sub
 
-    Private Sub mainForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub mainForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
         TBWP_X.ValidatingType = GetType(Double)
         TBWP_Y.ValidatingType = GetType(Double)
         TBWP_Angle.ValidatingType = GetType(Double)
@@ -457,7 +457,7 @@ Public Class mainForm
 
     End Sub
 
-    Private Sub MTB_Double_TypeValidationCompleted(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TypeValidationEventArgs) Handles TBWP_X.TypeValidationCompleted, TBWP_Y.TypeValidationCompleted, TBWP_Speed.TypeValidationCompleted, TBWP_Angle.TypeValidationCompleted, WPIDMcbx.TypeValidationCompleted, WPIDMcbx.TypeValidationCompleted
+    Private Sub MTB_Double_TypeValidationCompleted(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TypeValidationEventArgs) Handles WPIDMcbx.TypeValidationCompleted, TBWP_Y.TypeValidationCompleted, TBWP_X.TypeValidationCompleted, TBWP_Speed.TypeValidationCompleted, TBWP_Angle.TypeValidationCompleted
         If Not e.IsValidInput Then
             ToolTip1.ToolTipTitle = "Invalid number"
             ToolTip1.Show("Data entered is not valid number...", sender, 5000)
@@ -505,6 +505,7 @@ Public Class mainForm
             Me.ChWP_Cross.Checked = False
             Me.ChWP_Wait.Checked = False
             Me.ChWP_Unload.Checked = False
+            Me.ChWp_ConTrack.Checked = False
             Me.ChWP_TurnStart.Checked = False
             Me.ChWP_TurnEnd.Checked = False
             Me.TBWP_X.Enabled = False
@@ -516,6 +517,7 @@ Public Class mainForm
             Me.ChWP_Cross.Enabled = False
             Me.ChWP_Wait.Enabled = False
             Me.ChWP_Unload.Enabled = False
+            Me.ChWp_ConTrack.Enabled = False
             Me.ChWP_TurnStart.Enabled = False
             Me.ChWP_TurnEnd.Enabled = False
 
@@ -530,6 +532,7 @@ Public Class mainForm
             Me.WPIDMcbx.Enabled = True
             Me.ChWP_Rev.Enabled = True
             Me.ChWP_Unload.Enabled = True
+            Me.ChWp_ConTrack.Enabled = True
             Me.ChWP_Cross.Enabled = True
             Me.ChWP_Wait.Enabled = True
             Me.ChWP_TurnStart.Enabled = True
@@ -548,6 +551,7 @@ Public Class mainForm
             Me.ChWP_Rev.Checked = Me.selectedWP.Reverse
             Me.ChWP_Wait.Checked = Me.selectedWP.Wait
             Me.ChWP_Unload.Checked = Me.selectedWP.Unload
+            Me.ChWp_ConTrack.Checked = Me.selectedWP.ConnectingTrack
             Me.ChWP_Cross.Checked = Me.selectedWP.Cross
             Me.ChWP_TurnStart.Checked = Me.selectedWP.TurnStart
             Me.ChWP_TurnEnd.Checked = Me.selectedWP.TurnEnd
@@ -715,10 +719,15 @@ Public Class mainForm
         If Me.selectedWP Is Nothing Then Exit Sub
         Me.selectedWP.Reverse = ChWP_Rev.Checked
     End Sub
-    Private Sub ChWP_Unload_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_Unload.CheckStateChanged
+    Private Sub ChWP_Unload_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_Unload.CheckStateChanged, ChWp_ConTrack.CheckStateChanged
         If Me.selectedWP Is Nothing Then Exit Sub
         Me.selectedWP.Unload = ChWP_Unload.Checked
     End Sub
+
+    Private Sub ChWp_ConTrack_CheckedChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
     Private Sub ChWP_TurnStart_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_TurnStart.CheckStateChanged
         If Me.selectedWP Is Nothing Then Exit Sub
         Me.selectedWP.TurnStart = ChWP_TurnStart.Checked
@@ -1033,4 +1042,6 @@ Public Class mainForm
         clsCourses.getInstance.AlignWpSegmentVertical()
         Me.PictureBox1.Invalidate(New Drawing.Rectangle(-Me.panel1.AutoScrollPosition.X, -Me.panel1.AutoScrollPosition.Y, Me.panel1.Width, Me.panel1.Height))
     End Sub
+
+
 End Class

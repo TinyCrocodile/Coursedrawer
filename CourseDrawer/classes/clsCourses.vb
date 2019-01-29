@@ -214,6 +214,12 @@ Public Class clsCourses
                                     Else
                                         waypoint.Unload = False
                                     End If
+                                Case "isconnectingtrack"
+                                    If xmlNodeReader.Value = "true" Then
+                                        waypoint.ConnectingTrack = True
+                                    Else
+                                        waypoint.ConnectingTrack = False
+                                    End If
                                 Case "generated"
                                     If xmlNodeReader.Value = "True" Then
                                         waypoint.generated = True
@@ -222,6 +228,8 @@ Public Class clsCourses
                                     End If
                                 Case "ridgemarker"
                                     Double.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.ridgemarker)
+                                Case "lane"
+                                    Integer.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, waypoint.lane)
                                 Case "dir"
                                     waypoint.dir = xmlNodeReader.Value
                                 Case "turn"

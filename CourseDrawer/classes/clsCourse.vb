@@ -151,6 +151,12 @@
                                     Else
                                         waypoint.Unload = False
                                     End If
+                                Case "isconnectingtrack"
+                                    If xmlNodeReader.Value = "true" Then
+                                        waypoint.ConnectingTrack = True
+                                    Else
+                                        waypoint.ConnectingTrack = False
+                                    End If
                                 Case "generated"
                                     If xmlNodeReader.Value = "True" Then
                                         waypoint.generated = True
@@ -159,6 +165,8 @@
                                     End If
                                 Case "ridgemarker"
                                     Double.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.ridgemarker)
+                                Case "lane"
+                                    Integer.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, waypoint.lane)
                                 Case "dir"
                                     waypoint.dir = xmlNodeReader.Value
                                 Case "turn"
@@ -269,6 +277,8 @@
                 pen = New Pen(Brushes.Pink, 2)
             ElseIf waypoint.Unload = True Then
                 pen = New Pen(Brushes.Purple, 2)
+            ElseIf waypoint.ConnectingTrack = True Then
+                pen = New Pen(Brushes.Olive, 2)
             ElseIf waypoint.TurnStart = True Then
                 pen = New Pen(Brushes.Orange, 2)
             ElseIf waypoint.TurnEnd = True Then

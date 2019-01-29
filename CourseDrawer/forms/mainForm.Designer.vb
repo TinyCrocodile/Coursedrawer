@@ -75,15 +75,16 @@ Partial Class mainForm
         Me.WPNextBtn = New System.Windows.Forms.Button()
         Me.WPPrevBtn = New System.Windows.Forms.Button()
         Me.WPIDMcbx = New System.Windows.Forms.MaskedTextBox()
+        Me.ChWP_Rev = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.WPSpeedLbl = New System.Windows.Forms.Label()
         Me.butCalcAngleSel = New System.Windows.Forms.Button()
         Me.ChWP_Cross = New System.Windows.Forms.CheckBox()
         Me.ChWP_Wait = New System.Windows.Forms.CheckBox()
-        Me.ChWP_Rev = New System.Windows.Forms.CheckBox()
         Me.WPCbxSeparator = New System.Windows.Forms.Label()
         Me.WPTextSeparator = New System.Windows.Forms.Label()
         Me.ChWP_TurnStart = New System.Windows.Forms.CheckBox()
+        Me.ChWp_ConTrack = New System.Windows.Forms.CheckBox()
         Me.ChWP_Unload = New System.Windows.Forms.CheckBox()
         Me.ChWP_TurnEnd = New System.Windows.Forms.CheckBox()
         Me.WPAngleLbl = New System.Windows.Forms.Label()
@@ -464,6 +465,7 @@ Partial Class mainForm
         'ToolTip1
         '
         Me.ToolTip1.IsBalloon = True
+        Me.ToolTip1.ToolTipTitle = "Course drawer Tip"
         '
         'butSelectAll
         '
@@ -519,6 +521,18 @@ Partial Class mainForm
         Me.WPIDMcbx.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals
         Me.ToolTip1.SetToolTip(Me.WPIDMcbx, "Enter a Waypoint ID to Select")
         '
+        'ChWP_Rev
+        '
+        Me.ChWP_Rev.Enabled = False
+        Me.ChWP_Rev.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChWP_Rev.Location = New System.Drawing.Point(3, 96)
+        Me.ChWP_Rev.Name = "ChWP_Rev"
+        Me.ChWP_Rev.Size = New System.Drawing.Size(70, 17)
+        Me.ChWP_Rev.TabIndex = 6
+        Me.ChWP_Rev.Text = "Reverse"
+        Me.ToolTip1.SetToolTip(Me.ChWP_Rev, "Toggle Reverse marker for selected Waypoint" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        Me.ChWP_Rev.UseVisualStyleBackColor = True
+        '
         'Panel2
         '
         Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -532,6 +546,7 @@ Partial Class mainForm
         Me.Panel2.Controls.Add(Me.WPCbxSeparator)
         Me.Panel2.Controls.Add(Me.WPTextSeparator)
         Me.Panel2.Controls.Add(Me.ChWP_TurnStart)
+        Me.Panel2.Controls.Add(Me.ChWp_ConTrack)
         Me.Panel2.Controls.Add(Me.ChWP_Unload)
         Me.Panel2.Controls.Add(Me.ChWP_TurnEnd)
         Me.Panel2.Controls.Add(Me.WPAngleLbl)
@@ -560,7 +575,7 @@ Partial Class mainForm
         '
         'butCalcAngleSel
         '
-        Me.butCalcAngleSel.Location = New System.Drawing.Point(71, 142)
+        Me.butCalcAngleSel.Location = New System.Drawing.Point(139, 142)
         Me.butCalcAngleSel.Name = "butCalcAngleSel"
         Me.butCalcAngleSel.Size = New System.Drawing.Size(75, 23)
         Me.butCalcAngleSel.TabIndex = 12
@@ -586,17 +601,6 @@ Partial Class mainForm
         Me.ChWP_Wait.TabIndex = 8
         Me.ChWP_Wait.Text = "Wait"
         Me.ChWP_Wait.UseVisualStyleBackColor = True
-        '
-        'ChWP_Rev
-        '
-        Me.ChWP_Rev.Enabled = False
-        Me.ChWP_Rev.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChWP_Rev.Location = New System.Drawing.Point(3, 96)
-        Me.ChWP_Rev.Name = "ChWP_Rev"
-        Me.ChWP_Rev.Size = New System.Drawing.Size(70, 17)
-        Me.ChWP_Rev.TabIndex = 6
-        Me.ChWP_Rev.Text = "Reverse"
-        Me.ChWP_Rev.UseVisualStyleBackColor = True
         '
         'WPCbxSeparator
         '
@@ -624,8 +628,19 @@ Partial Class mainForm
         Me.ChWP_TurnStart.Name = "ChWP_TurnStart"
         Me.ChWP_TurnStart.Size = New System.Drawing.Size(70, 17)
         Me.ChWP_TurnStart.TabIndex = 11
-        Me.ChWP_TurnStart.Text = "TurnStart"
+        Me.ChWP_TurnStart.Text = "Turn Start"
         Me.ChWP_TurnStart.UseVisualStyleBackColor = True
+        '
+        'ChWp_ConTrack
+        '
+        Me.ChWp_ConTrack.Enabled = False
+        Me.ChWp_ConTrack.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChWp_ConTrack.Location = New System.Drawing.Point(3, 146)
+        Me.ChWp_ConTrack.Name = "ChWp_ConTrack"
+        Me.ChWp_ConTrack.Size = New System.Drawing.Size(116, 17)
+        Me.ChWp_ConTrack.TabIndex = 7
+        Me.ChWp_ConTrack.Text = "Connecting Track"
+        Me.ChWp_ConTrack.UseVisualStyleBackColor = True
         '
         'ChWP_Unload
         '
@@ -646,7 +661,7 @@ Partial Class mainForm
         Me.ChWP_TurnEnd.Name = "ChWP_TurnEnd"
         Me.ChWP_TurnEnd.Size = New System.Drawing.Size(70, 17)
         Me.ChWP_TurnEnd.TabIndex = 10
-        Me.ChWP_TurnEnd.Text = "TurnEnd"
+        Me.ChWP_TurnEnd.Text = "Turn End"
         Me.ChWP_TurnEnd.UseVisualStyleBackColor = True
         '
         'WPAngleLbl
@@ -1006,4 +1021,5 @@ Partial Class mainForm
     Friend WithEvents SnapLeftTurnToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SnapRightTurnToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
+    Friend WithEvents ChWp_ConTrack As CheckBox
 End Class
