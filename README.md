@@ -1,13 +1,13 @@
 
 ***CourseDrawer*** 
 =================
+This tool is no longer continued, I move to the Courseplay Editor Project and will give you the link here, when ready. 
+In the mean time, until we have new one ready, you can still use this Editor but i will not give support. 
 
 External tool to draw and edit Courseplay courses directly to the XML File 
 
-Note: Using this tool for FS19 CP 6 Courses is not recommended as you risk of loosing some Data. 
-I am currently working on a update for CP6 and will publish here as soon as it is ready.
-
-CourseDrawer is an application that has been updated and prepared for working with the new version of CoursePlay 5.0 (FS2017, LS17)
+CourseDrawer is an application that has been updated and prepared for working with the new version of CoursePlay 5.0 and 6.0 (FS17, FS19) but there is no guarantee, that everything works. All Options are editable but you should not mess around with some internal values unless you know, what you ar doing. 
+Make shure you have backups of your Courses.
 
 Courses are now saved by courseplay in individual files. In order to load the courses you still need to load courseManager.xml which you can find here:
 + Goldcrest Valley Map: %USERPROFILE%\Documents\my games\FarmingSimulator2017\CoursePlay_Courses\Map**01**\courseManager.xml
@@ -28,11 +28,7 @@ Download: See Releases
 
 **When is a newer Version coming?**
 
-You can track the Progress in the Project tab of this Repository.
-
-If you are a Developer and want to use the Testfiles in the Repo, please run the command 
-" git update-index --skip-worktree TestFiles/ "
-after you cloned the repo. You have then your own copy of  the files withot the changes beeing tracked.
+This Version is not supported anymore no newer Versions will come
 
 Credits
     
@@ -47,9 +43,14 @@ Former Developers
     horoman
     Original by Pawpouk
 
-Last Beta Version Published: CourseDrawer 5.3.000-beta
+Last Beta Version Published: CourseDrawer 6.0.000-beta
 
 Changelog:
+6.0.000
++ Align Courses horizontal and vertical
++ Support new Options 
+- Cleanup old options
+
 5.3.000
 + Selecting Waypoints with arrow buttons.
 + Set Waypoint as Unloadpoint
