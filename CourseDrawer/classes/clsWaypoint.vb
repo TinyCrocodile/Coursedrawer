@@ -51,12 +51,16 @@
     Public Property Speed As Double
     Public Property generated As String
     Public Property lane As Integer
-    Public Property turn As String
     Public Property dir As String
-    Public Property ridgemarker As Double
+    Public Property ridgemarker As Integer
     Public Property isSelected As Boolean
     Public Property Unload As Boolean
     Public Property ConnectingTrack As Boolean
+    Public Property headlandheightforturn As String
+    Public Property radius As String
+    Public Property mustreach As Boolean
+    Public Property align As Boolean
+    Public Property UnknownXMLAttribute As New List(Of KeyValuePair(Of String, String))
 
     Public ReadOnly Property ReverseTxt As String
         Get
@@ -133,6 +137,26 @@
         End Get
     End Property
 
+    Public ReadOnly Property mustreachTXT As String
+        Get
+            If _mustreach = True Then
+                Return "true"
+            Else
+                Return ""
+            End If
+
+        End Get
+    End Property
+
+    Public ReadOnly Property alignTXT As String
+        Get
+            If _align = True Then
+                Return "true"
+            Else
+                Return ""
+            End If
+        End Get
+    End Property
     ''' <summary>
     ''' Constructor
     ''' </summary>
@@ -214,8 +238,11 @@
         End If
 
         Dim el As New XElement(myNam)
+        'Required Values
         el.Add(New XAttribute("pos", Me.Pos_X.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture) & " " & Me.Pos_Y.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)))
         el.Add(New XAttribute("angle", Me.Angle.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)))
+        el.Add(New XAttribute("speed", ConvSpeed.ToString("0", System.Globalization.CultureInfo.InvariantCulture)))
+        'Optional Values
         If Me.Reverse Then
             el.Add(New XAttribute("rev", Me.ReverseTxt))
         End If
@@ -243,19 +270,34 @@
             el.Add(New XAttribute("generated", Me.generatedTXT))
         End If
         If Me.ridgemarker > 0 Then
-            el.Add(New XAttribute("ridgemarker", ridgemarker.ToString("0", System.Globalization.CultureInfo.InvariantCulture)))
+            el.Add(New XAttribute("ridgemarker", Me.ridgemarker.ToString("0", System.Globalization.CultureInfo.InvariantCulture)))
         End If
         If Me.lane <> 0 Then
-            el.Add(New XAttribute("lane", lane.ToString("0", System.Globalization.CultureInfo.InvariantCulture)))
-        End If
-        If Me.turn <> "" Then
-            el.Add(New XAttribute("turn", Me.turn))
+            el.Add(New XAttribute("lane", Me.lane.ToString("0", System.Globalization.CultureInfo.InvariantCulture)))
         End If
         If Me.dir <> "" Then
             el.Add(New XAttribute("dir", Me.dir))
         End If
-        el.Add(New XAttribute("speed", ConvSpeed.ToString("0", System.Globalization.CultureInfo.InvariantCulture)))
 
+        If Me.headlandheightforturn <> "" Then
+            el.Add(New XAttribute("headlandheightforturn", Me.headlandheightforturn))
+        End If
+
+        If Me.radius <> "" Then
+            el.Add(New XAttribute("radius", Me.radius))
+        End If
+
+        If Me.mustreach Then
+            el.Add(New XAttribute("mustreach", Me.mustreachTXT))
+        End If
+
+        If Me.align Then
+            el.Add(New XAttribute("align", Me.alignTXT))
+        End If
+
+        For Each UnknownAttribute As KeyValuePair(Of String, String) In Me.UnknownXMLAttribute
+            el.Add(New XAttribute(UnknownAttribute.Key.ToString, UnknownAttribute.Value.ToString))
+        Next
         Return el
     End Function
     ''' <summary>

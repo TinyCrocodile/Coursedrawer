@@ -432,6 +432,8 @@ Public Class mainForm
         TBWP_Y.ValidatingType = GetType(Double)
         TBWP_Angle.ValidatingType = GetType(Double)
         TBWP_Speed.ValidatingType = GetType(Double)
+        TBWP_Ridgemarker.ValidatingType = GetType(Integer)
+        TBWP_Lane.ValidatingType = GetType(Integer)
         WPIDMcbx.ValidatingType = GetType(Integer)
         'ToDo Auf eine anzahl an Stellen runden? 2 zum Beispiel? Wie viele Stellen schreibt CP?
         AddHandler clsWaypoint.SelectionChanged, AddressOf Me.selectionChangedHandler
@@ -457,7 +459,7 @@ Public Class mainForm
 
     End Sub
 
-    Private Sub MTB_Double_TypeValidationCompleted(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TypeValidationEventArgs) Handles WPIDMcbx.TypeValidationCompleted, TBWP_Y.TypeValidationCompleted, TBWP_X.TypeValidationCompleted, TBWP_Speed.TypeValidationCompleted, TBWP_Angle.TypeValidationCompleted
+    Private Sub MTB_Double_TypeValidationCompleted(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TypeValidationEventArgs) Handles WPIDMcbx.TypeValidationCompleted, TBWP_Y.TypeValidationCompleted, TBWP_X.TypeValidationCompleted, TBWP_Speed.TypeValidationCompleted, TBWP_Angle.TypeValidationCompleted, TBWP_Lane.TypeValidationCompleted, TBWP_HeadlandHeight.TypeValidationCompleted, TBWP_Ridgemarker.TypeValidationCompleted
         If Not e.IsValidInput Then
             ToolTip1.ToolTipTitle = "Invalid number"
             ToolTip1.Show("Data entered is not valid number...", sender, 5000)
@@ -501,25 +503,38 @@ Public Class mainForm
             Me.TBWP_Y.Text = "0"
             Me.TBWP_Angle.Text = "0"
             Me.TBWP_Speed.Text = "0"
+            Me.TBWP_Ridgemarker.Text = "0"
+            Me.TBWP_Radius.Text = "0"
+            Me.TBWP_Lane.Text = "0"
+            Me.TBWP_HeadlandHeight.Text = Text = "0"
             Me.ChWP_Rev.Checked = False
             Me.ChWP_Cross.Checked = False
             Me.ChWP_Wait.Checked = False
             Me.ChWP_Unload.Checked = False
-            Me.ChWp_ConTrack.Checked = False
             Me.ChWP_TurnStart.Checked = False
             Me.ChWP_TurnEnd.Checked = False
+            Me.ChWp_ConTrack.Checked = False
+            Me.ChWP_MustReach.Checked = False
+            Me.ChWP_Align.Checked = False
+
             Me.TBWP_X.Enabled = False
             Me.TBWP_Y.Enabled = False
             Me.TBWP_Angle.Enabled = False
             Me.TBWP_Speed.Enabled = False
+            Me.TBWP_Ridgemarker.Enabled = False
+            Me.TBWP_Radius.Enabled = False
+            Me.TBWP_Lane.Enabled = False
+            Me.TBWP_HeadlandHeight.Enabled = False
             Me.WPIDMcbx.Enabled = False
             Me.ChWP_Rev.Enabled = False
             Me.ChWP_Cross.Enabled = False
             Me.ChWP_Wait.Enabled = False
             Me.ChWP_Unload.Enabled = False
-            Me.ChWp_ConTrack.Enabled = False
             Me.ChWP_TurnStart.Enabled = False
             Me.ChWP_TurnEnd.Enabled = False
+            Me.ChWp_ConTrack.Enabled = False
+            Me.ChWP_MustReach.Enabled = False
+            Me.ChWP_Align.Enabled = False
 
             Me.WPIDMcbx.Text = 0
             Me.WPNumInfoLbl.Text = 0
@@ -529,14 +544,20 @@ Public Class mainForm
             Me.TBWP_Y.Enabled = True
             Me.TBWP_Angle.Enabled = True
             Me.TBWP_Speed.Enabled = True
+            Me.TBWP_Ridgemarker.Enabled = True
+            Me.TBWP_Radius.Enabled = True
+            Me.TBWP_Lane.Enabled = True
+            Me.TBWP_HeadlandHeight.Enabled = True
             Me.WPIDMcbx.Enabled = True
             Me.ChWP_Rev.Enabled = True
             Me.ChWP_Unload.Enabled = True
-            Me.ChWp_ConTrack.Enabled = True
             Me.ChWP_Cross.Enabled = True
             Me.ChWP_Wait.Enabled = True
             Me.ChWP_TurnStart.Enabled = True
             Me.ChWP_TurnEnd.Enabled = True
+            Me.ChWp_ConTrack.Enabled = True
+            Me.ChWP_MustReach.Enabled = True
+            Me.ChWP_Align.Enabled = True
             Me.butCalcAngleSel.Enabled = True
             Me.butRecalcAngleCrs.Enabled = True
             Me.sButFillNodes.Enabled = True
@@ -548,13 +569,19 @@ Public Class mainForm
             Me.TBWP_Y.Text = Me.selectedWP.Pos_Y.ToString
             Me.TBWP_Angle.Text = Me.selectedWP.Angle.ToString
             Me.TBWP_Speed.Text = Me.selectedWP.Speed.ToString
+            Me.TBWP_Ridgemarker.Text = Me.selectedWP.ridgemarker.ToString
+            Me.TBWP_Radius.Text = Me.selectedWP.radius
+            Me.TBWP_Lane.Text = Me.selectedWP.lane.ToString
+            Me.TBWP_HeadlandHeight.Text = Me.selectedWP.headlandheightforturn
             Me.ChWP_Rev.Checked = Me.selectedWP.Reverse
             Me.ChWP_Wait.Checked = Me.selectedWP.Wait
             Me.ChWP_Unload.Checked = Me.selectedWP.Unload
-            Me.ChWp_ConTrack.Checked = Me.selectedWP.ConnectingTrack
             Me.ChWP_Cross.Checked = Me.selectedWP.Cross
             Me.ChWP_TurnStart.Checked = Me.selectedWP.TurnStart
             Me.ChWP_TurnEnd.Checked = Me.selectedWP.TurnEnd
+            Me.ChWp_ConTrack.Checked = Me.selectedWP.ConnectingTrack
+            Me.ChWP_MustReach.Checked = Me.selectedWP.mustreach
+            Me.ChWP_Align.Checked = Me.selectedWP.align
 
             Me.butDeleteNode.Enabled = True
             Me.butInsertNode.Enabled = True
@@ -574,6 +601,10 @@ Public Class mainForm
         Me.TBWP_Y.BackColor = Color.White
         Me.TBWP_Angle.BackColor = Color.White
         Me.TBWP_Speed.BackColor = Color.White
+        Me.TBWP_Ridgemarker.BackColor = Color.White
+        Me.TBWP_Radius.BackColor = Color.White
+        Me.TBWP_Lane.BackColor = Color.White
+        Me.TBWP_HeadlandHeight.BackColor = Color.White
 
     End Sub
 
@@ -664,6 +695,71 @@ Public Class mainForm
         End If
     End Sub
 
+    Private Sub TBWP_Radius_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_Radius.Leave
+        If Me.selectedWP Is Nothing Then Exit Sub
+        If (setRadius(TBWP_Radius.Text, Me.selectedWP)) Then
+            TBWP_Radius.BackColor = Color.LightGreen
+        End If
+    End Sub
+    Private Sub TBWP_Radius_KeyDown(sender As Object, e As KeyEventArgs) Handles TBWP_Radius.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If (setRadius(TBWP_Radius.Text, Me.selectedWP)) Then
+                TBWP_Radius.BackColor = Color.LightGreen
+            End If
+        Else
+            TBWP_Radius.BackColor = Color.Orange
+        End If
+    End Sub
+
+    Private Sub TBWP_Lane_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_Lane.Leave
+        If Me.selectedWP Is Nothing Then Exit Sub
+        If (setLane(TBWP_Lane.Text, Me.selectedWP)) Then
+            TBWP_Lane.BackColor = Color.LightGreen
+        End If
+    End Sub
+    Private Sub TBWP_Lane_KeyDown(sender As Object, e As KeyEventArgs) Handles TBWP_Lane.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If (setLane(TBWP_Lane.Text, Me.selectedWP)) Then
+                TBWP_Lane.BackColor = Color.LightGreen
+            End If
+        Else
+            TBWP_Lane.BackColor = Color.Orange
+        End If
+    End Sub
+
+    Private Sub TBWP_Ridgemarker_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_Ridgemarker.Leave
+        If Me.selectedWP Is Nothing Then Exit Sub
+        If (setRidgemarker(TBWP_Ridgemarker.Text, Me.selectedWP)) Then
+            TBWP_Ridgemarker.BackColor = Color.LightGreen
+        End If
+    End Sub
+    Private Sub TBWP_Ridgemarker_KeyDown(sender As Object, e As KeyEventArgs) Handles TBWP_Ridgemarker.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If (setRidgemarker(TBWP_Ridgemarker.Text, Me.selectedWP)) Then
+                TBWP_Ridgemarker.BackColor = Color.LightGreen
+            End If
+        Else
+            TBWP_Ridgemarker.BackColor = Color.Orange
+        End If
+    End Sub
+
+    Private Sub TBWP_HeadlandHeight_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TBWP_HeadlandHeight.Leave
+        If Me.selectedWP Is Nothing Then Exit Sub
+        If (setHeadlandHeight(TBWP_HeadlandHeight.Text, Me.selectedWP)) Then
+            TBWP_HeadlandHeight.BackColor = Color.LightGreen
+        End If
+    End Sub
+    Private Sub TBWP_HeadlandHeight_KeyDown(sender As Object, e As KeyEventArgs) Handles TBWP_HeadlandHeight.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If (setHeadlandHeight(TBWP_HeadlandHeight.Text, Me.selectedWP)) Then
+                TBWP_HeadlandHeight.BackColor = Color.LightGreen
+            End If
+        Else
+            TBWP_HeadlandHeight.BackColor = Color.Orange
+        End If
+    End Sub
+
+
     Private Function setSpeed(ByRef Speed As String, ByRef WP As clsWaypoint) As Boolean
         If WP Is Nothing Then Return 0
         Dim nSpeed As Double
@@ -688,6 +784,41 @@ Public Class mainForm
         End If
     End Function
 
+    Private Function setRadius(ByRef Radius As String, ByRef WP As clsWaypoint) As Boolean
+        If WP Is Nothing Then Return 0
+        WP.radius = Radius
+        Return 1
+    End Function
+
+    Private Function setLane(ByRef Lane As String, ByRef WP As clsWaypoint) As Boolean
+        If WP Is Nothing Then Return 0
+        Dim nLane As Integer
+        If (Integer.TryParse(Lane, nLane)) Then
+            WP.lane = nLane
+            Return 1
+        Else
+            nLane = WP.lane
+            Return 0
+        End If
+    End Function
+
+    Private Function setRidgemarker(ByRef Ridgemarker As String, ByRef WP As clsWaypoint) As Boolean
+        If WP Is Nothing Then Return 0
+        Dim nRidgemarker As Integer
+        If (Integer.TryParse(Ridgemarker, nRidgemarker)) Then
+            WP.ridgemarker = nRidgemarker
+            Return 1
+        Else
+            nRidgemarker = WP.ridgemarker
+            Return 0
+        End If
+    End Function
+
+    Private Function setHeadlandHeight(ByRef HeadlandHeight As String, ByRef WP As clsWaypoint) As Boolean
+        If WP Is Nothing Then Return 0
+        WP.headlandheightforturn = HeadlandHeight
+        Return 1
+    End Function
 
     Private Function setX(ByRef X As String, ByRef WP As clsWaypoint) As Boolean
         If WP Is Nothing Then Return 0
@@ -715,17 +846,11 @@ Public Class mainForm
         End If
     End Function
 
+#Region "Waypoint Checkboxchanged Events"
+
     Private Sub ChWP_Rev_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_Rev.CheckStateChanged
         If Me.selectedWP Is Nothing Then Exit Sub
         Me.selectedWP.Reverse = ChWP_Rev.Checked
-    End Sub
-    Private Sub ChWP_Unload_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_Unload.CheckStateChanged, ChWp_ConTrack.CheckStateChanged
-        If Me.selectedWP Is Nothing Then Exit Sub
-        Me.selectedWP.Unload = ChWP_Unload.Checked
-    End Sub
-
-    Private Sub ChWp_ConTrack_CheckedChanged(sender As Object, e As EventArgs)
-
     End Sub
 
     Private Sub ChWP_TurnStart_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_TurnStart.CheckStateChanged
@@ -746,6 +871,27 @@ Public Class mainForm
         If Me.selectedWP Is Nothing Then Exit Sub
         Me.selectedWP.Cross = ChWP_Cross.Checked
     End Sub
+
+    Private Sub ChWP_Unload_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_Unload.CheckStateChanged
+        If Me.selectedWP Is Nothing Then Exit Sub
+        Me.selectedWP.Unload = ChWP_Unload.Checked
+    End Sub
+
+    Private Sub ChWp_ConTrack_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWp_ConTrack.CheckStateChanged
+        If Me.selectedWP Is Nothing Then Exit Sub
+        Me.selectedWP.ConnectingTrack = ChWp_ConTrack.Checked
+    End Sub
+
+    Private Sub ChWP_MustReach_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_MustReach.CheckStateChanged
+        If Me.selectedWP Is Nothing Then Exit Sub
+        Me.selectedWP.mustreach = ChWP_MustReach.Checked
+    End Sub
+
+    Private Sub ChWP_Align_CheckStateChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChWP_Align.CheckStateChanged
+        If Me.selectedWP Is Nothing Then Exit Sub
+        Me.selectedWP.align = ChWP_Align.Checked
+    End Sub
+#End Region
 
     Private Sub butDeleteNode_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles butDeleteNode.Click
         clsCourses.getInstance.deleteSelectedWP()
@@ -804,7 +950,7 @@ Public Class mainForm
     Private Sub saveCourse(course As clsCourse)
         Dim doc As XDocument
         Dim filename As String
-        doc = New XDocument(New XDeclaration("1.0", "utf-8", "no"))
+        doc = New XDocument()
         doc.Document.Add(course.getXML(True))
         filename = course.fileName
 

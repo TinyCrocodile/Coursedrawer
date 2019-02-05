@@ -77,6 +77,10 @@ Partial Class mainForm
         Me.WPIDMcbx = New System.Windows.Forms.MaskedTextBox()
         Me.ChWP_Rev = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.TBWP_Lane = New System.Windows.Forms.MaskedTextBox()
+        Me.TBWP_HeadlandHeight = New System.Windows.Forms.MaskedTextBox()
+        Me.TBWP_Ridgemarker = New System.Windows.Forms.MaskedTextBox()
+        Me.TBWP_Radius = New System.Windows.Forms.MaskedTextBox()
         Me.WPSpeedLbl = New System.Windows.Forms.Label()
         Me.butCalcAngleSel = New System.Windows.Forms.Button()
         Me.ChWP_Cross = New System.Windows.Forms.CheckBox()
@@ -84,9 +88,15 @@ Partial Class mainForm
         Me.WPCbxSeparator = New System.Windows.Forms.Label()
         Me.WPTextSeparator = New System.Windows.Forms.Label()
         Me.ChWP_TurnStart = New System.Windows.Forms.CheckBox()
+        Me.ChWP_Align = New System.Windows.Forms.CheckBox()
+        Me.ChWP_MustReach = New System.Windows.Forms.CheckBox()
         Me.ChWp_ConTrack = New System.Windows.Forms.CheckBox()
+        Me.WPHeadlandHeightLbl = New System.Windows.Forms.Label()
         Me.ChWP_Unload = New System.Windows.Forms.CheckBox()
+        Me.WPLaneLbl = New System.Windows.Forms.Label()
+        Me.WPRidgemarkerLbl = New System.Windows.Forms.Label()
         Me.ChWP_TurnEnd = New System.Windows.Forms.CheckBox()
+        Me.WPRadiusLbl = New System.Windows.Forms.Label()
         Me.WPAngleLbl = New System.Windows.Forms.Label()
         Me.WPPosYLbl = New System.Windows.Forms.Label()
         Me.TBWP_Speed = New System.Windows.Forms.MaskedTextBox()
@@ -470,7 +480,8 @@ Partial Class mainForm
         'butSelectAll
         '
         Me.butSelectAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.butSelectAll.Location = New System.Drawing.Point(1140, 289)
+        Me.butSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.butSelectAll.Location = New System.Drawing.Point(1143, 208)
         Me.butSelectAll.Name = "butSelectAll"
         Me.butSelectAll.Size = New System.Drawing.Size(72, 23)
         Me.butSelectAll.TabIndex = 6
@@ -525,7 +536,7 @@ Partial Class mainForm
         '
         Me.ChWP_Rev.Enabled = False
         Me.ChWP_Rev.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChWP_Rev.Location = New System.Drawing.Point(3, 96)
+        Me.ChWP_Rev.Location = New System.Drawing.Point(141, 146)
         Me.ChWP_Rev.Name = "ChWP_Rev"
         Me.ChWP_Rev.Size = New System.Drawing.Size(70, 17)
         Me.ChWP_Rev.TabIndex = 6
@@ -536,6 +547,10 @@ Partial Class mainForm
         'Panel2
         '
         Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel2.Controls.Add(Me.TBWP_Lane)
+        Me.Panel2.Controls.Add(Me.TBWP_HeadlandHeight)
+        Me.Panel2.Controls.Add(Me.TBWP_Ridgemarker)
+        Me.Panel2.Controls.Add(Me.TBWP_Radius)
         Me.Panel2.Controls.Add(Me.WPNextBtn)
         Me.Panel2.Controls.Add(Me.WPPrevBtn)
         Me.Panel2.Controls.Add(Me.WPSpeedLbl)
@@ -546,9 +561,15 @@ Partial Class mainForm
         Me.Panel2.Controls.Add(Me.WPCbxSeparator)
         Me.Panel2.Controls.Add(Me.WPTextSeparator)
         Me.Panel2.Controls.Add(Me.ChWP_TurnStart)
+        Me.Panel2.Controls.Add(Me.ChWP_Align)
+        Me.Panel2.Controls.Add(Me.ChWP_MustReach)
         Me.Panel2.Controls.Add(Me.ChWp_ConTrack)
+        Me.Panel2.Controls.Add(Me.WPHeadlandHeightLbl)
         Me.Panel2.Controls.Add(Me.ChWP_Unload)
+        Me.Panel2.Controls.Add(Me.WPLaneLbl)
+        Me.Panel2.Controls.Add(Me.WPRidgemarkerLbl)
         Me.Panel2.Controls.Add(Me.ChWP_TurnEnd)
+        Me.Panel2.Controls.Add(Me.WPRadiusLbl)
         Me.Panel2.Controls.Add(Me.WPAngleLbl)
         Me.Panel2.Controls.Add(Me.WPPosYLbl)
         Me.Panel2.Controls.Add(Me.TBWP_Speed)
@@ -560,10 +581,54 @@ Partial Class mainForm
         Me.Panel2.Controls.Add(Me.WPPosXLbl)
         Me.Panel2.Controls.Add(Me.WPIDMcbx)
         Me.Panel2.Controls.Add(Me.TBWP_X)
-        Me.Panel2.Location = New System.Drawing.Point(1066, 403)
+        Me.Panel2.Location = New System.Drawing.Point(1066, 322)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(221, 177)
+        Me.Panel2.Size = New System.Drawing.Size(221, 258)
         Me.Panel2.TabIndex = 4
+        '
+        'TBWP_Lane
+        '
+        Me.TBWP_Lane.BeepOnError = True
+        Me.TBWP_Lane.Culture = New System.Globalization.CultureInfo("")
+        Me.TBWP_Lane.Enabled = False
+        Me.TBWP_Lane.Location = New System.Drawing.Point(174, 120)
+        Me.TBWP_Lane.Name = "TBWP_Lane"
+        Me.TBWP_Lane.Size = New System.Drawing.Size(44, 20)
+        Me.TBWP_Lane.TabIndex = 4
+        Me.TBWP_Lane.Text = "0"
+        '
+        'TBWP_HeadlandHeight
+        '
+        Me.TBWP_HeadlandHeight.BeepOnError = True
+        Me.TBWP_HeadlandHeight.Culture = New System.Globalization.CultureInfo("")
+        Me.TBWP_HeadlandHeight.Enabled = False
+        Me.TBWP_HeadlandHeight.Location = New System.Drawing.Point(88, 120)
+        Me.TBWP_HeadlandHeight.Name = "TBWP_HeadlandHeight"
+        Me.TBWP_HeadlandHeight.Size = New System.Drawing.Size(44, 20)
+        Me.TBWP_HeadlandHeight.TabIndex = 4
+        Me.TBWP_HeadlandHeight.Text = "0"
+        '
+        'TBWP_Ridgemarker
+        '
+        Me.TBWP_Ridgemarker.BeepOnError = True
+        Me.TBWP_Ridgemarker.Culture = New System.Globalization.CultureInfo("")
+        Me.TBWP_Ridgemarker.Enabled = False
+        Me.TBWP_Ridgemarker.Location = New System.Drawing.Point(174, 97)
+        Me.TBWP_Ridgemarker.Name = "TBWP_Ridgemarker"
+        Me.TBWP_Ridgemarker.Size = New System.Drawing.Size(44, 20)
+        Me.TBWP_Ridgemarker.TabIndex = 4
+        Me.TBWP_Ridgemarker.Text = "0"
+        '
+        'TBWP_Radius
+        '
+        Me.TBWP_Radius.BeepOnError = True
+        Me.TBWP_Radius.Culture = New System.Globalization.CultureInfo("")
+        Me.TBWP_Radius.Enabled = False
+        Me.TBWP_Radius.Location = New System.Drawing.Point(43, 97)
+        Me.TBWP_Radius.Name = "TBWP_Radius"
+        Me.TBWP_Radius.Size = New System.Drawing.Size(68, 20)
+        Me.TBWP_Radius.TabIndex = 4
+        Me.TBWP_Radius.Text = "0"
         '
         'WPSpeedLbl
         '
@@ -575,9 +640,10 @@ Partial Class mainForm
         '
         'butCalcAngleSel
         '
-        Me.butCalcAngleSel.Location = New System.Drawing.Point(139, 142)
+        Me.butCalcAngleSel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.butCalcAngleSel.Location = New System.Drawing.Point(109, 231)
         Me.butCalcAngleSel.Name = "butCalcAngleSel"
-        Me.butCalcAngleSel.Size = New System.Drawing.Size(75, 23)
+        Me.butCalcAngleSel.Size = New System.Drawing.Size(104, 23)
         Me.butCalcAngleSel.TabIndex = 12
         Me.butCalcAngleSel.Text = "Calc angle"
         Me.butCalcAngleSel.UseVisualStyleBackColor = True
@@ -585,7 +651,7 @@ Partial Class mainForm
         'ChWP_Cross
         '
         Me.ChWP_Cross.Enabled = False
-        Me.ChWP_Cross.Location = New System.Drawing.Point(76, 119)
+        Me.ChWP_Cross.Location = New System.Drawing.Point(141, 212)
         Me.ChWP_Cross.Name = "ChWP_Cross"
         Me.ChWP_Cross.Size = New System.Drawing.Size(70, 17)
         Me.ChWP_Cross.TabIndex = 9
@@ -595,7 +661,7 @@ Partial Class mainForm
         'ChWP_Wait
         '
         Me.ChWP_Wait.Enabled = False
-        Me.ChWP_Wait.Location = New System.Drawing.Point(76, 96)
+        Me.ChWP_Wait.Location = New System.Drawing.Point(141, 166)
         Me.ChWP_Wait.Name = "ChWP_Wait"
         Me.ChWP_Wait.Size = New System.Drawing.Size(70, 17)
         Me.ChWP_Wait.TabIndex = 8
@@ -624,45 +690,99 @@ Partial Class mainForm
         '
         Me.ChWP_TurnStart.Enabled = False
         Me.ChWP_TurnStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChWP_TurnStart.Location = New System.Drawing.Point(148, 119)
+        Me.ChWP_TurnStart.Location = New System.Drawing.Point(6, 146)
         Me.ChWP_TurnStart.Name = "ChWP_TurnStart"
-        Me.ChWP_TurnStart.Size = New System.Drawing.Size(70, 17)
+        Me.ChWP_TurnStart.Size = New System.Drawing.Size(76, 17)
         Me.ChWP_TurnStart.TabIndex = 11
         Me.ChWP_TurnStart.Text = "Turn Start"
         Me.ChWP_TurnStart.UseVisualStyleBackColor = True
+        '
+        'ChWP_Align
+        '
+        Me.ChWP_Align.Enabled = False
+        Me.ChWP_Align.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChWP_Align.Location = New System.Drawing.Point(6, 235)
+        Me.ChWP_Align.Name = "ChWP_Align"
+        Me.ChWP_Align.Size = New System.Drawing.Size(88, 17)
+        Me.ChWP_Align.TabIndex = 7
+        Me.ChWP_Align.Text = "Align"
+        Me.ChWP_Align.UseVisualStyleBackColor = True
+        '
+        'ChWP_MustReach
+        '
+        Me.ChWP_MustReach.Enabled = False
+        Me.ChWP_MustReach.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChWP_MustReach.Location = New System.Drawing.Point(6, 212)
+        Me.ChWP_MustReach.Name = "ChWP_MustReach"
+        Me.ChWP_MustReach.Size = New System.Drawing.Size(96, 17)
+        Me.ChWP_MustReach.TabIndex = 7
+        Me.ChWP_MustReach.Text = "Must Reach"
+        Me.ChWP_MustReach.UseVisualStyleBackColor = True
         '
         'ChWp_ConTrack
         '
         Me.ChWp_ConTrack.Enabled = False
         Me.ChWp_ConTrack.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChWp_ConTrack.Location = New System.Drawing.Point(3, 146)
+        Me.ChWp_ConTrack.Location = New System.Drawing.Point(6, 189)
         Me.ChWp_ConTrack.Name = "ChWp_ConTrack"
         Me.ChWp_ConTrack.Size = New System.Drawing.Size(116, 17)
         Me.ChWp_ConTrack.TabIndex = 7
         Me.ChWp_ConTrack.Text = "Connecting Track"
         Me.ChWp_ConTrack.UseVisualStyleBackColor = True
         '
+        'WPHeadlandHeightLbl
+        '
+        Me.WPHeadlandHeightLbl.Location = New System.Drawing.Point(3, 123)
+        Me.WPHeadlandHeightLbl.Name = "WPHeadlandHeightLbl"
+        Me.WPHeadlandHeightLbl.Size = New System.Drawing.Size(91, 13)
+        Me.WPHeadlandHeightLbl.TabIndex = 2
+        Me.WPHeadlandHeightLbl.Text = "Headland Height"
+        '
         'ChWP_Unload
         '
         Me.ChWP_Unload.Enabled = False
         Me.ChWP_Unload.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChWP_Unload.Location = New System.Drawing.Point(3, 119)
+        Me.ChWP_Unload.Location = New System.Drawing.Point(141, 189)
         Me.ChWP_Unload.Name = "ChWP_Unload"
         Me.ChWP_Unload.Size = New System.Drawing.Size(70, 17)
         Me.ChWP_Unload.TabIndex = 7
         Me.ChWP_Unload.Text = "Unload"
         Me.ChWP_Unload.UseVisualStyleBackColor = True
         '
+        'WPLaneLbl
+        '
+        Me.WPLaneLbl.Location = New System.Drawing.Point(138, 123)
+        Me.WPLaneLbl.Name = "WPLaneLbl"
+        Me.WPLaneLbl.Size = New System.Drawing.Size(31, 13)
+        Me.WPLaneLbl.TabIndex = 2
+        Me.WPLaneLbl.Text = "Lane"
+        '
+        'WPRidgemarkerLbl
+        '
+        Me.WPRidgemarkerLbl.Location = New System.Drawing.Point(111, 100)
+        Me.WPRidgemarkerLbl.Name = "WPRidgemarkerLbl"
+        Me.WPRidgemarkerLbl.Size = New System.Drawing.Size(68, 13)
+        Me.WPRidgemarkerLbl.TabIndex = 2
+        Me.WPRidgemarkerLbl.Text = "Ridgemarker"
+        '
         'ChWP_TurnEnd
         '
         Me.ChWP_TurnEnd.Enabled = False
         Me.ChWP_TurnEnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChWP_TurnEnd.Location = New System.Drawing.Point(148, 96)
+        Me.ChWP_TurnEnd.Location = New System.Drawing.Point(6, 166)
         Me.ChWP_TurnEnd.Name = "ChWP_TurnEnd"
         Me.ChWP_TurnEnd.Size = New System.Drawing.Size(70, 17)
         Me.ChWP_TurnEnd.TabIndex = 10
         Me.ChWP_TurnEnd.Text = "Turn End"
         Me.ChWP_TurnEnd.UseVisualStyleBackColor = True
+        '
+        'WPRadiusLbl
+        '
+        Me.WPRadiusLbl.Location = New System.Drawing.Point(3, 100)
+        Me.WPRadiusLbl.Name = "WPRadiusLbl"
+        Me.WPRadiusLbl.Size = New System.Drawing.Size(49, 13)
+        Me.WPRadiusLbl.TabIndex = 2
+        Me.WPRadiusLbl.Text = "Radius"
         '
         'WPAngleLbl
         '
@@ -805,7 +925,7 @@ Partial Class mainForm
         Me.Panel3.Controls.Add(Me.Label6)
         Me.Panel3.Controls.Add(Me.TBCrs_ID)
         Me.Panel3.Controls.Add(Me.Label5)
-        Me.Panel3.Location = New System.Drawing.Point(1067, 318)
+        Me.Panel3.Location = New System.Drawing.Point(1067, 237)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(220, 79)
         Me.Panel3.TabIndex = 7
@@ -883,7 +1003,7 @@ Partial Class mainForm
         Me.CrsList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.CrsList.Location = New System.Drawing.Point(1067, 44)
         Me.CrsList.Name = "CrsList"
-        Me.CrsList.Size = New System.Drawing.Size(220, 239)
+        Me.CrsList.Size = New System.Drawing.Size(220, 158)
         Me.CrsList.TabIndex = 10
         '
         'ClsCourseBindingSource1
@@ -1022,4 +1142,14 @@ Partial Class mainForm
     Friend WithEvents SnapRightTurnToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
     Friend WithEvents ChWp_ConTrack As CheckBox
+    Friend WithEvents WPRadiusLbl As Label
+    Friend WithEvents TBWP_Radius As MaskedTextBox
+    Friend WithEvents TBWP_Lane As MaskedTextBox
+    Friend WithEvents WPLaneLbl As Label
+    Friend WithEvents TBWP_HeadlandHeight As MaskedTextBox
+    Friend WithEvents TBWP_Ridgemarker As MaskedTextBox
+    Friend WithEvents ChWP_MustReach As CheckBox
+    Friend WithEvents WPHeadlandHeightLbl As Label
+    Friend WithEvents WPRidgemarkerLbl As Label
+    Friend WithEvents ChWP_Align As CheckBox
 End Class

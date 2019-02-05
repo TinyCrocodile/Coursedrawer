@@ -16,6 +16,7 @@
     Public Property isUsed As Boolean = False
     Public Property listIndex As Integer
     Public Property changed As Boolean = False
+    Public Property UnknownXMLAttribute As New List(Of KeyValuePair(Of String, String))
 
     Private Structure Rechteck
         'ToDo Warum nicht Rect verwenden?
@@ -98,6 +99,8 @@
                                     Integer.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, Me.id)
                                 Case "parent"
                                     Integer.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, Me.parent)
+                                Case Else
+                                    Me.UnknownXMLAttribute.Add(New KeyValuePair(Of String, String)(xmlNodeReader.LocalName, xmlNodeReader.Value))
                             End Select
                         End While
                     ElseIf xmlNodeReader.LocalName.StartsWith("waypoint") Then
@@ -164,15 +167,29 @@
                                         waypoint.generated = False
                                     End If
                                 Case "ridgemarker"
-                                    Double.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, waypoint.ridgemarker)
+                                    Integer.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, waypoint.ridgemarker)
                                 Case "lane"
                                     Integer.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, waypoint.lane)
                                 Case "dir"
                                     waypoint.dir = xmlNodeReader.Value
-                                Case "turn"
-                                    If xmlNodeReader.Value <> "false" Then
-                                        waypoint.turn = xmlNodeReader.Value
+                                Case "headlandheightforturn"
+                                    Integer.TryParse(xmlNodeReader.Value, System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, waypoint.headlandheightforturn)
+                                Case "radius"
+                                    waypoint.radius = xmlNodeReader.Value
+                                Case "mustreach"
+                                    If xmlNodeReader.Value = "true" Then
+                                        waypoint.mustreach = True
+                                    Else
+                                        waypoint.mustreach = False
                                     End If
+                                Case "align"
+                                    If xmlNodeReader.Value = "true" Then
+                                        waypoint.align = True
+                                    Else
+                                        waypoint.align = False
+                                    End If
+                                Case Else 'Generic case for unknown or new Values with no specific implementation
+                                    waypoint.UnknownXMLAttribute.Add(New KeyValuePair(Of String, String)(xmlNodeReader.LocalName, xmlNodeReader.Value))
                             End Select
                         End While
                     End If
@@ -512,6 +529,9 @@
             el.Add(New XAttribute("id", Me.id.ToString))
             el.Add(New XAttribute("parent", Me.parent.ToString))
         End If
+        For Each UnknownAttribute As KeyValuePair(Of String, String) In Me.UnknownXMLAttribute
+            el.Add(New XAttribute(UnknownAttribute.Key.ToString, UnknownAttribute.Value.ToString))
+        Next
         For Each wp As clsWaypoint In _waypoints
             el.Add(wp.getXML(idx))
             idx += 1
