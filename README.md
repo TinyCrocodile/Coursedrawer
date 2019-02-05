@@ -4,6 +4,9 @@
 
 External tool to draw and edit Courseplay courses directly to the XML File 
 
+Note: Using this tool for FS19 CP 6 Courses is not recommended as you risk of loosing some Data. 
+I am currently working on a update for CP6 and will publish here as soon as it is ready.
+
 CourseDrawer is an application that has been updated and prepared for working with the new version of CoursePlay 5.0 (FS2017, LS17)
 
 Courses are now saved by courseplay in individual files. In order to load the courses you still need to load courseManager.xml which you can find here:
